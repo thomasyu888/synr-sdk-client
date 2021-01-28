@@ -15,7 +15,7 @@ user_service$apiClient$accessToken <- pat
 # Get own user profile
 my_user = user_service$GetMyOwnUserProfile
 
-# Interact with challeng service
+# Interact with challenge service
 challenge = challenge_service$GetChallenge(4328)
 teams = challenge_service$ListChallengeTeams(4328)
 participants = challenge_service$ListParticipantsInChallenge(4328)
