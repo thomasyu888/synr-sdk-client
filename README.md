@@ -76,8 +76,19 @@ Class | Method | HTTP request | Description
 *ChallengeServicesApi* | [**ListSubmissionTeams**](docs/ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
 *ChallengeServicesApi* | [**UpdateChallenge**](docs/ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
 *ChallengeServicesApi* | [**UpdateChallengeTeam**](docs/ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+*DiscussionServicesApi* | [**CreateThread**](docs/DiscussionServicesApi.md#CreateThread) | **POST** /thread | Create a new thread in a forum.
+*DiscussionServicesApi* | [**DeleteThread**](docs/DiscussionServicesApi.md#DeleteThread) | **DELETE** /thread/{threadId} | Delete a Thread.
+*DiscussionServicesApi* | [**GetRepliesForThread**](docs/DiscussionServicesApi.md#GetRepliesForThread) | **GET** /thread/{threadId}/replies | Get N number of replies for a given thread ID.
+*DiscussionServicesApi* | [**GetReplyCountForThread**](docs/DiscussionServicesApi.md#GetReplyCountForThread) | **GET** /thread/{threadId}/replycount | Get the total number of replies for a given Thread. 
+*DiscussionServicesApi* | [**GetThread**](docs/DiscussionServicesApi.md#GetThread) | **GET** /thread/{threadId} | Get a thread.
 *DiscussionServicesApi* | [**GetThreadCounts**](docs/DiscussionServicesApi.md#GetThreadCounts) | **POST** /entity/threadcounts | Get number of threads that belong to projects user can view and references the given entity. 
+*DiscussionServicesApi* | [**GetThreadUrl**](docs/DiscussionServicesApi.md#GetThreadUrl) | **GET** /thread/messageUrl | Get the message URL of a thread.
 *DiscussionServicesApi* | [**GetThreadsForEntity**](docs/DiscussionServicesApi.md#GetThreadsForEntity) | **GET** /entity/{id}/threads | This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
+*DiscussionServicesApi* | [**PinThread**](docs/DiscussionServicesApi.md#PinThread) | **PUT** /thread/{threadId}/pin | Pin a Thread.
+*DiscussionServicesApi* | [**RestoreDeletedThread**](docs/DiscussionServicesApi.md#RestoreDeletedThread) | **PUT** /thread/{threadId}/restore | Restore a deleted thread.
+*DiscussionServicesApi* | [**UnpinThread**](docs/DiscussionServicesApi.md#UnpinThread) | **PUT** /thread/{threadId}/unpin | Unpin a thread.
+*DiscussionServicesApi* | [**UpdateThreadMessage**](docs/DiscussionServicesApi.md#UpdateThreadMessage) | **PUT** /thread/{threadId}/message | Update the message of a thread.
+*DiscussionServicesApi* | [**UpdateThreadTitle**](docs/DiscussionServicesApi.md#UpdateThreadTitle) | **PUT** /thread/{threadId}/title | Update the title of a Thread.
 *DockerCommitServicesApi* | [**AddDockerCommit**](docs/DockerCommitServicesApi.md#AddDockerCommit) | **POST** /entity/{id}/dockerCommit | Add a commit (tag and digest) for an external/unmanaged Docker repository.
 *DockerCommitServicesApi* | [**ListDockerTags**](docs/DockerCommitServicesApi.md#ListDockerTags) | **GET** /entity/{id}/dockerTag | List the tagged commits (tag/digest pairs) for the given Docker repository.
 *DoiServicesApi* | [**GetCreateOrUpdateDoiResults**](docs/DoiServicesApi.md#GetCreateOrUpdateDoiResults) | **GET** /doi/async/get/{asyncToken} | Get the results of a call to POST /doi/async/start
@@ -258,9 +269,11 @@ Class | Method | HTTP request | Description
  - [ColumnModel](docs/ColumnModel.md)
  - [ColumnType](docs/ColumnType.md)
  - [Count](docs/Count.md)
+ - [CreateDiscussionThread](docs/CreateDiscussionThread.md)
  - [CsvTableDescriptor](docs/CsvTableDescriptor.md)
  - [DataType](docs/DataType.md)
  - [DataTypeResponse](docs/DataTypeResponse.md)
+ - [DiscussionReplyBundle](docs/DiscussionReplyBundle.md)
  - [DiscussionThreadBundle](docs/DiscussionThreadBundle.md)
  - [DockerCommit](docs/DockerCommit.md)
  - [Doi](docs/Doi.md)
@@ -324,12 +337,14 @@ Class | Method | HTTP request | Description
  - [MembershipInvitation](docs/MembershipInvitation.md)
  - [MembershipRequest](docs/MembershipRequest.md)
  - [MessageToUser](docs/MessageToUser.md)
+ - [MessageURL](docs/MessageURL.md)
  - [NameIdentifierScheme](docs/NameIdentifierScheme.md)
  - [ObjectType](docs/ObjectType.md)
  - [ObjectTypeSchema](docs/ObjectTypeSchema.md)
  - [PaginatedColumnModels](docs/PaginatedColumnModels.md)
  - [PaginatedIds](docs/PaginatedIds.md)
  - [PaginatedResultsOfAccessRequirement](docs/PaginatedResultsOfAccessRequirement.md)
+ - [PaginatedResultsOfDiscussionReplyBundle](docs/PaginatedResultsOfDiscussionReplyBundle.md)
  - [PaginatedResultsOfDiscussionThreadBundle](docs/PaginatedResultsOfDiscussionThreadBundle.md)
  - [PaginatedResultsOfDockerCommit](docs/PaginatedResultsOfDockerCommit.md)
  - [PaginatedResultsOfEntityHeader](docs/PaginatedResultsOfEntityHeader.md)
@@ -356,6 +371,7 @@ Class | Method | HTTP request | Description
  - [QuestionResponse](docs/QuestionResponse.md)
  - [Reference](docs/Reference.md)
  - [ReferenceList](docs/ReferenceList.md)
+ - [ReplyCount](docs/ReplyCount.md)
  - [ResourceAccess](docs/ResourceAccess.md)
  - [ResponseCorrectness](docs/ResponseCorrectness.md)
  - [ResponseMessage](docs/ResponseMessage.md)
@@ -398,6 +414,8 @@ Class | Method | HTTP request | Description
  - [TeamMembershipStatus](docs/TeamMembershipStatus.md)
  - [TeamSubmissionEligibility](docs/TeamSubmissionEligibility.md)
  - [TrashedEntity](docs/TrashedEntity.md)
+ - [UpdateThreadMessage](docs/UpdateThreadMessage.md)
+ - [UpdateThreadTitle](docs/UpdateThreadTitle.md)
  - [Used](docs/Used.md)
  - [UserBundle](docs/UserBundle.md)
  - [UserEntityPermissions](docs/UserEntityPermissions.md)

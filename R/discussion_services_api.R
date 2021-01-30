@@ -14,6 +14,96 @@
 #'
 #' @section Methods:
 #' \describe{
+#' \strong{ CreateThread } \emph{ Create a new thread in a forum. }
+#' This API is used to create a new thread in a forum.  Target users: anyone who has READ permission to the project. 
+#'
+#' \itemize{
+#' \item \emph{ @param } create.discussion.thread \link{CreateDiscussionThread}
+#' \item \emph{ @returnType } \link{DiscussionThreadBundle} \cr
+#'
+#'
+#' \item status code : 201 | Success
+#'
+#' \item return type : DiscussionThreadBundle 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ DeleteThread } \emph{ Delete a Thread. }
+#' This API is used to mark a thread as deleted.  Target users: only forum&#39;s moderator can mark a thread as deleted. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#'
+#'
+#' \item status code : 204 | The resource has been deleted.
+#'
+#'
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetRepliesForThread } \emph{ Get N number of replies for a given thread ID. }
+#' This API is used to get N number of replies for a given thread ID.  Target users: anyone who has READ permission to the project. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#' \item \emph{ @param } filter Enum < [DELETED_ONLY, EXCLUDE_DELETED, NO_FILTER] > 
+#' \item \emph{ @param } ascending character
+#' \item \emph{ @param } limit integer
+#' \item \emph{ @param } offset integer
+#' \item \emph{ @param } sort Enum < [CREATED_ON] > 
+#' \item \emph{ @returnType } \link{PaginatedResultsOfDiscussionReplyBundle} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfDiscussionReplyBundle 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetReplyCountForThread } \emph{ Get the total number of replies for a given Thread.  }
+#' This API is used to get the total number of replies for a given thread ID.  Target users: anyone who has READ permission to the project.&#39; 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#' \item \emph{ @param } filter Enum < [DELETED_ONLY, EXCLUDE_DELETED, NO_FILTER] > 
+#' \item \emph{ @returnType } \link{ReplyCount} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : ReplyCount 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetThread } \emph{ Get a thread. }
+#' This API is used to get a thread and its statistic given its ID.  Target users: anyone who has READ permission to the project. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#' \item \emph{ @returnType } \link{DiscussionThreadBundle} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : DiscussionThreadBundle 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetThreadCounts } \emph{ Get number of threads that belong to projects user can view and references the given entity.  }
 #' This API is used to get list of entity and count pairs, with count is the number of threads that belong to projects user can view and references the given entity.  Target users: anyone who has READ permission to the project. 
 #'
@@ -25,6 +115,23 @@
 #' \item status code : 200 | Success
 #'
 #' \item return type : EntityThreadCounts 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetThreadUrl } \emph{ Get the message URL of a thread. }
+#' This API is used to get the message URL of a thread. The message URL is the URL to download the file which contains the thread message.  Target users: anyone who has READ permission to the project.  The resulting URL will be signed with Content-Type &#x3D;\&quot;text/plain; charset&#x3D;utf-8\&quot;; therefore, this header must be included with the GET on the URL. 
+#'
+#' \itemize{
+#' \item \emph{ @param } message.key character
+#' \item \emph{ @returnType } \link{MessageURL} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : MessageURL 
 #' \item response headers :
 #'
 #' \tabular{ll}{
@@ -52,11 +159,186 @@
 #' }
 #' }
 #'
+#' \strong{ PinThread } \emph{ Pin a Thread. }
+#' This API is used to mark a thread as pinned.  Target users: only forum&#39;s moderator can mark a thread as pinned. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#'
+#'
+#' \item status code : 204 | Success
+#'
+#'
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ RestoreDeletedThread } \emph{ Restore a deleted thread. }
+#' This API is used to restore a deleted thread.  Target users: only forum&#39;s moderator can restore a deleted thread. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : character 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ UnpinThread } \emph{ Unpin a thread. }
+#' This API is used to unpin a thread.  Target users: only forum&#39;s moderator can unpin a thread. 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#'
+#'
+#' \item status code : 204 | Success
+#'
+#'
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ UpdateThreadMessage } \emph{ Update the message of a thread. }
+#' This API is used to update the message of a thread.  Target users: only the author of the thread can update its message.&#39; 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#' \item \emph{ @param } update.thread.message \link{UpdateThreadMessage}
+#' \item \emph{ @returnType } \link{DiscussionThreadBundle} \cr
+#'
+#'
+#' \item status code : 201 | Success
+#'
+#' \item return type : DiscussionThreadBundle 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ UpdateThreadTitle } \emph{ Update the title of a Thread. }
+#' This API is used to update the title of a thread.  Target users: only the author of the thread can update its title.&#39; 
+#'
+#' \itemize{
+#' \item \emph{ @param } thread.id character
+#' \item \emph{ @param } update.thread.title \link{UpdateThreadTitle}
+#' \item \emph{ @returnType } \link{DiscussionThreadBundle} \cr
+#'
+#'
+#' \item status code : 201 | Success
+#'
+#' \item return type : DiscussionThreadBundle 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' }
 #'
 #'
 #' @examples
 #' \dontrun{
+#' ####################  CreateThread  ####################
+#'
+#' library(synclient)
+#' var.create.discussion.thread <- CreateDiscussionThread$new() # CreateDiscussionThread | 
+#'
+#' #Create a new thread in a forum.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$CreateThread(create.discussion.thread=var.create.discussion.thread)
+#'
+#'
+#' ####################  DeleteThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#'
+#' #Delete a Thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$DeleteThread(var.thread.id)
+#'
+#'
+#' ####################  GetRepliesForThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#' var.filter <- 'filter_example' # character | Filter deleted not deleted replies.
+#' var.ascending <- 'ascending_example' # character | The direction of sort: true for ascending, and false for descending
+#' var.limit <- 10 # integer | Limits the size of the page returned. For example, a page size of 10 require limit = 10. 
+#' var.offset <- 0 # integer | The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.' 
+#' var.sort <- 'sort_example' # character | The field to sort the resulting replies on. 
+#'
+#' #Get N number of replies for a given thread ID.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetRepliesForThread(var.thread.id, var.filter, ascending=var.ascending, limit=var.limit, offset=var.offset, sort=var.sort)
+#'
+#'
+#' ####################  GetReplyCountForThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#' var.filter <- 'filter_example' # character | Filter deleted not deleted replies.
+#'
+#' #Get the total number of replies for a given Thread. 
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetReplyCountForThread(var.thread.id, var.filter)
+#'
+#'
+#' ####################  GetThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#'
+#' #Get a thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetThread(var.thread.id)
+#'
+#'
 #' ####################  GetThreadCounts  ####################
 #'
 #' library(synclient)
@@ -72,6 +354,23 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$GetThreadCounts(entity.id.list=var.entity.id.list)
+#'
+#'
+#' ####################  GetThreadUrl  ####################
+#'
+#' library(synclient)
+#' var.message.key <- 'message.key_example' # character | Message Key
+#'
+#' #Get the message URL of a thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetThreadUrl(var.message.key)
 #'
 #'
 #' ####################  GetThreadsForEntity  ####################
@@ -95,6 +394,93 @@
 #' result <- api.instance$GetThreadsForEntity(var.id, ascending=var.ascending, limit=var.limit, offset=var.offset, sort=var.sort)
 #'
 #'
+#' ####################  PinThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#'
+#' #Pin a Thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$PinThread(var.thread.id)
+#'
+#'
+#' ####################  RestoreDeletedThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#'
+#' #Restore a deleted thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$RestoreDeletedThread(var.thread.id)
+#'
+#'
+#' ####################  UnpinThread  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#'
+#' #Unpin a thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$UnpinThread(var.thread.id)
+#'
+#'
+#' ####################  UpdateThreadMessage  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#' var.update.thread.message <- UpdateThreadMessage$new() # UpdateThreadMessage | 
+#'
+#' #Update the message of a thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$UpdateThreadMessage(var.thread.id, update.thread.message=var.update.thread.message)
+#'
+#'
+#' ####################  UpdateThreadTitle  ####################
+#'
+#' library(synclient)
+#' var.thread.id <- 'thread.id_example' # character | The ID of a thread.
+#' var.update.thread.title <- UpdateThreadTitle$new() # UpdateThreadTitle | 
+#'
+#' #Update the title of a Thread.
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$UpdateThreadTitle(var.thread.id, update.thread.title=var.update.thread.title)
+#'
+#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom caTools base64encode
@@ -109,6 +495,278 @@ DiscussionServicesApi <- R6::R6Class(
       }
       else {
         self$apiClient <- ApiClient$new()
+      }
+    },
+    CreateThread = function(create.discussion.thread=NULL, ...){
+      apiResponse <- self$CreateThreadWithHttpInfo(create.discussion.thread, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    CreateThreadWithHttpInfo = function(create.discussion.thread=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`create.discussion.thread`)) {
+        body <- `create.discussion.thread`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/thread"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "DiscussionThreadBundle", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    DeleteThread = function(thread.id, ...){
+      apiResponse <- self$DeleteThreadWithHttpInfo(thread.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    DeleteThreadWithHttpInfo = function(thread.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      urlPath <- "/thread/{threadId}"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "DELETE",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        ApiResponse$new(NULL, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetRepliesForThread = function(thread.id, filter, ascending=NULL, limit=10, offset=0, sort=NULL, ...){
+      apiResponse <- self$GetRepliesForThreadWithHttpInfo(thread.id, filter, ascending, limit, offset, sort, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetRepliesForThreadWithHttpInfo = function(thread.id, filter, ascending=NULL, limit=10, offset=0, sort=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      if (missing(`filter`)) {
+        stop("Missing required parameter `filter`.")
+      }
+
+      queryParams['ascending'] <- ascending
+
+      queryParams['filter'] <- filter
+
+      queryParams['limit'] <- limit
+
+      queryParams['offset'] <- offset
+
+      queryParams['sort'] <- sort
+
+      urlPath <- "/thread/{threadId}/replies"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfDiscussionReplyBundle", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetReplyCountForThread = function(thread.id, filter, ...){
+      apiResponse <- self$GetReplyCountForThreadWithHttpInfo(thread.id, filter, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetReplyCountForThreadWithHttpInfo = function(thread.id, filter, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      if (missing(`filter`)) {
+        stop("Missing required parameter `filter`.")
+      }
+
+      queryParams['filter'] <- filter
+
+      urlPath <- "/thread/{threadId}/replycount"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "ReplyCount", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetThread = function(thread.id, ...){
+      apiResponse <- self$GetThreadWithHttpInfo(thread.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetThreadWithHttpInfo = function(thread.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      urlPath <- "/thread/{threadId}"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "DiscussionThreadBundle", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
       }
     },
     GetThreadCounts = function(entity.id.list=NULL, ...){
@@ -148,6 +806,56 @@ DiscussionServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "EntityThreadCounts", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetThreadUrl = function(message.key, ...){
+      apiResponse <- self$GetThreadUrlWithHttpInfo(message.key, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetThreadUrlWithHttpInfo = function(message.key, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`message.key`)) {
+        stop("Missing required parameter `message.key`.")
+      }
+
+      queryParams['messageKey'] <- message.key
+
+      urlPath <- "/thread/messageUrl"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "MessageURL", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
@@ -208,6 +916,266 @@ DiscussionServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "PaginatedResultsOfDiscussionThreadBundle", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    PinThread = function(thread.id, ...){
+      apiResponse <- self$PinThreadWithHttpInfo(thread.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    PinThreadWithHttpInfo = function(thread.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      urlPath <- "/thread/{threadId}/pin"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        ApiResponse$new(NULL, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    RestoreDeletedThread = function(thread.id, ...){
+      apiResponse <- self$RestoreDeletedThreadWithHttpInfo(thread.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    RestoreDeletedThreadWithHttpInfo = function(thread.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      urlPath <- "/thread/{threadId}/restore"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "character", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    UnpinThread = function(thread.id, ...){
+      apiResponse <- self$UnpinThreadWithHttpInfo(thread.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    UnpinThreadWithHttpInfo = function(thread.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      urlPath <- "/thread/{threadId}/unpin"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        ApiResponse$new(NULL, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    UpdateThreadMessage = function(thread.id, update.thread.message=NULL, ...){
+      apiResponse <- self$UpdateThreadMessageWithHttpInfo(thread.id, update.thread.message, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    UpdateThreadMessageWithHttpInfo = function(thread.id, update.thread.message=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      if (!missing(`update.thread.message`)) {
+        body <- `update.thread.message`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/thread/{threadId}/message"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "DiscussionThreadBundle", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    UpdateThreadTitle = function(thread.id, update.thread.title=NULL, ...){
+      apiResponse <- self$UpdateThreadTitleWithHttpInfo(thread.id, update.thread.title, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    UpdateThreadTitleWithHttpInfo = function(thread.id, update.thread.title=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`thread.id`)) {
+        stop("Missing required parameter `thread.id`.")
+      }
+
+      if (!missing(`update.thread.title`)) {
+        body <- `update.thread.title`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/thread/{threadId}/title"
+      if (!missing(`thread.id`)) {
+        urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "DiscussionThreadBundle", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
