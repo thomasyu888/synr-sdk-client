@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title TableUpdateTransactionRequest
+#'
 #' @description TableUpdateTransactionRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field changes  list( \link{TableUpdateRequest} ) [optional]
 #'
 #' @field concreteType  character [optional]
@@ -19,7 +22,6 @@
 #' @field entityId  character [optional]
 #'
 #' @field snapshotOptions  \link{SnapshotRequest} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ TableUpdateTransactionRequest <- R6::R6Class(
     `createSnapshot` = NULL,
     `entityId` = NULL,
     `snapshotOptions` = NULL,
-    initialize = function(`changes`=NULL, `concreteType`=NULL, `createSnapshot`=NULL, `entityId`=NULL, `snapshotOptions`=NULL, ...){
+    initialize = function(
+        `changes`=NULL, `concreteType`=NULL, `createSnapshot`=NULL, `entityId`=NULL, `snapshotOptions`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`changes`)) {
         stopifnot(is.vector(`changes`), length(`changes`) != 0)
@@ -99,6 +103,7 @@ TableUpdateTransactionRequest <- R6::R6Class(
         snapshotOptionsObject$fromJSON(jsonlite::toJSON(TableUpdateTransactionRequestObject$snapshotOptions, auto_unbox = TRUE, digits = NA))
         self$`snapshotOptions` <- snapshotOptionsObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -152,3 +157,4 @@ TableUpdateTransactionRequest <- R6::R6Class(
     }
   )
 )
+

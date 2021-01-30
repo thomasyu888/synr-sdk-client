@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title SubmissionContributor
+#'
 #' @description SubmissionContributor Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdOn  character [optional]
 #'
 #' @field principalId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ SubmissionContributor <- R6::R6Class(
   public = list(
     `createdOn` = NULL,
     `principalId` = NULL,
-    initialize = function(`createdOn`=NULL, `principalId`=NULL, ...){
+    initialize = function(
+        `createdOn`=NULL, `principalId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdOn`)) {
         stopifnot(is.character(`createdOn`), length(`createdOn`) == 1)
@@ -55,6 +59,7 @@ SubmissionContributor <- R6::R6Class(
       if (!is.null(SubmissionContributorObject$`principalId`)) {
         self$`principalId` <- SubmissionContributorObject$`principalId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ SubmissionContributor <- R6::R6Class(
     }
   )
 )
+

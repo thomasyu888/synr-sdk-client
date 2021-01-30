@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title ListValidationResultsResponse
+#'
 #' @description ListValidationResultsResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field nextPageToken  character [optional]
 #'
 #' @field page  list( \link{ValidationResults} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ ListValidationResultsResponse <- R6::R6Class(
   public = list(
     `nextPageToken` = NULL,
     `page` = NULL,
-    initialize = function(`nextPageToken`=NULL, `page`=NULL, ...){
+    initialize = function(
+        `nextPageToken`=NULL, `page`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextPageToken`)) {
         stopifnot(is.character(`nextPageToken`), length(`nextPageToken`) == 1)
@@ -56,6 +60,7 @@ ListValidationResultsResponse <- R6::R6Class(
       if (!is.null(ListValidationResultsResponseObject$`page`)) {
         self$`page` <- ApiClient$new()$deserializeObj(ListValidationResultsResponseObject$`page`, "array[ValidationResults]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ ListValidationResultsResponse <- R6::R6Class(
     }
   )
 )
+

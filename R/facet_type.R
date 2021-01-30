@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title FacetType
+#'
 #' @description FacetType Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 FacetType <- R6::R6Class(
-  'FacetType',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      FacetTypeObject <- list()
+    "FacetType",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_FacetType()
 
-      FacetTypeObject
-    },
-    fromJSON = function(FacetTypeJson) {
-      FacetTypeObject <- jsonlite::fromJSON(FacetTypeJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(FacetTypeJson) {
-      FacetTypeObject <- jsonlite::fromJSON(FacetTypeJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(FacetTypeJson) {
+            private$value <- jsonlite::fromJSON(FacetTypeJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(FacetTypeJson) {
+            private$value <- jsonlite::fromJSON(FacetTypeJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_FacetType <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[enumeration, range]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

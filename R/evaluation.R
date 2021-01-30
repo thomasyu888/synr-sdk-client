@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Evaluation
+#'
 #' @description Evaluation Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field contentSource  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -32,7 +35,6 @@
 #'
 #' @field submissionReceiptMessage  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,7 +52,9 @@ Evaluation <- R6::R6Class(
     `status` = NULL,
     `submissionInstructionsMessage` = NULL,
     `submissionReceiptMessage` = NULL,
-    initialize = function(`contentSource`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `name`=NULL, `ownerId`=NULL, `quota`=NULL, `status`=NULL, `submissionInstructionsMessage`=NULL, `submissionReceiptMessage`=NULL, ...){
+    initialize = function(
+        `contentSource`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `name`=NULL, `ownerId`=NULL, `quota`=NULL, `status`=NULL, `submissionInstructionsMessage`=NULL, `submissionReceiptMessage`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`contentSource`)) {
         stopifnot(is.character(`contentSource`), length(`contentSource`) == 1)
@@ -185,6 +189,7 @@ Evaluation <- R6::R6Class(
       if (!is.null(EvaluationObject$`submissionReceiptMessage`)) {
         self$`submissionReceiptMessage` <- EvaluationObject$`submissionReceiptMessage`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -286,3 +291,4 @@ Evaluation <- R6::R6Class(
     }
   )
 )
+

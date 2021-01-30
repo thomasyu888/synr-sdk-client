@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title SelectColumn
+#'
 #' @description SelectColumn Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field columnType  \link{ColumnType} [optional]
 #'
 #' @field id  character [optional]
 #'
 #' @field name  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ SelectColumn <- R6::R6Class(
     `columnType` = NULL,
     `id` = NULL,
     `name` = NULL,
-    initialize = function(`columnType`=NULL, `id`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `columnType`=NULL, `id`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`columnType`)) {
         stopifnot(R6::is.R6(`columnType`))
@@ -71,6 +75,7 @@ SelectColumn <- R6::R6Class(
       if (!is.null(SelectColumnObject$`name`)) {
         self$`name` <- SelectColumnObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -108,3 +113,4 @@ SelectColumn <- R6::R6Class(
     }
   )
 )
+

@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title DoiTitle
-#' @description DoiTitle Class
-#' @format An \code{R6Class} generator object
-#' @field title  character [optional]
 #'
+#' @description DoiTitle Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field title  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ DoiTitle <- R6::R6Class(
   'DoiTitle',
   public = list(
     `title` = NULL,
-    initialize = function(`title`=NULL, ...){
+    initialize = function(
+        `title`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`title`)) {
         stopifnot(is.character(`title`), length(`title`) == 1)
@@ -41,6 +45,7 @@ DoiTitle <- R6::R6Class(
       if (!is.null(DoiTitleObject$`title`)) {
         self$`title` <- DoiTitleObject$`title`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ DoiTitle <- R6::R6Class(
     }
   )
 )
+

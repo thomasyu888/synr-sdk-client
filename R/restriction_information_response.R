@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title RestrictionInformationResponse
+#'
 #' @description RestrictionInformationResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field hasUnmetAccessRequirement  character [optional]
 #'
 #' @field restrictionLevel  \link{RestrictionLevel} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ RestrictionInformationResponse <- R6::R6Class(
   public = list(
     `hasUnmetAccessRequirement` = NULL,
     `restrictionLevel` = NULL,
-    initialize = function(`hasUnmetAccessRequirement`=NULL, `restrictionLevel`=NULL, ...){
+    initialize = function(
+        `hasUnmetAccessRequirement`=NULL, `restrictionLevel`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`hasUnmetAccessRequirement`)) {
         self$`hasUnmetAccessRequirement` <- `hasUnmetAccessRequirement`
@@ -56,6 +60,7 @@ RestrictionInformationResponse <- R6::R6Class(
         restrictionLevelObject$fromJSON(jsonlite::toJSON(RestrictionInformationResponseObject$restrictionLevel, auto_unbox = TRUE, digits = NA))
         self$`restrictionLevel` <- restrictionLevelObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ RestrictionInformationResponse <- R6::R6Class(
     }
   )
 )
+

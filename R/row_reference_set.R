@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title RowReferenceSet
+#'
 #' @description RowReferenceSet Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field etag  character [optional]
 #'
 #' @field headers  list( \link{SelectColumn} ) [optional]
@@ -17,7 +20,6 @@
 #' @field rows  list( \link{RowReference} ) [optional]
 #'
 #' @field tableId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ RowReferenceSet <- R6::R6Class(
     `headers` = NULL,
     `rows` = NULL,
     `tableId` = NULL,
-    initialize = function(`etag`=NULL, `headers`=NULL, `rows`=NULL, `tableId`=NULL, ...){
+    initialize = function(
+        `etag`=NULL, `headers`=NULL, `rows`=NULL, `tableId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`etag`)) {
         stopifnot(is.character(`etag`), length(`etag`) == 1)
@@ -85,6 +89,7 @@ RowReferenceSet <- R6::R6Class(
       if (!is.null(RowReferenceSetObject$`tableId`)) {
         self$`tableId` <- RowReferenceSetObject$`tableId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -130,3 +135,4 @@ RowReferenceSet <- R6::R6Class(
     }
   )
 )
+

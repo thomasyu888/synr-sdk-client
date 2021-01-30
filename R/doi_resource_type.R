@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title DoiResourceType
-#' @description DoiResourceType Class
-#' @format An \code{R6Class} generator object
-#' @field resourceTypeGeneral  \link{DoiResourceTypeGeneral} [optional]
 #'
+#' @description DoiResourceType Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field resourceTypeGeneral  \link{DoiResourceTypeGeneral} [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ DoiResourceType <- R6::R6Class(
   'DoiResourceType',
   public = list(
     `resourceTypeGeneral` = NULL,
-    initialize = function(`resourceTypeGeneral`=NULL, ...){
+    initialize = function(
+        `resourceTypeGeneral`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`resourceTypeGeneral`)) {
         stopifnot(R6::is.R6(`resourceTypeGeneral`))
@@ -43,6 +47,7 @@ DoiResourceType <- R6::R6Class(
         resourceTypeGeneralObject$fromJSON(jsonlite::toJSON(DoiResourceTypeObject$resourceTypeGeneral, auto_unbox = TRUE, digits = NA))
         self$`resourceTypeGeneral` <- resourceTypeGeneralObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -64,3 +69,4 @@ DoiResourceType <- R6::R6Class(
     }
   )
 )
+

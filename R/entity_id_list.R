@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title EntityIdList
-#' @description EntityIdList Class
-#' @format An \code{R6Class} generator object
-#' @field idList  list( character ) [optional]
 #'
+#' @description EntityIdList Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field idList  list( character ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ EntityIdList <- R6::R6Class(
   'EntityIdList',
   public = list(
     `idList` = NULL,
-    initialize = function(`idList`=NULL, ...){
+    initialize = function(
+        `idList`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`idList`)) {
         stopifnot(is.vector(`idList`), length(`idList`) != 0)
@@ -42,6 +46,7 @@ EntityIdList <- R6::R6Class(
       if (!is.null(EntityIdListObject$`idList`)) {
         self$`idList` <- ApiClient$new()$deserializeObj(EntityIdListObject$`idList`, "array[character]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ EntityIdList <- R6::R6Class(
     }
   )
 )
+

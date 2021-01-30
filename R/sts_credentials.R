@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title StsCredentials
+#'
 #' @description StsCredentials Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field accessKeyId  character [optional]
 #'
 #' @field baseKey  character [optional]
@@ -21,7 +24,6 @@
 #' @field secretAccessKey  character [optional]
 #'
 #' @field sessionToken  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -35,7 +37,9 @@ StsCredentials <- R6::R6Class(
     `expiration` = NULL,
     `secretAccessKey` = NULL,
     `sessionToken` = NULL,
-    initialize = function(`accessKeyId`=NULL, `baseKey`=NULL, `bucket`=NULL, `expiration`=NULL, `secretAccessKey`=NULL, `sessionToken`=NULL, ...){
+    initialize = function(
+        `accessKeyId`=NULL, `baseKey`=NULL, `bucket`=NULL, `expiration`=NULL, `secretAccessKey`=NULL, `sessionToken`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`accessKeyId`)) {
         stopifnot(is.character(`accessKeyId`), length(`accessKeyId`) == 1)
@@ -111,6 +115,7 @@ StsCredentials <- R6::R6Class(
       if (!is.null(StsCredentialsObject$`sessionToken`)) {
         self$`sessionToken` <- StsCredentialsObject$`sessionToken`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -172,3 +177,4 @@ StsCredentials <- R6::R6Class(
     }
   )
 )
+

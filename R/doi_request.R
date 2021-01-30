@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title DoiRequest
+#'
 #' @description DoiRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field doi  \link{Doi} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ DoiRequest <- R6::R6Class(
   public = list(
     `concreteType` = NULL,
     `doi` = NULL,
-    initialize = function(`concreteType`=NULL, `doi`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `doi`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -57,6 +61,7 @@ DoiRequest <- R6::R6Class(
         doiObject$fromJSON(jsonlite::toJSON(DoiRequestObject$doi, auto_unbox = TRUE, digits = NA))
         self$`doi` <- doiObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -86,3 +91,4 @@ DoiRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title CreateDiscussionThread
+#'
 #' @description CreateDiscussionThread Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field forumId  character [optional]
 #'
 #' @field messageMarkdown  character [optional]
 #'
 #' @field title  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ CreateDiscussionThread <- R6::R6Class(
     `forumId` = NULL,
     `messageMarkdown` = NULL,
     `title` = NULL,
-    initialize = function(`forumId`=NULL, `messageMarkdown`=NULL, `title`=NULL, ...){
+    initialize = function(
+        `forumId`=NULL, `messageMarkdown`=NULL, `title`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`forumId`)) {
         stopifnot(is.character(`forumId`), length(`forumId`) == 1)
@@ -69,6 +73,7 @@ CreateDiscussionThread <- R6::R6Class(
       if (!is.null(CreateDiscussionThreadObject$`title`)) {
         self$`title` <- CreateDiscussionThreadObject$`title`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ CreateDiscussionThread <- R6::R6Class(
     }
   )
 )
+

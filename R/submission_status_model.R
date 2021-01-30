@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title SubmissionStatusModel
+#'
 #' @description SubmissionStatusModel Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field annotations  \link{AnnotationsAnnotation} [optional]
 #'
 #' @field canCancel  character [optional]
@@ -32,7 +35,6 @@
 #'
 #' @field versionNumber  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,7 +52,9 @@ SubmissionStatusModel <- R6::R6Class(
     `statusVersion` = NULL,
     `submissionAnnotations` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`annotations`=NULL, `canCancel`=NULL, `cancelRequested`=NULL, `entityId`=NULL, `etag`=NULL, `id`=NULL, `modifiedOn`=NULL, `status`=NULL, `statusVersion`=NULL, `submissionAnnotations`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `annotations`=NULL, `canCancel`=NULL, `cancelRequested`=NULL, `entityId`=NULL, `etag`=NULL, `id`=NULL, `modifiedOn`=NULL, `status`=NULL, `statusVersion`=NULL, `submissionAnnotations`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`annotations`)) {
         stopifnot(R6::is.R6(`annotations`))
@@ -184,6 +188,7 @@ SubmissionStatusModel <- R6::R6Class(
       if (!is.null(SubmissionStatusModelObject$`versionNumber`)) {
         self$`versionNumber` <- SubmissionStatusModelObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -285,3 +290,4 @@ SubmissionStatusModel <- R6::R6Class(
     }
   )
 )
+

@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title SortDirection
+#'
 #' @description SortDirection Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SortDirection <- R6::R6Class(
-  'SortDirection',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      SortDirectionObject <- list()
+    "SortDirection",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_SortDirection()
 
-      SortDirectionObject
-    },
-    fromJSON = function(SortDirectionJson) {
-      SortDirectionObject <- jsonlite::fromJSON(SortDirectionJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(SortDirectionJson) {
-      SortDirectionObject <- jsonlite::fromJSON(SortDirectionJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(SortDirectionJson) {
+            private$value <- jsonlite::fromJSON(SortDirectionJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(SortDirectionJson) {
+            private$value <- jsonlite::fromJSON(SortDirectionJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_SortDirection <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[ASC, DESC]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

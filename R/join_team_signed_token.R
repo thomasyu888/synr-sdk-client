@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title JoinTeamSignedToken
+#'
 #' @description JoinTeamSignedToken Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -26,7 +29,6 @@
 #'
 #' @field version  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -41,7 +43,9 @@ JoinTeamSignedToken <- R6::R6Class(
     `teamId` = NULL,
     `userId` = NULL,
     `version` = NULL,
-    initialize = function(`concreteType`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `hmac`=NULL, `memberId`=NULL, `teamId`=NULL, `userId`=NULL, `version`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `hmac`=NULL, `memberId`=NULL, `teamId`=NULL, `userId`=NULL, `version`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -139,6 +143,7 @@ JoinTeamSignedToken <- R6::R6Class(
       if (!is.null(JoinTeamSignedTokenObject$`version`)) {
         self$`version` <- JoinTeamSignedTokenObject$`version`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -216,3 +221,4 @@ JoinTeamSignedToken <- R6::R6Class(
     }
   )
 )
+

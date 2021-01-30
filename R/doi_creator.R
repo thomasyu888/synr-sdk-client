@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title DoiCreator
+#'
 #' @description DoiCreator Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field creatorName  character 
 #'
 #' @field nameIdentifiers  list( \link{DoiNameIdentifier} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ DoiCreator <- R6::R6Class(
   public = list(
     `creatorName` = NULL,
     `nameIdentifiers` = NULL,
-    initialize = function(`creatorName`, `nameIdentifiers`=NULL, ...){
+    initialize = function(
+        `creatorName`, `nameIdentifiers`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!missing(`creatorName`)) {
         stopifnot(is.character(`creatorName`), length(`creatorName`) == 1)
@@ -56,6 +60,7 @@ DoiCreator <- R6::R6Class(
       if (!is.null(DoiCreatorObject$`nameIdentifiers`)) {
         self$`nameIdentifiers` <- ApiClient$new()$deserializeObj(DoiCreatorObject$`nameIdentifiers`, "array[DoiNameIdentifier]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ DoiCreator <- R6::R6Class(
     }
   )
 )
+

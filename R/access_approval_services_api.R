@@ -65,7 +65,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 AccessApprovalServicesApi <- R6::R6Class(
   'AccessApprovalServicesApi',
@@ -106,6 +106,7 @@ AccessApprovalServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/team/{id}/accessApproval"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

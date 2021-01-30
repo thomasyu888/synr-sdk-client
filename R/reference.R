@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title Reference
+#'
 #' @description Reference Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field targetId  character [optional]
 #'
 #' @field targetVersionNumber  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ Reference <- R6::R6Class(
   public = list(
     `targetId` = NULL,
     `targetVersionNumber` = NULL,
-    initialize = function(`targetId`=NULL, `targetVersionNumber`=NULL, ...){
+    initialize = function(
+        `targetId`=NULL, `targetVersionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`targetId`)) {
         stopifnot(is.character(`targetId`), length(`targetId`) == 1)
@@ -54,6 +58,7 @@ Reference <- R6::R6Class(
       if (!is.null(ReferenceObject$`targetVersionNumber`)) {
         self$`targetVersionNumber` <- ReferenceObject$`targetVersionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -83,3 +88,4 @@ Reference <- R6::R6Class(
     }
   )
 )
+

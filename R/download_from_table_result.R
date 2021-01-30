@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DownloadFromTableResult
+#'
 #' @description DownloadFromTableResult Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field etag  character [optional]
@@ -19,7 +22,6 @@
 #' @field resultsFileHandleId  character [optional]
 #'
 #' @field tableId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ DownloadFromTableResult <- R6::R6Class(
     `headers` = NULL,
     `resultsFileHandleId` = NULL,
     `tableId` = NULL,
-    initialize = function(`concreteType`=NULL, `etag`=NULL, `headers`=NULL, `resultsFileHandleId`=NULL, `tableId`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `etag`=NULL, `headers`=NULL, `resultsFileHandleId`=NULL, `tableId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -98,6 +102,7 @@ DownloadFromTableResult <- R6::R6Class(
       if (!is.null(DownloadFromTableResultObject$`tableId`)) {
         self$`tableId` <- DownloadFromTableResultObject$`tableId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -151,3 +156,4 @@ DownloadFromTableResult <- R6::R6Class(
     }
   )
 )
+

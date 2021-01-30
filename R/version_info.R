@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title VersionInfo
+#'
 #' @description VersionInfo Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field contentMd5  character [optional]
 #'
 #' @field contentSize  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field versionNumber  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ VersionInfo <- R6::R6Class(
     `versionComment` = NULL,
     `versionLabel` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`contentMd5`=NULL, `contentSize`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedByPrincipalId`=NULL, `modifiedOn`=NULL, `versionComment`=NULL, `versionLabel`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `contentMd5`=NULL, `contentSize`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedByPrincipalId`=NULL, `modifiedOn`=NULL, `versionComment`=NULL, `versionLabel`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`contentMd5`)) {
         stopifnot(is.character(`contentMd5`), length(`contentMd5`) == 1)
@@ -153,6 +157,7 @@ VersionInfo <- R6::R6Class(
       if (!is.null(VersionInfoObject$`versionNumber`)) {
         self$`versionNumber` <- VersionInfoObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -238,3 +243,4 @@ VersionInfo <- R6::R6Class(
     }
   )
 )
+

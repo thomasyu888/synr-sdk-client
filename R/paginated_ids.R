@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title PaginatedIds
+#'
 #' @description PaginatedIds Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field totalNumberOfResults  integer [optional]
 #'
 #' @field results  list( character ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ PaginatedIds <- R6::R6Class(
   public = list(
     `totalNumberOfResults` = NULL,
     `results` = NULL,
-    initialize = function(`totalNumberOfResults`=NULL, `results`=NULL, ...){
+    initialize = function(
+        `totalNumberOfResults`=NULL, `results`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`totalNumberOfResults`)) {
         stopifnot(is.numeric(`totalNumberOfResults`), length(`totalNumberOfResults`) == 1)
@@ -56,6 +60,7 @@ PaginatedIds <- R6::R6Class(
       if (!is.null(PaginatedIdsObject$`results`)) {
         self$`results` <- ApiClient$new()$deserializeObj(PaginatedIdsObject$`results`, "array[character]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ PaginatedIds <- R6::R6Class(
     }
   )
 )
+

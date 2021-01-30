@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title ListValidationResultsRequest
+#'
 #' @description ListValidationResultsRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field containerId  character [optional]
 #'
 #' @field nextPageToken  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ ListValidationResultsRequest <- R6::R6Class(
   public = list(
     `containerId` = NULL,
     `nextPageToken` = NULL,
-    initialize = function(`containerId`=NULL, `nextPageToken`=NULL, ...){
+    initialize = function(
+        `containerId`=NULL, `nextPageToken`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`containerId`)) {
         stopifnot(is.character(`containerId`), length(`containerId`) == 1)
@@ -55,6 +59,7 @@ ListValidationResultsRequest <- R6::R6Class(
       if (!is.null(ListValidationResultsRequestObject$`nextPageToken`)) {
         self$`nextPageToken` <- ListValidationResultsRequestObject$`nextPageToken`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ ListValidationResultsRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title UserGroup
+#'
 #' @description UserGroup Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field creationDate  character [optional]
 #'
 #' @field etag  character [optional]
@@ -19,7 +22,6 @@
 #' @field isIndividual  character [optional]
 #'
 #' @field uri  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ UserGroup <- R6::R6Class(
     `id` = NULL,
     `isIndividual` = NULL,
     `uri` = NULL,
-    initialize = function(`creationDate`=NULL, `etag`=NULL, `id`=NULL, `isIndividual`=NULL, `uri`=NULL, ...){
+    initialize = function(
+        `creationDate`=NULL, `etag`=NULL, `id`=NULL, `isIndividual`=NULL, `uri`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`creationDate`)) {
         stopifnot(is.character(`creationDate`), length(`creationDate`) == 1)
@@ -96,6 +100,7 @@ UserGroup <- R6::R6Class(
       if (!is.null(UserGroupObject$`uri`)) {
         self$`uri` <- UserGroupObject$`uri`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -149,3 +154,4 @@ UserGroup <- R6::R6Class(
     }
   )
 )
+

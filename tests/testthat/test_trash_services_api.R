@@ -10,8 +10,8 @@ test_that("FlagForPurge", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Flags the specified entity for priority purge.
   # Flags the specified entity for priority purge. The entity will be deleted as soon as possible. Once purging is done, the entity will be permanently deleted from the system. 
-  # @param character  id  The ID of an entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an entity.
+  # @param body object  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -23,8 +23,8 @@ test_that("MoveToTrash", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Moves an entity and its descendants to the trash can.
   # Moves an entity and its descendants to the trash can.
-  # @param character  id  The ID of an entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an entity.
+  # @param body object  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -36,8 +36,8 @@ test_that("RestoreFromTrash", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Moves an entity and its descendants out of the trash can back to its original parent. 
   # Moves an entity and its descendants out of the trash can back to its original parent. An exception is thrown if the original parent does not exist any more. In that case, please use &lt;a href&#x3D;\&quot;#operation/restoreFromTrash\&quot;&gt;PUT /trashcan/restored/{id}/{parentId}&lt;/a&gt; to restore to a new parent.  In such a case you must be a member of the Synapse Access and Compliance Team. 
-  # @param character  id  The ID of an entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an entity.
+  # @param body object  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -49,9 +49,9 @@ test_that("RestoreFromTrashToParent", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Moves an entity and its descendants out of the trash can to a new parent.
   # Moves an entity and its descendants out of the trash can to a new parent.  NOTE:  This operation cannot be completed if the original parent has been deleted (unless the caller is a member of the Synapse Access and Compliance Team). The service will return a NotFoundException.  This is because of the potential security hole arising from allowing access requirements on folders:  If an entity is in a restricted folder and then deleted, it cannot be restored unless the new parent has the same restriction level as the original one. 
-  # @param character  id  The ID of a deleted entity. 
-  # @param character  parent.id  The ID of the new parent entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of a deleted entity.
+  # @param parent.id character The ID of the new parent entity.
+  # @param body object  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -63,9 +63,9 @@ test_that("ViewTrash", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieves the paginated list of trash entities deleted by the current user.
   # Retrieves the paginated list of trash entities deleted by the current user. 
-  # @param integer  limit  The maximum number of entities to retrieve per page.  (optional)
-  # @param integer  offset  Paginated results. Offset to the current page.  (optional)
-  # @param object  body    (optional)
+  # @param limit integer The maximum number of entities to retrieve per page. (optional)
+  # @param offset integer Paginated results. Offset to the current page. (optional)
+  # @param body object  (optional)
   # @return [PaginatedResultsOfTrashedEntity]
 
   # uncomment below to test the operation

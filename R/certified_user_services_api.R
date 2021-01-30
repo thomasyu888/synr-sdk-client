@@ -95,7 +95,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 CertifiedUserServicesApi <- R6::R6Class(
   'CertifiedUserServicesApi',
@@ -132,6 +132,7 @@ CertifiedUserServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/user/{id}/certifiedUserPassingRecord"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -184,6 +185,7 @@ CertifiedUserServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/user/{id}/certificationStatus"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

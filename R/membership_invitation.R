@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title MembershipInvitation
+#'
 #' @description MembershipInvitation Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -26,7 +29,6 @@
 #'
 #' @field teamId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -41,7 +43,9 @@ MembershipInvitation <- R6::R6Class(
     `inviteeId` = NULL,
     `message` = NULL,
     `teamId` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `id`=NULL, `inviteeEmail`=NULL, `inviteeId`=NULL, `message`=NULL, `teamId`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `id`=NULL, `inviteeEmail`=NULL, `inviteeId`=NULL, `message`=NULL, `teamId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -139,6 +143,7 @@ MembershipInvitation <- R6::R6Class(
       if (!is.null(MembershipInvitationObject$`teamId`)) {
         self$`teamId` <- MembershipInvitationObject$`teamId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -216,3 +221,4 @@ MembershipInvitation <- R6::R6Class(
     }
   )
 )
+

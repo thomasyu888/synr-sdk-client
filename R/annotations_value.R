@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title AnnotationsValue
+#'
 #' @description AnnotationsValue Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field type  \link{AnnotationsValueType} [optional]
 #'
 #' @field value  list( character ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ AnnotationsValue <- R6::R6Class(
   public = list(
     `type` = NULL,
     `value` = NULL,
-    initialize = function(`type`=NULL, `value`=NULL, ...){
+    initialize = function(
+        `type`=NULL, `value`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`type`)) {
         stopifnot(R6::is.R6(`type`))
@@ -58,6 +62,7 @@ AnnotationsValue <- R6::R6Class(
       if (!is.null(AnnotationsValueObject$`value`)) {
         self$`value` <- ApiClient$new()$deserializeObj(AnnotationsValueObject$`value`, "array[character]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -87,3 +92,4 @@ AnnotationsValue <- R6::R6Class(
     }
   )
 )
+

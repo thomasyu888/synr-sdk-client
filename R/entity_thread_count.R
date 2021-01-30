@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title EntityThreadCount
+#'
 #' @description EntityThreadCount Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field count  numeric [optional]
 #'
 #' @field entityId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ EntityThreadCount <- R6::R6Class(
   public = list(
     `count` = NULL,
     `entityId` = NULL,
-    initialize = function(`count`=NULL, `entityId`=NULL, ...){
+    initialize = function(
+        `count`=NULL, `entityId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`count`)) {
         self$`count` <- `count`
@@ -54,6 +58,7 @@ EntityThreadCount <- R6::R6Class(
       if (!is.null(EntityThreadCountObject$`entityId`)) {
         self$`entityId` <- EntityThreadCountObject$`entityId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -83,3 +88,4 @@ EntityThreadCount <- R6::R6Class(
     }
   )
 )
+

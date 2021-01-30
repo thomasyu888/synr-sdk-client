@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title ResponseCorrectness
+#'
 #' @description ResponseCorrectness Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field isCorrect  character [optional]
 #'
 #' @field question  \link{Question} [optional]
 #'
 #' @field response  \link{QuestionResponse} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ ResponseCorrectness <- R6::R6Class(
     `isCorrect` = NULL,
     `question` = NULL,
     `response` = NULL,
-    initialize = function(`isCorrect`=NULL, `question`=NULL, `response`=NULL, ...){
+    initialize = function(
+        `isCorrect`=NULL, `question`=NULL, `response`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`isCorrect`)) {
         self$`isCorrect` <- `isCorrect`
@@ -72,6 +76,7 @@ ResponseCorrectness <- R6::R6Class(
         responseObject$fromJSON(jsonlite::toJSON(ResponseCorrectnessObject$response, auto_unbox = TRUE, digits = NA))
         self$`response` <- responseObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -109,3 +114,4 @@ ResponseCorrectness <- R6::R6Class(
     }
   )
 )
+

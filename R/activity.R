@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Activity
+#'
 #' @description Activity Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field used  list( \link{Used} ) [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ Activity <- R6::R6Class(
     `modifiedOn` = NULL,
     `name` = NULL,
     `used` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `used`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `used`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -154,6 +158,7 @@ Activity <- R6::R6Class(
       if (!is.null(ActivityObject$`used`)) {
         self$`used` <- ApiClient$new()$deserializeObj(ActivityObject$`used`, "array[Used]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -239,3 +244,4 @@ Activity <- R6::R6Class(
     }
   )
 )
+

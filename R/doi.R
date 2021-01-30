@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Doi
+#'
 #' @description Doi Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field associatedBy  character [optional]
 #'
 #' @field associatedOn  character [optional]
@@ -40,7 +43,6 @@
 #'
 #' @field titles  list( \link{DoiTitle} ) 
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,7 +64,9 @@ Doi <- R6::R6Class(
     `publicationYear` = NULL,
     `resourceType` = NULL,
     `titles` = NULL,
-    initialize = function(`objectId`, `creators`, `publicationYear`, `titles`, `associatedBy`=NULL, `associatedOn`=NULL, `associationId`=NULL, `doiUri`=NULL, `doiUrl`=NULL, `etag`=NULL, `objectType`=NULL, `objectVersion`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, `resourceType`=NULL, ...){
+    initialize = function(
+        `objectId`, `creators`, `publicationYear`, `titles`, `associatedBy`=NULL, `associatedOn`=NULL, `associationId`=NULL, `doiUri`=NULL, `doiUrl`=NULL, `etag`=NULL, `objectType`=NULL, `objectVersion`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, `resourceType`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!missing(`objectId`)) {
         stopifnot(is.character(`objectId`), length(`objectId`) == 1)
@@ -243,6 +247,7 @@ Doi <- R6::R6Class(
       if (!is.null(DoiObject$`titles`)) {
         self$`titles` <- ApiClient$new()$deserializeObj(DoiObject$`titles`, "array[DoiTitle]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -376,3 +381,4 @@ Doi <- R6::R6Class(
     }
   )
 )
+

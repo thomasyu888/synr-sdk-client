@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title ResourceAccess
+#'
 #' @description ResourceAccess Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field accessType  list( \link{ACCESSTYPE} ) [optional]
 #'
 #' @field principalId  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ ResourceAccess <- R6::R6Class(
   public = list(
     `accessType` = NULL,
     `principalId` = NULL,
-    initialize = function(`accessType`=NULL, `principalId`=NULL, ...){
+    initialize = function(
+        `accessType`=NULL, `principalId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`accessType`)) {
         stopifnot(is.vector(`accessType`), length(`accessType`) != 0)
@@ -56,6 +60,7 @@ ResourceAccess <- R6::R6Class(
       if (!is.null(ResourceAccessObject$`principalId`)) {
         self$`principalId` <- ResourceAccessObject$`principalId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ ResourceAccess <- R6::R6Class(
     }
   )
 )
+

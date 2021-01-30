@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title ReferenceList
-#' @description ReferenceList Class
-#' @format An \code{R6Class} generator object
-#' @field references  list( \link{Reference} ) [optional]
 #'
+#' @description ReferenceList Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field references  list( \link{Reference} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ ReferenceList <- R6::R6Class(
   'ReferenceList',
   public = list(
     `references` = NULL,
-    initialize = function(`references`=NULL, ...){
+    initialize = function(
+        `references`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`references`)) {
         stopifnot(is.vector(`references`), length(`references`) != 0)
@@ -42,6 +46,7 @@ ReferenceList <- R6::R6Class(
       if (!is.null(ReferenceListObject$`references`)) {
         self$`references` <- ApiClient$new()$deserializeObj(ReferenceListObject$`references`, "array[Reference]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ ReferenceList <- R6::R6Class(
     }
   )
 )
+

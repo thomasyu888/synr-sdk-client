@@ -10,8 +10,8 @@ test_that("CreateSnapshot", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Request to create a new snapshot of a table.
   # Request to create a new snapshot of a table. The provided comment, label, and activity ID will be applied to the current version thereby creating a snapshot and locking the current version. After the snapshot is created a new version will be started with an &#39;in-progress&#39; label.  NOTE: This service is for TableEntity only. Snapshots of EntityView require asynchronous processing and can be created via: POST /entity/{id}/table/transaction/async/start 
-  # @param character  id  The ID of a Table Entity. 
-  # @param SnapshotRequest  snapshot.request    (optional)
+  # @param id character The ID of a Table Entity.
+  # @param snapshot.request SnapshotRequest  (optional)
   # @return [SnapshotResponse]
 
   # uncomment below to test the operation
@@ -23,8 +23,8 @@ test_that("CsvDownloadAsyncGet", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously get the results of a csv download started with.
   # Asynchronously get the results of a csv download started with POST  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus 
-  # @param character  id  The ID of a TableEntity. 
-  # @param character  async.token  Async Token 
+  # @param id character The ID of a TableEntity.
+  # @param async.token character Async Token
   # @return [DownloadFromTableResult]
 
   # uncomment below to test the operation
@@ -36,8 +36,8 @@ test_that("CsvDownloadAsyncStart", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously start a csv download.
   # Asynchronously start a csv download. Use the returned job id and  /entity/{id}/table/download/csv/async/get to get the results of the query 
-  # @param character  id  The ID of a TableEntity. 
-  # @param DownloadFromTableRequest  download.from.table.request    (optional)
+  # @param id character The ID of a TableEntity.
+  # @param download.from.table.request DownloadFromTableRequest  (optional)
   # @return [AsyncJobId]
 
   # uncomment below to test the operation
@@ -49,11 +49,11 @@ test_that("FilePreviewRedirectUrlForRow", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the preview URL of the file associated with a specific version of a row and file handle column. 
   # Get the preview URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
-  # @param character  column.id  The ID of the Table column 
-  # @param character  id  The ID of the FileEntity to get. 
-  # @param numeric  row.id  The ID of the Table Row 
-  # @param numeric  version.number  The version of the Table Row 
-  # @param character  redirect  When set to false, the URL will be returned as text/plain instead of redirecting.   (optional)
+  # @param column.id character The ID of the Table column
+  # @param id character The ID of the FileEntity to get.
+  # @param row.id numeric The ID of the Table Row
+  # @param version.number numeric The version of the Table Row
+  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -65,11 +65,11 @@ test_that("FileRedirectUrlForRow", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the actual URL of the file associated with a specific version of a row and file handle column. 
   # Get the actual URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
-  # @param character  column.id  The ID of the Table column 
-  # @param character  id  The ID of the FileEntity to get. 
-  # @param numeric  row.id  The ID of the Table Row 
-  # @param numeric  version.number  The version of the Table Row 
-  # @param character  redirect  When set to false, the URL will be returned as text/plain instead of redirecting.   (optional)
+  # @param column.id character The ID of the Table column
+  # @param id character The ID of the FileEntity to get.
+  # @param row.id numeric The ID of the Table Row
+  # @param version.number numeric The version of the Table Row
+  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -81,7 +81,7 @@ test_that("GetColumnForTable", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Given the ID of a.
   # Given the ID of a &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.table.TableEntity}\&quot;&gt;TableEntity&lt;/a&gt;, get its list of &lt;ahref&#x3D;\&quot;${org.sagebionetworks.repo.model.table.ColumnModel}\&quot;&gt;ColumnModels&lt;/a&gt; that are currently assigned to the table.  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;6 calls per minute&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param character  id  The ID of a Table. 
+  # @param id character The ID of a Table.
   # @return [PaginatedColumnModels]
 
   # uncomment below to test the operation
@@ -93,8 +93,8 @@ test_that("GetFileHandles", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # .
   # This method is used to get file handle information for rows in a TableEntity. The columns in the passed in RowReferenceSet need to be FILEHANDLEID columns and the rows in the passed in RowReferenceSet need to exists (a 400 will be returned if a row ID is provided that does not actually exist). The order of the returned rows of file handles is the same as the order of the rows requested, and the order of the file handles in each row is the same as the order of the columns requested.  Note: The caller must have the READ permission on the TableEntity to make this call.  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;1 calls per second&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt; 
-  # @param character  id  The ID of a TableEntity. 
-  # @param RowReferenceSet  row.reference.set    (optional)
+  # @param id character The ID of a TableEntity.
+  # @param row.reference.set RowReferenceSet  (optional)
   # @return [TableFileHandleResults]
 
   # uncomment below to test the operation
@@ -106,8 +106,8 @@ test_that("GetTableTransactionResult", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously get the results of a table update transaction started with.
   # Asynchronously get the results of a table update transaction started with POST /entity/{id}/table/transaction/async/start&lt;/a&gt;  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-  # @param character  async.token  The token returned when the job was started. 
-  # @param character  id  The ID of a Table entity. 
+  # @param async.token character The token returned when the job was started.
+  # @param id character The ID of a Table entity.
   # @return [TableUpdateTransactionResponse]
 
   # uncomment below to test the operation
@@ -119,8 +119,8 @@ test_that("QueryAsyncGet", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously get the results of a query started with.
   # Asynchronously get the results of a query started with POST /entity/{id}/table/query/async/start  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-  # @param character  async.token  Async Token 
-  # @param character  id  The ID of the TableEntity. 
+  # @param async.token character Async Token
+  # @param id character The ID of the TableEntity.
   # @return [QueryResultBundle]
 
   # uncomment below to test the operation
@@ -132,8 +132,8 @@ test_that("QueryAsyncStart", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously start a query.
   # Asynchronously start a query. Use the returned job id and GET /entity/{id}/table/query/async/get&lt;/a&gt; to get the results of the query  Using a &#39;SQL like&#39; syntax, query the current version of the rows in a single table. The following pseudo-syntax is the basic supported format:   SELECT &lt;br&gt;  [ALL | DISTINCT] select_expr [, select_expr ...] &lt;br&gt;  FROM synapse_table_id &lt;br&gt;  [WHERE where_condition] &lt;br&gt;  [GROUP BY {col_name [, [col_name * ...] } &lt;br&gt;  [ORDER BY {col_name [ [ASC | DESC] [, col_name [ [ASC | DESC] ]}&lt;br&gt;  [LIMIT row_count [ OFFSET offset ] ]&lt;br&gt;   &lt;p&gt;  Note: Sub-queries and joining tables is not supported.  &lt;/p&gt;  &lt;p&gt;  This services depends on an index that is created/update asynchronously from table creation and update events. This means there could be short window of time when the index is inconsistent with the true state of the table. When the index is out-of-synch, then a status code of 202 (ACCEPTED) will be returned and the response body will be a TableStatus object. The TableStatus will indicates the current status of the index including how much work is remaining until the index is consistent with the truth of the table.  The &#39;partsMask&#39; is an integer \&quot;mask\&quot; that can be combined into to request any desired part. As of this writing, the mask is defined as follows QueryBundleRequest  &lt;ul&gt;  &lt;li&gt;Query Results &lt;i&gt;(queryResults)&lt;/i&gt; &#x3D; 0x1&lt;/li&gt;  &lt;li&gt;Query Count &lt;i&gt;(queryCount)&lt;/i&gt; &#x3D; 0x2&lt;/li&gt;  &lt;li&gt;Select Columns &lt;i&gt;(selectColumns)&lt;/i&gt; &#x3D; 0x4&lt;/li&gt;  &lt;li&gt;Max Rows Per Page &lt;i&gt;(maxRowsPerPage)&lt;/i&gt; &#x3D; 0x8&lt;/li&gt;  &lt;li&gt;The Table Columns &lt;i&gt;(columnModels)&lt;/i&gt; &#x3D; 0x10&lt;/li&gt;  &lt;li&gt;Facet statistics for each faceted column &lt;i&gt;(facetStatistics)&lt;/i&gt; &#x3D; 0x20&lt;/li&gt;  &lt;li&gt;The sum of the file sizes &lt;i&gt;(sumFileSizesBytes)&lt;/i&gt; &#x3D; 0x40&lt;/li&gt;  &lt;/ul&gt;  &lt;/p&gt;  &lt;p&gt;  For example, to request all parts, the request mask value should be: &lt;br&gt; 0x1 OR 0x2 OR 0x4 OR 0x8 OR 0x10 OR 0x20 OR 0x40 &#x3D; 0x7F.  &lt;/p&gt;  &lt;p&gt;  Note: The caller must have the READ permission on the TableEntity to make this call.  &lt;/p&gt; 
-  # @param character  id  The ID of a TableEntity. 
-  # @param QueryBundleRequest  query.bundle.request    (optional)
+  # @param id character The ID of a TableEntity.
+  # @param query.bundle.request QueryBundleRequest  (optional)
   # @return [AsyncJobId]
 
   # uncomment below to test the operation
@@ -145,8 +145,8 @@ test_that("StartTableTransactionJob", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Start a table update job that will attempt to make all of the requested changes in a single transaction. 
   # Start a table update job that will attempt to make all of the requested changes in a single transaction. All updates will either succeed or fail as a unit.  All update requests must be for the same table.  &lt;p&gt;  Note: The caller must have the UPDATE permission on the TableEntity to make this call.  &lt;/p&gt;  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum size of a PartialRow change &lt;/td&gt;  &lt;td&gt;2 MB&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum size of a CSV that can be appended to a table&lt;/td&gt;  &lt;td&gt;1 GB&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param character  id  The ID of a Table Entity. 
-  # @param TableUpdateTransactionRequest  table.update.transaction.request    (optional)
+  # @param id character The ID of a Table Entity.
+  # @param table.update.transaction.request TableUpdateTransactionRequest  (optional)
   # @return [AsyncJobId]
 
   # uncomment below to test the operation

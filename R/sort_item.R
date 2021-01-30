@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title SortItem
+#'
 #' @description SortItem Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field column  character [optional]
 #'
 #' @field direction  \link{SortDirection} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ SortItem <- R6::R6Class(
   public = list(
     `column` = NULL,
     `direction` = NULL,
-    initialize = function(`column`=NULL, `direction`=NULL, ...){
+    initialize = function(
+        `column`=NULL, `direction`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`column`)) {
         stopifnot(is.character(`column`), length(`column`) == 1)
@@ -57,6 +61,7 @@ SortItem <- R6::R6Class(
         directionObject$fromJSON(jsonlite::toJSON(SortItemObject$direction, auto_unbox = TRUE, digits = NA))
         self$`direction` <- directionObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -86,3 +91,4 @@ SortItem <- R6::R6Class(
     }
   )
 )
+

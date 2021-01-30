@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title AccessControlList
+#'
 #' @description AccessControlList Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field creationDate  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field resourceAccess  list( \link{ResourceAccess} ) [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ AccessControlList <- R6::R6Class(
     `modifiedBy` = NULL,
     `modifiedOn` = NULL,
     `resourceAccess` = NULL,
-    initialize = function(`createdBy`=NULL, `creationDate`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `resourceAccess`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `creationDate`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `resourceAccess`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -126,6 +130,7 @@ AccessControlList <- R6::R6Class(
       if (!is.null(AccessControlListObject$`resourceAccess`)) {
         self$`resourceAccess` <- ApiClient$new()$deserializeObj(AccessControlListObject$`resourceAccess`, "array[ResourceAccess]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -195,3 +200,4 @@ AccessControlList <- R6::R6Class(
     }
   )
 )
+

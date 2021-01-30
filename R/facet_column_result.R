@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title FacetColumnResult
+#'
 #' @description FacetColumnResult Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field columnName  character [optional]
 #'
 #' @field concreteType  character [optional]
 #'
 #' @field facetType  \link{FacetType} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ FacetColumnResult <- R6::R6Class(
     `columnName` = NULL,
     `concreteType` = NULL,
     `facetType` = NULL,
-    initialize = function(`columnName`=NULL, `concreteType`=NULL, `facetType`=NULL, ...){
+    initialize = function(
+        `columnName`=NULL, `concreteType`=NULL, `facetType`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`columnName`)) {
         stopifnot(is.character(`columnName`), length(`columnName`) == 1)
@@ -71,6 +75,7 @@ FacetColumnResult <- R6::R6Class(
         facetTypeObject$fromJSON(jsonlite::toJSON(FacetColumnResultObject$facetType, auto_unbox = TRUE, digits = NA))
         self$`facetType` <- facetTypeObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -108,3 +113,4 @@ FacetColumnResult <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title TableUpdateTransactionResponse
+#'
 #' @description TableUpdateTransactionResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field results  list( \link{TableUpdateResponse} ) [optional]
 #'
 #' @field snapshotVersionNumber  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ TableUpdateTransactionResponse <- R6::R6Class(
     `concreteType` = NULL,
     `results` = NULL,
     `snapshotVersionNumber` = NULL,
-    initialize = function(`concreteType`=NULL, `results`=NULL, `snapshotVersionNumber`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `results`=NULL, `snapshotVersionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -69,6 +73,7 @@ TableUpdateTransactionResponse <- R6::R6Class(
       if (!is.null(TableUpdateTransactionResponseObject$`snapshotVersionNumber`)) {
         self$`snapshotVersionNumber` <- TableUpdateTransactionResponseObject$`snapshotVersionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ TableUpdateTransactionResponse <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title SnapshotRequest
+#'
 #' @description SnapshotRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field snapshotActivityId  character [optional]
 #'
 #' @field snapshotComment  character [optional]
 #'
 #' @field snapshotLabel  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ SnapshotRequest <- R6::R6Class(
     `snapshotActivityId` = NULL,
     `snapshotComment` = NULL,
     `snapshotLabel` = NULL,
-    initialize = function(`snapshotActivityId`=NULL, `snapshotComment`=NULL, `snapshotLabel`=NULL, ...){
+    initialize = function(
+        `snapshotActivityId`=NULL, `snapshotComment`=NULL, `snapshotLabel`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`snapshotActivityId`)) {
         stopifnot(is.character(`snapshotActivityId`), length(`snapshotActivityId`) == 1)
@@ -69,6 +73,7 @@ SnapshotRequest <- R6::R6Class(
       if (!is.null(SnapshotRequestObject$`snapshotLabel`)) {
         self$`snapshotLabel` <- SnapshotRequestObject$`snapshotLabel`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ SnapshotRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DownloadFromTableRequest
+#'
 #' @description DownloadFromTableRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field additionalFilters  list( object ) [optional]
 #'
 #' @field includeEntityEtag  character [optional]
@@ -34,7 +37,6 @@
 #'
 #' @field writeHeader  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -53,7 +55,9 @@ DownloadFromTableRequest <- R6::R6Class(
     `entityId` = NULL,
     `includeRowIdAndRowVersion` = NULL,
     `writeHeader` = NULL,
-    initialize = function(`additionalFilters`=NULL, `includeEntityEtag`=NULL, `limit`=NULL, `offset`=NULL, `selectedFacets`=NULL, `sort`=NULL, `sql`=NULL, `concreteType`=NULL, `csvTableDescriptor`=NULL, `entityId`=NULL, `includeRowIdAndRowVersion`=TRUE, `writeHeader`=TRUE, ...){
+    initialize = function(
+        `additionalFilters`=NULL, `includeEntityEtag`=NULL, `limit`=NULL, `offset`=NULL, `selectedFacets`=NULL, `sort`=NULL, `sql`=NULL, `concreteType`=NULL, `csvTableDescriptor`=NULL, `entityId`=NULL, `includeRowIdAndRowVersion`=TRUE, `writeHeader`=TRUE, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`additionalFilters`)) {
         stopifnot(is.vector(`additionalFilters`), length(`additionalFilters`) != 0)
@@ -197,6 +201,7 @@ DownloadFromTableRequest <- R6::R6Class(
       if (!is.null(DownloadFromTableRequestObject$`writeHeader`)) {
         self$`writeHeader` <- DownloadFromTableRequestObject$`writeHeader`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -306,3 +311,4 @@ DownloadFromTableRequest <- R6::R6Class(
     }
   )
 )
+

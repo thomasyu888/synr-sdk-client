@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title ListWrapperOfTeam
-#' @description ListWrapperOfTeam Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( \link{Team} ) [optional]
 #'
+#' @description ListWrapperOfTeam Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( \link{Team} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ ListWrapperOfTeam <- R6::R6Class(
   'ListWrapperOfTeam',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ ListWrapperOfTeam <- R6::R6Class(
       if (!is.null(ListWrapperOfTeamObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(ListWrapperOfTeamObject$`list`, "array[Team]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ ListWrapperOfTeam <- R6::R6Class(
     }
   )
 )
+

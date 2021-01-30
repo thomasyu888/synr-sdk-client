@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title FormGroup
+#'
 #' @description FormGroup Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -17,7 +20,6 @@
 #' @field groupId  character [optional]
 #'
 #' @field name  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ FormGroup <- R6::R6Class(
     `createdOn` = NULL,
     `groupId` = NULL,
     `name` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `groupId`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `groupId`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -83,6 +87,7 @@ FormGroup <- R6::R6Class(
       if (!is.null(FormGroupObject$`name`)) {
         self$`name` <- FormGroupObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -128,3 +133,4 @@ FormGroup <- R6::R6Class(
     }
   )
 )
+

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title Used
+#'
 #' @description Used Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field wasExecuted  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ Used <- R6::R6Class(
   public = list(
     `concreteType` = NULL,
     `wasExecuted` = NULL,
-    initialize = function(`concreteType`=NULL, `wasExecuted`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `wasExecuted`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -54,6 +58,7 @@ Used <- R6::R6Class(
       if (!is.null(UsedObject$`wasExecuted`)) {
         self$`wasExecuted` <- UsedObject$`wasExecuted`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -83,3 +88,4 @@ Used <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title WikiPageKey
+#'
 #' @description WikiPageKey Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field ownerObjectId  character [optional]
 #'
 #' @field ownerObjectType  \link{ObjectType} [optional]
 #'
 #' @field wikiPageId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ WikiPageKey <- R6::R6Class(
     `ownerObjectId` = NULL,
     `ownerObjectType` = NULL,
     `wikiPageId` = NULL,
-    initialize = function(`ownerObjectId`=NULL, `ownerObjectType`=NULL, `wikiPageId`=NULL, ...){
+    initialize = function(
+        `ownerObjectId`=NULL, `ownerObjectType`=NULL, `wikiPageId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`ownerObjectId`)) {
         stopifnot(is.character(`ownerObjectId`), length(`ownerObjectId`) == 1)
@@ -71,6 +75,7 @@ WikiPageKey <- R6::R6Class(
       if (!is.null(WikiPageKeyObject$`wikiPageId`)) {
         self$`wikiPageId` <- WikiPageKeyObject$`wikiPageId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -108,3 +113,4 @@ WikiPageKey <- R6::R6Class(
     }
   )
 )
+

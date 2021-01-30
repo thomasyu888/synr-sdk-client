@@ -2,6 +2,3 @@
 # Please update as you see appropriate
 
 context("Test NameIdentifierScheme")
-
-model.instance <- NameIdentifierScheme$new()
-

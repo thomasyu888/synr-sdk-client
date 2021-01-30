@@ -1585,7 +1585,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 EntityServicesApi <- R6::R6Class(
   'EntityServicesApi',
@@ -1686,6 +1686,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['type'] <- type
 
+      body <- NULL
       urlPath <- "/entity/{id}/datatype"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1738,6 +1739,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/schema/binding"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2118,6 +2120,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/entity/{id}/version/{versionNumber}/filepreview"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2302,6 +2305,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/entity/{id}/version"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2354,6 +2358,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/schema/binding"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2456,6 +2461,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2508,6 +2514,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/acl"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2560,6 +2567,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/annotations2"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2616,6 +2624,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `version.number`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/version/{versionNumber}/annotations2"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2730,6 +2739,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/filehandles"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2786,6 +2796,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `version.number`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/version/{versionNumber}/filehandles"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2846,6 +2857,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `version.number`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/version/{versionNumber}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2960,6 +2972,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `alias`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/alias/{alias}"
       if (!missing(`alias`)) {
         urlPath <- gsub(paste0("\\{", "alias", "\\}"), URLencode(as.character(`alias`), reserved = TRUE), urlPath)
@@ -3012,6 +3025,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/json"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3064,6 +3078,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/path"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3116,6 +3131,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/schema/validation"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3168,6 +3184,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/schema/validation/statistics"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3280,6 +3297,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['batch'] <- batch
 
+      body <- NULL
       urlPath <- "/entity/type"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -3382,6 +3400,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['status'] <- status
 
+      body <- NULL
       urlPath <- "/entity/{id}/filepreview"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3498,6 +3517,7 @@ EntityServicesApi <- R6::R6Class(
 
       queryParams['permission'] <- permission
 
+      body <- NULL
       urlPath <- "/entity/{id}/sts"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -3550,6 +3570,7 @@ EntityServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/permissions"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title PaginatedResultsOfSubmissionStatus
+#'
 #' @description PaginatedResultsOfSubmissionStatus Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field results  list( \link{SubmissionStatusModel} ) [optional]
 #'
 #' @field totalNumberOfResults  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ PaginatedResultsOfSubmissionStatus <- R6::R6Class(
   public = list(
     `results` = NULL,
     `totalNumberOfResults` = NULL,
-    initialize = function(`results`=NULL, `totalNumberOfResults`=NULL, ...){
+    initialize = function(
+        `results`=NULL, `totalNumberOfResults`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`results`)) {
         stopifnot(is.vector(`results`), length(`results`) != 0)
@@ -56,6 +60,7 @@ PaginatedResultsOfSubmissionStatus <- R6::R6Class(
       if (!is.null(PaginatedResultsOfSubmissionStatusObject$`totalNumberOfResults`)) {
         self$`totalNumberOfResults` <- PaginatedResultsOfSubmissionStatusObject$`totalNumberOfResults`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ PaginatedResultsOfSubmissionStatus <- R6::R6Class(
     }
   )
 )
+

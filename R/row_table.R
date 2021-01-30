@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title RowTable
+#'
 #' @description RowTable Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field etag  character [optional]
 #'
 #' @field rowId  integer [optional]
@@ -17,7 +20,6 @@
 #' @field values  list( character ) [optional]
 #'
 #' @field versionNumber  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ RowTable <- R6::R6Class(
     `rowId` = NULL,
     `values` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`etag`=NULL, `rowId`=NULL, `values`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `etag`=NULL, `rowId`=NULL, `values`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`etag`)) {
         stopifnot(is.character(`etag`), length(`etag`) == 1)
@@ -84,6 +88,7 @@ RowTable <- R6::R6Class(
       if (!is.null(RowTableObject$`versionNumber`)) {
         self$`versionNumber` <- RowTableObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -129,3 +134,4 @@ RowTable <- R6::R6Class(
     }
   )
 )
+

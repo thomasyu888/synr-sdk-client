@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title UserProfile
+#'
 #' @description UserProfile Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field RStudioUrl  character [optional]
 #'
 #' @field company  character [optional]
@@ -52,7 +55,6 @@
 #'
 #' @field userName  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -80,7 +82,9 @@ UserProfile <- R6::R6Class(
     `teamName` = NULL,
     `url` = NULL,
     `userName` = NULL,
-    initialize = function(`RStudioUrl`=NULL, `company`=NULL, `createdOn`=NULL, `displayName`=NULL, `email`=NULL, `emails`=NULL, `etag`=NULL, `firstName`=NULL, `industry`=NULL, `lastName`=NULL, `location`=NULL, `notificationSettings`=NULL, `openIds`=NULL, `ownerId`=NULL, `position`=NULL, `preferences`=NULL, `profilePicureFileHandleId`=NULL, `summary`=NULL, `teamName`=NULL, `url`=NULL, `userName`=NULL, ...){
+    initialize = function(
+        `RStudioUrl`=NULL, `company`=NULL, `createdOn`=NULL, `displayName`=NULL, `email`=NULL, `emails`=NULL, `etag`=NULL, `firstName`=NULL, `industry`=NULL, `lastName`=NULL, `location`=NULL, `notificationSettings`=NULL, `openIds`=NULL, `ownerId`=NULL, `position`=NULL, `preferences`=NULL, `profilePicureFileHandleId`=NULL, `summary`=NULL, `teamName`=NULL, `url`=NULL, `userName`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`RStudioUrl`)) {
         stopifnot(is.character(`RStudioUrl`), length(`RStudioUrl`) == 1)
@@ -326,6 +330,7 @@ UserProfile <- R6::R6Class(
       if (!is.null(UserProfileObject$`userName`)) {
         self$`userName` <- UserProfileObject$`userName`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -507,3 +512,4 @@ UserProfile <- R6::R6Class(
     }
   )
 )
+

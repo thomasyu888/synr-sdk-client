@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title BindSchemaToEntityRequest
+#'
 #' @description BindSchemaToEntityRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field entityId  character [optional]
 #'
 #' @field schema$id  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ BindSchemaToEntityRequest <- R6::R6Class(
   public = list(
     `entityId` = NULL,
     `schema$id` = NULL,
-    initialize = function(`entityId`=NULL, `schema$id`=NULL, ...){
+    initialize = function(
+        `entityId`=NULL, `schema$id`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`entityId`)) {
         stopifnot(is.character(`entityId`), length(`entityId`) == 1)
@@ -55,6 +59,7 @@ BindSchemaToEntityRequest <- R6::R6Class(
       if (!is.null(BindSchemaToEntityRequestObject$`schema$id`)) {
         self$`schema$id` <- BindSchemaToEntityRequestObject$`schema$id`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ BindSchemaToEntityRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title TableUpdateRequest
+#'
 #' @description TableUpdateRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field entityId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ TableUpdateRequest <- R6::R6Class(
   public = list(
     `concreteType` = NULL,
     `entityId` = NULL,
-    initialize = function(`concreteType`=NULL, `entityId`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `entityId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -55,6 +59,7 @@ TableUpdateRequest <- R6::R6Class(
       if (!is.null(TableUpdateRequestObject$`entityId`)) {
         self$`entityId` <- TableUpdateRequestObject$`entityId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ TableUpdateRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title RowReference
+#'
 #' @description RowReference Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field rowId  integer [optional]
 #'
 #' @field versionNumber  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ RowReference <- R6::R6Class(
   public = list(
     `rowId` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`rowId`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `rowId`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`rowId`)) {
         stopifnot(is.numeric(`rowId`), length(`rowId`) == 1)
@@ -55,6 +59,7 @@ RowReference <- R6::R6Class(
       if (!is.null(RowReferenceObject$`versionNumber`)) {
         self$`versionNumber` <- RowReferenceObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ RowReference <- R6::R6Class(
     }
   )
 )
+

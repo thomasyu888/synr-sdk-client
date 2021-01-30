@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title QueryResultBundle
+#'
 #' @description QueryResultBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field columnModels  list( \link{ColumnModel} ) [optional]
 #'
 #' @field concreteType  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field sumFileSizes  \link{SumFileSizes} [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ QueryResultBundle <- R6::R6Class(
     `queryResult` = NULL,
     `selectColumns` = NULL,
     `sumFileSizes` = NULL,
-    initialize = function(`columnModels`=NULL, `concreteType`=NULL, `facets`=NULL, `lastUpdatedOn`=NULL, `maxRowsPerPage`=NULL, `queryCount`=NULL, `queryResult`=NULL, `selectColumns`=NULL, `sumFileSizes`=NULL, ...){
+    initialize = function(
+        `columnModels`=NULL, `concreteType`=NULL, `facets`=NULL, `lastUpdatedOn`=NULL, `maxRowsPerPage`=NULL, `queryCount`=NULL, `queryResult`=NULL, `selectColumns`=NULL, `sumFileSizes`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`columnModels`)) {
         stopifnot(is.vector(`columnModels`), length(`columnModels`) != 0)
@@ -160,6 +164,7 @@ QueryResultBundle <- R6::R6Class(
         sumFileSizesObject$fromJSON(jsonlite::toJSON(QueryResultBundleObject$sumFileSizes, auto_unbox = TRUE, digits = NA))
         self$`sumFileSizes` <- sumFileSizesObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -245,3 +250,4 @@ QueryResultBundle <- R6::R6Class(
     }
   )
 )
+

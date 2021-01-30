@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title SubmissionStatusBatch
+#'
 #' @description SubmissionStatusBatch Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field batchToken  character [optional]
 #'
 #' @field isFirstBatch  character [optional]
@@ -17,7 +20,6 @@
 #' @field isLastBatch  character [optional]
 #'
 #' @field statuses  list( \link{SubmissionStatusModel} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ SubmissionStatusBatch <- R6::R6Class(
     `isFirstBatch` = NULL,
     `isLastBatch` = NULL,
     `statuses` = NULL,
-    initialize = function(`batchToken`=NULL, `isFirstBatch`=NULL, `isLastBatch`=NULL, `statuses`=NULL, ...){
+    initialize = function(
+        `batchToken`=NULL, `isFirstBatch`=NULL, `isLastBatch`=NULL, `statuses`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`batchToken`)) {
         stopifnot(is.character(`batchToken`), length(`batchToken`) == 1)
@@ -82,6 +86,7 @@ SubmissionStatusBatch <- R6::R6Class(
       if (!is.null(SubmissionStatusBatchObject$`statuses`)) {
         self$`statuses` <- ApiClient$new()$deserializeObj(SubmissionStatusBatchObject$`statuses`, "array[SubmissionStatusModel]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -127,3 +132,4 @@ SubmissionStatusBatch <- R6::R6Class(
     }
   )
 )
+

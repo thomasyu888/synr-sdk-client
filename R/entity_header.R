@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EntityHeader
+#'
 #' @description EntityHeader Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field benefactorId  numeric [optional]
 #'
 #' @field createdBy  character [optional]
@@ -30,7 +33,6 @@
 #'
 #' @field versionNumber  numeric [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,7 +49,9 @@ EntityHeader <- R6::R6Class(
     `type` = NULL,
     `versionLabel` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`benefactorId`=NULL, `createdBy`=NULL, `createdOn`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `type`=NULL, `versionLabel`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `benefactorId`=NULL, `createdBy`=NULL, `createdOn`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `type`=NULL, `versionLabel`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`benefactorId`)) {
         self$`benefactorId` <- `benefactorId`
@@ -165,6 +169,7 @@ EntityHeader <- R6::R6Class(
       if (!is.null(EntityHeaderObject$`versionNumber`)) {
         self$`versionNumber` <- EntityHeaderObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -258,3 +263,4 @@ EntityHeader <- R6::R6Class(
     }
   )
 )
+

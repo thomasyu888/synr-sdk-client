@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title EntityBundleCreateV2
+#'
 #' @description EntityBundleCreateV2 Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field accessControlList  \link{AccessControlList} [optional]
 #'
 #' @field annotations  \link{AnnotationsV2} [optional]
 #'
 #' @field entity  \link{Entity} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ EntityBundleCreateV2 <- R6::R6Class(
     `accessControlList` = NULL,
     `annotations` = NULL,
     `entity` = NULL,
-    initialize = function(`accessControlList`=NULL, `annotations`=NULL, `entity`=NULL, ...){
+    initialize = function(
+        `accessControlList`=NULL, `annotations`=NULL, `entity`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`accessControlList`)) {
         stopifnot(R6::is.R6(`accessControlList`))
@@ -75,6 +79,7 @@ EntityBundleCreateV2 <- R6::R6Class(
         entityObject$fromJSON(jsonlite::toJSON(EntityBundleCreateV2Object$entity, auto_unbox = TRUE, digits = NA))
         self$`entity` <- entityObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -112,3 +117,4 @@ EntityBundleCreateV2 <- R6::R6Class(
     }
   )
 )
+

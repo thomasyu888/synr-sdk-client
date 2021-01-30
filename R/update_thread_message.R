@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title UpdateThreadMessage
-#' @description UpdateThreadMessage Class
-#' @format An \code{R6Class} generator object
-#' @field messageMarkdown  character [optional]
 #'
+#' @description UpdateThreadMessage Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field messageMarkdown  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ UpdateThreadMessage <- R6::R6Class(
   'UpdateThreadMessage',
   public = list(
     `messageMarkdown` = NULL,
-    initialize = function(`messageMarkdown`=NULL, ...){
+    initialize = function(
+        `messageMarkdown`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`messageMarkdown`)) {
         stopifnot(is.character(`messageMarkdown`), length(`messageMarkdown`) == 1)
@@ -41,6 +45,7 @@ UpdateThreadMessage <- R6::R6Class(
       if (!is.null(UpdateThreadMessageObject$`messageMarkdown`)) {
         self$`messageMarkdown` <- UpdateThreadMessageObject$`messageMarkdown`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ UpdateThreadMessage <- R6::R6Class(
     }
   )
 )
+

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title FileHandleUpdateRequest
+#'
 #' @description FileHandleUpdateRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field newFileHandleId  character [optional]
 #'
 #' @field oldFileHandleId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ FileHandleUpdateRequest <- R6::R6Class(
   public = list(
     `newFileHandleId` = NULL,
     `oldFileHandleId` = NULL,
-    initialize = function(`newFileHandleId`=NULL, `oldFileHandleId`=NULL, ...){
+    initialize = function(
+        `newFileHandleId`=NULL, `oldFileHandleId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`newFileHandleId`)) {
         stopifnot(is.character(`newFileHandleId`), length(`newFileHandleId`) == 1)
@@ -55,6 +59,7 @@ FileHandleUpdateRequest <- R6::R6Class(
       if (!is.null(FileHandleUpdateRequestObject$`oldFileHandleId`)) {
         self$`oldFileHandleId` <- FileHandleUpdateRequestObject$`oldFileHandleId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ FileHandleUpdateRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title EntityType
+#'
 #' @description EntityType Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 EntityType <- R6::R6Class(
-  'EntityType',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      EntityTypeObject <- list()
+    "EntityType",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_EntityType()
 
-      EntityTypeObject
-    },
-    fromJSON = function(EntityTypeJson) {
-      EntityTypeObject <- jsonlite::fromJSON(EntityTypeJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(EntityTypeJson) {
-      EntityTypeObject <- jsonlite::fromJSON(EntityTypeJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(EntityTypeJson) {
+            private$value <- jsonlite::fromJSON(EntityTypeJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(EntityTypeJson) {
+            private$value <- jsonlite::fromJSON(EntityTypeJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_EntityType <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[project, folder, file, table, link, entityview, dockerrepo, submissionview]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

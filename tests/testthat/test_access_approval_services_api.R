@@ -10,9 +10,9 @@ test_that("GetTeamAccessApprovals", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the Access Approvals for the given Team.
   # Retrieve the Access Approvals for the given Team.  This service is only available to the ACT.
-  # @param character  id  the ID of the Team. 
-  # @param integer  limit  Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.   (optional)
-  # @param integer  offset  The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.   (optional)
+  # @param id character the ID of the Team.
+  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.  (optional)
+  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.  (optional)
   # @return [character]
 
   # uncomment below to test the operation

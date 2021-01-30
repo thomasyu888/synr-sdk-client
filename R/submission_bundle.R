@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title SubmissionBundle
+#'
 #' @description SubmissionBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field submission  \link{SubmissionModel} [optional]
 #'
 #' @field submissionStatus  \link{SubmissionStatusModel} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ SubmissionBundle <- R6::R6Class(
   public = list(
     `submission` = NULL,
     `submissionStatus` = NULL,
-    initialize = function(`submission`=NULL, `submissionStatus`=NULL, ...){
+    initialize = function(
+        `submission`=NULL, `submissionStatus`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`submission`)) {
         stopifnot(R6::is.R6(`submission`))
@@ -59,6 +63,7 @@ SubmissionBundle <- R6::R6Class(
         submissionStatusObject$fromJSON(jsonlite::toJSON(SubmissionBundleObject$submissionStatus, auto_unbox = TRUE, digits = NA))
         self$`submissionStatus` <- submissionStatusObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -88,3 +93,4 @@ SubmissionBundle <- R6::R6Class(
     }
   )
 )
+

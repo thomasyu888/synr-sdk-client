@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title ObjectTypeSchema
+#'
 #' @description ObjectTypeSchema Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ObjectTypeSchema <- R6::R6Class(
-  'ObjectTypeSchema',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      ObjectTypeSchemaObject <- list()
+    "ObjectTypeSchema",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_ObjectType_schema()
 
-      ObjectTypeSchemaObject
-    },
-    fromJSON = function(ObjectTypeSchemaJson) {
-      ObjectTypeSchemaObject <- jsonlite::fromJSON(ObjectTypeSchemaJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(ObjectTypeSchemaJson) {
-      ObjectTypeSchemaObject <- jsonlite::fromJSON(ObjectTypeSchemaJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(ObjectTypeSchemaJson) {
+            private$value <- jsonlite::fromJSON(ObjectTypeSchemaJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(ObjectTypeSchemaJson) {
+            private$value <- jsonlite::fromJSON(ObjectTypeSchemaJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_ObjectType_schema <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[entity]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title SnapshotResponse
-#' @description SnapshotResponse Class
-#' @format An \code{R6Class} generator object
-#' @field snapshotVersionNumber  integer [optional]
 #'
+#' @description SnapshotResponse Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field snapshotVersionNumber  integer [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ SnapshotResponse <- R6::R6Class(
   'SnapshotResponse',
   public = list(
     `snapshotVersionNumber` = NULL,
-    initialize = function(`snapshotVersionNumber`=NULL, ...){
+    initialize = function(
+        `snapshotVersionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`snapshotVersionNumber`)) {
         stopifnot(is.numeric(`snapshotVersionNumber`), length(`snapshotVersionNumber`) == 1)
@@ -41,6 +45,7 @@ SnapshotResponse <- R6::R6Class(
       if (!is.null(SnapshotResponseObject$`snapshotVersionNumber`)) {
         self$`snapshotVersionNumber` <- SnapshotResponseObject$`snapshotVersionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ SnapshotResponse <- R6::R6Class(
     }
   )
 )
+

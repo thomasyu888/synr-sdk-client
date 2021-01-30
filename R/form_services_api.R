@@ -436,7 +436,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 FormServicesApi <- R6::R6Class(
   'FormServicesApi',
@@ -531,6 +531,7 @@ FormServicesApi <- R6::R6Class(
 
       queryParams['name'] <- name
 
+      body <- NULL
       urlPath <- "/form/group"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -579,6 +580,7 @@ FormServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/form/data/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -631,6 +633,7 @@ FormServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/form/group/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -683,6 +686,7 @@ FormServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/form/group/{id}/acl"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -835,6 +839,7 @@ FormServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/form/data/{id}/accept"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -945,6 +950,7 @@ FormServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/form/data/{id}/submit"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

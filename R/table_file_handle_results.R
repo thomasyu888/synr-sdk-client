@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title TableFileHandleResults
+#'
 #' @description TableFileHandleResults Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field headers  list( \link{SelectColumn} ) [optional]
 #'
 #' @field rows  list( \link{FileHandleResults} ) [optional]
 #'
 #' @field tableId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ TableFileHandleResults <- R6::R6Class(
     `headers` = NULL,
     `rows` = NULL,
     `tableId` = NULL,
-    initialize = function(`headers`=NULL, `rows`=NULL, `tableId`=NULL, ...){
+    initialize = function(
+        `headers`=NULL, `rows`=NULL, `tableId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`headers`)) {
         stopifnot(is.vector(`headers`), length(`headers`) != 0)
@@ -71,6 +75,7 @@ TableFileHandleResults <- R6::R6Class(
       if (!is.null(TableFileHandleResultsObject$`tableId`)) {
         self$`tableId` <- TableFileHandleResultsObject$`tableId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -108,3 +113,4 @@ TableFileHandleResults <- R6::R6Class(
     }
   )
 )
+

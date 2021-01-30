@@ -10,8 +10,8 @@ test_that("BindJsonSchemaToEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Bind a JSON schema to an Entity.
   # Bind a JSON schema to an Entity. The bound schema will be used to validate the Entity&#39;&#39;s metadata (annotations). Any child Entity that does not have a bound schema will inherit the first bound schema found in its hierarchy.  Only a single schema can be bound to an Entity at a time. If you have more than one schema to bind to an Entity you will need to create and bind a single composition schema using keywords such as &#39;anyOf&#39;, &#39;allOf&#39; or &#39;oneOf&#39; that defines how the schemas should be used for validation.  Note: The caller must be granted the UPDATE ermission on the Entity to bind. 
-  # @param character  id  The ID of an Entity. 
-  # @param BindSchemaToEntityRequest  bind.schema.to.entity.request  The request identifies the JSON schema to bind.  (optional)
+  # @param id character The ID of an Entity.
+  # @param bind.schema.to.entity.request BindSchemaToEntityRequest The request identifies the JSON schema to bind. (optional)
   # @return [JsonSchemaObjectBinding]
 
   # uncomment below to test the operation
@@ -23,8 +23,8 @@ test_that("ChangeEntityDataType", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Change the.
   # Change the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.DataType}\&quot; &gt;DataType&lt;/a&gt; of the given entity. The entity&#39;s DataType controls how the entity can be accessed. For example, an entity&#39;s DataType must be set to &#39;open_data&#39; in order for anonymous to be allowed to access its contents.  &lt;p&gt;  Note: The caller must be a member of the &#39;Synapse Access and Compliance Team&#39; (id&#x3D;464532) in order to change an Entity&#39;s type to &#39;OPEN_DATA&#39;. The caller must be granted UPDATED on the Entity to change the its type to any other value.  &lt;/p&gt;&#39; 
-  # @param character  id  The ID of an Entity. 
-  # @param character  type  Type of data 
+  # @param id character The ID of an Entity.
+  # @param type character Type of data
   # @return [DataTypeResponse]
 
   # uncomment below to test the operation
@@ -36,7 +36,7 @@ test_that("ClearBoundSchema", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Clear the bound JSON schema from this Entity.
   # Clear the bound JSON schema from this Entity. The schema will no longer be used to validate this Entity or its children.  Note: The caller must be granted the DELETE permission on the Entity. 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [Void]
 
   # uncomment below to test the operation
@@ -48,8 +48,8 @@ test_that("CreateEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Create a new Entity.
   # Create a new Entity. This method is used to create Projects, Folders, FileEntities and Records (coming soon). The passed request body should contain the following fields:  &lt;ul&gt;  &lt;li&gt;name - Give your new entity a Name. &lt;b&gt;Note:&lt;/b&gt; A name must be unique within the given parent, similar to a file in a folder.&lt;/li&gt;  &lt;li&gt;parentId - The ID of the parent Entity, such as a Folder or Project. This field should be excluded when creating a Project.&lt;/li&gt;  &lt;li&gt;concreteType - Indicates the type of Entity to create. The value should be one of the following: org.sagebionetworks.repo.model.Project, org.sagebionetworks.repo.model.Folder, or org.sagebionetworks.repo.model.FileEntity&lt;/li&gt;  &lt;/ul&gt;  &lt;p&gt;  Note: To create an Entity the caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.CREATE&lt;/a&gt; on the parent Entity. Any authenticated caller can create a new Project (with parentId&#x3D;null).  &lt;/p&gt;  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum number of children for a single parent entity&lt;/td&gt;  &lt;td&gt;10 K&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param character  generated.by  To track the Provenance of an Entity create, include the ID of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> that was created to track the change. For more information see: <a href=\"${POST.activity}\">POST /activity</a>. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.'   (optional)
-  # @param Entity  entity    (optional)
+  # @param generated.by character To track the Provenance of an Entity create, include the ID of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> that was created to track the change. For more information see: <a href=\"${POST.activity}\">POST /activity</a>. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.'  (optional)
+  # @param entity Entity  (optional)
   # @return [Entity]
 
   # uncomment below to test the operation
@@ -61,8 +61,8 @@ test_that("CreateEntityAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Create a new Access Control List (ACL), overriding inheritance.
   # Create a new Access Control List (ACL), overriding inheritance.  &lt;p&gt; By default, Entities such as FileEntity and Folder inherit their permission from their containing Project. For such Entities the Project is the Entity&#39;s &#39;benefactor&#39;. This permission inheritance can be overridden by creating an ACL for the Entity. When this occurs the Entity becomes its own benefactor and all permission are determined by its own ACL.  &lt;/p&gt;  &lt;p&gt;  If the ACL of an Entity is deleted, then its benefactor will automatically be set to its parent&#39;s benefactor.  &lt;/p&gt;  &lt;p&gt;  Note: The caller must be granted  &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.CHANGE_PERMISSIONS&lt;/a&gt; on the Entity to call this method.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param AccessControlList  access.control.list    (optional)
+  # @param id character The ID of an Entity.
+  # @param access.control.list AccessControlList  (optional)
   # @return [AccessControlList]
 
   # uncomment below to test the operation
@@ -74,8 +74,8 @@ test_that("DeleteActivity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Deletes the activity relationship for the current version of an Entity.
   # Deletes the activity relationship for the current version of an Entity. 
-  # @param character  id  The ID of an Entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param body object  (optional)
   # @return [Void]
 
   # uncomment below to test the operation
@@ -87,9 +87,9 @@ test_that("DeleteEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Deletes an Entity
   # Moves an entity in the trash can, if the skipTrashCan is set to true will flag the entity for purge and it will be deleted as soon as possible.  &lt;p&gt;  Note: To delete an Entity the caller must be granted the  &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.DELETE&lt;/a&gt; on the Entity.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param character  skip.trash.can  If true the entity will be flag for priority purge and deleted as soon as possible   (optional)
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param skip.trash.can character If true the entity will be flag for priority purge and deleted as soon as possible  (optional)
+  # @param body object  (optional)
   # @return [Void]
 
   # uncomment below to test the operation
@@ -101,9 +101,37 @@ test_that("DeleteEntityAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Delete the Access Control List (ACL) for a given Entity.
   # Delete the Access Control List (ACL) for a given Entity.  &lt;p&gt;  By default, Entities such as FileEntity and Folder inherit their permission from their containing Project. For such Entities the Project is the Entity&#39;s &#39;benefactor&#39;. This permission inheritance can be overridden by creating an ACL for the Entity. When this occurs the Entity becomes its own benefactor and all permission are determined by its own ACL.  &lt;/p&gt;  &lt;p&gt;  If the ACL of an Entity is deleted, then its benefactor will automatically be set to its parent&#39;&#39;s benefactor. The ACL for a Project cannot be deleted.  &lt;/p&gt;  &lt;p&gt;  Note: The caller must be granted &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.CHANGE_PERMISSIONS&lt;/a&gt; on the Entity to call this method.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param body object  (optional)
   # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("DeleteEntityVersion", {
+  # tests for DeleteEntityVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Delete a specific version of a FileEntity.
+  # Delete a specific version of a FileEntity.
+  # @param id character The ID of the Entity
+  # @param version.number integer The version number of the Entity.
+  # @param body object  (optional)
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("FilePreviewRedirectUrlForVersion", {
+  # tests for FilePreviewRedirectUrlForVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the URL of the preview file associated with a specific version of a FileEntity. 
+  # Get the URL of the preview file associated with a specific version of a FileEntity.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
+  # @param id character The ID of the Entity.
+  # @param version.number integer The version number of the Entity.
+  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
+  # @return [character]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -114,9 +142,37 @@ test_that("GetActivity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get an existing activity for the current version of an Entity.
   # Get an existing activity for the current version of an Entity.
-  # @param character  id  The ID of an Entity. 
-  # @param object  body  Get an existing activity for the current version of an Entity.  (optional)
+  # @param id character The ID of an Entity.
+  # @param body object Get an existing activity for the current version of an Entity. (optional)
   # @return [Activity]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetActivityForEntityVersion", {
+  # tests for GetActivityForEntityVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get an existing activity for a specific version of an Entity.
+  # Get an existing activity for a specific version of an Entity.
+  # @param id character The ID of the Entity.
+  # @param version.number integer The version number of the Entity.
+  # @param body object Get an existing activity for a specific version of an Entity. (optional)
+  # @return [Activity]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetAllVersionsOfEntity", {
+  # tests for GetAllVersionsOfEntity
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get all versions of an Entity one page at a time.
+  # Get all versions of an Entity one page at a time.
+  # @param id character The ID of the Entity.
+  # @param limit integer Limits the number of entities that will be fetched for this page. When null it will default to 10.  (optional)
+  # @param offset integer The offset index determines where this page will start from. When null it will default to 0.  (optional)
+  # @return [PaginatedResultsOfVersionInfo]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -127,8 +183,20 @@ test_that("GetBoundJsonSchema", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get information about a JSON schema bound to an Entity.
   # Get information about a JSON schema bound to an Entity. Note: Any child Entity that does not have a bound schema will inherit the first bound schema found in its hierarchy.  Note: The caller must be granted the READ permission on the Entity. 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [JsonSchemaObjectBinding]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetChildren", {
+  # tests for GetChildren
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get a page of children for a given parent ID.
+  # Get a page of children for a given parent ID. This service can also be used to list projects by setting the parentId to NULL in EntityChildrenRequest. 
+  # @param entity.children.request EntityChildrenRequest  (optional)
+  # @return [EntityChildrenResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -139,7 +207,7 @@ test_that("GetEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get an Entity
   # Get an Entity using its ID.  &lt;p&gt; Note: To get an Entity the caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot; &gt;ACCESS_TYPE.READ&lt;/a&gt; on the Entity.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [Entity]
 
   # uncomment below to test the operation
@@ -151,7 +219,7 @@ test_that("GetEntityAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the Access Control List (ACL) for a given entity.
   # Get the Access Control List (ACL) for a given entity.  &lt;p&gt; Note: If this method is called on an Entity that is inheriting its permission from another Entity a NOT_FOUND (404) response will be generated. The error response message will include the Entity&#39;&#39;s benefactor ID. &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [AccessControlList]
 
   # uncomment below to test the operation
@@ -163,7 +231,20 @@ test_that("GetEntityAnnotations", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the annotations for an entity.
   # Get the annotations for an entity.  &lt;p&gt;  Note: The caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot; &gt;ACCESS_TYPE.READ&lt;/a&gt; on the Entity, to get its annotations.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
+  # @return [AnnotationsV2]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityAnnotationsV2ForVersion", {
+  # tests for GetEntityAnnotationsV2ForVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get an Entity&#39;s annotations for a specific version of a FileEntity.
+  # Get an Entity&#39;s annotations for a specific version of a FileEntity.
+  # @param id character The ID of the Entity.
+  # @param version.number integer The version number of the Entity.
   # @return [AnnotationsV2]
 
   # uncomment below to test the operation
@@ -175,8 +256,8 @@ test_that("GetEntityBenefactor", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get an Entity&#39;s benefactor.
   # Get an Entity&#39;s benefactor.  &lt;p&gt;  The term &#39;benefactor&#39; is used indicate which Entity an Entity inherits is ACL from. For example, a newly created Project will have its own ACL and therefore, it will be its own benefactor. A Folder will inherit its ACL (by default) from its containing Project so the Project will be the Folder&#39;s benefactor. This method will return the EntityHeader of an Entity&#39;s benefactor. &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param body object  (optional)
   # @return [EntityHeader]
 
   # uncomment below to test the operation
@@ -188,8 +269,59 @@ test_that("GetEntityFileHandles", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the FileHandles of the file currently associated with the current version of the Entity. 
   # Get the FileHandles of the file currently associated with the current version of the Entity.  &lt;p&gt; If a preview exists for the file then the handle of the preview and the file will be returned with this call. &lt;/p&gt; 
-  # @param character  id  The ID of a File Entity. 
+  # @param id character The ID of a File Entity.
   # @return [FileHandleResults]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityFileHandlesForVersion", {
+  # tests for GetEntityFileHandlesForVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the FileHandles of the file associated with a specific version of a FileEntity. 
+  # Get the FileHandles of the file associated with a specific version of a FileEntity.  If a preview exists for the file then the handle of the preview and the file will be returned with this call. 
+  # @param id character The ID of the Entity.
+  # @param version.number integer The version number of the Entity.
+  # @return [FileHandleResults]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityForVersion", {
+  # tests for GetEntityForVersion
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get a specific version of an Entity.
+  # Get a specific version of an Entity.  Note: Only the current version of the Entity can be used for an Entity update. Therefore, only the current version of the Entity will be returned with the actual etag. All older versions will be returned with an eTag &#39;00000000-0000-0000-0000-000000000000&#39;. 
+  # @param id character The ID of the Entity
+  # @param version.number integer The version number of the Entity.
+  # @return [Entity]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityHeaderByMd5", {
+  # tests for GetEntityHeaderByMd5
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Gets FileEntities matching the given MD5 string which the user has read access to. 
+  # Gets at most 200 FileEntities matching the given MD5 string which the user has read access to. NOTE: Another option is to create a file view that includes MD5 values. https://docs.synapse.org/articles/views.html 
+  # @param md5 character File MD5
+  # @param body object  (optional)
+  # @return [PaginatedResultsOfEntityHeader]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityIdByAlias", {
+  # tests for GetEntityIdByAlias
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Lookup an Entity ID using an alias.
+  # Lookup an Entity ID using an alias.
+  # @param alias character Alias of an Entity
+  # @return [EntityId]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -200,7 +332,7 @@ test_that("GetEntityJson", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the raw JSON for the given entity.
   # Get the raw JSON for the given entity. The resulting JSON can be used for the validation of a entity against a &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.schema.JsonSchema}\&quot;&gt;JsonSchema&lt;/a&gt;.  &lt;p&gt;  Note: The caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot; &gt;ACCESS_TYPE.READ&lt;/a&gt; permission on the Entity.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [object]
 
   # uncomment below to test the operation
@@ -212,7 +344,7 @@ test_that("GetEntityPath", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the full path of an Entity as a List of EntityHeaders.
   # Get the full path of an Entity as a List of EntityHeaders. The first EntityHeader will be the Root Entity, and the last EntityHeader will be the requested Entity. 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [EntityPath]
 
   # uncomment below to test the operation
@@ -224,7 +356,7 @@ test_that("GetEntitySchemaValidationResults", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the validation results of an Entity against its bound JSON schema.
   # Get the validation results of an Entity against its bound JSON schema. The validation of an Entity against its bound schema is automatic and eventually consistent. The validation results include the etag of the Entity at the time of the last validation. If the returned etag does not match the current etag of the Entity then the results should be considered out-of-date. If an Entity has not been validated for the first time, or if the Entity does not have a bound schema, this method will return a 404 (not-found). Keep checking for the latest validation results.  Note: The caller must be granted the READ permission on the Entity. 
-  # @param character  id  The ID of the Entity. 
+  # @param id character The ID of the Entity.
   # @return [ValidationResults]
 
   # uncomment below to test the operation
@@ -236,8 +368,45 @@ test_that("GetEntitySchemaValidationStatistics", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the summary statistics of the JSON schema validation results for a single container Entity such as a Project or Folder. 
   # Get the The summary statistics of the JSON schema validation results for a single container Entity such as a Project or Folder. Only direct children of the container are included in the results. The statistics include the total number of children in the container, and the counts for both the invalid and valid children. If an Entity has not been validated for the first time, or it does not have bound schema it will be counted as &#39;unknown&#39;.  The validation of an Entity against its bound schema is automatic and eventually consistent. Keep checking this method to get the latest validation statistics for the given container.  Note: The caller must be granted the READ permission on the container Entity. The resulting statistics will only include children that the caller has the READ permission on. 
-  # @param character  id  The ID of the container Entity. 
+  # @param id character The ID of the container Entity.
   # @return [ValidationSummaryStatistics]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityType", {
+  # tests for GetEntityType
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the EntityHeader of an Entity given its ID.
+  # Get the EntityHeader of an Entity given its ID. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+  # @param id character The ID of the Entity.
+  # @param body object  (optional)
+  # @return [EntityHeader]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityTypeBatch", {
+  # tests for GetEntityTypeBatch
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get a batch of EntityHeader given multile Entity IDs.
+  # Get a batch of EntityHeader given multile Entity IDs. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+  # @param batch character A comma separated list of Entity IDs to get EntityHeaders for. 
+  # @return [PaginatedResultsOfEntityHeader]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityVersionedTypeBatch", {
+  # tests for GetEntityVersionedTypeBatch
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the EntityHeader for a list of references with a POST.
+  # Get the EntityHeader for a list of references with a POST. If any item in the batch fails (e.g., with a 404) it will be EXCLUDED in the result set. 
+  # @param reference.list ReferenceList  (optional)
+  # @return [PaginatedResultsOfEntityHeader]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -248,9 +417,9 @@ test_that("GetFilePreviewUrl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the URL of the preview file associated with the current version of a FileEntity. 
   # Get the URL of the preview file associated with the current version of a FileEntity.  &lt;p&gt; Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. &lt;/p&gt; 
-  # @param character  id  The ID of a File Entity. 
-  # @param character  redirect  When set to false, the URL will be returned as text/plain instead of redirecting.   (optional)
-  # @param integer  status  Status  (optional)
+  # @param id character The ID of a File Entity.
+  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
+  # @param status integer Status (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -262,8 +431,8 @@ test_that("GetInvalidValidationResults", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get a single page of invalid JSON schema validation results for a container Entity (Project or Folder). 
   # Get a single page of invalid JSON schema validation results for a container Entity (Project or Folder). The validation of an Entity against its bound schema is automatic and eventually consistent. The validation results include the etag of the Entity at the time of the last validation. If the returned etag does not match the current etag of the Entity then the results should be considered out-of-date.  Note: The caller must be granted the READ permission on the container Entity. The results will only include children that the caller has the READ permission on. 
-  # @param character  id  The ID of the container Entity. 
-  # @param ListValidationResultsRequest  list.validation.results.request    (optional)
+  # @param id character The ID of the container Entity.
+  # @param list.validation.results.request ListValidationResultsRequest  (optional)
   # @return [ListValidationResultsResponse]
 
   # uncomment below to test the operation
@@ -275,8 +444,8 @@ test_that("GetTemporaryCredentialsForEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Gets the temporary S3 credentials from STS for the given entity.
   # Gets the temporary S3 credentials from STS for the given entity. These credentials are only good for the bucket and base key specified by the returned credentials and expire 12 hours after this API is called.  The specified entity must be a folder with an STS-enabled storage location. If that storage location is external storage, you may request read-only or read-write permissions. If that storage location is Synapse storage, you must request read-only permissions. 
-  # @param character  id  The ID of the Folder with an STS-enabled storage location.  
-  # @param character  permission  Read-only or read-write permissions.  
+  # @param id character The ID of the Folder with an STS-enabled storage location. 
+  # @param permission character Read-only or read-write permissions. 
   # @return [StsCredentials]
 
   # uncomment below to test the operation
@@ -288,7 +457,7 @@ test_that("GetUserEntityPermissions", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the list of permission that the caller has on a given Entity.
   # Get the list of permission that the caller has on a given Entity.  A User&#39;s permission on an Entity is a calculation based several factors including the permission granted by the Entity&#39;s ACL and the User&#39;s group membership. There might also be extra requirement for an Entity, such as special terms-of-use or special restrictions for sensitive data. This means a client cannot accurately calculate a User&#39;s permission on an Entity simply by inspecting the Entity&#39;&#39;s ACL. Instead, all clients should use this method to get the calculated permission a User has on an Entity. 
-  # @param character  id  The ID of an Entity. 
+  # @param id character The ID of an Entity.
   # @return [UserEntityPermissions]
 
   # uncomment below to test the operation
@@ -300,10 +469,22 @@ test_that("HasAccess", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Determine if the caller have a given permission on a given Entity.
   # Determine if the caller have a given permission on a given Entity.  &lt;p&gt;  A User&#39;s permission on an Entity is a calculation based several factors including the permission granted by the Entity&#39;s ACL and the User&#39;s group membership. There might also be extra requirement for an Entity, such as special terms-of-use or special restrictions for sensitive data. This means a client cannot accurately calculate a User&#39;s permission on an Entity simply by inspecting the Entity&#39;s ACL. Instead, all clients should use this method to get the calculated permission a User has on an Entity. &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param character  access.type  The permission to check. Must be from:  <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE</a>'   (optional)
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param access.type character The permission to check. Must be from:  <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE</a>'  (optional)
+  # @param body object  (optional)
   # @return [BooleanResult]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("LookupChild", {
+  # tests for LookupChild
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Retrieve an entityId for a given parent ID and entity name.
+  # Retrieve an entityId for a given parent ID and entity name. This service can also be used to lookup projectId by setting the parentId to NULL in EntityLookupRequest. 
+  # @param entity.lookup.request EntityLookupRequest  (optional)
+  # @return [EntityId]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -314,9 +495,9 @@ test_that("UpdateActivityForEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Sets the generatedBy relationship for the current version of an Entity.
   # Sets the generatedBy relationship for the current version of an Entity.
-  # @param character  id  The ID of an Entity. 
-  # @param character  generated.by  The id of the activity to connect to the entity. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.'  
-  # @param object  body  Sets the generatedBy relationship for the current version of an Entity.  (optional)
+  # @param id character The ID of an Entity.
+  # @param generated.by character The id of the activity to connect to the entity. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.' 
+  # @param body object Sets the generatedBy relationship for the current version of an Entity. (optional)
   # @return [Activity]
 
   # uncomment below to test the operation
@@ -328,10 +509,10 @@ test_that("UpdateEntity", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update an entity.
   # Update an entity.  &lt;p&gt;  If the Entity is a FileEntity and the dataFileHandleId fields is set to a new value, then a new version will automatically be created for this update if the MD5 of the new file handle does not match the MD5 of the existing file handle or if the file handles do not have an MD5 set. You can also force the creation of a new version using the newVersion parameter  (see below).  &lt;/p&gt;  &lt;p&gt;  Synapse employs an Optimistic Concurrency Control (OCC) scheme to handle concurrent updates. Each time an Entity is updated a new etag will be issued to the Entity. When an update is request, Synapse will compare the etag of the passed Entity with the current etag of the Entity. If the etags do not match, then the update will be rejected with a PRECONDITION_FAILED (412) response. When this occurs the caller should get the latest copy of the Entity (see: &lt;a href&#x3D;\&quot;${GET.entity.id}\&quot;&gt;GET /entity/{id}&lt;/a&gt;) and re-apply any changes to the object, then re-attempt the Entity update. This ensure the caller has any changes applied by other users before applying their own changes.  &lt;/p&gt;  &lt;p&gt;  Note: To update an Entity the caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.UPDATE&lt;/a&gt; on the Entity.  &lt;/p&gt;  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum number of children for a single parent entity&lt;/td&gt;  &lt;td&gt;10 K&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param character  generated.by  To track the Provenance of an Entity update, include the ID of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> that was created to track the change. For more information see: <a href=\"${POST.activity}\">POST /activity</a>. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.'   (optional)
-  # @param character  new.version  To force the creation of a new version for a <a href=\"${org.sagebionetworks.repo.model.VersionableEntity}\">versionable</a> entity such as a <a href= \"${org.sagebionetworks.repo.model.FileEntity}\">FileEntity</a>, include this optional parameter with a value set to true (i.e. newVersion=true). This parameter is ignored for entities of type  <a href=\"${org.sagebionetworks.repo.model.table.Table}\">Table</a> (See <a href=\"${POST.entity.id.table.snapshot}\">POST /entity/{id}/table/snapshot</a> instead)   (optional)
-  # @param Entity  entity    (optional)
+  # @param id character The ID of an Entity.
+  # @param generated.by character To track the Provenance of an Entity update, include the ID of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> that was created to track the change. For more information see: <a href=\"${POST.activity}\">POST /activity</a>. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.'  (optional)
+  # @param new.version character To force the creation of a new version for a <a href=\"${org.sagebionetworks.repo.model.VersionableEntity}\">versionable</a> entity such as a <a href= \"${org.sagebionetworks.repo.model.FileEntity}\">FileEntity</a>, include this optional parameter with a value set to true (i.e. newVersion=true). This parameter is ignored for entities of type  <a href=\"${org.sagebionetworks.repo.model.table.Table}\">Table</a> (See <a href=\"${POST.entity.id.table.snapshot}\">POST /entity/{id}/table/snapshot</a> instead)  (optional)
+  # @param entity Entity  (optional)
   # @return [Entity]
 
   # uncomment below to test the operation
@@ -343,8 +524,8 @@ test_that("UpdateEntityAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update an Entity&#39;s ACL.
   # Update an Entity&#39;s ACL.  &lt;p&gt;  Note: The caller must be granted  &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.CHANGE_PERMISSIONS&lt;/a&gt; on the Entity to call this method.  &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param AccessControlList  access.control.list    (optional)
+  # @param id character The ID of an Entity.
+  # @param access.control.list AccessControlList  (optional)
   # @return [AccessControlList]
 
   # uncomment below to test the operation
@@ -356,9 +537,23 @@ test_that("UpdateEntityAnnotations", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update an Entity&#39;s annotations.
   # Update an Entity&#39;s annotations.  &lt;p&gt;  Note: The caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.UPDATE&lt;/a&gt; on the Entity, to update its annotations. &lt;/p&gt; 
-  # @param character  id  The ID of an Entity. 
-  # @param AnnotationsV2  annotations.v2    (optional)
+  # @param id character The ID of an Entity.
+  # @param annotations.v2 AnnotationsV2  (optional)
   # @return [AnnotationsV2]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("UpdateEntityFileHandle", {
+  # tests for UpdateEntityFileHandle
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Updates the filehandle.
+  # Updates the FileHandle associated with the FileEntity with the provided entity id and version. 
+  # @param id character The ID of the Entity.
+  # @param version.number integer The version number of the Entity.
+  # @param file.handle.update.request FileHandleUpdateRequest  (optional)
+  # @return [character]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -369,8 +564,8 @@ test_that("UpdateEntityWithJson", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update the annotations of an entity using the raw JSON of the entity.
   # Update the annotations of an entity using the raw JSON of the entity.  &lt;p&gt;  See: &lt;a href&#x3D;\&quot;${GET.entity.id.json}\&quot;&gt;GET entity/{id}/json&lt;/a&gt; to get the JSON of an entity.  &lt;/p&gt;  &lt;p&gt; Note: The caller must be granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot; &gt;ACCESS_TYPE.UPDATE and ACCESS_TYPE.READ&lt;/a&gt; permission on the Entity. &lt;/p&gt;&#39; 
-  # @param character  id  The ID of an Entity. 
-  # @param object  body    (optional)
+  # @param id character The ID of an Entity.
+  # @param body object  (optional)
   # @return [object]
 
   # uncomment below to test the operation

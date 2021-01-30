@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DoiAllOf
+#'
 #' @description DoiAllOf Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field creators  list( \link{DoiCreator} ) [optional]
 #'
 #' @field publicationYear  integer [optional]
@@ -17,7 +20,6 @@
 #' @field resourceType  \link{DoiResourceType} [optional]
 #'
 #' @field titles  list( \link{DoiTitle} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ DoiAllOf <- R6::R6Class(
     `publicationYear` = NULL,
     `resourceType` = NULL,
     `titles` = NULL,
-    initialize = function(`creators`=NULL, `publicationYear`=NULL, `resourceType`=NULL, `titles`=NULL, ...){
+    initialize = function(
+        `creators`=NULL, `publicationYear`=NULL, `resourceType`=NULL, `titles`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`creators`)) {
         stopifnot(is.vector(`creators`), length(`creators`) != 0)
@@ -87,6 +91,7 @@ DoiAllOf <- R6::R6Class(
       if (!is.null(DoiAllOfObject$`titles`)) {
         self$`titles` <- ApiClient$new()$deserializeObj(DoiAllOfObject$`titles`, "array[DoiTitle]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -132,3 +137,4 @@ DoiAllOf <- R6::R6Class(
     }
   )
 )
+

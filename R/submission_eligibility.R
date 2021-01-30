@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title SubmissionEligibility
+#'
 #' @description SubmissionEligibility Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field isEligible  character [optional]
 #'
 #' @field isQuotaFilled  character [optional]
 #'
 #' @field isRegistered  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ SubmissionEligibility <- R6::R6Class(
     `isEligible` = NULL,
     `isQuotaFilled` = NULL,
     `isRegistered` = NULL,
-    initialize = function(`isEligible`=NULL, `isQuotaFilled`=NULL, `isRegistered`=NULL, ...){
+    initialize = function(
+        `isEligible`=NULL, `isQuotaFilled`=NULL, `isRegistered`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`isEligible`)) {
         self$`isEligible` <- `isEligible`
@@ -66,6 +70,7 @@ SubmissionEligibility <- R6::R6Class(
       if (!is.null(SubmissionEligibilityObject$`isRegistered`)) {
         self$`isRegistered` <- SubmissionEligibilityObject$`isRegistered`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -103,3 +108,4 @@ SubmissionEligibility <- R6::R6Class(
     }
   )
 )
+

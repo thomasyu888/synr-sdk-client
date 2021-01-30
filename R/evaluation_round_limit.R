@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title EvaluationRoundLimit
+#'
 #' @description EvaluationRoundLimit Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field limitType  \link{EvaluationRoundLimitType} [optional]
 #'
 #' @field maximumSubmissions  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ EvaluationRoundLimit <- R6::R6Class(
   public = list(
     `limitType` = NULL,
     `maximumSubmissions` = NULL,
-    initialize = function(`limitType`=NULL, `maximumSubmissions`=NULL, ...){
+    initialize = function(
+        `limitType`=NULL, `maximumSubmissions`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`limitType`)) {
         stopifnot(R6::is.R6(`limitType`))
@@ -57,6 +61,7 @@ EvaluationRoundLimit <- R6::R6Class(
       if (!is.null(EvaluationRoundLimitObject$`maximumSubmissions`)) {
         self$`maximumSubmissions` <- EvaluationRoundLimitObject$`maximumSubmissions`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -86,3 +91,4 @@ EvaluationRoundLimit <- R6::R6Class(
     }
   )
 )
+

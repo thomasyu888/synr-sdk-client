@@ -10,7 +10,7 @@ test_that("GetPassingRecord", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the Passing Record on the User Certification test for the given user. 
   # Retrieve the Passing Record on the User Certification test for the given user. 
-  # @param character  id  The ID of the Synapse user. 
+  # @param id character The ID of the Synapse user.
   # @return [PassingRecord]
 
   # uncomment below to test the operation
@@ -22,7 +22,7 @@ test_that("SetUserCertificationStatus", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Set certification status
   # Setting certification status.
-  # @param character  id  The ID of the Synapse user. 
+  # @param id character The ID of the Synapse user.
   # @return [Void]
 
   # uncomment below to test the operation

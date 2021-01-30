@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title UserGroupHeaderResponse
-#' @description UserGroupHeaderResponse Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( \link{UserGroupHeader} ) [optional]
 #'
+#' @description UserGroupHeaderResponse Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( \link{UserGroupHeader} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ UserGroupHeaderResponse <- R6::R6Class(
   'UserGroupHeaderResponse',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ UserGroupHeaderResponse <- R6::R6Class(
       if (!is.null(UserGroupHeaderResponseObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(UserGroupHeaderResponseObject$`list`, "array[UserGroupHeader]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ UserGroupHeaderResponse <- R6::R6Class(
     }
   )
 )
+

@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title EntityThreadCounts
-#' @description EntityThreadCounts Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( \link{EntityThreadCount} ) [optional]
 #'
+#' @description EntityThreadCounts Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( \link{EntityThreadCount} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ EntityThreadCounts <- R6::R6Class(
   'EntityThreadCounts',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ EntityThreadCounts <- R6::R6Class(
       if (!is.null(EntityThreadCountsObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(EntityThreadCountsObject$`list`, "array[EntityThreadCount]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ EntityThreadCounts <- R6::R6Class(
     }
   )
 )
+

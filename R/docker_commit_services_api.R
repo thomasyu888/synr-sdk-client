@@ -98,7 +98,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 DockerCommitServicesApi <- R6::R6Class(
   'DockerCommitServicesApi',
@@ -195,6 +195,7 @@ DockerCommitServicesApi <- R6::R6Class(
 
       queryParams['sort'] <- sort
 
+      body <- NULL
       urlPath <- "/entity/{id}/dockerTag"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

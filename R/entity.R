@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Entity
+#'
 #' @description Entity Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field createdBy  character [optional]
@@ -30,7 +33,6 @@
 #'
 #' @field parentId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,7 +49,9 @@ Entity <- R6::R6Class(
     `modifiedOn` = NULL,
     `name` = NULL,
     `parentId` = NULL,
-    initialize = function(`concreteType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `parentId`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, `parentId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -167,6 +171,7 @@ Entity <- R6::R6Class(
       if (!is.null(EntityObject$`parentId`)) {
         self$`parentId` <- EntityObject$`parentId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -260,3 +265,4 @@ Entity <- R6::R6Class(
     }
   )
 )
+

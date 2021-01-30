@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title SortBy
+#'
 #' @description SortBy Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 SortBy <- R6::R6Class(
-  'SortBy',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      SortByObject <- list()
+    "SortBy",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_SortBy()
 
-      SortByObject
-    },
-    fromJSON = function(SortByJson) {
-      SortByObject <- jsonlite::fromJSON(SortByJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(SortByJson) {
-      SortByObject <- jsonlite::fromJSON(SortByJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(SortByJson) {
+            private$value <- jsonlite::fromJSON(SortByJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(SortByJson) {
+            private$value <- jsonlite::fromJSON(SortByJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_SortBy <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[NAME, CREATED_ON, MODIFIED_ON]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

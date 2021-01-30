@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title EntityLookupRequest
+#'
 #' @description EntityLookupRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field entityName  character [optional]
 #'
 #' @field parentId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ EntityLookupRequest <- R6::R6Class(
   public = list(
     `entityName` = NULL,
     `parentId` = NULL,
-    initialize = function(`entityName`=NULL, `parentId`=NULL, ...){
+    initialize = function(
+        `entityName`=NULL, `parentId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`entityName`)) {
         stopifnot(is.character(`entityName`), length(`entityName`) == 1)
@@ -55,6 +59,7 @@ EntityLookupRequest <- R6::R6Class(
       if (!is.null(EntityLookupRequestObject$`parentId`)) {
         self$`parentId` <- EntityLookupRequestObject$`parentId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ EntityLookupRequest <- R6::R6Class(
     }
   )
 )
+

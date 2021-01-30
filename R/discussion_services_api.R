@@ -483,7 +483,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 DiscussionServicesApi <- R6::R6Class(
   'DiscussionServicesApi',
@@ -570,6 +570,7 @@ DiscussionServicesApi <- R6::R6Class(
         stop("Missing required parameter `thread.id`.")
       }
 
+      body <- NULL
       urlPath <- "/thread/{threadId}"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -630,6 +631,7 @@ DiscussionServicesApi <- R6::R6Class(
 
       queryParams['sort'] <- sort
 
+      body <- NULL
       urlPath <- "/thread/{threadId}/replies"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -688,6 +690,7 @@ DiscussionServicesApi <- R6::R6Class(
 
       queryParams['filter'] <- filter
 
+      body <- NULL
       urlPath <- "/thread/{threadId}/replycount"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -740,6 +743,7 @@ DiscussionServicesApi <- R6::R6Class(
         stop("Missing required parameter `thread.id`.")
       }
 
+      body <- NULL
       urlPath <- "/thread/{threadId}"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -844,6 +848,7 @@ DiscussionServicesApi <- R6::R6Class(
 
       queryParams['messageKey'] <- message.key
 
+      body <- NULL
       urlPath <- "/thread/messageUrl"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -900,6 +905,7 @@ DiscussionServicesApi <- R6::R6Class(
 
       queryParams['sort'] <- sort
 
+      body <- NULL
       urlPath <- "/entity/{id}/threads"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -952,6 +958,7 @@ DiscussionServicesApi <- R6::R6Class(
         stop("Missing required parameter `thread.id`.")
       }
 
+      body <- NULL
       urlPath <- "/thread/{threadId}/pin"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -998,6 +1005,7 @@ DiscussionServicesApi <- R6::R6Class(
         stop("Missing required parameter `thread.id`.")
       }
 
+      body <- NULL
       urlPath <- "/thread/{threadId}/restore"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)
@@ -1050,6 +1058,7 @@ DiscussionServicesApi <- R6::R6Class(
         stop("Missing required parameter `thread.id`.")
       }
 
+      body <- NULL
       urlPath <- "/thread/{threadId}/unpin"
       if (!missing(`thread.id`)) {
         urlPath <- gsub(paste0("\\{", "threadId", "\\}"), URLencode(as.character(`thread.id`), reserved = TRUE), urlPath)

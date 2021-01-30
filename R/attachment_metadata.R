@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title AttachmentMetadata
+#'
 #' @description AttachmentMetadata Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field fileName  character [optional]
 #'
 #' @field id  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ AttachmentMetadata <- R6::R6Class(
   public = list(
     `fileName` = NULL,
     `id` = NULL,
-    initialize = function(`fileName`=NULL, `id`=NULL, ...){
+    initialize = function(
+        `fileName`=NULL, `id`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`fileName`)) {
         stopifnot(is.character(`fileName`), length(`fileName`) == 1)
@@ -55,6 +59,7 @@ AttachmentMetadata <- R6::R6Class(
       if (!is.null(AttachmentMetadataObject$`id`)) {
         self$`id` <- AttachmentMetadataObject$`id`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ AttachmentMetadata <- R6::R6Class(
     }
   )
 )
+

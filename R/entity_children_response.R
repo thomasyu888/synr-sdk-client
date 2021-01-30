@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EntityChildrenResponse
+#'
 #' @description EntityChildrenResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field nextPageToken  character [optional]
 #'
 #' @field page  list( \link{EntityHeader} ) [optional]
@@ -17,7 +20,6 @@
 #' @field sumFileSizesBytes  integer [optional]
 #'
 #' @field totalChildCount  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ EntityChildrenResponse <- R6::R6Class(
     `page` = NULL,
     `sumFileSizesBytes` = NULL,
     `totalChildCount` = NULL,
-    initialize = function(`nextPageToken`=NULL, `page`=NULL, `sumFileSizesBytes`=NULL, `totalChildCount`=NULL, ...){
+    initialize = function(
+        `nextPageToken`=NULL, `page`=NULL, `sumFileSizesBytes`=NULL, `totalChildCount`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextPageToken`)) {
         stopifnot(is.character(`nextPageToken`), length(`nextPageToken`) == 1)
@@ -84,6 +88,7 @@ EntityChildrenResponse <- R6::R6Class(
       if (!is.null(EntityChildrenResponseObject$`totalChildCount`)) {
         self$`totalChildCount` <- EntityChildrenResponseObject$`totalChildCount`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -129,3 +134,4 @@ EntityChildrenResponse <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DoiAssociation
+#'
 #' @description DoiAssociation Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field associatedBy  character [optional]
 #'
 #' @field associatedOn  character [optional]
@@ -32,7 +35,6 @@
 #'
 #' @field updatedOn  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,7 +52,9 @@ DoiAssociation <- R6::R6Class(
     `objectVersion` = NULL,
     `updatedBy` = NULL,
     `updatedOn` = NULL,
-    initialize = function(`objectId`, `associatedBy`=NULL, `associatedOn`=NULL, `associationId`=NULL, `doiUri`=NULL, `doiUrl`=NULL, `etag`=NULL, `objectType`=NULL, `objectVersion`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, ...){
+    initialize = function(
+        `objectId`, `associatedBy`=NULL, `associatedOn`=NULL, `associationId`=NULL, `doiUri`=NULL, `doiUrl`=NULL, `etag`=NULL, `objectType`=NULL, `objectVersion`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!missing(`objectId`)) {
         stopifnot(is.character(`objectId`), length(`objectId`) == 1)
@@ -183,6 +187,7 @@ DoiAssociation <- R6::R6Class(
       if (!is.null(DoiAssociationObject$`updatedOn`)) {
         self$`updatedOn` <- DoiAssociationObject$`updatedOn`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -284,3 +289,4 @@ DoiAssociation <- R6::R6Class(
     }
   )
 )
+

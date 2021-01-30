@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title MemberSubmissionEligibility
+#'
 #' @description MemberSubmissionEligibility Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field hasConflictingSubmission  character [optional]
 #'
 #' @field isEligible  character [optional]
@@ -19,7 +22,6 @@
 #' @field isRegistered  character [optional]
 #'
 #' @field principalId  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ MemberSubmissionEligibility <- R6::R6Class(
     `isQuotaFilled` = NULL,
     `isRegistered` = NULL,
     `principalId` = NULL,
-    initialize = function(`hasConflictingSubmission`=NULL, `isEligible`=NULL, `isQuotaFilled`=NULL, `isRegistered`=NULL, `principalId`=NULL, ...){
+    initialize = function(
+        `hasConflictingSubmission`=NULL, `isEligible`=NULL, `isQuotaFilled`=NULL, `isRegistered`=NULL, `principalId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`hasConflictingSubmission`)) {
         self$`hasConflictingSubmission` <- `hasConflictingSubmission`
@@ -92,6 +96,7 @@ MemberSubmissionEligibility <- R6::R6Class(
       if (!is.null(MemberSubmissionEligibilityObject$`principalId`)) {
         self$`principalId` <- MemberSubmissionEligibilityObject$`principalId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -145,3 +150,4 @@ MemberSubmissionEligibility <- R6::R6Class(
     }
   )
 )
+

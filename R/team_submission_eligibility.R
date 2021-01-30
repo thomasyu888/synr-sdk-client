@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title TeamSubmissionEligibility
+#'
 #' @description TeamSubmissionEligibility Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field eligibilityStateHash  integer [optional]
 #'
 #' @field evaluationId  character [optional]
@@ -19,7 +22,6 @@
 #' @field teamEligibility  \link{SubmissionEligibility} [optional]
 #'
 #' @field teamId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ TeamSubmissionEligibility <- R6::R6Class(
     `membersEligibility` = NULL,
     `teamEligibility` = NULL,
     `teamId` = NULL,
-    initialize = function(`eligibilityStateHash`=NULL, `evaluationId`=NULL, `membersEligibility`=NULL, `teamEligibility`=NULL, `teamId`=NULL, ...){
+    initialize = function(
+        `eligibilityStateHash`=NULL, `evaluationId`=NULL, `membersEligibility`=NULL, `teamEligibility`=NULL, `teamId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`eligibilityStateHash`)) {
         stopifnot(is.numeric(`eligibilityStateHash`), length(`eligibilityStateHash`) == 1)
@@ -100,6 +104,7 @@ TeamSubmissionEligibility <- R6::R6Class(
       if (!is.null(TeamSubmissionEligibilityObject$`teamId`)) {
         self$`teamId` <- TeamSubmissionEligibilityObject$`teamId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -153,3 +158,4 @@ TeamSubmissionEligibility <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DataTypeResponse
+#'
 #' @description DataTypeResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field dataType  \link{DataType} [optional]
 #'
 #' @field objectId  character [optional]
@@ -19,7 +22,6 @@
 #' @field updatedBy  character [optional]
 #'
 #' @field updatedOn  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ DataTypeResponse <- R6::R6Class(
     `objectType` = NULL,
     `updatedBy` = NULL,
     `updatedOn` = NULL,
-    initialize = function(`dataType`=NULL, `objectId`=NULL, `objectType`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, ...){
+    initialize = function(
+        `dataType`=NULL, `objectId`=NULL, `objectType`=NULL, `updatedBy`=NULL, `updatedOn`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`dataType`)) {
         stopifnot(R6::is.R6(`dataType`))
@@ -101,6 +105,7 @@ DataTypeResponse <- R6::R6Class(
       if (!is.null(DataTypeResponseObject$`updatedOn`)) {
         self$`updatedOn` <- DataTypeResponseObject$`updatedOn`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -154,3 +159,4 @@ DataTypeResponse <- R6::R6Class(
     }
   )
 )
+

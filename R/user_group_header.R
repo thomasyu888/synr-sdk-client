@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title UserGroupHeader
+#'
 #' @description UserGroupHeader Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field displayName  character [optional]
 #'
 #' @field email  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field userName  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ UserGroupHeader <- R6::R6Class(
     `lastName` = NULL,
     `ownerId` = NULL,
     `userName` = NULL,
-    initialize = function(`displayName`=NULL, `email`=NULL, `firstName`=NULL, `isIndividual`=NULL, `lastName`=NULL, `ownerId`=NULL, `userName`=NULL, ...){
+    initialize = function(
+        `displayName`=NULL, `email`=NULL, `firstName`=NULL, `isIndividual`=NULL, `lastName`=NULL, `ownerId`=NULL, `userName`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`displayName`)) {
         stopifnot(is.character(`displayName`), length(`displayName`) == 1)
@@ -124,6 +128,7 @@ UserGroupHeader <- R6::R6Class(
       if (!is.null(UserGroupHeaderObject$`userName`)) {
         self$`userName` <- UserGroupHeaderObject$`userName`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -193,3 +198,4 @@ UserGroupHeader <- R6::R6Class(
     }
   )
 )
+

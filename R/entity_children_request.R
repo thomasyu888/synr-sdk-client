@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EntityChildrenRequest
+#'
 #' @description EntityChildrenRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field includeSumFileSizes  character [optional]
 #'
 #' @field includeTotalChildCount  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field sortDirection  \link{SortDirection} [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ EntityChildrenRequest <- R6::R6Class(
     `parentId` = NULL,
     `sortBy` = NULL,
     `sortDirection` = NULL,
-    initialize = function(`includeSumFileSizes`=FALSE, `includeTotalChildCount`=FALSE, `includeTypes`=NULL, `nextPageToken`=NULL, `parentId`=NULL, `sortBy`=NULL, `sortDirection`=NULL, ...){
+    initialize = function(
+        `includeSumFileSizes`=FALSE, `includeTotalChildCount`=FALSE, `includeTypes`=NULL, `nextPageToken`=NULL, `parentId`=NULL, `sortBy`=NULL, `sortDirection`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`includeSumFileSizes`)) {
         self$`includeSumFileSizes` <- `includeSumFileSizes`
@@ -128,6 +132,7 @@ EntityChildrenRequest <- R6::R6Class(
         sortDirectionObject$fromJSON(jsonlite::toJSON(EntityChildrenRequestObject$sortDirection, auto_unbox = TRUE, digits = NA))
         self$`sortDirection` <- sortDirectionObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -197,3 +202,4 @@ EntityChildrenRequest <- R6::R6Class(
     }
   )
 )
+

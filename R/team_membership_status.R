@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title TeamMembershipStatus
+#'
 #' @description TeamMembershipStatus Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field canJoin  character [optional]
 #'
 #' @field canSendEmail  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field userId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ TeamMembershipStatus <- R6::R6Class(
     `membershipApprovalRequired` = NULL,
     `teamId` = NULL,
     `userId` = NULL,
-    initialize = function(`canJoin`=NULL, `canSendEmail`=NULL, `hasOpenInvitation`=NULL, `hasOpenRequest`=NULL, `hasUnmetAccessRequirement`=NULL, `isMember`=NULL, `membershipApprovalRequired`=NULL, `teamId`=NULL, `userId`=NULL, ...){
+    initialize = function(
+        `canJoin`=NULL, `canSendEmail`=NULL, `hasOpenInvitation`=NULL, `hasOpenRequest`=NULL, `hasUnmetAccessRequirement`=NULL, `isMember`=NULL, `membershipApprovalRequired`=NULL, `teamId`=NULL, `userId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`canJoin`)) {
         self$`canJoin` <- `canJoin`
@@ -146,6 +150,7 @@ TeamMembershipStatus <- R6::R6Class(
       if (!is.null(TeamMembershipStatusObject$`userId`)) {
         self$`userId` <- TeamMembershipStatusObject$`userId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -231,3 +236,4 @@ TeamMembershipStatus <- R6::R6Class(
     }
   )
 )
+

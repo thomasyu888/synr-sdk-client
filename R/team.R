@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Team
+#'
 #' @description Team Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field canPublicJoin  character [optional]
 #'
 #' @field createdBy  character [optional]
@@ -30,7 +33,6 @@
 #'
 #' @field name  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,7 +49,9 @@ Team <- R6::R6Class(
     `modifiedBy` = NULL,
     `modifiedOn` = NULL,
     `name` = NULL,
-    initialize = function(`canPublicJoin`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `icon`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `canPublicJoin`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `icon`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`canPublicJoin`)) {
         self$`canPublicJoin` <- `canPublicJoin`
@@ -166,6 +170,7 @@ Team <- R6::R6Class(
       if (!is.null(TeamObject$`name`)) {
         self$`name` <- TeamObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -259,3 +264,4 @@ Team <- R6::R6Class(
     }
   )
 )
+

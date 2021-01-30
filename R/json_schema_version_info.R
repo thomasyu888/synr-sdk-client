@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title JsonSchemaVersionInfo
+#'
 #' @description JsonSchemaVersionInfo Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field $id  character [optional]
 #'
 #' @field createdBy  character [optional]
@@ -30,7 +33,6 @@
 #'
 #' @field versionId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,7 +49,9 @@ JsonSchemaVersionInfo <- R6::R6Class(
     `schemaName` = NULL,
     `semanticVersion` = NULL,
     `versionId` = NULL,
-    initialize = function(`$id`=NULL, `createdBy`=NULL, `createdOn`=NULL, `jsonSHA256Hex`=NULL, `organizationId`=NULL, `organizationName`=NULL, `schemaId`=NULL, `schemaName`=NULL, `semanticVersion`=NULL, `versionId`=NULL, ...){
+    initialize = function(
+        `$id`=NULL, `createdBy`=NULL, `createdOn`=NULL, `jsonSHA256Hex`=NULL, `organizationId`=NULL, `organizationName`=NULL, `schemaId`=NULL, `schemaName`=NULL, `semanticVersion`=NULL, `versionId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`$id`)) {
         stopifnot(is.character(`$id`), length(`$id`) == 1)
@@ -167,6 +171,7 @@ JsonSchemaVersionInfo <- R6::R6Class(
       if (!is.null(JsonSchemaVersionInfoObject$`versionId`)) {
         self$`versionId` <- JsonSchemaVersionInfoObject$`versionId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -260,3 +265,4 @@ JsonSchemaVersionInfo <- R6::R6Class(
     }
   )
 )
+

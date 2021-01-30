@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title ReplyCount
-#' @description ReplyCount Class
-#' @format An \code{R6Class} generator object
-#' @field count  numeric [optional]
 #'
+#' @description ReplyCount Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field count  numeric [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ ReplyCount <- R6::R6Class(
   'ReplyCount',
   public = list(
     `count` = NULL,
-    initialize = function(`count`=NULL, ...){
+    initialize = function(
+        `count`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`count`)) {
         self$`count` <- `count`
@@ -40,6 +44,7 @@ ReplyCount <- R6::R6Class(
       if (!is.null(ReplyCountObject$`count`)) {
         self$`count` <- ReplyCountObject$`count`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -61,3 +66,4 @@ ReplyCount <- R6::R6Class(
     }
   )
 )
+

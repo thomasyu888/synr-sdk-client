@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title JsonSchemaObjectBinding
+#'
 #' @description JsonSchemaObjectBinding Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -19,7 +22,6 @@
 #' @field objectId  integer [optional]
 #'
 #' @field objectType  \link{BoundObjectType} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ JsonSchemaObjectBinding <- R6::R6Class(
     `jsonSchemaVersionInfo` = NULL,
     `objectId` = NULL,
     `objectType` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `jsonSchemaVersionInfo`=NULL, `objectId`=NULL, `objectType`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `jsonSchemaVersionInfo`=NULL, `objectId`=NULL, `objectType`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -101,6 +105,7 @@ JsonSchemaObjectBinding <- R6::R6Class(
         objectTypeObject$fromJSON(jsonlite::toJSON(JsonSchemaObjectBindingObject$objectType, auto_unbox = TRUE, digits = NA))
         self$`objectType` <- objectTypeObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -154,3 +159,4 @@ JsonSchemaObjectBinding <- R6::R6Class(
     }
   )
 )
+

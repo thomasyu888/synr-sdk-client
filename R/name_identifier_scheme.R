@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title NameIdentifierScheme
+#'
 #' @description NameIdentifierScheme Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 NameIdentifierScheme <- R6::R6Class(
-  'NameIdentifierScheme',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      NameIdentifierSchemeObject <- list()
+    "NameIdentifierScheme",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_NameIdentifierScheme()
 
-      NameIdentifierSchemeObject
-    },
-    fromJSON = function(NameIdentifierSchemeJson) {
-      NameIdentifierSchemeObject <- jsonlite::fromJSON(NameIdentifierSchemeJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(NameIdentifierSchemeJson) {
-      NameIdentifierSchemeObject <- jsonlite::fromJSON(NameIdentifierSchemeJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(NameIdentifierSchemeJson) {
+            private$value <- jsonlite::fromJSON(NameIdentifierSchemeJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(NameIdentifierSchemeJson) {
+            private$value <- jsonlite::fromJSON(NameIdentifierSchemeJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_NameIdentifierScheme <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[ORCID, ISNI]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

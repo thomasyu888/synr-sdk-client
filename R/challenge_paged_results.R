@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title ChallengePagedResults
+#'
 #' @description ChallengePagedResults Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field totalNumberOfResults  integer [optional]
 #'
 #' @field results  list( \link{Challenge} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ ChallengePagedResults <- R6::R6Class(
   public = list(
     `totalNumberOfResults` = NULL,
     `results` = NULL,
-    initialize = function(`totalNumberOfResults`=NULL, `results`=NULL, ...){
+    initialize = function(
+        `totalNumberOfResults`=NULL, `results`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`totalNumberOfResults`)) {
         stopifnot(is.numeric(`totalNumberOfResults`), length(`totalNumberOfResults`) == 1)
@@ -56,6 +60,7 @@ ChallengePagedResults <- R6::R6Class(
       if (!is.null(ChallengePagedResultsObject$`results`)) {
         self$`results` <- ApiClient$new()$deserializeObj(ChallengePagedResultsObject$`results`, "array[Challenge]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ ChallengePagedResults <- R6::R6Class(
     }
   )
 )
+

@@ -489,7 +489,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 UserProfileServicesApi <- R6::R6Class(
   'UserProfileServicesApi',
@@ -528,6 +528,7 @@ UserProfileServicesApi <- R6::R6Class(
 
       queryParams['mask'] <- mask
 
+      body <- NULL
       urlPath <- "/user/bundle"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -572,6 +573,7 @@ UserProfileServicesApi <- R6::R6Class(
       queryParams <- list()
       headerParams <- c()
 
+      body <- NULL
       urlPath <- "/userProfile"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -626,6 +628,7 @@ UserProfileServicesApi <- R6::R6Class(
 
       queryParams['mask'] <- mask
 
+      body <- NULL
       urlPath <- "/user/{id}/bundle"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -788,6 +791,7 @@ UserProfileServicesApi <- R6::R6Class(
 
       queryParams['typeFilter'] <- type.filter
 
+      body <- NULL
       urlPath <- "/userGroupHeaders"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -894,6 +898,7 @@ UserProfileServicesApi <- R6::R6Class(
         stop("Missing required parameter `profile.id`.")
       }
 
+      body <- NULL
       urlPath <- "/userProfile/{profileId}"
       if (!missing(`profile.id`)) {
         urlPath <- gsub(paste0("\\{", "profileId", "\\}"), URLencode(as.character(`profile.id`), reserved = TRUE), urlPath)
@@ -1006,6 +1011,7 @@ UserProfileServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/userProfile/{profileId}/image/preview"
       if (!missing(`profile.id`)) {
         urlPath <- gsub(paste0("\\{", "profileId", "\\}"), URLencode(as.character(`profile.id`), reserved = TRUE), urlPath)
@@ -1060,6 +1066,7 @@ UserProfileServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/userProfile/{profileId}/image"
       if (!missing(`profile.id`)) {
         urlPath <- gsub(paste0("\\{", "profileId", "\\}"), URLencode(as.character(`profile.id`), reserved = TRUE), urlPath)

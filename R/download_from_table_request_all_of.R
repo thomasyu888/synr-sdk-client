@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DownloadFromTableRequestAllOf
+#'
 #' @description DownloadFromTableRequestAllOf Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field csvTableDescriptor  \link{CsvTableDescriptor} [optional]
@@ -19,7 +22,6 @@
 #' @field includeRowIdAndRowVersion  character [optional]
 #'
 #' @field writeHeader  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ DownloadFromTableRequestAllOf <- R6::R6Class(
     `entityId` = NULL,
     `includeRowIdAndRowVersion` = NULL,
     `writeHeader` = NULL,
-    initialize = function(`concreteType`=NULL, `csvTableDescriptor`=NULL, `entityId`=NULL, `includeRowIdAndRowVersion`=TRUE, `writeHeader`=TRUE, ...){
+    initialize = function(
+        `concreteType`=NULL, `csvTableDescriptor`=NULL, `entityId`=NULL, `includeRowIdAndRowVersion`=TRUE, `writeHeader`=TRUE, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -97,6 +101,7 @@ DownloadFromTableRequestAllOf <- R6::R6Class(
       if (!is.null(DownloadFromTableRequestAllOfObject$`writeHeader`)) {
         self$`writeHeader` <- DownloadFromTableRequestAllOfObject$`writeHeader`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -150,3 +155,4 @@ DownloadFromTableRequestAllOf <- R6::R6Class(
     }
   )
 )
+

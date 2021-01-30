@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title FormChangeRequest
+#'
 #' @description FormChangeRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field fileHandleId  character [optional]
 #'
 #' @field name  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ FormChangeRequest <- R6::R6Class(
   public = list(
     `fileHandleId` = NULL,
     `name` = NULL,
-    initialize = function(`fileHandleId`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `fileHandleId`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`fileHandleId`)) {
         stopifnot(is.character(`fileHandleId`), length(`fileHandleId`) == 1)
@@ -55,6 +59,7 @@ FormChangeRequest <- R6::R6Class(
       if (!is.null(FormChangeRequestObject$`name`)) {
         self$`name` <- FormChangeRequestObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ FormChangeRequest <- R6::R6Class(
     }
   )
 )
+

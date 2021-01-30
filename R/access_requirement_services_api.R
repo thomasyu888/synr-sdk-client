@@ -131,7 +131,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 AccessRequirementServicesApi <- R6::R6Class(
   'AccessRequirementServicesApi',
@@ -168,6 +168,7 @@ AccessRequirementServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/lockAccessRequirement"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -224,6 +225,7 @@ AccessRequirementServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/entity/{id}/accessRequirement"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -280,6 +282,7 @@ AccessRequirementServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/team/{id}/accessRequirement"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

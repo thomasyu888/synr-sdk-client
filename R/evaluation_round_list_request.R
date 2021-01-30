@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title EvaluationRoundListRequest
-#' @description EvaluationRoundListRequest Class
-#' @format An \code{R6Class} generator object
-#' @field nextPageToken  character [optional]
 #'
+#' @description EvaluationRoundListRequest Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field nextPageToken  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ EvaluationRoundListRequest <- R6::R6Class(
   'EvaluationRoundListRequest',
   public = list(
     `nextPageToken` = NULL,
-    initialize = function(`nextPageToken`=NULL, ...){
+    initialize = function(
+        `nextPageToken`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextPageToken`)) {
         stopifnot(is.character(`nextPageToken`), length(`nextPageToken`) == 1)
@@ -41,6 +45,7 @@ EvaluationRoundListRequest <- R6::R6Class(
       if (!is.null(EvaluationRoundListRequestObject$`nextPageToken`)) {
         self$`nextPageToken` <- EvaluationRoundListRequestObject$`nextPageToken`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ EvaluationRoundListRequest <- R6::R6Class(
     }
   )
 )
+

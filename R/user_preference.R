@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title UserPreference
+#'
 #' @description UserPreference Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field name  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ UserPreference <- R6::R6Class(
   public = list(
     `concreteType` = NULL,
     `name` = NULL,
-    initialize = function(`concreteType`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -55,6 +59,7 @@ UserPreference <- R6::R6Class(
       if (!is.null(UserPreferenceObject$`name`)) {
         self$`name` <- UserPreferenceObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ UserPreference <- R6::R6Class(
     }
   )
 )
+

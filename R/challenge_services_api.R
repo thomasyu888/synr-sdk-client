@@ -491,7 +491,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 ChallengeServicesApi <- R6::R6Class(
   'ChallengeServicesApi',
@@ -636,6 +636,7 @@ ChallengeServicesApi <- R6::R6Class(
         stop("Missing required parameter `challenge.id`.")
       }
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)
@@ -682,6 +683,7 @@ ChallengeServicesApi <- R6::R6Class(
         stop("Missing required parameter `challenge.team.id`.")
       }
 
+      body <- NULL
       urlPath <- "/challengeTeam/{challengeTeamId}"
       if (!missing(`challenge.team.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeTeamId", "\\}"), URLencode(as.character(`challenge.team.id`), reserved = TRUE), urlPath)
@@ -728,6 +730,7 @@ ChallengeServicesApi <- R6::R6Class(
         stop("Missing required parameter `challenge.id`.")
       }
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)
@@ -780,6 +783,7 @@ ChallengeServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/challenge"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -836,6 +840,7 @@ ChallengeServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}/challengeTeam"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)
@@ -894,6 +899,7 @@ ChallengeServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/challenge"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -948,6 +954,7 @@ ChallengeServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}/participant"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)
@@ -1004,6 +1011,7 @@ ChallengeServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}/registratableTeam"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)
@@ -1060,6 +1068,7 @@ ChallengeServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/challenge/{challengeId}/submissionTeams"
       if (!missing(`challenge.id`)) {
         urlPath <- gsub(paste0("\\{", "challengeId", "\\}"), URLencode(as.character(`challenge.id`), reserved = TRUE), urlPath)

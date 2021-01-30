@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title DoiNameIdentifier
+#'
 #' @description DoiNameIdentifier Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field identifier  character 
 #'
 #' @field nameIdentifierScheme  \link{NameIdentifierScheme} 
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ DoiNameIdentifier <- R6::R6Class(
   public = list(
     `identifier` = NULL,
     `nameIdentifierScheme` = NULL,
-    initialize = function(`identifier`, `nameIdentifierScheme`, ...){
+    initialize = function(
+        `identifier`, `nameIdentifierScheme`, ...
+    ) {
       local.optional.var <- list(...)
       if (!missing(`identifier`)) {
         stopifnot(is.character(`identifier`), length(`identifier`) == 1)
@@ -57,6 +61,7 @@ DoiNameIdentifier <- R6::R6Class(
         nameIdentifierSchemeObject$fromJSON(jsonlite::toJSON(DoiNameIdentifierObject$nameIdentifierScheme, auto_unbox = TRUE, digits = NA))
         self$`nameIdentifierScheme` <- nameIdentifierSchemeObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -86,3 +91,4 @@ DoiNameIdentifier <- R6::R6Class(
     }
   )
 )
+

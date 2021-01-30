@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title TeamMember
+#'
 #' @description TeamMember Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field isAdmin  character [optional]
 #'
 #' @field member  \link{UserGroupHeader} [optional]
 #'
 #' @field teamId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ TeamMember <- R6::R6Class(
     `isAdmin` = NULL,
     `member` = NULL,
     `teamId` = NULL,
-    initialize = function(`isAdmin`=NULL, `member`=NULL, `teamId`=NULL, ...){
+    initialize = function(
+        `isAdmin`=NULL, `member`=NULL, `teamId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`isAdmin`)) {
         self$`isAdmin` <- `isAdmin`
@@ -70,6 +74,7 @@ TeamMember <- R6::R6Class(
       if (!is.null(TeamMemberObject$`teamId`)) {
         self$`teamId` <- TeamMemberObject$`teamId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -107,3 +112,4 @@ TeamMember <- R6::R6Class(
     }
   )
 )
+

@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title VerificationStateEnum
+#'
 #' @description VerificationStateEnum Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 VerificationStateEnum <- R6::R6Class(
-  'VerificationStateEnum',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      VerificationStateEnumObject <- list()
+    "VerificationStateEnum",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_VerificationStateEnum()
 
-      VerificationStateEnumObject
-    },
-    fromJSON = function(VerificationStateEnumJson) {
-      VerificationStateEnumObject <- jsonlite::fromJSON(VerificationStateEnumJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(VerificationStateEnumJson) {
-      VerificationStateEnumObject <- jsonlite::fromJSON(VerificationStateEnumJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(VerificationStateEnumJson) {
+            private$value <- jsonlite::fromJSON(VerificationStateEnumJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(VerificationStateEnumJson) {
+            private$value <- jsonlite::fromJSON(VerificationStateEnumJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_VerificationStateEnum <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[SUBMITTED, APPROVED, REJECTED, SUSPENDED]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title MembershipRequest
+#'
 #' @description MembershipRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field userId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ MembershipRequest <- R6::R6Class(
     `message` = NULL,
     `teamId` = NULL,
     `userId` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `id`=NULL, `message`=NULL, `teamId`=NULL, `userId`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `expiresOn`=NULL, `id`=NULL, `message`=NULL, `teamId`=NULL, `userId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -125,6 +129,7 @@ MembershipRequest <- R6::R6Class(
       if (!is.null(MembershipRequestObject$`userId`)) {
         self$`userId` <- MembershipRequestObject$`userId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -194,3 +199,4 @@ MembershipRequest <- R6::R6Class(
     }
   )
 )
+

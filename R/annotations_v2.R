@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title AnnotationsV2
+#'
 #' @description AnnotationsV2 Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field annotations  named list( \link{AnnotationsValue} ) [optional]
 #'
 #' @field etag  character [optional]
 #'
 #' @field id  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ AnnotationsV2 <- R6::R6Class(
     `annotations` = NULL,
     `etag` = NULL,
     `id` = NULL,
-    initialize = function(`annotations`=NULL, `etag`=NULL, `id`=NULL, ...){
+    initialize = function(
+        `annotations`=NULL, `etag`=NULL, `id`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`annotations`)) {
         stopifnot(is.vector(`annotations`), length(`annotations`) != 0)
@@ -70,6 +74,7 @@ AnnotationsV2 <- R6::R6Class(
       if (!is.null(AnnotationsV2Object$`id`)) {
         self$`id` <- AnnotationsV2Object$`id`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -107,3 +112,4 @@ AnnotationsV2 <- R6::R6Class(
     }
   )
 )
+

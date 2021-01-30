@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title ValidationResults
+#'
 #' @description ValidationResults Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field allValidationMessages  list( character ) [optional]
 #'
 #' @field isValid  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field validationException  \link{ValidationException} [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ ValidationResults <- R6::R6Class(
     `validatedOn` = NULL,
     `validationErrorMessage` = NULL,
     `validationException` = NULL,
-    initialize = function(`allValidationMessages`=NULL, `isValid`=NULL, `objectEtag`=NULL, `objectId`=NULL, `objectType`=NULL, `schema$id`=NULL, `validatedOn`=NULL, `validationErrorMessage`=NULL, `validationException`=NULL, ...){
+    initialize = function(
+        `allValidationMessages`=NULL, `isValid`=NULL, `objectEtag`=NULL, `objectId`=NULL, `objectType`=NULL, `schema$id`=NULL, `validatedOn`=NULL, `validationErrorMessage`=NULL, `validationException`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`allValidationMessages`)) {
         stopifnot(is.vector(`allValidationMessages`), length(`allValidationMessages`) != 0)
@@ -157,6 +161,7 @@ ValidationResults <- R6::R6Class(
         validationExceptionObject$fromJSON(jsonlite::toJSON(ValidationResultsObject$validationException, auto_unbox = TRUE, digits = NA))
         self$`validationException` <- validationExceptionObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -242,3 +247,4 @@ ValidationResults <- R6::R6Class(
     }
   )
 )
+

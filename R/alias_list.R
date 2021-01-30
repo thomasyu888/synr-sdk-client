@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title AliasList
-#' @description AliasList Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( character ) [optional]
 #'
+#' @description AliasList Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( character ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ AliasList <- R6::R6Class(
   'AliasList',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ AliasList <- R6::R6Class(
       if (!is.null(AliasListObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(AliasListObject$`list`, "array[character]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ AliasList <- R6::R6Class(
     }
   )
 )
+

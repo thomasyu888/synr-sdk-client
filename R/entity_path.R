@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title EntityPath
-#' @description EntityPath Class
-#' @format An \code{R6Class} generator object
-#' @field path  list( \link{EntityHeader} ) [optional]
 #'
+#' @description EntityPath Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field path  list( \link{EntityHeader} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ EntityPath <- R6::R6Class(
   'EntityPath',
   public = list(
     `path` = NULL,
-    initialize = function(`path`=NULL, ...){
+    initialize = function(
+        `path`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`path`)) {
         stopifnot(is.vector(`path`), length(`path`) != 0)
@@ -42,6 +46,7 @@ EntityPath <- R6::R6Class(
       if (!is.null(EntityPathObject$`path`)) {
         self$`path` <- ApiClient$new()$deserializeObj(EntityPathObject$`path`, "array[EntityHeader]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ EntityPath <- R6::R6Class(
     }
   )
 )
+

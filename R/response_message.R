@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title ResponseMessage
-#' @description ResponseMessage Class
-#' @format An \code{R6Class} generator object
-#' @field message  character [optional]
 #'
+#' @description ResponseMessage Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field message  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ ResponseMessage <- R6::R6Class(
   'ResponseMessage',
   public = list(
     `message` = NULL,
-    initialize = function(`message`=NULL, ...){
+    initialize = function(
+        `message`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`message`)) {
         stopifnot(is.character(`message`), length(`message`) == 1)
@@ -41,6 +45,7 @@ ResponseMessage <- R6::R6Class(
       if (!is.null(ResponseMessageObject$`message`)) {
         self$`message` <- ResponseMessageObject$`message`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ ResponseMessage <- R6::R6Class(
     }
   )
 )
+

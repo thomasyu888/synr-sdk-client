@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Challenge
+#'
 #' @description Challenge Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field etag  character [optional]
 #'
 #' @field projectId  character [optional]
@@ -17,7 +20,6 @@
 #' @field participantTeamId  character [optional]
 #'
 #' @field id  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ Challenge <- R6::R6Class(
     `projectId` = NULL,
     `participantTeamId` = NULL,
     `id` = NULL,
-    initialize = function(`etag`=NULL, `projectId`=NULL, `participantTeamId`=NULL, `id`=NULL, ...){
+    initialize = function(
+        `etag`=NULL, `projectId`=NULL, `participantTeamId`=NULL, `id`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`etag`)) {
         stopifnot(is.character(`etag`), length(`etag`) == 1)
@@ -83,6 +87,7 @@ Challenge <- R6::R6Class(
       if (!is.null(ChallengeObject$`id`)) {
         self$`id` <- ChallengeObject$`id`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -128,3 +133,4 @@ Challenge <- R6::R6Class(
     }
   )
 )
+

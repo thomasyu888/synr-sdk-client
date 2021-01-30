@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title UserEntityPermissions
+#'
 #' @description UserEntityPermissions Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field canAddChild  character [optional]
 #'
 #' @field canCertifiedUserAddChild  character [optional]
@@ -42,7 +45,6 @@
 #'
 #' @field ownerPrincipalId  numeric [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -65,7 +67,9 @@ UserEntityPermissions <- R6::R6Class(
     `isCertificationRequired` = NULL,
     `isCertifiedUser` = NULL,
     `ownerPrincipalId` = NULL,
-    initialize = function(`canAddChild`=NULL, `canCertifiedUserAddChild`=NULL, `canCertifiedUserEdit`=NULL, `canChangePermissions`=NULL, `canChangeSettings`=NULL, `canDelete`=NULL, `canDownload`=NULL, `canEdit`=NULL, `canEnableInheritance`=NULL, `canModerate`=NULL, `canPublicRead`=NULL, `canUpload`=NULL, `canView`=NULL, `isCertificationRequired`=NULL, `isCertifiedUser`=NULL, `ownerPrincipalId`=NULL, ...){
+    initialize = function(
+        `canAddChild`=NULL, `canCertifiedUserAddChild`=NULL, `canCertifiedUserEdit`=NULL, `canChangePermissions`=NULL, `canChangeSettings`=NULL, `canDelete`=NULL, `canDownload`=NULL, `canEdit`=NULL, `canEnableInheritance`=NULL, `canModerate`=NULL, `canPublicRead`=NULL, `canUpload`=NULL, `canView`=NULL, `isCertificationRequired`=NULL, `isCertifiedUser`=NULL, `ownerPrincipalId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`canAddChild`)) {
         self$`canAddChild` <- `canAddChild`
@@ -235,6 +239,7 @@ UserEntityPermissions <- R6::R6Class(
       if (!is.null(UserEntityPermissionsObject$`ownerPrincipalId`)) {
         self$`ownerPrincipalId` <- UserEntityPermissionsObject$`ownerPrincipalId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -376,3 +381,4 @@ UserEntityPermissions <- R6::R6Class(
     }
   )
 )
+

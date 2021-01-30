@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title TableBundle
+#'
 #' @description TableBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field columnModels  list( \link{ColumnModel} ) [optional]
 #'
 #' @field maxRowsPerPage  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ TableBundle <- R6::R6Class(
   public = list(
     `columnModels` = NULL,
     `maxRowsPerPage` = NULL,
-    initialize = function(`columnModels`=NULL, `maxRowsPerPage`=NULL, ...){
+    initialize = function(
+        `columnModels`=NULL, `maxRowsPerPage`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`columnModels`)) {
         stopifnot(is.vector(`columnModels`), length(`columnModels`) != 0)
@@ -55,6 +59,7 @@ TableBundle <- R6::R6Class(
       if (!is.null(TableBundleObject$`maxRowsPerPage`)) {
         self$`maxRowsPerPage` <- TableBundleObject$`maxRowsPerPage`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ TableBundle <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title FileHandle
+#'
 #' @description FileHandle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field contentMd5  character [optional]
@@ -30,7 +33,6 @@
 #'
 #' @field storageLocationId  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -47,7 +49,9 @@ FileHandle <- R6::R6Class(
     `fileName` = NULL,
     `id` = NULL,
     `storageLocationId` = NULL,
-    initialize = function(`concreteType`=NULL, `contentMd5`=NULL, `contentSize`=NULL, `contentType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `fileName`=NULL, `id`=NULL, `storageLocationId`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `contentMd5`=NULL, `contentSize`=NULL, `contentType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `fileName`=NULL, `id`=NULL, `storageLocationId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -167,6 +171,7 @@ FileHandle <- R6::R6Class(
       if (!is.null(FileHandleObject$`storageLocationId`)) {
         self$`storageLocationId` <- FileHandleObject$`storageLocationId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -260,3 +265,4 @@ FileHandle <- R6::R6Class(
     }
   )
 )
+

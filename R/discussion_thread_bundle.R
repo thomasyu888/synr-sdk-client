@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DiscussionThreadBundle
+#'
 #' @description DiscussionThreadBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field activeAuthors  list( character ) [optional]
 #'
 #' @field createdBy  character [optional]
@@ -42,7 +45,6 @@
 #'
 #' @field title  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -65,7 +67,9 @@ DiscussionThreadBundle <- R6::R6Class(
     `numberOfViews` = NULL,
     `projectId` = NULL,
     `title` = NULL,
-    initialize = function(`activeAuthors`=NULL, `createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `forumId`=NULL, `id`=NULL, `isDeleted`=NULL, `isEdited`=NULL, `isPinned`=NULL, `lastActivity`=NULL, `messageKey`=NULL, `modifiedOn`=NULL, `numberOfReplies`=NULL, `numberOfViews`=NULL, `projectId`=NULL, `title`=NULL, ...){
+    initialize = function(
+        `activeAuthors`=NULL, `createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `forumId`=NULL, `id`=NULL, `isDeleted`=NULL, `isEdited`=NULL, `isPinned`=NULL, `lastActivity`=NULL, `messageKey`=NULL, `modifiedOn`=NULL, `numberOfReplies`=NULL, `numberOfViews`=NULL, `projectId`=NULL, `title`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`activeAuthors`)) {
         stopifnot(is.vector(`activeAuthors`), length(`activeAuthors`) != 0)
@@ -249,6 +253,7 @@ DiscussionThreadBundle <- R6::R6Class(
       if (!is.null(DiscussionThreadBundleObject$`title`)) {
         self$`title` <- DiscussionThreadBundleObject$`title`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -390,3 +395,4 @@ DiscussionThreadBundle <- R6::R6Class(
     }
   )
 )
+

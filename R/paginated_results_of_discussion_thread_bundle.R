@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title PaginatedResultsOfDiscussionThreadBundle
+#'
 #' @description PaginatedResultsOfDiscussionThreadBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field results  list( \link{DiscussionThreadBundle} ) [optional]
 #'
 #' @field totalNumberOfResults  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ PaginatedResultsOfDiscussionThreadBundle <- R6::R6Class(
   public = list(
     `results` = NULL,
     `totalNumberOfResults` = NULL,
-    initialize = function(`results`=NULL, `totalNumberOfResults`=NULL, ...){
+    initialize = function(
+        `results`=NULL, `totalNumberOfResults`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`results`)) {
         stopifnot(is.vector(`results`), length(`results`) != 0)
@@ -56,6 +60,7 @@ PaginatedResultsOfDiscussionThreadBundle <- R6::R6Class(
       if (!is.null(PaginatedResultsOfDiscussionThreadBundleObject$`totalNumberOfResults`)) {
         self$`totalNumberOfResults` <- PaginatedResultsOfDiscussionThreadBundleObject$`totalNumberOfResults`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ PaginatedResultsOfDiscussionThreadBundle <- R6::R6Class(
     }
   )
 )
+

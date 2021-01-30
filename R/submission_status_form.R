@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title SubmissionStatusForm
+#'
 #' @description SubmissionStatusForm Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field rejectionMessage  character [optional]
 #'
 #' @field reviewedBy  character [optional]
@@ -19,7 +22,6 @@
 #' @field state  \link{StateEnum} [optional]
 #'
 #' @field submittedOn  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ SubmissionStatusForm <- R6::R6Class(
     `reviewedOn` = NULL,
     `state` = NULL,
     `submittedOn` = NULL,
-    initialize = function(`rejectionMessage`=NULL, `reviewedBy`=NULL, `reviewedOn`=NULL, `state`=NULL, `submittedOn`=NULL, ...){
+    initialize = function(
+        `rejectionMessage`=NULL, `reviewedBy`=NULL, `reviewedOn`=NULL, `state`=NULL, `submittedOn`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`rejectionMessage`)) {
         stopifnot(is.character(`rejectionMessage`), length(`rejectionMessage`) == 1)
@@ -99,6 +103,7 @@ SubmissionStatusForm <- R6::R6Class(
       if (!is.null(SubmissionStatusFormObject$`submittedOn`)) {
         self$`submittedOn` <- SubmissionStatusFormObject$`submittedOn`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -152,3 +157,4 @@ SubmissionStatusForm <- R6::R6Class(
     }
   )
 )
+

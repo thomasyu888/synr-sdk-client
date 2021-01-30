@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title PassingRecord
+#'
 #' @description PassingRecord Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field corrections  list( \link{ResponseCorrectness} ) [optional]
 #'
 #' @field passed  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field userId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ PassingRecord <- R6::R6Class(
     `responseId` = NULL,
     `score` = NULL,
     `userId` = NULL,
-    initialize = function(`corrections`=NULL, `passed`=NULL, `passedOn`=NULL, `quizId`=NULL, `responseId`=NULL, `score`=NULL, `userId`=NULL, ...){
+    initialize = function(
+        `corrections`=NULL, `passed`=NULL, `passedOn`=NULL, `quizId`=NULL, `responseId`=NULL, `score`=NULL, `userId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`corrections`)) {
         stopifnot(is.vector(`corrections`), length(`corrections`) != 0)
@@ -125,6 +129,7 @@ PassingRecord <- R6::R6Class(
       if (!is.null(PassingRecordObject$`userId`)) {
         self$`userId` <- PassingRecordObject$`userId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -194,3 +199,4 @@ PassingRecord <- R6::R6Class(
     }
   )
 )
+

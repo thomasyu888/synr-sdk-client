@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title DiscussionReplyBundle
+#'
 #' @description DiscussionReplyBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -32,7 +35,6 @@
 #'
 #' @field threadId  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,7 +52,9 @@ DiscussionReplyBundle <- R6::R6Class(
     `modifiedOn` = NULL,
     `projectId` = NULL,
     `threadId` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `forumId`=NULL, `id`=NULL, `isDeleted`=NULL, `isEdited`=NULL, `messageKey`=NULL, `modifiedOn`=NULL, `projectId`=NULL, `threadId`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `etag`=NULL, `forumId`=NULL, `id`=NULL, `isDeleted`=NULL, `isEdited`=NULL, `messageKey`=NULL, `modifiedOn`=NULL, `projectId`=NULL, `threadId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -179,6 +183,7 @@ DiscussionReplyBundle <- R6::R6Class(
       if (!is.null(DiscussionReplyBundleObject$`threadId`)) {
         self$`threadId` <- DiscussionReplyBundleObject$`threadId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -280,3 +285,4 @@ DiscussionReplyBundle <- R6::R6Class(
     }
   )
 )
+

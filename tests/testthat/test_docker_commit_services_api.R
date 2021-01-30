@@ -10,8 +10,8 @@ test_that("AddDockerCommit", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Add a commit (tag and digest) for an external/unmanaged Docker repository.
   # Add a commit (tag and digest) for an external/unmanaged Docker repository. (Commits for managed repositories are added via direct integration with the Synapse Docker registry.) 
-  # @param character  id  the ID of the Docker repository entity 
-  # @param DockerCommit  docker.commit  the new tag/digest pair for the repository  (optional)
+  # @param id character the ID of the Docker repository entity
+  # @param docker.commit DockerCommit the new tag/digest pair for the repository (optional)
   # @return [Void]
 
   # uncomment below to test the operation
@@ -23,11 +23,11 @@ test_that("ListDockerTags", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # List the tagged commits (tag/digest pairs) for the given Docker repository.
   # List the tagged commits (tag/digest pairs) for the given Docker repository.  Only the most recent digest for each tag is returned since, following Docker&#39;s convention, a tag may be reassigned to a newer commit. The list may be sorted by date or tag.  The default is to sort by date, descending (newest first).&#39; 
-  # @param character  id  the ID of the Docker repository entity 
-  # @param character  ascending  Ascending  (optional)
-  # @param integer  limit  pagination parameter, optional (default is 20)  (optional)
-  # @param integer  offset  pagination parameter, optional (default is 0)  (optional)
-  # @param character  sort  Sort results  (optional)
+  # @param id character the ID of the Docker repository entity
+  # @param ascending character Ascending (optional)
+  # @param limit integer pagination parameter, optional (default is 20) (optional)
+  # @param offset integer pagination parameter, optional (default is 0) (optional)
+  # @param sort character Sort results (optional)
   # @return [PaginatedResultsOfDockerCommit]
 
   # uncomment below to test the operation

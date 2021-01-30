@@ -5,17 +5,169 @@ context("Test DiscussionServicesApi")
 
 api.instance <- DiscussionServicesApi$new()
 
+test_that("CreateThread", {
+  # tests for CreateThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Create a new thread in a forum.
+  # This API is used to create a new thread in a forum.  Target users: anyone who has READ permission to the project. 
+  # @param create.discussion.thread CreateDiscussionThread  (optional)
+  # @return [DiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("DeleteThread", {
+  # tests for DeleteThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Delete a Thread.
+  # This API is used to mark a thread as deleted.  Target users: only forum&#39;s moderator can mark a thread as deleted. 
+  # @param thread.id character The ID of a thread.
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepliesForThread", {
+  # tests for GetRepliesForThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get N number of replies for a given thread ID.
+  # This API is used to get N number of replies for a given thread ID.  Target users: anyone who has READ permission to the project. 
+  # @param thread.id character The ID of a thread.
+  # @param filter character Filter deleted not deleted replies.
+  # @param ascending character The direction of sort: true for ascending, and false for descending (optional)
+  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10.  (optional)
+  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.'  (optional)
+  # @param sort character The field to sort the resulting replies on.  (optional)
+  # @return [PaginatedResultsOfDiscussionReplyBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetReplyCountForThread", {
+  # tests for GetReplyCountForThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the total number of replies for a given Thread. 
+  # This API is used to get the total number of replies for a given thread ID.  Target users: anyone who has READ permission to the project.&#39; 
+  # @param thread.id character The ID of a thread.
+  # @param filter character Filter deleted not deleted replies.
+  # @return [ReplyCount]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetThread", {
+  # tests for GetThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get a thread.
+  # This API is used to get a thread and its statistic given its ID.  Target users: anyone who has READ permission to the project. 
+  # @param thread.id character The ID of a thread.
+  # @return [DiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetThreadCounts", {
+  # tests for GetThreadCounts
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get number of threads that belong to projects user can view and references the given entity. 
+  # This API is used to get list of entity and count pairs, with count is the number of threads that belong to projects user can view and references the given entity.  Target users: anyone who has READ permission to the project. 
+  # @param entity.id.list EntityIdList The requested list. Limit size 20. (optional)
+  # @return [EntityThreadCounts]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetThreadUrl", {
+  # tests for GetThreadUrl
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Get the message URL of a thread.
+  # This API is used to get the message URL of a thread. The message URL is the URL to download the file which contains the thread message.  Target users: anyone who has READ permission to the project.  The resulting URL will be signed with Content-Type &#x3D;\&quot;text/plain; charset&#x3D;utf-8\&quot;; therefore, this header must be included with the GET on the URL. 
+  # @param message.key character Message Key
+  # @return [MessageURL]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("GetThreadsForEntity", {
   # tests for GetThreadsForEntity
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
   # This API is used to get N number of threads that belongs to projects user can view and references the given entity.  Target users: anyone who has READ permission to the entity. 
-  # @param character  id  The ID of an Entity. 
-  # @param character  ascending  The direction of sort: true for ascending, and false for descending  (optional)
-  # @param numeric  limit  Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 20.'   (optional)
-  # @param numeric  offset  The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.'   (optional)
-  # @param character  sort  The field to sort the resulting threads on. Available options DiscussionThreadOrder   (optional)
+  # @param id character The ID of an Entity.
+  # @param ascending character The direction of sort: true for ascending, and false for descending (optional)
+  # @param limit numeric Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 20.'  (optional)
+  # @param offset numeric The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.'  (optional)
+  # @param sort character The field to sort the resulting threads on. Available options DiscussionThreadOrder  (optional)
   # @return [PaginatedResultsOfDiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PinThread", {
+  # tests for PinThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Pin a Thread.
+  # This API is used to mark a thread as pinned.  Target users: only forum&#39;s moderator can mark a thread as pinned. 
+  # @param thread.id character The ID of a thread.
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("RestoreDeletedThread", {
+  # tests for RestoreDeletedThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Restore a deleted thread.
+  # This API is used to restore a deleted thread.  Target users: only forum&#39;s moderator can restore a deleted thread. 
+  # @param thread.id character The ID of a thread.
+  # @return [character]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("UnpinThread", {
+  # tests for UnpinThread
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Unpin a thread.
+  # This API is used to unpin a thread.  Target users: only forum&#39;s moderator can unpin a thread. 
+  # @param thread.id character The ID of a thread.
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("UpdateThreadMessage", {
+  # tests for UpdateThreadMessage
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Update the message of a thread.
+  # This API is used to update the message of a thread.  Target users: only the author of the thread can update its message.&#39; 
+  # @param thread.id character The ID of a thread.
+  # @param update.thread.message UpdateThreadMessage  (optional)
+  # @return [DiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("UpdateThreadTitle", {
+  # tests for UpdateThreadTitle
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Update the title of a Thread.
+  # This API is used to update the title of a thread.  Target users: only the author of the thread can update its title.&#39; 
+  # @param thread.id character The ID of a thread.
+  # @param update.thread.title UpdateThreadTitle  (optional)
+  # @return [DiscussionThreadBundle]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

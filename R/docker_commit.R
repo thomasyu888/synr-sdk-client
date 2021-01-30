@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title DockerCommit
+#'
 #' @description DockerCommit Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdOn  character [optional]
 #'
 #' @field digest  character [optional]
 #'
 #' @field tag  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ DockerCommit <- R6::R6Class(
     `createdOn` = NULL,
     `digest` = NULL,
     `tag` = NULL,
-    initialize = function(`createdOn`=NULL, `digest`=NULL, `tag`=NULL, ...){
+    initialize = function(
+        `createdOn`=NULL, `digest`=NULL, `tag`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdOn`)) {
         stopifnot(is.character(`createdOn`), length(`createdOn`) == 1)
@@ -69,6 +73,7 @@ DockerCommit <- R6::R6Class(
       if (!is.null(DockerCommitObject$`tag`)) {
         self$`tag` <- DockerCommitObject$`tag`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ DockerCommit <- R6::R6Class(
     }
   )
 )
+

@@ -2,6 +2,3 @@
 # Please update as you see appropriate
 
 context("Test SubmissionStatusEnum")
-
-model.instance <- SubmissionStatusEnum$new()
-

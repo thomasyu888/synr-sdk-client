@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title FileHandleResults
-#' @description FileHandleResults Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( \link{FileHandle} ) [optional]
 #'
+#' @description FileHandleResults Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( \link{FileHandle} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ FileHandleResults <- R6::R6Class(
   'FileHandleResults',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ FileHandleResults <- R6::R6Class(
       if (!is.null(FileHandleResultsObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(FileHandleResultsObject$`list`, "array[FileHandle]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ FileHandleResults <- R6::R6Class(
     }
   )
 )
+

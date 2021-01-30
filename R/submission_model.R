@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title SubmissionModel
+#'
 #' @description SubmissionModel Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field contributors  list( \link{SubmissionContributor} ) [optional]
 #'
 #' @field createdOn  character [optional]
@@ -38,7 +41,6 @@
 #'
 #' @field versionNumber  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -59,7 +61,9 @@ SubmissionModel <- R6::R6Class(
     `teamId` = NULL,
     `userId` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`contributors`=NULL, `createdOn`=NULL, `dockerDigest`=NULL, `dockerRepositoryName`=NULL, `entityBundleJSON`=NULL, `entityId`=NULL, `evaluationId`=NULL, `evaluationRoundId`=NULL, `id`=NULL, `name`=NULL, `submitterAlias`=NULL, `teamId`=NULL, `userId`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `contributors`=NULL, `createdOn`=NULL, `dockerDigest`=NULL, `dockerRepositoryName`=NULL, `entityBundleJSON`=NULL, `entityId`=NULL, `evaluationId`=NULL, `evaluationRoundId`=NULL, `id`=NULL, `name`=NULL, `submitterAlias`=NULL, `teamId`=NULL, `userId`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`contributors`)) {
         stopifnot(is.vector(`contributors`), length(`contributors`) != 0)
@@ -224,6 +228,7 @@ SubmissionModel <- R6::R6Class(
       if (!is.null(SubmissionModelObject$`versionNumber`)) {
         self$`versionNumber` <- SubmissionModelObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -349,3 +354,4 @@ SubmissionModel <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title AnnotationsAnnotation
+#'
 #' @description AnnotationsAnnotation Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field doubleAnnos  list( \link{DoubleAnnotation} ) [optional]
 #'
 #' @field longAnnos  list( \link{LongAnnotation} ) [optional]
@@ -21,7 +24,6 @@
 #' @field stringAnnos  list( \link{StringAnnotation} ) [optional]
 #'
 #' @field version  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -35,7 +37,9 @@ AnnotationsAnnotation <- R6::R6Class(
     `scopeId` = NULL,
     `stringAnnos` = NULL,
     `version` = NULL,
-    initialize = function(`doubleAnnos`=NULL, `longAnnos`=NULL, `objectId`=NULL, `scopeId`=NULL, `stringAnnos`=NULL, `version`=NULL, ...){
+    initialize = function(
+        `doubleAnnos`=NULL, `longAnnos`=NULL, `objectId`=NULL, `scopeId`=NULL, `stringAnnos`=NULL, `version`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`doubleAnnos`)) {
         stopifnot(is.vector(`doubleAnnos`), length(`doubleAnnos`) != 0)
@@ -114,6 +118,7 @@ AnnotationsAnnotation <- R6::R6Class(
       if (!is.null(AnnotationsAnnotationObject$`version`)) {
         self$`version` <- AnnotationsAnnotationObject$`version`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -175,3 +180,4 @@ AnnotationsAnnotation <- R6::R6Class(
     }
   )
 )
+

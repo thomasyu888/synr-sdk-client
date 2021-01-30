@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Query
+#'
 #' @description Query Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field additionalFilters  list( object ) [optional]
 #'
 #' @field includeEntityEtag  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field sql  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ Query <- R6::R6Class(
     `selectedFacets` = NULL,
     `sort` = NULL,
     `sql` = NULL,
-    initialize = function(`additionalFilters`=NULL, `includeEntityEtag`=NULL, `limit`=NULL, `offset`=NULL, `selectedFacets`=NULL, `sort`=NULL, `sql`=NULL, ...){
+    initialize = function(
+        `additionalFilters`=NULL, `includeEntityEtag`=NULL, `limit`=NULL, `offset`=NULL, `selectedFacets`=NULL, `sort`=NULL, `sql`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`additionalFilters`)) {
         stopifnot(is.vector(`additionalFilters`), length(`additionalFilters`) != 0)
@@ -127,6 +131,7 @@ Query <- R6::R6Class(
       if (!is.null(QueryObject$`sql`)) {
         self$`sql` <- QueryObject$`sql`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -196,3 +201,4 @@ Query <- R6::R6Class(
     }
   )
 )
+

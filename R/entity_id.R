@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title EntityId
-#' @description EntityId Class
-#' @format An \code{R6Class} generator object
-#' @field id  character [optional]
 #'
+#' @description EntityId Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field id  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ EntityId <- R6::R6Class(
   'EntityId',
   public = list(
     `id` = NULL,
-    initialize = function(`id`=NULL, ...){
+    initialize = function(
+        `id`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -41,6 +45,7 @@ EntityId <- R6::R6Class(
       if (!is.null(EntityIdObject$`id`)) {
         self$`id` <- EntityIdObject$`id`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ EntityId <- R6::R6Class(
     }
   )
 )
+

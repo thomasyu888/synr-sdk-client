@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EntityBundleRequest
+#'
 #' @description EntityBundleRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field includeAccessControlList  character [optional]
 #'
 #' @field includeAnnotations  character [optional]
@@ -38,7 +41,6 @@
 #'
 #' @field includeThreadCount  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -59,7 +61,9 @@ EntityBundleRequest <- R6::R6Class(
     `includeRootWikiId` = NULL,
     `includeTableBundle` = NULL,
     `includeThreadCount` = NULL,
-    initialize = function(`includeAccessControlList`=NULL, `includeAnnotations`=NULL, `includeBenefactorACL`=NULL, `includeDOIAssociation`=NULL, `includeEntity`=NULL, `includeEntityPath`=NULL, `includeFileHandles`=NULL, `includeFileName`=NULL, `includeHasChildren`=NULL, `includePermissions`=NULL, `includeRestrictionInformation`=NULL, `includeRootWikiId`=NULL, `includeTableBundle`=NULL, `includeThreadCount`=NULL, ...){
+    initialize = function(
+        `includeAccessControlList`=NULL, `includeAnnotations`=NULL, `includeBenefactorACL`=NULL, `includeDOIAssociation`=NULL, `includeEntity`=NULL, `includeEntityPath`=NULL, `includeFileHandles`=NULL, `includeFileName`=NULL, `includeHasChildren`=NULL, `includePermissions`=NULL, `includeRestrictionInformation`=NULL, `includeRootWikiId`=NULL, `includeTableBundle`=NULL, `includeThreadCount`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`includeAccessControlList`)) {
         self$`includeAccessControlList` <- `includeAccessControlList`
@@ -209,6 +213,7 @@ EntityBundleRequest <- R6::R6Class(
       if (!is.null(EntityBundleRequestObject$`includeThreadCount`)) {
         self$`includeThreadCount` <- EntityBundleRequestObject$`includeThreadCount`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -334,3 +339,4 @@ EntityBundleRequest <- R6::R6Class(
     }
   )
 )
+

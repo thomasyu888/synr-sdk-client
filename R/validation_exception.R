@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title ValidationException
+#'
 #' @description ValidationException Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field causingExceptions  list( \link{ValidationException} ) [optional]
 #'
 #' @field keyword  character [optional]
@@ -19,7 +22,6 @@
 #' @field pointerToViolation  character [optional]
 #'
 #' @field schemaLocation  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ ValidationException <- R6::R6Class(
     `message` = NULL,
     `pointerToViolation` = NULL,
     `schemaLocation` = NULL,
-    initialize = function(`causingExceptions`=NULL, `keyword`=NULL, `message`=NULL, `pointerToViolation`=NULL, `schemaLocation`=NULL, ...){
+    initialize = function(
+        `causingExceptions`=NULL, `keyword`=NULL, `message`=NULL, `pointerToViolation`=NULL, `schemaLocation`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`causingExceptions`)) {
         stopifnot(is.vector(`causingExceptions`), length(`causingExceptions`) != 0)
@@ -98,6 +102,7 @@ ValidationException <- R6::R6Class(
       if (!is.null(ValidationExceptionObject$`schemaLocation`)) {
         self$`schemaLocation` <- ValidationExceptionObject$`schemaLocation`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -151,3 +156,4 @@ ValidationException <- R6::R6Class(
     }
   )
 )
+

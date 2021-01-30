@@ -1186,7 +1186,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 EvaluationServicesApi <- R6::R6Class(
   'EvaluationServicesApi',
@@ -1389,6 +1389,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `eval.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/acl"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1435,6 +1436,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `eval.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1485,6 +1487,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `round.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/round/{roundId}"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1535,6 +1538,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `sub.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/submission/{subId}"
       if (!missing(`sub.id`)) {
         urlPath <- gsub(paste0("\\{", "subId", "\\}"), URLencode(as.character(`sub.id`), reserved = TRUE), urlPath)
@@ -1581,6 +1585,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `name`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/name/{name}"
       if (!missing(`name`)) {
         urlPath <- gsub(paste0("\\{", "name", "\\}"), URLencode(as.character(`name`), reserved = TRUE), urlPath)
@@ -1633,6 +1638,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `eval.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/acl"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1749,6 +1755,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['status'] <- status
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission/bundle/all"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1807,6 +1814,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['status'] <- status
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission/status/all"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1865,6 +1873,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['status'] <- status
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission/all"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -1921,6 +1930,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/evaluation/available"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -1969,6 +1979,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `eval.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2025,6 +2036,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `round.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/round/{roundId}"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2091,6 +2103,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/entity/{id}/evaluation"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -2149,6 +2162,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/evaluation"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -2201,6 +2215,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission/bundle"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2257,6 +2272,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2309,6 +2325,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `sub.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/submission/{subId}"
       if (!missing(`sub.id`)) {
         urlPath <- gsub(paste0("\\{", "subId", "\\}"), URLencode(as.character(`sub.id`), reserved = TRUE), urlPath)
@@ -2361,6 +2378,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `eval.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/submission/count"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2413,6 +2431,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `sub.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/submission/{subId}/status"
       if (!missing(`sub.id`)) {
         urlPath <- gsub(paste0("\\{", "subId", "\\}"), URLencode(as.character(`sub.id`), reserved = TRUE), urlPath)
@@ -2469,6 +2488,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/team/{id}/SubmissionEligibility"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2531,6 +2551,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['accessType'] <- access.type
 
+      body <- NULL
       urlPath <- "/evaluation/{evalId}/access"
       if (!missing(`eval.id`)) {
         urlPath <- gsub(paste0("\\{", "evalId", "\\}"), URLencode(as.character(`eval.id`), reserved = TRUE), urlPath)
@@ -2589,6 +2610,7 @@ EvaluationServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/evaluation/submission/{subId}/file/{fileHandleId}"
       if (!missing(`file.handle.id`)) {
         urlPath <- gsub(paste0("\\{", "fileHandleId", "\\}"), URLencode(as.character(`file.handle.id`), reserved = TRUE), urlPath)
@@ -2645,6 +2667,7 @@ EvaluationServicesApi <- R6::R6Class(
         stop("Missing required parameter `sub.id`.")
       }
 
+      body <- NULL
       urlPath <- "/evaluation/submission/{subId}/cancellation"
       if (!missing(`sub.id`)) {
         urlPath <- gsub(paste0("\\{", "subId", "\\}"), URLencode(as.character(`sub.id`), reserved = TRUE), urlPath)

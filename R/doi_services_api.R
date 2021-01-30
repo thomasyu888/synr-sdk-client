@@ -204,7 +204,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 DoiServicesApi <- R6::R6Class(
   'DoiServicesApi',
@@ -241,6 +241,7 @@ DoiServicesApi <- R6::R6Class(
         stop("Missing required parameter `async.token`.")
       }
 
+      body <- NULL
       urlPath <- "/doi/async/get/{asyncToken}"
       if (!missing(`async.token`)) {
         urlPath <- gsub(paste0("\\{", "asyncToken", "\\}"), URLencode(as.character(`async.token`), reserved = TRUE), urlPath)
@@ -303,6 +304,7 @@ DoiServicesApi <- R6::R6Class(
 
       queryParams['version'] <- version
 
+      body <- NULL
       urlPath <- "/doi/association"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -361,6 +363,7 @@ DoiServicesApi <- R6::R6Class(
 
       queryParams['version'] <- version
 
+      body <- NULL
       urlPath <- "/doi"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -421,6 +424,7 @@ DoiServicesApi <- R6::R6Class(
 
       queryParams['version'] <- version
 
+      body <- NULL
       urlPath <- "/doi/locate"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),

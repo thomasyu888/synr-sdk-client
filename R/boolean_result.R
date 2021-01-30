@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title BooleanResult
-#' @description BooleanResult Class
-#' @format An \code{R6Class} generator object
-#' @field result  character [optional]
 #'
+#' @description BooleanResult Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field result  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ BooleanResult <- R6::R6Class(
   'BooleanResult',
   public = list(
     `result` = NULL,
-    initialize = function(`result`=NULL, ...){
+    initialize = function(
+        `result`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`result`)) {
         self$`result` <- `result`
@@ -40,6 +44,7 @@ BooleanResult <- R6::R6Class(
       if (!is.null(BooleanResultObject$`result`)) {
         self$`result` <- BooleanResultObject$`result`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -61,3 +66,4 @@ BooleanResult <- R6::R6Class(
     }
   )
 )
+

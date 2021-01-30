@@ -10,7 +10,7 @@ test_that("GetCreateOrUpdateDoiResults", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the results of a call to POST /doi/async/start
   # Get the results of a call to POST /doi/async/start 
-  # @param character  async.token  The async job token from the create/update call 
+  # @param async.token character The async job token from the create/update call
   # @return [DoiResponse]
 
   # uncomment below to test the operation
@@ -22,9 +22,9 @@ test_that("GetDoiAssociation", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieves the DOI for the object.
   # Retrieves the DOI for the object. Note: this call only retrieves the DOI association, if it exists. To retrieve the metadata for the object, see &lt;a href&#x3D;\&quot;${GET.doi}\&quot;&gt;GET /doi&lt;/a&gt;&#39; 
-  # @param character  id  The ID of the object to retrieve 
-  # @param ObjectType  type  The type of the object 
-  # @param integer  version  The version number of the object  (optional)
+  # @param id character The ID of the object to retrieve
+  # @param type ObjectType The type of the object
+  # @param version integer The version number of the object (optional)
   # @return [DoiAssociation]
 
   # uncomment below to test the operation
@@ -36,9 +36,9 @@ test_that("GetDoiV2", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieves the DOI for the object and its associated DOI metadata.
   # Retrieves the DOI for the object and its associated DOI metadata. Note: this call calls an external API, which may impact performance To just retrieve the DOI association, see: &lt;a href&#x3D;\&quot;${GET.doi.association}\&quot;&gt;GET /doi/association&lt;/a&gt; 
-  # @param character  id  The ID of the object to retrieve 
-  # @param ObjectType  type  The type of the object 
-  # @param integer  version  The version number of the object  (optional)
+  # @param id character The ID of the object to retrieve
+  # @param type ObjectType The type of the object
+  # @param version integer The version number of the object (optional)
   # @return [Doi]
 
   # uncomment below to test the operation
@@ -50,10 +50,10 @@ test_that("Locate", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieves the Synapse web portal URL to the object entered.
   # Retrieves the Synapse web portal URL to the object entered. Note: This call does not check to see if the object exists in Synapse. 
-  # @param character  id  The ID of the object to retrieve 
-  # @param ObjectType  type  The type of the object 
-  # @param character  redirect  Whether to return the URL or redirect to the URL  (optional)
-  # @param integer  version  The version number of the object  (optional)
+  # @param id character The ID of the object to retrieve
+  # @param type ObjectType The type of the object
+  # @param redirect character Whether to return the URL or redirect to the URL (optional)
+  # @param version integer The version number of the object (optional)
   # @return [character]
 
   # uncomment below to test the operation
@@ -65,7 +65,7 @@ test_that("StartCreateOrUpdateDoi", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Asynchronously creates or updates a DOI in Synapse, with input metadata.
   # Asynchronously creates or updates a DOI in Synapse, with input metadata. Retrieve the results with &lt;a href&#x3D;\&quot;${GET.doi.async.get.asyncToken}\&quot;&gt;GET /doi/async/get/{asyncToken}&lt;/a&gt;. This call may fail if the external DataCite API is down. If the failure is recoverable, it will retry automatically.&#39; 
-  # @param DoiRequest  doi.request  A request containing a DOI and its metadata to associate with a Synapse object   (optional)
+  # @param doi.request DoiRequest A request containing a DOI and its metadata to associate with a Synapse object  (optional)
   # @return [AsyncJobId]
 
   # uncomment below to test the operation

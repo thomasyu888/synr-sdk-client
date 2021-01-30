@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title ColumnModel
+#'
 #' @description ColumnModel Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field columnType  \link{ColumnType} [optional]
 #'
 #' @field defaultValue  character [optional]
@@ -26,7 +29,6 @@
 #'
 #' @field name  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -41,7 +43,9 @@ ColumnModel <- R6::R6Class(
     `maximumListLength` = NULL,
     `maximumSize` = NULL,
     `name` = NULL,
-    initialize = function(`columnType`=NULL, `defaultValue`=NULL, `enumValues`=NULL, `facetType`=NULL, `id`=NULL, `maximumListLength`=100, `maximumSize`=NULL, `name`=NULL, ...){
+    initialize = function(
+        `columnType`=NULL, `defaultValue`=NULL, `enumValues`=NULL, `facetType`=NULL, `id`=NULL, `maximumListLength`=100, `maximumSize`=NULL, `name`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`columnType`)) {
         stopifnot(R6::is.R6(`columnType`))
@@ -143,6 +147,7 @@ ColumnModel <- R6::R6Class(
       if (!is.null(ColumnModelObject$`name`)) {
         self$`name` <- ColumnModelObject$`name`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -220,3 +225,4 @@ ColumnModel <- R6::R6Class(
     }
   )
 )
+

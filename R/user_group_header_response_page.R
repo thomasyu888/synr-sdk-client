@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title UserGroupHeaderResponsePage
+#'
 #' @description UserGroupHeaderResponsePage Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field children  list( \link{UserGroupHeader} ) [optional]
 #'
 #' @field prefixFilter  character [optional]
 #'
 #' @field totalNumberOfResults  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ UserGroupHeaderResponsePage <- R6::R6Class(
     `children` = NULL,
     `prefixFilter` = NULL,
     `totalNumberOfResults` = NULL,
-    initialize = function(`children`=NULL, `prefixFilter`=NULL, `totalNumberOfResults`=NULL, ...){
+    initialize = function(
+        `children`=NULL, `prefixFilter`=NULL, `totalNumberOfResults`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`children`)) {
         stopifnot(is.vector(`children`), length(`children`) != 0)
@@ -69,6 +73,7 @@ UserGroupHeaderResponsePage <- R6::R6Class(
       if (!is.null(UserGroupHeaderResponsePageObject$`totalNumberOfResults`)) {
         self$`totalNumberOfResults` <- UserGroupHeaderResponsePageObject$`totalNumberOfResults`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ UserGroupHeaderResponsePage <- R6::R6Class(
     }
   )
 )
+

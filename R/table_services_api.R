@@ -425,7 +425,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 TableServicesApi <- R6::R6Class(
   'TableServicesApi',
@@ -524,6 +524,7 @@ TableServicesApi <- R6::R6Class(
         stop("Missing required parameter `async.token`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/table/download/csv/async/get/{asyncToken}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -652,6 +653,7 @@ TableServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/filepreview"
       if (!missing(`column.id`)) {
         urlPath <- gsub(paste0("\\{", "columnId", "\\}"), URLencode(as.character(`column.id`), reserved = TRUE), urlPath)
@@ -730,6 +732,7 @@ TableServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/file"
       if (!missing(`column.id`)) {
         urlPath <- gsub(paste0("\\{", "columnId", "\\}"), URLencode(as.character(`column.id`), reserved = TRUE), urlPath)
@@ -794,6 +797,7 @@ TableServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/column"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -908,6 +912,7 @@ TableServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/table/transaction/async/get/{asyncToken}"
       if (!missing(`async.token`)) {
         urlPath <- gsub(paste0("\\{", "asyncToken", "\\}"), URLencode(as.character(`async.token`), reserved = TRUE), urlPath)
@@ -968,6 +973,7 @@ TableServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/entity/{id}/table/query/async/get/{asyncToken}"
       if (!missing(`async.token`)) {
         urlPath <- gsub(paste0("\\{", "asyncToken", "\\}"), URLencode(as.character(`async.token`), reserved = TRUE), urlPath)

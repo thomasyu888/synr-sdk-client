@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title MessageToUser
+#'
 #' @description MessageToUser Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field bcc  character [optional]
 #'
 #' @field cc  character [optional]
@@ -42,7 +45,6 @@
 #'
 #' @field withUnsubscribeLink  character [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -65,7 +67,9 @@ MessageToUser <- R6::R6Class(
     `userProfileSettingEndpoint` = NULL,
     `withProfileSettingLink` = NULL,
     `withUnsubscribeLink` = NULL,
-    initialize = function(`bcc`=NULL, `cc`=NULL, `createdBy`=NULL, `createdOn`=NULL, `fileHandleId`=NULL, `id`=NULL, `inReplyTo`=NULL, `inReplyToRoot`=NULL, `isNotificationMessage`=NULL, `notificationUnsubscribeEndpoint`=NULL, `recipients`=NULL, `subject`=NULL, `to`=NULL, `userProfileSettingEndpoint`=NULL, `withProfileSettingLink`=NULL, `withUnsubscribeLink`=NULL, ...){
+    initialize = function(
+        `bcc`=NULL, `cc`=NULL, `createdBy`=NULL, `createdOn`=NULL, `fileHandleId`=NULL, `id`=NULL, `inReplyTo`=NULL, `inReplyToRoot`=NULL, `isNotificationMessage`=NULL, `notificationUnsubscribeEndpoint`=NULL, `recipients`=NULL, `subject`=NULL, `to`=NULL, `userProfileSettingEndpoint`=NULL, `withProfileSettingLink`=NULL, `withUnsubscribeLink`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`bcc`)) {
         stopifnot(is.character(`bcc`), length(`bcc`) == 1)
@@ -249,6 +253,7 @@ MessageToUser <- R6::R6Class(
       if (!is.null(MessageToUserObject$`withUnsubscribeLink`)) {
         self$`withUnsubscribeLink` <- MessageToUserObject$`withUnsubscribeLink`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -390,3 +395,4 @@ MessageToUser <- R6::R6Class(
     }
   )
 )
+

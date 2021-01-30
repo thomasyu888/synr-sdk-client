@@ -10,10 +10,10 @@ test_that("GetOpenRequestsByTeam", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the open requests submitted to a Team, optionally filtering by the requester.
   # Retrieve the open requests submitted to a Team, optionally filtering by the requester. An request is only open if it has not expired and if the requester has not been added the Team.  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;40 calls per minute&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt;&#39; 
-  # @param character  id  the ID of the Team. 
-  # @param integer  limit  the maximum number of requests to return (default 10)  (optional)
-  # @param integer  offset  the starting index of the returned results (default 0)  (optional)
-  # @param character  requestor.id  the ID of the user requesting admission to the Team  (optional)
+  # @param id character the ID of the Team.
+  # @param limit integer the maximum number of requests to return (default 10) (optional)
+  # @param offset integer the starting index of the returned results (default 0) (optional)
+  # @param requestor.id character the ID of the user requesting admission to the Team (optional)
   # @return [PaginatedResultsOfMembershipRequest]
 
   # uncomment below to test the operation
@@ -25,10 +25,10 @@ test_that("GetOpenRequestsByUser", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the open requests submitted by a user, optionally filtering by the Team. 
   # Retrieve the open requests submitted by a user, optionally filtering by the Team. An request is only open if it has not expired and if the requester has not been added the Team. Note:  The &#39;id&#39; in the URI must be the same ID as that of the authenticated user issuing the request. 
-  # @param character  id  The ID of the Synapse user. 
-  # @param integer  limit  the maximum number of requests to return  (optional)
-  # @param integer  offset  the starting index of the returned results.  (optional)
-  # @param character  team.id  ID of a Synapse Team.  (optional)
+  # @param id character The ID of the Synapse user.
+  # @param limit integer the maximum number of requests to return (optional)
+  # @param offset integer the starting index of the returned results. (optional)
+  # @param team.id character ID of a Synapse Team. (optional)
   # @return [PaginatedResultsOfMembershipRequest]
 
   # uncomment below to test the operation

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EvaluationRound
+#'
 #' @description EvaluationRound Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field etag  character [optional]
 #'
 #' @field evaluationId  character [optional]
@@ -21,7 +24,6 @@
 #' @field roundEnd  character [optional]
 #'
 #' @field roundStart  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -35,7 +37,9 @@ EvaluationRound <- R6::R6Class(
     `limits` = NULL,
     `roundEnd` = NULL,
     `roundStart` = NULL,
-    initialize = function(`etag`=NULL, `evaluationId`=NULL, `id`=NULL, `limits`=NULL, `roundEnd`=NULL, `roundStart`=NULL, ...){
+    initialize = function(
+        `etag`=NULL, `evaluationId`=NULL, `id`=NULL, `limits`=NULL, `roundEnd`=NULL, `roundStart`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`etag`)) {
         stopifnot(is.character(`etag`), length(`etag`) == 1)
@@ -112,6 +116,7 @@ EvaluationRound <- R6::R6Class(
       if (!is.null(EvaluationRoundObject$`roundStart`)) {
         self$`roundStart` <- EvaluationRoundObject$`roundStart`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -173,3 +178,4 @@ EvaluationRound <- R6::R6Class(
     }
   )
 )
+

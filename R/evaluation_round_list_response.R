@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title EvaluationRoundListResponse
+#'
 #' @description EvaluationRoundListResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field nextPageToken  character [optional]
 #'
 #' @field page  list( \link{EvaluationRound} ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ EvaluationRoundListResponse <- R6::R6Class(
   public = list(
     `nextPageToken` = NULL,
     `page` = NULL,
-    initialize = function(`nextPageToken`=NULL, `page`=NULL, ...){
+    initialize = function(
+        `nextPageToken`=NULL, `page`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextPageToken`)) {
         stopifnot(is.character(`nextPageToken`), length(`nextPageToken`) == 1)
@@ -56,6 +60,7 @@ EvaluationRoundListResponse <- R6::R6Class(
       if (!is.null(EvaluationRoundListResponseObject$`page`)) {
         self$`page` <- ApiClient$new()$deserializeObj(EvaluationRoundListResponseObject$`page`, "array[EvaluationRound]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ EvaluationRoundListResponse <- R6::R6Class(
     }
   )
 )
+

@@ -101,7 +101,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 MembershipInvitationServicesApi <- R6::R6Class(
   'MembershipInvitationServicesApi',
@@ -144,6 +144,7 @@ MembershipInvitationServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/team/{id}/openInvitation"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -202,6 +203,7 @@ MembershipInvitationServicesApi <- R6::R6Class(
 
       queryParams['teamId'] <- team.id
 
+      body <- NULL
       urlPath <- "/user/{id}/openInvitation"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

@@ -778,7 +778,7 @@
 #'
 #' }
 #' @importFrom R6 R6Class
-#' @importFrom caTools base64encode
+#' @importFrom base64enc base64encode
 #' @export
 TeamServicesApi <- R6::R6Class(
   'TeamServicesApi',
@@ -823,6 +823,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['teamEndpoint'] <- team.endpoint
 
+      body <- NULL
       urlPath <- "/team/{id}/member/{principalId}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -977,6 +978,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1025,6 +1027,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/team/{id}/icon/preview"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1079,6 +1082,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['redirect'] <- redirect
 
+      body <- NULL
       urlPath <- "/team/{id}/icon"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1131,6 +1135,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1183,6 +1188,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}/acl"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1241,6 +1247,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['sort'] <- sort
 
+      body <- NULL
       urlPath <- "/user/{id}/team/id"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1297,6 +1304,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `principal.id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}/member/{principalId}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1355,6 +1363,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['fragment'] <- fragment
 
+      body <- NULL
       urlPath <- "/teamMembers/count/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1415,6 +1424,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/teamMembers/{id}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1471,6 +1481,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `principal.id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}/member/{principalId}/membershipStatus"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1531,6 +1542,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/user/{id}/team"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
@@ -1585,6 +1597,7 @@ TeamServicesApi <- R6::R6Class(
 
       queryParams['offset'] <- offset
 
+      body <- NULL
       urlPath <- "/teams"
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -1803,6 +1816,7 @@ TeamServicesApi <- R6::R6Class(
         stop("Missing required parameter `principal.id`.")
       }
 
+      body <- NULL
       urlPath <- "/team/{id}/member/{principalId}"
       if (!missing(`id`)) {
         urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)

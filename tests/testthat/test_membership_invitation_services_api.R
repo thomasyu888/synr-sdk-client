@@ -10,10 +10,10 @@ test_that("GetOpenInvitationsByTeam", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the open invitations from a Team, optionally filtering by the invitee. 
   # Retrieve the open invitations from a Team, optionally filtering by the invitee. An invitation is only open if it has not expired and if the user has not joined the Team. Note: certain fields may be omitted when returned if the field value is null 
-  # @param character  id  the ID of the Team. 
-  # @param character  invitee.id  the ID of the Synapse user to which invitations have been extended  (optional)
-  # @param integer  limit  the maximum number of invitations to return  (optional)
-  # @param integer  offset  the starting index of the returned results  (optional)
+  # @param id character the ID of the Team.
+  # @param invitee.id character the ID of the Synapse user to which invitations have been extended (optional)
+  # @param limit integer the maximum number of invitations to return (optional)
+  # @param offset integer the starting index of the returned results (optional)
   # @return [PaginatedResultsOfMembershipInvitation]
 
   # uncomment below to test the operation
@@ -25,10 +25,10 @@ test_that("GetOpenInvitationsByUser", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve the open invitations to a user, optionally filtering by the Team of origin. 
   # Retrieve the open invitations to a user, optionally filtering by the Team of origin. An invitation is only open if it has not expired and if the user has not joined the Team. Note: certain fields may be omitted when returned if the field value is null 
-  # @param character  id  The ID of the Synapse user. 
-  # @param integer  limit  the maximum number of invitations to return.  (optional)
-  # @param integer  offset  the starting index of the returned results.  (optional)
-  # @param character  team.id  the ID of the Team extending the invitations  (optional)
+  # @param id character The ID of the Synapse user.
+  # @param limit integer the maximum number of invitations to return. (optional)
+  # @param offset integer the starting index of the returned results. (optional)
+  # @param team.id character the ID of the Team extending the invitations (optional)
   # @return [PaginatedResultsOfMembershipInvitation]
 
   # uncomment below to test the operation

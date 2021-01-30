@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title RestrictableObjectDescriptor
+#'
 #' @description RestrictableObjectDescriptor Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field id  character [optional]
 #'
 #' @field type  \link{RestrictableObjectType} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ RestrictableObjectDescriptor <- R6::R6Class(
   public = list(
     `id` = NULL,
     `type` = NULL,
-    initialize = function(`id`=NULL, `type`=NULL, ...){
+    initialize = function(
+        `id`=NULL, `type`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`id`)) {
         stopifnot(is.character(`id`), length(`id`) == 1)
@@ -57,6 +61,7 @@ RestrictableObjectDescriptor <- R6::R6Class(
         typeObject$fromJSON(jsonlite::toJSON(RestrictableObjectDescriptorObject$type, auto_unbox = TRUE, digits = NA))
         self$`type` <- typeObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -86,3 +91,4 @@ RestrictableObjectDescriptor <- R6::R6Class(
     }
   )
 )
+

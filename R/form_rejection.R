@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title FormRejection
-#' @description FormRejection Class
-#' @format An \code{R6Class} generator object
-#' @field reason  character [optional]
 #'
+#' @description FormRejection Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field reason  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ FormRejection <- R6::R6Class(
   'FormRejection',
   public = list(
     `reason` = NULL,
-    initialize = function(`reason`=NULL, ...){
+    initialize = function(
+        `reason`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`reason`)) {
         stopifnot(is.character(`reason`), length(`reason`) == 1)
@@ -41,6 +45,7 @@ FormRejection <- R6::R6Class(
       if (!is.null(FormRejectionObject$`reason`)) {
         self$`reason` <- FormRejectionObject$`reason`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ FormRejection <- R6::R6Class(
     }
   )
 )
+

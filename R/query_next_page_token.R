@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title QueryNextPageToken
+#'
 #' @description QueryNextPageToken Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field entityId  character [optional]
 #'
 #' @field token  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ QueryNextPageToken <- R6::R6Class(
     `concreteType` = NULL,
     `entityId` = NULL,
     `token` = NULL,
-    initialize = function(`concreteType`=NULL, `entityId`=NULL, `token`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `entityId`=NULL, `token`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -69,6 +73,7 @@ QueryNextPageToken <- R6::R6Class(
       if (!is.null(QueryNextPageTokenObject$`token`)) {
         self$`token` <- QueryNextPageTokenObject$`token`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -106,3 +111,4 @@ QueryNextPageToken <- R6::R6Class(
     }
   )
 )
+

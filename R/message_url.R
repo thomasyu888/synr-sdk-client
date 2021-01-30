@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title MessageURL
-#' @description MessageURL Class
-#' @format An \code{R6Class} generator object
-#' @field messageUrl  character [optional]
 #'
+#' @description MessageURL Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field messageUrl  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ MessageURL <- R6::R6Class(
   'MessageURL',
   public = list(
     `messageUrl` = NULL,
-    initialize = function(`messageUrl`=NULL, ...){
+    initialize = function(
+        `messageUrl`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`messageUrl`)) {
         stopifnot(is.character(`messageUrl`), length(`messageUrl`) == 1)
@@ -41,6 +45,7 @@ MessageURL <- R6::R6Class(
       if (!is.null(MessageURLObject$`messageUrl`)) {
         self$`messageUrl` <- MessageURLObject$`messageUrl`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ MessageURL <- R6::R6Class(
     }
   )
 )
+

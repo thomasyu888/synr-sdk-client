@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title QuestionResponse
+#'
 #' @description QuestionResponse Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field questionIndex  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ QuestionResponse <- R6::R6Class(
   public = list(
     `concreteType` = NULL,
     `questionIndex` = NULL,
-    initialize = function(`concreteType`=NULL, `questionIndex`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `questionIndex`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -55,6 +59,7 @@ QuestionResponse <- R6::R6Class(
       if (!is.null(QuestionResponseObject$`questionIndex`)) {
         self$`questionIndex` <- QuestionResponseObject$`questionIndex`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -84,3 +89,4 @@ QuestionResponse <- R6::R6Class(
     }
   )
 )
+

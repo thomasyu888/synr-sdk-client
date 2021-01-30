@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title PaginatedTeamIds
+#'
 #' @description PaginatedTeamIds Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field nextPageToken  character [optional]
 #'
 #' @field teamIds  list( character ) [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ PaginatedTeamIds <- R6::R6Class(
   public = list(
     `nextPageToken` = NULL,
     `teamIds` = NULL,
-    initialize = function(`nextPageToken`=NULL, `teamIds`=NULL, ...){
+    initialize = function(
+        `nextPageToken`=NULL, `teamIds`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextPageToken`)) {
         stopifnot(is.character(`nextPageToken`), length(`nextPageToken`) == 1)
@@ -56,6 +60,7 @@ PaginatedTeamIds <- R6::R6Class(
       if (!is.null(PaginatedTeamIdsObject$`teamIds`)) {
         self$`teamIds` <- ApiClient$new()$deserializeObj(PaginatedTeamIdsObject$`teamIds`, "array[character]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -85,3 +90,4 @@ PaginatedTeamIds <- R6::R6Class(
     }
   )
 )
+

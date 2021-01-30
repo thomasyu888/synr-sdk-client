@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title Count
-#' @description Count Class
-#' @format An \code{R6Class} generator object
-#' @field count  integer [optional]
 #'
+#' @description Count Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field count  integer [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ Count <- R6::R6Class(
   'Count',
   public = list(
     `count` = NULL,
-    initialize = function(`count`=NULL, ...){
+    initialize = function(
+        `count`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`count`)) {
         stopifnot(is.numeric(`count`), length(`count`) == 1)
@@ -41,6 +45,7 @@ Count <- R6::R6Class(
       if (!is.null(CountObject$`count`)) {
         self$`count` <- CountObject$`count`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ Count <- R6::R6Class(
     }
   )
 )
+

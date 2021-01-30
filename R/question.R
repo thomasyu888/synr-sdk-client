@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title Question
+#'
 #' @description Question Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field docLink  character [optional]
@@ -21,7 +24,6 @@
 #' @field questionIndex  integer [optional]
 #'
 #' @field reference  \link{WikiPageKey} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -35,7 +37,9 @@ Question <- R6::R6Class(
     `prompt` = NULL,
     `questionIndex` = NULL,
     `reference` = NULL,
-    initialize = function(`concreteType`=NULL, `docLink`=NULL, `helpText`=NULL, `prompt`=NULL, `questionIndex`=NULL, `reference`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `docLink`=NULL, `helpText`=NULL, `prompt`=NULL, `questionIndex`=NULL, `reference`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -113,6 +117,7 @@ Question <- R6::R6Class(
         referenceObject$fromJSON(jsonlite::toJSON(QuestionObject$reference, auto_unbox = TRUE, digits = NA))
         self$`reference` <- referenceObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -174,3 +179,4 @@ Question <- R6::R6Class(
     }
   )
 )
+

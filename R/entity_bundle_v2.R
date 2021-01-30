@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title EntityBundleV2
+#'
 #' @description EntityBundleV2 Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field accessControlList  \link{AccessControlList} [optional]
 #'
 #' @field annotations  \link{AnnotationsV2} [optional]
@@ -40,7 +43,6 @@
 #'
 #' @field threadCount  numeric [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -62,7 +64,9 @@ EntityBundleV2 <- R6::R6Class(
     `rootWikiId` = NULL,
     `tableBundle` = NULL,
     `threadCount` = NULL,
-    initialize = function(`accessControlList`=NULL, `annotations`=NULL, `benefactorAcl`=NULL, `doiAssociation`=NULL, `entity`=NULL, `entityType`=NULL, `fileHandles`=NULL, `fileName`=NULL, `hasChildren`=NULL, `path`=NULL, `permissions`=NULL, `restrictionInformation`=NULL, `rootWikiId`=NULL, `tableBundle`=NULL, `threadCount`=NULL, ...){
+    initialize = function(
+        `accessControlList`=NULL, `annotations`=NULL, `benefactorAcl`=NULL, `doiAssociation`=NULL, `entity`=NULL, `entityType`=NULL, `fileHandles`=NULL, `fileName`=NULL, `hasChildren`=NULL, `path`=NULL, `permissions`=NULL, `restrictionInformation`=NULL, `rootWikiId`=NULL, `tableBundle`=NULL, `threadCount`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`accessControlList`)) {
         stopifnot(R6::is.R6(`accessControlList`))
@@ -256,6 +260,7 @@ EntityBundleV2 <- R6::R6Class(
       if (!is.null(EntityBundleV2Object$`threadCount`)) {
         self$`threadCount` <- EntityBundleV2Object$`threadCount`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -389,3 +394,4 @@ EntityBundleV2 <- R6::R6Class(
     }
   )
 )
+

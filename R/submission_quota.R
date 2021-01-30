@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title SubmissionQuota
+#'
 #' @description SubmissionQuota Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field firstRoundStart  character [optional]
 #'
 #' @field numberOfRounds  integer [optional]
@@ -17,7 +20,6 @@
 #' @field roundDurationMillis  integer [optional]
 #'
 #' @field submissionLimit  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ SubmissionQuota <- R6::R6Class(
     `numberOfRounds` = NULL,
     `roundDurationMillis` = NULL,
     `submissionLimit` = NULL,
-    initialize = function(`firstRoundStart`=NULL, `numberOfRounds`=NULL, `roundDurationMillis`=NULL, `submissionLimit`=NULL, ...){
+    initialize = function(
+        `firstRoundStart`=NULL, `numberOfRounds`=NULL, `roundDurationMillis`=NULL, `submissionLimit`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`firstRoundStart`)) {
         stopifnot(is.character(`firstRoundStart`), length(`firstRoundStart`) == 1)
@@ -83,6 +87,7 @@ SubmissionQuota <- R6::R6Class(
       if (!is.null(SubmissionQuotaObject$`submissionLimit`)) {
         self$`submissionLimit` <- SubmissionQuotaObject$`submissionLimit`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -128,3 +133,4 @@ SubmissionQuota <- R6::R6Class(
     }
   )
 )
+

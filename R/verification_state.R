@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title VerificationState
+#'
 #' @description VerificationState Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -19,7 +22,6 @@
 #' @field reason  character [optional]
 #'
 #' @field state  \link{VerificationStateEnum} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ VerificationState <- R6::R6Class(
     `notes` = NULL,
     `reason` = NULL,
     `state` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `notes`=NULL, `reason`=NULL, `state`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `notes`=NULL, `reason`=NULL, `state`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -99,6 +103,7 @@ VerificationState <- R6::R6Class(
         stateObject$fromJSON(jsonlite::toJSON(VerificationStateObject$state, auto_unbox = TRUE, digits = NA))
         self$`state` <- stateObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -152,3 +157,4 @@ VerificationState <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title DoubleAnnotation
+#'
 #' @description DoubleAnnotation Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field isPrivate  character [optional]
 #'
 #' @field key  character [optional]
 #'
 #' @field value  numeric [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ DoubleAnnotation <- R6::R6Class(
     `isPrivate` = NULL,
     `key` = NULL,
     `value` = NULL,
-    initialize = function(`isPrivate`=NULL, `key`=NULL, `value`=NULL, ...){
+    initialize = function(
+        `isPrivate`=NULL, `key`=NULL, `value`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`isPrivate`)) {
         self$`isPrivate` <- `isPrivate`
@@ -67,6 +71,7 @@ DoubleAnnotation <- R6::R6Class(
       if (!is.null(DoubleAnnotationObject$`value`)) {
         self$`value` <- DoubleAnnotationObject$`value`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -104,3 +109,4 @@ DoubleAnnotation <- R6::R6Class(
     }
   )
 )
+

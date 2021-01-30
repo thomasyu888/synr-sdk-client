@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title ACCESSTYPE
+#'
 #' @description ACCESSTYPE Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 ACCESSTYPE <- R6::R6Class(
-  'ACCESSTYPE',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      ACCESSTYPEObject <- list()
+    "ACCESSTYPE",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_ACCESS_TYPE()
 
-      ACCESSTYPEObject
-    },
-    fromJSON = function(ACCESSTYPEJson) {
-      ACCESSTYPEObject <- jsonlite::fromJSON(ACCESSTYPEJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(ACCESSTYPEJson) {
-      ACCESSTYPEObject <- jsonlite::fromJSON(ACCESSTYPEJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(ACCESSTYPEJson) {
+            private$value <- jsonlite::fromJSON(ACCESSTYPEJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(ACCESSTYPEJson) {
+            private$value <- jsonlite::fromJSON(ACCESSTYPEJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_ACCESS_TYPE <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[CREATE, READ, UPDATE, DELETE, CHANGE_PERMISSIONS, DOWNLOAD, UPLOAD, PARTICIPATE, SUBMIT, READ_PRIVATE_SUBMISSION, UPDATE_SUBMISSION, DELETE_SUBMISSION, TEAM_MEMBERSHIP_UPDATE, SEND_MESSAGE, CHANGE_SETTINGS, MODERATE]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title FormData
+#'
 #' @description FormData Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field createdBy  character [optional]
 #'
 #' @field createdOn  character [optional]
@@ -28,7 +31,6 @@
 #'
 #' @field submissionStatus  \link{SubmissionStatusForm} [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -44,7 +46,9 @@ FormData <- R6::R6Class(
     `modifiedOn` = NULL,
     `name` = NULL,
     `submissionStatus` = NULL,
-    initialize = function(`createdBy`=NULL, `createdOn`=NULL, `dataFileHandleId`=NULL, `etag`=NULL, `formDataId`=NULL, `groupId`=NULL, `modifiedOn`=NULL, `name`=NULL, `submissionStatus`=NULL, ...){
+    initialize = function(
+        `createdBy`=NULL, `createdOn`=NULL, `dataFileHandleId`=NULL, `etag`=NULL, `formDataId`=NULL, `groupId`=NULL, `modifiedOn`=NULL, `name`=NULL, `submissionStatus`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`createdBy`)) {
         stopifnot(is.character(`createdBy`), length(`createdBy`) == 1)
@@ -155,6 +159,7 @@ FormData <- R6::R6Class(
         submissionStatusObject$fromJSON(jsonlite::toJSON(FormDataObject$submissionStatus, auto_unbox = TRUE, digits = NA))
         self$`submissionStatus` <- submissionStatusObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -240,3 +245,4 @@ FormData <- R6::R6Class(
     }
   )
 )
+

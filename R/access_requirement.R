@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title AccessRequirement
+#'
 #' @description AccessRequirement Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field accessType  \link{ACCESSTYPE} [optional]
 #'
 #' @field concreteType  character [optional]
@@ -32,7 +35,6 @@
 #'
 #' @field versionNumber  integer [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -50,7 +52,9 @@ AccessRequirement <- R6::R6Class(
     `modifiedOn` = NULL,
     `subjectIds` = NULL,
     `versionNumber` = NULL,
-    initialize = function(`accessType`=NULL, `concreteType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `subjectIds`=NULL, `versionNumber`=NULL, ...){
+    initialize = function(
+        `accessType`=NULL, `concreteType`=NULL, `createdBy`=NULL, `createdOn`=NULL, `description`=NULL, `etag`=NULL, `id`=NULL, `modifiedBy`=NULL, `modifiedOn`=NULL, `subjectIds`=NULL, `versionNumber`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`accessType`)) {
         stopifnot(R6::is.R6(`accessType`))
@@ -183,6 +187,7 @@ AccessRequirement <- R6::R6Class(
       if (!is.null(AccessRequirementObject$`versionNumber`)) {
         self$`versionNumber` <- AccessRequirementObject$`versionNumber`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -284,3 +289,4 @@ AccessRequirement <- R6::R6Class(
     }
   )
 )
+

@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title QueryBundleRequest
+#'
 #' @description QueryBundleRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field entityId  character [optional]
@@ -17,7 +20,6 @@
 #' @field partMask  integer [optional]
 #'
 #' @field query  \link{Query} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -29,7 +31,9 @@ QueryBundleRequest <- R6::R6Class(
     `entityId` = NULL,
     `partMask` = NULL,
     `query` = NULL,
-    initialize = function(`concreteType`=NULL, `entityId`=NULL, `partMask`=NULL, `query`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `entityId`=NULL, `partMask`=NULL, `query`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -85,6 +89,7 @@ QueryBundleRequest <- R6::R6Class(
         queryObject$fromJSON(jsonlite::toJSON(QueryBundleRequestObject$query, auto_unbox = TRUE, digits = NA))
         self$`query` <- queryObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -130,3 +135,4 @@ QueryBundleRequest <- R6::R6Class(
     }
   )
 )
+

@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title Settings
+#'
 #' @description Settings Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field markEmailedMessagesAsRead  character [optional]
 #'
 #' @field sendEmailNotifications  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ Settings <- R6::R6Class(
   public = list(
     `markEmailedMessagesAsRead` = NULL,
     `sendEmailNotifications` = NULL,
-    initialize = function(`markEmailedMessagesAsRead`=FALSE, `sendEmailNotifications`=TRUE, ...){
+    initialize = function(
+        `markEmailedMessagesAsRead`=FALSE, `sendEmailNotifications`=TRUE, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`markEmailedMessagesAsRead`)) {
         self$`markEmailedMessagesAsRead` <- `markEmailedMessagesAsRead`
@@ -53,6 +57,7 @@ Settings <- R6::R6Class(
       if (!is.null(SettingsObject$`sendEmailNotifications`)) {
         self$`sendEmailNotifications` <- SettingsObject$`sendEmailNotifications`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -82,3 +87,4 @@ Settings <- R6::R6Class(
     }
   )
 )
+

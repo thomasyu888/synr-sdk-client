@@ -10,8 +10,8 @@ test_that("SendMessageToEntityOwner", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Adds the owner of the given entity as an additional recipient of the message.
   # Adds the owner of the given entity as an additional recipient of the message. 
-  # @param character  id  The ID of an Entity. 
-  # @param MessageToUser  message.to.user    (optional)
+  # @param id character The ID of an Entity.
+  # @param message.to.user MessageToUser  (optional)
   # @return [MessageToUser]
 
   # uncomment below to test the operation

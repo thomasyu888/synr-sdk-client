@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title UserBundle
+#'
 #' @description UserBundle Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field ORCID  character [optional]
 #'
 #' @field isACTMember  character [optional]
@@ -24,7 +27,6 @@
 #'
 #' @field verificationSubmission  \link{VerificationSubmission} [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -38,7 +40,9 @@ UserBundle <- R6::R6Class(
     `userId` = NULL,
     `userProfile` = NULL,
     `verificationSubmission` = NULL,
-    initialize = function(`ORCID`=NULL, `isACTMember`=NULL, `isCertified`=NULL, `isVerified`=NULL, `userId`=NULL, `userProfile`=NULL, `verificationSubmission`=NULL, ...){
+    initialize = function(
+        `ORCID`=NULL, `isACTMember`=NULL, `isCertified`=NULL, `isVerified`=NULL, `userId`=NULL, `userProfile`=NULL, `verificationSubmission`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`ORCID`)) {
         stopifnot(is.character(`ORCID`), length(`ORCID`) == 1)
@@ -126,6 +130,7 @@ UserBundle <- R6::R6Class(
         verificationSubmissionObject$fromJSON(jsonlite::toJSON(UserBundleObject$verificationSubmission, auto_unbox = TRUE, digits = NA))
         self$`verificationSubmission` <- verificationSubmissionObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -195,3 +200,4 @@ UserBundle <- R6::R6Class(
     }
   )
 )
+

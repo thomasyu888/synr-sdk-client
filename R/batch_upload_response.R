@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title BatchUploadResponse
-#' @description BatchUploadResponse Class
-#' @format An \code{R6Class} generator object
-#' @field nextUploadToken  character [optional]
 #'
+#' @description BatchUploadResponse Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field nextUploadToken  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ BatchUploadResponse <- R6::R6Class(
   'BatchUploadResponse',
   public = list(
     `nextUploadToken` = NULL,
-    initialize = function(`nextUploadToken`=NULL, ...){
+    initialize = function(
+        `nextUploadToken`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`nextUploadToken`)) {
         stopifnot(is.character(`nextUploadToken`), length(`nextUploadToken`) == 1)
@@ -41,6 +45,7 @@ BatchUploadResponse <- R6::R6Class(
       if (!is.null(BatchUploadResponseObject$`nextUploadToken`)) {
         self$`nextUploadToken` <- BatchUploadResponseObject$`nextUploadToken`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ BatchUploadResponse <- R6::R6Class(
     }
   )
 )
+

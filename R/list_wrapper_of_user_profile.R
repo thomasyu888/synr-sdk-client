@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title ListWrapperOfUserProfile
-#' @description ListWrapperOfUserProfile Class
-#' @format An \code{R6Class} generator object
-#' @field list  list( \link{UserProfile} ) [optional]
 #'
+#' @description ListWrapperOfUserProfile Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field list  list( \link{UserProfile} ) [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ ListWrapperOfUserProfile <- R6::R6Class(
   'ListWrapperOfUserProfile',
   public = list(
     `list` = NULL,
-    initialize = function(`list`=NULL, ...){
+    initialize = function(
+        `list`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`list`)) {
         stopifnot(is.vector(`list`), length(`list`) != 0)
@@ -42,6 +46,7 @@ ListWrapperOfUserProfile <- R6::R6Class(
       if (!is.null(ListWrapperOfUserProfileObject$`list`)) {
         self$`list` <- ApiClient$new()$deserializeObj(ListWrapperOfUserProfileObject$`list`, "array[UserProfile]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -63,3 +68,4 @@ ListWrapperOfUserProfile <- R6::R6Class(
     }
   )
 )
+

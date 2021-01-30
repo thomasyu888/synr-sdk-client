@@ -8,10 +8,12 @@
 
 #' @docType class
 #' @title AsyncJobId
-#' @description AsyncJobId Class
-#' @format An \code{R6Class} generator object
-#' @field token  character [optional]
 #'
+#' @description AsyncJobId Class
+#'
+#' @format An \code{R6Class} generator object
+#'
+#' @field token  character [optional]
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,7 +22,9 @@ AsyncJobId <- R6::R6Class(
   'AsyncJobId',
   public = list(
     `token` = NULL,
-    initialize = function(`token`=NULL, ...){
+    initialize = function(
+        `token`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`token`)) {
         stopifnot(is.character(`token`), length(`token`) == 1)
@@ -41,6 +45,7 @@ AsyncJobId <- R6::R6Class(
       if (!is.null(AsyncJobIdObject$`token`)) {
         self$`token` <- AsyncJobIdObject$`token`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -62,3 +67,4 @@ AsyncJobId <- R6::R6Class(
     }
   )
 )
+

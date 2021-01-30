@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title ValidationSummaryStatistics
+#'
 #' @description ValidationSummaryStatistics Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field containerId  character [optional]
 #'
 #' @field generatedOn  character [optional]
@@ -21,7 +24,6 @@
 #' @field numberOfValidChildren  integer [optional]
 #'
 #' @field totalNumberOfChildren  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -35,7 +37,9 @@ ValidationSummaryStatistics <- R6::R6Class(
     `numberOfUnknownChildren` = NULL,
     `numberOfValidChildren` = NULL,
     `totalNumberOfChildren` = NULL,
-    initialize = function(`containerId`=NULL, `generatedOn`=NULL, `numberOfInvalidChildren`=NULL, `numberOfUnknownChildren`=NULL, `numberOfValidChildren`=NULL, `totalNumberOfChildren`=NULL, ...){
+    initialize = function(
+        `containerId`=NULL, `generatedOn`=NULL, `numberOfInvalidChildren`=NULL, `numberOfUnknownChildren`=NULL, `numberOfValidChildren`=NULL, `totalNumberOfChildren`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`containerId`)) {
         stopifnot(is.character(`containerId`), length(`containerId`) == 1)
@@ -111,6 +115,7 @@ ValidationSummaryStatistics <- R6::R6Class(
       if (!is.null(ValidationSummaryStatisticsObject$`totalNumberOfChildren`)) {
         self$`totalNumberOfChildren` <- ValidationSummaryStatisticsObject$`totalNumberOfChildren`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -172,3 +177,4 @@ ValidationSummaryStatistics <- R6::R6Class(
     }
   )
 )
+

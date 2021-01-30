@@ -10,8 +10,8 @@ test_that("CreateFormData", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Create a new FormData object.
   # Create a new FormData object. The caller will own the resulting object and will have access to read, update, and delete the FormData object.  Note: The caller must have the SUBMIT permission on the FormGrup to  reate/update/submit FormData. 
-  # @param character  group.id  The identifier of the group that manages this data.  
-  # @param FormChangeRequest  form.change.request    (optional)
+  # @param group.id character The identifier of the group that manages this data. 
+  # @param form.change.request FormChangeRequest  (optional)
   # @return [FormData]
 
   # uncomment below to test the operation
@@ -23,7 +23,7 @@ test_that("CreateGroup", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Create a FormGroup with the provided name.
   # Create a FormGroup with the provided name. This method is idempotent. If a group with the provided name already exists and the caller has READ permission the existing FormGroup will be returned.  The created FormGroup will have an Access Control List (ACL) with the creator listed as an administrator. 
-  # @param character  name  A globally unique name for the group. Required. Between 3 and 256 characters.  
+  # @param name character A globally unique name for the group. Required. Between 3 and 256 characters. 
   # @return [FormGroup]
 
   # uncomment below to test the operation
@@ -35,7 +35,7 @@ test_that("DeleteFormData", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Delete a FormData object.
   # Delete an existing FormData object. The caller must be the creator of the FormData object.  Note: Cannot delete a FormData object once it has been submitted and caller must have the SUBMIT permission on the identified group to update the group&#39;s ACL. 
-  # @param character  id  The ID of the FormData. 
+  # @param id character The ID of the FormData.
   # @return [character]
 
   # uncomment below to test the operation
@@ -47,7 +47,7 @@ test_that("GetFormGroup", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get a FormGroup with the provided ID.
   # Get a FormGroup with the provided ID.  Note: The caller must have the READ permission on the identified group. 
-  # @param character  id  The ID to the FormGroup. 
+  # @param id character The ID to the FormGroup.
   # @return [FormGroup]
 
   # uncomment below to test the operation
@@ -59,7 +59,7 @@ test_that("GetGroupAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Get the ACL for a FormGroup
   # Get the Access Control List (ACL) for a FormGroup.  Note: The caller must have READ permission on the identified group. 
-  # @param character  id  The ID of the FormGroup. 
+  # @param id character The ID of the FormGroup.
   # @return [AccessControlList]
 
   # uncomment below to test the operation
@@ -71,7 +71,7 @@ test_that("ListFormStatus", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # List FormData objects and their associated status. 
   # List FormData objects and their associated status that match the filters of the provided request that are owned by the caller. Note: Only objects owned by the caller will be returned. 
-  # @param ListRequest  list.request    (optional)
+  # @param list.request ListRequest  (optional)
   # @return [ListResponse]
 
   # uncomment below to test the operation
@@ -83,7 +83,7 @@ test_that("ListFormStatusReviewer", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # List FormData objects and their associated status. 
   # List FormData objects and their associated status that match the filters of the provided request for the entire group. This is used by service accounts to review submissions. Filtering by WAITING_FOR_SUBMISSION is not allowed for this call.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param ListRequest  list.request    (optional)
+  # @param list.request ListRequest  (optional)
   # @return [ListResponse]
 
   # uncomment below to test the operation
@@ -95,7 +95,7 @@ test_that("ReviewerAcceptForm", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Called by the form reviewing service to accept a submitted data.
   # Called by the form reviewing service to accept a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param character  id  The ID of the FormData. 
+  # @param id character The ID of the FormData.
   # @return [FormData]
 
   # uncomment below to test the operation
@@ -107,8 +107,8 @@ test_that("ReviewerRejectForm", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Called by the form reviewing service to reject a submitted data.
   # Called by the form reviewing service to reject a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param character  id  The ID of the FormData. 
-  # @param FormRejection  form.rejection    (optional)
+  # @param id character The ID of the FormData.
+  # @param form.rejection FormRejection  (optional)
   # @return [FormData]
 
   # uncomment below to test the operation
@@ -120,7 +120,7 @@ test_that("SubmitFormData", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Submit the identified FormData from review.
   # Submit the identified FormData from review.  Note: The caller must have the SUBMIT permission on the identified group to update the group&#39;s ACL. 
-  # @param character  id  The ID of the FormData. 
+  # @param id character The ID of the FormData.
   # @return [FormData]
 
   # uncomment below to test the operation
@@ -132,8 +132,8 @@ test_that("UpdateFormData", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update a FormData object.
   # Update an existing FormData object. The caller must be the creator of the FormData object. Once a FormData object has been submitted, it cannot be updated until it has been processed. If the submission is accepted it becomes immutable. Rejected submission are editable. Updating a rejected submission will change its status back to waiting_for_submission.  Note: The caller must have the SUBMIT permission on the FormGrup to create/update/submit FormData. 
-  # @param character  id  The ID of the FormData. 
-  # @param FormChangeRequest  form.change.request    (optional)
+  # @param id character The ID of the FormData.
+  # @param form.change.request FormChangeRequest  (optional)
   # @return [FormData]
 
   # uncomment below to test the operation
@@ -145,8 +145,8 @@ test_that("UpdateGroupAcl", {
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Update the ACL for a FormGroup.
   # Update the Access Control List (ACL) for a FormGroup.  The following define the permissions in this context:  * READ - Grants read access to the group. READ does not grant access to FormData of the group. * CHANGE_PERMISSIONS - Grants access to update the group&#39;s ACL. * SUBMIT - Grants access to both create and submit FormData to the group. * READ_PRIVATE_SUBMISSION - Grants administrator&#39;s access to the submitted FormData, including both FormData reads and status updates. This permission should be reserved for the service account that evaluates submissions.  Users automatically have read/update access to FormData that they create.  Note: The caller must have the CHANGE_PERMISSIONS permission on the identified group to update the group&#39;s ACL. 
-  # @param character  id  The ID of the FormGroup. 
-  # @param AccessControlList  access.control.list    (optional)
+  # @param id character The ID of the FormGroup.
+  # @param access.control.list AccessControlList  (optional)
   # @return [AccessControlList]
 
   # uncomment below to test the operation

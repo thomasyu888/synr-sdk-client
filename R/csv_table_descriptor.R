@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title CsvTableDescriptor
+#'
 #' @description CsvTableDescriptor Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field escapeCharacter  character [optional]
 #'
 #' @field isFirstLineHeader  character [optional]
@@ -19,7 +22,6 @@
 #' @field quoteCharacter  character [optional]
 #'
 #' @field separator  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ CsvTableDescriptor <- R6::R6Class(
     `lineEnd` = NULL,
     `quoteCharacter` = NULL,
     `separator` = NULL,
-    initialize = function(`escapeCharacter`=NULL, `isFirstLineHeader`=NULL, `lineEnd`=NULL, `quoteCharacter`=NULL, `separator`=NULL, ...){
+    initialize = function(
+        `escapeCharacter`=NULL, `isFirstLineHeader`=NULL, `lineEnd`=NULL, `quoteCharacter`=NULL, `separator`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`escapeCharacter`)) {
         stopifnot(is.character(`escapeCharacter`), length(`escapeCharacter`) == 1)
@@ -96,6 +100,7 @@ CsvTableDescriptor <- R6::R6Class(
       if (!is.null(CsvTableDescriptorObject$`separator`)) {
         self$`separator` <- CsvTableDescriptorObject$`separator`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -149,3 +154,4 @@ CsvTableDescriptor <- R6::R6Class(
     }
   )
 )
+

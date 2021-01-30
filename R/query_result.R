@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title QueryResult
+#'
 #' @description QueryResult Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field concreteType  character [optional]
 #'
 #' @field nextPageToken  \link{QueryNextPageToken} [optional]
 #'
 #' @field queryResults  \link{RowSet} [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ QueryResult <- R6::R6Class(
     `concreteType` = NULL,
     `nextPageToken` = NULL,
     `queryResults` = NULL,
-    initialize = function(`concreteType`=NULL, `nextPageToken`=NULL, `queryResults`=NULL, ...){
+    initialize = function(
+        `concreteType`=NULL, `nextPageToken`=NULL, `queryResults`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`concreteType`)) {
         stopifnot(is.character(`concreteType`), length(`concreteType`) == 1)
@@ -73,6 +77,7 @@ QueryResult <- R6::R6Class(
         queryResultsObject$fromJSON(jsonlite::toJSON(QueryResultObject$queryResults, auto_unbox = TRUE, digits = NA))
         self$`queryResults` <- queryResultsObject
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -110,3 +115,4 @@ QueryResult <- R6::R6Class(
     }
   )
 )
+

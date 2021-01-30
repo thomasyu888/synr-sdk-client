@@ -8,12 +8,14 @@
 
 #' @docType class
 #' @title SumFileSizes
+#'
 #' @description SumFileSizes Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field greaterThan  character [optional]
 #'
 #' @field sumFileSizesBytes  integer [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -23,7 +25,9 @@ SumFileSizes <- R6::R6Class(
   public = list(
     `greaterThan` = NULL,
     `sumFileSizesBytes` = NULL,
-    initialize = function(`greaterThan`=NULL, `sumFileSizesBytes`=NULL, ...){
+    initialize = function(
+        `greaterThan`=NULL, `sumFileSizesBytes`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`greaterThan`)) {
         self$`greaterThan` <- `greaterThan`
@@ -54,6 +58,7 @@ SumFileSizes <- R6::R6Class(
       if (!is.null(SumFileSizesObject$`sumFileSizesBytes`)) {
         self$`sumFileSizesBytes` <- SumFileSizesObject$`sumFileSizesBytes`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -83,3 +88,4 @@ SumFileSizes <- R6::R6Class(
     }
   )
 )
+

@@ -8,14 +8,16 @@
 
 #' @docType class
 #' @title ListRequest
+#'
 #' @description ListRequest Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field filterByState  list( \link{StateEnum} ) [optional]
 #'
 #' @field groupId  character [optional]
 #'
 #' @field nextPageToken  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -26,7 +28,9 @@ ListRequest <- R6::R6Class(
     `filterByState` = NULL,
     `groupId` = NULL,
     `nextPageToken` = NULL,
-    initialize = function(`filterByState`=NULL, `groupId`=NULL, `nextPageToken`=NULL, ...){
+    initialize = function(
+        `filterByState`=NULL, `groupId`=NULL, `nextPageToken`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`filterByState`)) {
         stopifnot(is.vector(`filterByState`), length(`filterByState`) != 0)
@@ -70,6 +74,7 @@ ListRequest <- R6::R6Class(
       if (!is.null(ListRequestObject$`nextPageToken`)) {
         self$`nextPageToken` <- ListRequestObject$`nextPageToken`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -107,3 +112,4 @@ ListRequest <- R6::R6Class(
     }
   )
 )
+

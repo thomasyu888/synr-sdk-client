@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title TrashedEntity
+#'
 #' @description TrashedEntity Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field deletedByPrincipalId  character [optional]
 #'
 #' @field deletedOn  character [optional]
@@ -19,7 +22,6 @@
 #' @field entityName  character [optional]
 #'
 #' @field originalParentId  character [optional]
-#'
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -32,7 +34,9 @@ TrashedEntity <- R6::R6Class(
     `entityId` = NULL,
     `entityName` = NULL,
     `originalParentId` = NULL,
-    initialize = function(`deletedByPrincipalId`=NULL, `deletedOn`=NULL, `entityId`=NULL, `entityName`=NULL, `originalParentId`=NULL, ...){
+    initialize = function(
+        `deletedByPrincipalId`=NULL, `deletedOn`=NULL, `entityId`=NULL, `entityName`=NULL, `originalParentId`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`deletedByPrincipalId`)) {
         stopifnot(is.character(`deletedByPrincipalId`), length(`deletedByPrincipalId`) == 1)
@@ -97,6 +101,7 @@ TrashedEntity <- R6::R6Class(
       if (!is.null(TrashedEntityObject$`originalParentId`)) {
         self$`originalParentId` <- TrashedEntityObject$`originalParentId`
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -150,3 +155,4 @@ TrashedEntity <- R6::R6Class(
     }
   )
 )
+

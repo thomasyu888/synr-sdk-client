@@ -8,8 +8,11 @@
 
 #' @docType class
 #' @title VerificationSubmission
+#'
 #' @description VerificationSubmission Class
+#'
 #' @format An \code{R6Class} generator object
+#'
 #' @field attachments  list( \link{AttachmentMetadata} ) [optional]
 #'
 #' @field company  character [optional]
@@ -34,7 +37,6 @@
 #'
 #' @field stateHistory  list( \link{VerificationState} ) [optional]
 #'
-#'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
@@ -53,7 +55,9 @@ VerificationSubmission <- R6::R6Class(
     `notificationEmail` = NULL,
     `orcid` = NULL,
     `stateHistory` = NULL,
-    initialize = function(`attachments`=NULL, `company`=NULL, `createdBy`=NULL, `createdOn`=NULL, `emails`=NULL, `firstName`=NULL, `id`=NULL, `lastName`=NULL, `location`=NULL, `notificationEmail`=NULL, `orcid`=NULL, `stateHistory`=NULL, ...){
+    initialize = function(
+        `attachments`=NULL, `company`=NULL, `createdBy`=NULL, `createdOn`=NULL, `emails`=NULL, `firstName`=NULL, `id`=NULL, `lastName`=NULL, `location`=NULL, `notificationEmail`=NULL, `orcid`=NULL, `stateHistory`=NULL, ...
+    ) {
       local.optional.var <- list(...)
       if (!is.null(`attachments`)) {
         stopifnot(is.vector(`attachments`), length(`attachments`) != 0)
@@ -198,6 +202,7 @@ VerificationSubmission <- R6::R6Class(
       if (!is.null(VerificationSubmissionObject$`stateHistory`)) {
         self$`stateHistory` <- ApiClient$new()$deserializeObj(VerificationSubmissionObject$`stateHistory`, "array[VerificationState]", loadNamespace("synclient"))
       }
+      self
     },
     toJSONString = function() {
       jsoncontent <- c(
@@ -307,3 +312,4 @@ VerificationSubmission <- R6::R6Class(
     }
   )
 )
+

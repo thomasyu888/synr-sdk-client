@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title EvaluationStatus
+#'
 #' @description EvaluationStatus Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 EvaluationStatus <- R6::R6Class(
-  'EvaluationStatus',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      EvaluationStatusObject <- list()
+    "EvaluationStatus",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_EvaluationStatus()
 
-      EvaluationStatusObject
-    },
-    fromJSON = function(EvaluationStatusJson) {
-      EvaluationStatusObject <- jsonlite::fromJSON(EvaluationStatusJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(EvaluationStatusJson) {
-      EvaluationStatusObject <- jsonlite::fromJSON(EvaluationStatusJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(EvaluationStatusJson) {
+            private$value <- jsonlite::fromJSON(EvaluationStatusJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(EvaluationStatusJson) {
+            private$value <- jsonlite::fromJSON(EvaluationStatusJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_EvaluationStatus <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[PLANNED, OPEN, CLOSED, COMPLETED]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

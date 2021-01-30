@@ -8,35 +8,58 @@
 
 #' @docType class
 #' @title AnnotationsValueType
+#'
 #' @description AnnotationsValueType Class
+#'
 #' @format An \code{R6Class} generator object
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
 #' @export
 AnnotationsValueType <- R6::R6Class(
-  'AnnotationsValueType',
-  public = list(
-    initialize = function(...){
-      local.optional.var <- list(...)
-    },
-    toJSON = function() {
-      AnnotationsValueTypeObject <- list()
+    "AnnotationsValueType",
+    public = list(
+        initialize = function(...) {
+            local.optional.var <- list(...)
+            val <- unlist(local.optional.var)
+            enumvec <- .parse_AnnotationsValueType()
 
-      AnnotationsValueTypeObject
-    },
-    fromJSON = function(AnnotationsValueTypeJson) {
-      AnnotationsValueTypeObject <- jsonlite::fromJSON(AnnotationsValueTypeJson)
-    },
-    toJSONString = function() {
-      jsoncontent <- c(
-      )
-      jsoncontent <- paste(jsoncontent, collapse = ",")
-      paste('{', jsoncontent, '}', sep = "")
-    },
-    fromJSONString = function(AnnotationsValueTypeJson) {
-      AnnotationsValueTypeObject <- jsonlite::fromJSON(AnnotationsValueTypeJson)
-      self
-    }
-  )
+            stopifnot(length(val) == 1L)
+
+            if (!val %in% enumvec)
+                stop("Use one of the valid values: ",
+                    paste0(enumvec, collapse = ", "))
+            private$value <- val
+        },
+        toJSON = function() {
+            jsonlite::toJSON(private$value, auto_unbox = TRUE)
+        },
+        fromJSON = function(AnnotationsValueTypeJson) {
+            private$value <- jsonlite::fromJSON(AnnotationsValueTypeJson,
+                simplifyVector = FALSE)
+            self
+        },
+        toJSONString = function() {
+            as.character(jsonlite::toJSON(private$value,
+                auto_unbox = TRUE))
+        },
+        fromJSONString = function(AnnotationsValueTypeJson) {
+            private$value <- jsonlite::fromJSON(AnnotationsValueTypeJson,
+                simplifyVector = FALSE)
+            self
+        }
+    ),
+    private = list(
+        value = NULL
+    )
 )
+
+# add to utils.R
+.parse_AnnotationsValueType <- function(vals) {
+    res <- gsub("^\\[|\\]$", "",
+        "[STRING, DOUBLE, LONG, TIMESTAMP_MS]"
+    )
+    unlist(strsplit(res, ", "))
+}
+
+

@@ -5,14 +5,40 @@ context("Test AccessRequirementServicesApi")
 
 api.instance <- AccessRequirementServicesApi$new()
 
+test_that("CreateLockAccessRequirement", {
+  # tests for CreateLockAccessRequirement
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
+  # Add a temporary access restriction that prevents access pending review by the Synapse Access and Compliance Team. This service may be used only by an administrator of the specified entity. 
+  # @param id character The ID of an Entity.
+  # @return [AccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetEntityAccessRequirements", {
+  # tests for GetEntityAccessRequirements
+  # base path: https://repo-prod.prod.sagebase.org/repo/v1
+  # Retrieve paginated list of ALL Access Requirements associated with an entity.
+  # Retrieve paginated list of ALL Access Requirements associated with an entity. 
+  # @param id character The ID of an Entity.
+  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.  (optional)
+  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.  (optional)
+  # @return [PaginatedResultsOfAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("GetTeamAccessRequirements", {
   # tests for GetTeamAccessRequirements
   # base path: https://repo-prod.prod.sagebase.org/repo/v1
   # Retrieve paginated list of ALL Access Requirements associated with a Team.
   # Retrieve paginated list of ALL Access Requirements associated with a Team. 
-  # @param character  id  the ID of the Team. 
-  # @param integer  limit  Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.   (optional)
-  # @param integer  offset  The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.   (optional)
+  # @param id character the ID of the Team.
+  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.  (optional)
+  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.  (optional)
   # @return [PaginatedResultsOfAccessRequirement]
 
   # uncomment below to test the operation
