@@ -165,6 +165,18 @@ Class | Method | HTTP request | Description
 *EvaluationServicesApi* | [**UpdateEvaluationRound**](docs/EvaluationServicesApi.md#UpdateEvaluationRound) | **PUT** /evaluation/{evalId}/round/{roundId} | Update Evaluation Round
 *EvaluationServicesApi* | [**UpdateSubmissionStatus**](docs/EvaluationServicesApi.md#UpdateSubmissionStatus) | **PUT** /evaluation/submission/{subId}/status | Updates a SubmissionStatus object.
 *EvaluationServicesApi* | [**UpdateSubmissionStatusBatch**](docs/EvaluationServicesApi.md#UpdateSubmissionStatusBatch) | **PUT** /evaluation/{evalId}/statusBatch | Update multiple SubmissionStatuses.
+*FormServicesApi* | [**CreateFormData**](docs/FormServicesApi.md#CreateFormData) | **POST** /form/data | Create a new FormData object.
+*FormServicesApi* | [**CreateGroup**](docs/FormServicesApi.md#CreateGroup) | **POST** /form/group | Create a FormGroup with the provided name.
+*FormServicesApi* | [**DeleteFormData**](docs/FormServicesApi.md#DeleteFormData) | **DELETE** /form/data/{id} | Delete a FormData object.
+*FormServicesApi* | [**GetFormGroup**](docs/FormServicesApi.md#GetFormGroup) | **GET** /form/group/{id} | Get a FormGroup with the provided ID.
+*FormServicesApi* | [**GetGroupAcl**](docs/FormServicesApi.md#GetGroupAcl) | **GET** /form/group/{id}/acl | Get the ACL for a FormGroup
+*FormServicesApi* | [**ListFormStatus**](docs/FormServicesApi.md#ListFormStatus) | **POST** /form/data/list | List FormData objects and their associated status. 
+*FormServicesApi* | [**ListFormStatusReviewer**](docs/FormServicesApi.md#ListFormStatusReviewer) | **POST** /form/data/list/reviewer | List FormData objects and their associated status. 
+*FormServicesApi* | [**ReviewerAcceptForm**](docs/FormServicesApi.md#ReviewerAcceptForm) | **PUT** /form/data/{id}/accept | Called by the form reviewing service to accept a submitted data.
+*FormServicesApi* | [**ReviewerRejectForm**](docs/FormServicesApi.md#ReviewerRejectForm) | **PUT** /form/data/{id}/reject | Called by the form reviewing service to reject a submitted data.
+*FormServicesApi* | [**SubmitFormData**](docs/FormServicesApi.md#SubmitFormData) | **POST** /form/data/{id}/submit | Submit the identified FormData from review.
+*FormServicesApi* | [**UpdateFormData**](docs/FormServicesApi.md#UpdateFormData) | **PUT** /form/data/{id} | Update a FormData object.
+*FormServicesApi* | [**UpdateGroupAcl**](docs/FormServicesApi.md#UpdateGroupAcl) | **PUT** /form/group/{id}/acl | Update the ACL for a FormGroup.
 *MembershipInvitationServicesApi* | [**GetOpenInvitationsByTeam**](docs/MembershipInvitationServicesApi.md#GetOpenInvitationsByTeam) | **GET** /team/{id}/openInvitation | Retrieve the open invitations from a Team, optionally filtering by the invitee. 
 *MembershipInvitationServicesApi* | [**GetOpenInvitationsByUser**](docs/MembershipInvitationServicesApi.md#GetOpenInvitationsByUser) | **GET** /user/{id}/openInvitation | Retrieve the open invitations to a user, optionally filtering by the Team of origin. 
 *MembershipRequestServicesApi* | [**GetOpenRequestsByTeam**](docs/MembershipRequestServicesApi.md#GetOpenRequestsByTeam) | **GET** /team/{id}/openRequest | Retrieve the open requests submitted to a Team, optionally filtering by the requester.
@@ -292,10 +304,16 @@ Class | Method | HTTP request | Description
  - [FileHandle](docs/FileHandle.md)
  - [FileHandleResults](docs/FileHandleResults.md)
  - [FileHandleUpdateRequest](docs/FileHandleUpdateRequest.md)
+ - [FormChangeRequest](docs/FormChangeRequest.md)
+ - [FormData](docs/FormData.md)
+ - [FormGroup](docs/FormGroup.md)
+ - [FormRejection](docs/FormRejection.md)
  - [IdList](docs/IdList.md)
  - [JoinTeamSignedToken](docs/JoinTeamSignedToken.md)
  - [JsonSchemaObjectBinding](docs/JsonSchemaObjectBinding.md)
  - [JsonSchemaVersionInfo](docs/JsonSchemaVersionInfo.md)
+ - [ListRequest](docs/ListRequest.md)
+ - [ListResponse](docs/ListResponse.md)
  - [ListValidationResultsRequest](docs/ListValidationResultsRequest.md)
  - [ListValidationResultsResponse](docs/ListValidationResultsResponse.md)
  - [ListWrapperOfTeam](docs/ListWrapperOfTeam.md)
@@ -356,6 +374,7 @@ Class | Method | HTTP request | Description
  - [SortBy](docs/SortBy.md)
  - [SortDirection](docs/SortDirection.md)
  - [SortItem](docs/SortItem.md)
+ - [StateEnum](docs/StateEnum.md)
  - [StringAnnotation](docs/StringAnnotation.md)
  - [StsCredentials](docs/StsCredentials.md)
  - [SubmissionBundle](docs/SubmissionBundle.md)
@@ -365,6 +384,7 @@ Class | Method | HTTP request | Description
  - [SubmissionQuota](docs/SubmissionQuota.md)
  - [SubmissionStatusBatch](docs/SubmissionStatusBatch.md)
  - [SubmissionStatusEnum](docs/SubmissionStatusEnum.md)
+ - [SubmissionStatusForm](docs/SubmissionStatusForm.md)
  - [SubmissionStatusModel](docs/SubmissionStatusModel.md)
  - [SumFileSizes](docs/SumFileSizes.md)
  - [TableBundle](docs/TableBundle.md)
