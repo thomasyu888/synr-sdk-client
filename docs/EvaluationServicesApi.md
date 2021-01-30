@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**GetAvailableEvaluationsPaginated**](EvaluationServicesApi.md#GetAvailableEvaluationsPaginated) | **GET** /evaluation/available | Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. 
 [**GetEvaluation**](EvaluationServicesApi.md#GetEvaluation) | **GET** /evaluation/{evalId} | Gets an Evaluation.
 [**GetEvaluationRound**](EvaluationServicesApi.md#GetEvaluationRound) | **GET** /evaluation/{evalId}/round/{roundId} | Get Evaluation Round
+[**GetEvaluationsByContentSourcePaginated**](EvaluationServicesApi.md#GetEvaluationsByContentSourcePaginated) | **GET** /entity/{id}/evaluation | Gets Evaluations tied to a project.
 [**GetEvaluationsPaginated**](EvaluationServicesApi.md#GetEvaluationsPaginated) | **GET** /evaluation | Gets a collection of Evaluations, within a given range.
 [**GetMySubmissionBundles**](EvaluationServicesApi.md#GetMySubmissionBundles) | **GET** /evaluation/{evalId}/submission/bundle | Gets the requesting users bundled Submissions and SubmissionStatuses to a specified Evaluation.&#39; 
 [**GetMySubmissions**](EvaluationServicesApi.md#GetMySubmissions) | **GET** /evaluation/{evalId}/submission | Gets the requesting user&#39;s Submissions to a specified Evaluation.
@@ -794,6 +795,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EvaluationRound**](EvaluationRound.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEvaluationsByContentSourcePaginated**
+> PaginatedResultsOfEvaluation GetEvaluationsByContentSourcePaginated(id, access.type=var.access.type, active.only=FALSE, evaluation.ids=var.evaluation.ids, limit=10, offset=0)
+
+Gets Evaluations tied to a project.
+
+Gets Evaluations tied to a project. <b>Note:</b> The response will contain only those Evaluations on which the caller is granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> permission, unless specified otherwise with the accessType parameter. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | the ID of the project
+var.access.type <- ACCESS_TYPE$new() # ACCESSTYPE | The type of access for the user to filter for, optional and defaults to <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> 
+var.active.only <- FALSE # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. 
+var.evaluation.ids <- 'evaluation.ids_example' # character | an optional, comma-delimited list of evaluation IDs to which the response is limited 
+var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10. 
+var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
+
+#Gets Evaluations tied to a project.
+api.instance <- EvaluationServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEvaluationsByContentSourcePaginated(var.id, access.type=var.access.type, active.only=var.active.only, evaluation.ids=var.evaluation.ids, limit=var.limit, offset=var.offset)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| the ID of the project | 
+ **access.type** | [**ACCESSTYPE**](.md)| The type of access for the user to filter for, optional and defaults to &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.READ&lt;/a&gt;  | [optional] 
+ **active.only** | **character**| If &#39;true&#39; then return only those evaluations with rounds defined and for which the current time is in one of the rounds.  | [optional] [default to FALSE]
+ **evaluation.ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited  | [optional] 
+ **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.  | [optional] [default to 10]
+ **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
+
+### Return type
+
+[**PaginatedResultsOfEvaluation**](PaginatedResultsOfEvaluation.md)
 
 ### Authorization
 

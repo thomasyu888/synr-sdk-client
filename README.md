@@ -58,6 +58,8 @@ All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccessApprovalServicesApi* | [**GetTeamAccessApprovals**](docs/AccessApprovalServicesApi.md#GetTeamAccessApprovals) | **GET** /team/{id}/accessApproval | Retrieve the Access Approvals for the given Team.
+*AccessRequirementServicesApi* | [**CreateLockAccessRequirement**](docs/AccessRequirementServicesApi.md#CreateLockAccessRequirement) | **POST** /entity/{id}/lockAccessRequirement | Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
+*AccessRequirementServicesApi* | [**GetEntityAccessRequirements**](docs/AccessRequirementServicesApi.md#GetEntityAccessRequirements) | **GET** /entity/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with an entity.
 *AccessRequirementServicesApi* | [**GetTeamAccessRequirements**](docs/AccessRequirementServicesApi.md#GetTeamAccessRequirements) | **GET** /team/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with a Team.
 *CertifiedUserServicesApi* | [**GetPassingRecord**](docs/CertifiedUserServicesApi.md#GetPassingRecord) | **GET** /user/{id}/certifiedUserPassingRecord | Retrieve the Passing Record on the User Certification test for the given user. 
 *CertifiedUserServicesApi* | [**SetUserCertificationStatus**](docs/CertifiedUserServicesApi.md#SetUserCertificationStatus) | **PUT** /user/{id}/certificationStatus | Set certification status
@@ -74,11 +76,45 @@ Class | Method | HTTP request | Description
 *ChallengeServicesApi* | [**ListSubmissionTeams**](docs/ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
 *ChallengeServicesApi* | [**UpdateChallenge**](docs/ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
 *ChallengeServicesApi* | [**UpdateChallengeTeam**](docs/ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+*DiscussionServicesApi* | [**GetThreadsForEntity**](docs/DiscussionServicesApi.md#GetThreadsForEntity) | **GET** /entity/{id}/threads | This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
+*DockerCommitServicesApi* | [**AddDockerCommit**](docs/DockerCommitServicesApi.md#AddDockerCommit) | **POST** /entity/{id}/dockerCommit | Add a commit (tag and digest) for an external/unmanaged Docker repository.
+*DockerCommitServicesApi* | [**ListDockerTags**](docs/DockerCommitServicesApi.md#ListDockerTags) | **GET** /entity/{id}/dockerTag | List the tagged commits (tag/digest pairs) for the given Docker repository.
 *DoiServicesApi* | [**GetCreateOrUpdateDoiResults**](docs/DoiServicesApi.md#GetCreateOrUpdateDoiResults) | **GET** /doi/async/get/{asyncToken} | Get the results of a call to POST /doi/async/start
 *DoiServicesApi* | [**GetDoiAssociation**](docs/DoiServicesApi.md#GetDoiAssociation) | **GET** /doi/association | Retrieves the DOI for the object.
 *DoiServicesApi* | [**GetDoiV2**](docs/DoiServicesApi.md#GetDoiV2) | **GET** /doi | Retrieves the DOI for the object and its associated DOI metadata.
 *DoiServicesApi* | [**Locate**](docs/DoiServicesApi.md#Locate) | **GET** /doi/locate | Retrieves the Synapse web portal URL to the object entered.
 *DoiServicesApi* | [**StartCreateOrUpdateDoi**](docs/DoiServicesApi.md#StartCreateOrUpdateDoi) | **POST** /doi/async/start | Asynchronously creates or updates a DOI in Synapse, with input metadata.
+*EntityBundleV2ServicesApi* | [**GetEntityBundle**](docs/EntityBundleV2ServicesApi.md#GetEntityBundle) | **POST** /entity/{id}/bundle2 | Get an entity and related data with a single POST.
+*EntityBundleV2ServicesApi* | [**UpdateEntityBundle**](docs/EntityBundleV2ServicesApi.md#UpdateEntityBundle) | **PUT** /entity/{id}/bundle2 | Update an entity and associated components with a single PUT.
+*EntityServicesApi* | [**BindJsonSchemaToEntity**](docs/EntityServicesApi.md#BindJsonSchemaToEntity) | **PUT** /entity/{id}/schema/binding | Bind a JSON schema to an Entity.
+*EntityServicesApi* | [**ChangeEntityDataType**](docs/EntityServicesApi.md#ChangeEntityDataType) | **PUT** /entity/{id}/datatype | Change the.
+*EntityServicesApi* | [**ClearBoundSchema**](docs/EntityServicesApi.md#ClearBoundSchema) | **DELETE** /entity/{id}/schema/binding | Clear the bound JSON schema from this Entity.
+*EntityServicesApi* | [**CreateEntity**](docs/EntityServicesApi.md#CreateEntity) | **POST** /entity | Create a new Entity.
+*EntityServicesApi* | [**CreateEntityAcl**](docs/EntityServicesApi.md#CreateEntityAcl) | **POST** /entity/{id}/acl | Create a new Access Control List (ACL), overriding inheritance.
+*EntityServicesApi* | [**DeleteActivity**](docs/EntityServicesApi.md#DeleteActivity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
+*EntityServicesApi* | [**DeleteEntity**](docs/EntityServicesApi.md#DeleteEntity) | **DELETE** /entity/{id} | Deletes an Entity
+*EntityServicesApi* | [**DeleteEntityAcl**](docs/EntityServicesApi.md#DeleteEntityAcl) | **DELETE** /entity/{id}/acl | Delete the Access Control List (ACL) for a given Entity.
+*EntityServicesApi* | [**GetActivity**](docs/EntityServicesApi.md#GetActivity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
+*EntityServicesApi* | [**GetBoundJsonSchema**](docs/EntityServicesApi.md#GetBoundJsonSchema) | **GET** /entity/{id}/schema/binding | Get information about a JSON schema bound to an Entity.
+*EntityServicesApi* | [**GetEntity**](docs/EntityServicesApi.md#GetEntity) | **GET** /entity/{id} | Get an Entity
+*EntityServicesApi* | [**GetEntityAcl**](docs/EntityServicesApi.md#GetEntityAcl) | **GET** /entity/{id}/acl | Get the Access Control List (ACL) for a given entity.
+*EntityServicesApi* | [**GetEntityAnnotations**](docs/EntityServicesApi.md#GetEntityAnnotations) | **GET** /entity/{id}/annotations2 | Get the annotations for an entity.
+*EntityServicesApi* | [**GetEntityBenefactor**](docs/EntityServicesApi.md#GetEntityBenefactor) | **GET** /entity/{id}/benefactor | Get an Entity's benefactor.
+*EntityServicesApi* | [**GetEntityFileHandles**](docs/EntityServicesApi.md#GetEntityFileHandles) | **GET** /entity/{id}/filehandles | Get the FileHandles of the file currently associated with the current version of the Entity. 
+*EntityServicesApi* | [**GetEntityJson**](docs/EntityServicesApi.md#GetEntityJson) | **GET** /entity/{id}/json | Get the raw JSON for the given entity.
+*EntityServicesApi* | [**GetEntityPath**](docs/EntityServicesApi.md#GetEntityPath) | **GET** /entity/{id}/path | Get the full path of an Entity as a List of EntityHeaders.
+*EntityServicesApi* | [**GetEntitySchemaValidationResults**](docs/EntityServicesApi.md#GetEntitySchemaValidationResults) | **GET** /entity/{id}/schema/validation | Get the validation results of an Entity against its bound JSON schema.
+*EntityServicesApi* | [**GetEntitySchemaValidationStatistics**](docs/EntityServicesApi.md#GetEntitySchemaValidationStatistics) | **GET** /entity/{id}/schema/validation/statistics | Get the summary statistics of the JSON schema validation results for a single container Entity such as a Project or Folder. 
+*EntityServicesApi* | [**GetFilePreviewUrl**](docs/EntityServicesApi.md#GetFilePreviewUrl) | **GET** /entity/{id}/filepreview | Get the URL of the preview file associated with the current version of a FileEntity. 
+*EntityServicesApi* | [**GetInvalidValidationResults**](docs/EntityServicesApi.md#GetInvalidValidationResults) | **POST** /entity/{id}/schema/validation/invalid | Get a single page of invalid JSON schema validation results for a container Entity (Project or Folder). 
+*EntityServicesApi* | [**GetTemporaryCredentialsForEntity**](docs/EntityServicesApi.md#GetTemporaryCredentialsForEntity) | **GET** /entity/{id}/sts | Gets the temporary S3 credentials from STS for the given entity.
+*EntityServicesApi* | [**GetUserEntityPermissions**](docs/EntityServicesApi.md#GetUserEntityPermissions) | **GET** /entity/{id}/permissions | Get the list of permission that the caller has on a given Entity.
+*EntityServicesApi* | [**HasAccess**](docs/EntityServicesApi.md#HasAccess) | **GET** /entity/{id}/access | Determine if the caller have a given permission on a given Entity.
+*EntityServicesApi* | [**UpdateActivityForEntity**](docs/EntityServicesApi.md#UpdateActivityForEntity) | **PUT** /entity/{id}/generatedBy | Sets the generatedBy relationship for the current version of an Entity.
+*EntityServicesApi* | [**UpdateEntity**](docs/EntityServicesApi.md#UpdateEntity) | **PUT** /entity/{id} | Update an entity.
+*EntityServicesApi* | [**UpdateEntityAcl**](docs/EntityServicesApi.md#UpdateEntityAcl) | **PUT** /entity/{id}/acl | Update an Entity's ACL.
+*EntityServicesApi* | [**UpdateEntityAnnotations**](docs/EntityServicesApi.md#UpdateEntityAnnotations) | **PUT** /entity/{id}/annotations2 | Update an Entity's annotations.
+*EntityServicesApi* | [**UpdateEntityWithJson**](docs/EntityServicesApi.md#UpdateEntityWithJson) | **PUT** /entity/{id}/json | Update the annotations of an entity using the raw JSON of the entity.
 *EvaluationServicesApi* | [**CreateEvaluation**](docs/EvaluationServicesApi.md#CreateEvaluation) | **POST** /evaluation | Creates a new Evaluation.
 *EvaluationServicesApi* | [**CreateEvaluationRound**](docs/EvaluationServicesApi.md#CreateEvaluationRound) | **POST** /evaluation/{evalId}/round | Create Evaluation Round
 *EvaluationServicesApi* | [**CreateSubmission**](docs/EvaluationServicesApi.md#CreateSubmission) | **POST** /evaluation/submission | Creates a Submission and sends a submission notification email to the submitter's team members. 
@@ -95,6 +131,7 @@ Class | Method | HTTP request | Description
 *EvaluationServicesApi* | [**GetAvailableEvaluationsPaginated**](docs/EvaluationServicesApi.md#GetAvailableEvaluationsPaginated) | **GET** /evaluation/available | Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. 
 *EvaluationServicesApi* | [**GetEvaluation**](docs/EvaluationServicesApi.md#GetEvaluation) | **GET** /evaluation/{evalId} | Gets an Evaluation.
 *EvaluationServicesApi* | [**GetEvaluationRound**](docs/EvaluationServicesApi.md#GetEvaluationRound) | **GET** /evaluation/{evalId}/round/{roundId} | Get Evaluation Round
+*EvaluationServicesApi* | [**GetEvaluationsByContentSourcePaginated**](docs/EvaluationServicesApi.md#GetEvaluationsByContentSourcePaginated) | **GET** /entity/{id}/evaluation | Gets Evaluations tied to a project.
 *EvaluationServicesApi* | [**GetEvaluationsPaginated**](docs/EvaluationServicesApi.md#GetEvaluationsPaginated) | **GET** /evaluation | Gets a collection of Evaluations, within a given range.
 *EvaluationServicesApi* | [**GetMySubmissionBundles**](docs/EvaluationServicesApi.md#GetMySubmissionBundles) | **GET** /evaluation/{evalId}/submission/bundle | Gets the requesting users bundled Submissions and SubmissionStatuses to a specified Evaluation.' 
 *EvaluationServicesApi* | [**GetMySubmissions**](docs/EvaluationServicesApi.md#GetMySubmissions) | **GET** /evaluation/{evalId}/submission | Gets the requesting user's Submissions to a specified Evaluation.
@@ -114,6 +151,18 @@ Class | Method | HTTP request | Description
 *MembershipInvitationServicesApi* | [**GetOpenInvitationsByUser**](docs/MembershipInvitationServicesApi.md#GetOpenInvitationsByUser) | **GET** /user/{id}/openInvitation | Retrieve the open invitations to a user, optionally filtering by the Team of origin. 
 *MembershipRequestServicesApi* | [**GetOpenRequestsByTeam**](docs/MembershipRequestServicesApi.md#GetOpenRequestsByTeam) | **GET** /team/{id}/openRequest | Retrieve the open requests submitted to a Team, optionally filtering by the requester.
 *MembershipRequestServicesApi* | [**GetOpenRequestsByUser**](docs/MembershipRequestServicesApi.md#GetOpenRequestsByUser) | **GET** /user/{id}/openRequest | Retrieve the open requests submitted by a user, optionally filtering by the Team. 
+*MessageServicesApi* | [**SendMessageToEntityOwner**](docs/MessageServicesApi.md#SendMessageToEntityOwner) | **POST** /entity/{id}/message | Adds the owner of the given entity as an additional recipient of the message.
+*TableServicesApi* | [**CreateSnapshot**](docs/TableServicesApi.md#CreateSnapshot) | **POST** /entity/{id}/table/snapshot | Request to create a new snapshot of a table.
+*TableServicesApi* | [**CsvDownloadAsyncGet**](docs/TableServicesApi.md#CsvDownloadAsyncGet) | **GET** /entity/{id}/table/download/csv/async/get/{asyncToken} | Asynchronously get the results of a csv download started with.
+*TableServicesApi* | [**CsvDownloadAsyncStart**](docs/TableServicesApi.md#CsvDownloadAsyncStart) | **POST** /entity/{id}/table/download/csv/async/start | Asynchronously start a csv download.
+*TableServicesApi* | [**FilePreviewRedirectUrlForRow**](docs/TableServicesApi.md#FilePreviewRedirectUrlForRow) | **GET** /entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/filepreview | Get the preview URL of the file associated with a specific version of a row and file handle column. 
+*TableServicesApi* | [**FileRedirectUrlForRow**](docs/TableServicesApi.md#FileRedirectUrlForRow) | **GET** /entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/file | Get the actual URL of the file associated with a specific version of a row and file handle column. 
+*TableServicesApi* | [**GetColumnForTable**](docs/TableServicesApi.md#GetColumnForTable) | **GET** /entity/{id}/column | Given the ID of a.
+*TableServicesApi* | [**GetFileHandles**](docs/TableServicesApi.md#GetFileHandles) | **POST** /entity/{id}/table/filehandles | .
+*TableServicesApi* | [**GetTableTransactionResult**](docs/TableServicesApi.md#GetTableTransactionResult) | **GET** /entity/{id}/table/transaction/async/get/{asyncToken} | Asynchronously get the results of a table update transaction started with.
+*TableServicesApi* | [**QueryAsyncGet**](docs/TableServicesApi.md#QueryAsyncGet) | **GET** /entity/{id}/table/query/async/get/{asyncToken} | Asynchronously get the results of a query started with.
+*TableServicesApi* | [**QueryAsyncStart**](docs/TableServicesApi.md#QueryAsyncStart) | **POST** /entity/{id}/table/query/async/start | Asynchronously start a query.
+*TableServicesApi* | [**StartTableTransactionJob**](docs/TableServicesApi.md#StartTableTransactionJob) | **POST** /entity/{id}/table/transaction/async/start | Start a table update job that will attempt to make all of the requested changes in a single transaction. 
 *TeamServicesApi* | [**AddTeamMember**](docs/TeamServicesApi.md#AddTeamMember) | **PUT** /team/{id}/member/{principalId} | Add a member to the Team.
 *TeamServicesApi* | [**AddTeamMemberViaSignedToken**](docs/TeamServicesApi.md#AddTeamMemberViaSignedToken) | **PUT** /teamMember | Add a member to the Team.
 *TeamServicesApi* | [**CreateTeam**](docs/TeamServicesApi.md#CreateTeam) | **POST** /team | Create a new Team.
@@ -160,6 +209,7 @@ Class | Method | HTTP request | Description
  - [ACCESSTYPE](docs/ACCESSTYPE.md)
  - [AccessControlList](docs/AccessControlList.md)
  - [AccessRequirement](docs/AccessRequirement.md)
+ - [Activity](docs/Activity.md)
  - [AliasList](docs/AliasList.md)
  - [AnnotationsAnnotation](docs/AnnotationsAnnotation.md)
  - [AnnotationsV2](docs/AnnotationsV2.md)
@@ -168,12 +218,21 @@ Class | Method | HTTP request | Description
  - [AsyncJobId](docs/AsyncJobId.md)
  - [AttachmentMetadata](docs/AttachmentMetadata.md)
  - [BatchUploadResponse](docs/BatchUploadResponse.md)
+ - [BindSchemaToEntityRequest](docs/BindSchemaToEntityRequest.md)
  - [BooleanResult](docs/BooleanResult.md)
+ - [BoundObjectType](docs/BoundObjectType.md)
  - [Challenge](docs/Challenge.md)
  - [ChallengePagedResults](docs/ChallengePagedResults.md)
  - [ChallengeTeam](docs/ChallengeTeam.md)
  - [ChallengeTeamPagedResults](docs/ChallengeTeamPagedResults.md)
+ - [ColumnModel](docs/ColumnModel.md)
+ - [ColumnType](docs/ColumnType.md)
  - [Count](docs/Count.md)
+ - [CsvTableDescriptor](docs/CsvTableDescriptor.md)
+ - [DataType](docs/DataType.md)
+ - [DataTypeResponse](docs/DataTypeResponse.md)
+ - [DiscussionThreadBundle](docs/DiscussionThreadBundle.md)
+ - [DockerCommit](docs/DockerCommit.md)
  - [Doi](docs/Doi.md)
  - [DoiAllOf](docs/DoiAllOf.md)
  - [DoiAssociation](docs/DoiAssociation.md)
@@ -185,6 +244,16 @@ Class | Method | HTTP request | Description
  - [DoiResponse](docs/DoiResponse.md)
  - [DoiTitle](docs/DoiTitle.md)
  - [DoubleAnnotation](docs/DoubleAnnotation.md)
+ - [DownloadFromTableRequest](docs/DownloadFromTableRequest.md)
+ - [DownloadFromTableRequestAllOf](docs/DownloadFromTableRequestAllOf.md)
+ - [DownloadFromTableResult](docs/DownloadFromTableResult.md)
+ - [Entity](docs/Entity.md)
+ - [EntityBundleCreateV2](docs/EntityBundleCreateV2.md)
+ - [EntityBundleRequest](docs/EntityBundleRequest.md)
+ - [EntityBundleV2](docs/EntityBundleV2.md)
+ - [EntityHeader](docs/EntityHeader.md)
+ - [EntityPath](docs/EntityPath.md)
+ - [EntityType](docs/EntityType.md)
  - [Evaluation](docs/Evaluation.md)
  - [EvaluationRound](docs/EvaluationRound.md)
  - [EvaluationRoundLimit](docs/EvaluationRoundLimit.md)
@@ -192,8 +261,17 @@ Class | Method | HTTP request | Description
  - [EvaluationRoundListRequest](docs/EvaluationRoundListRequest.md)
  - [EvaluationRoundListResponse](docs/EvaluationRoundListResponse.md)
  - [EvaluationStatus](docs/EvaluationStatus.md)
+ - [FacetColumnRequest](docs/FacetColumnRequest.md)
+ - [FacetColumnResult](docs/FacetColumnResult.md)
+ - [FacetType](docs/FacetType.md)
+ - [FileHandle](docs/FileHandle.md)
+ - [FileHandleResults](docs/FileHandleResults.md)
  - [IdList](docs/IdList.md)
  - [JoinTeamSignedToken](docs/JoinTeamSignedToken.md)
+ - [JsonSchemaObjectBinding](docs/JsonSchemaObjectBinding.md)
+ - [JsonSchemaVersionInfo](docs/JsonSchemaVersionInfo.md)
+ - [ListValidationResultsRequest](docs/ListValidationResultsRequest.md)
+ - [ListValidationResultsResponse](docs/ListValidationResultsResponse.md)
  - [ListWrapperOfTeam](docs/ListWrapperOfTeam.md)
  - [ListWrapperOfTeamMember](docs/ListWrapperOfTeamMember.md)
  - [ListWrapperOfUserProfile](docs/ListWrapperOfUserProfile.md)
@@ -201,10 +279,15 @@ Class | Method | HTTP request | Description
  - [MemberSubmissionEligibility](docs/MemberSubmissionEligibility.md)
  - [MembershipInvitation](docs/MembershipInvitation.md)
  - [MembershipRequest](docs/MembershipRequest.md)
+ - [MessageToUser](docs/MessageToUser.md)
  - [NameIdentifierScheme](docs/NameIdentifierScheme.md)
  - [ObjectType](docs/ObjectType.md)
+ - [ObjectTypeSchema](docs/ObjectTypeSchema.md)
+ - [PaginatedColumnModels](docs/PaginatedColumnModels.md)
  - [PaginatedIds](docs/PaginatedIds.md)
  - [PaginatedResultsOfAccessRequirement](docs/PaginatedResultsOfAccessRequirement.md)
+ - [PaginatedResultsOfDiscussionThreadBundle](docs/PaginatedResultsOfDiscussionThreadBundle.md)
+ - [PaginatedResultsOfDockerCommit](docs/PaginatedResultsOfDockerCommit.md)
  - [PaginatedResultsOfEvaluation](docs/PaginatedResultsOfEvaluation.md)
  - [PaginatedResultsOfMembershipInvitation](docs/PaginatedResultsOfMembershipInvitation.md)
  - [PaginatedResultsOfMembershipRequest](docs/PaginatedResultsOfMembershipRequest.md)
@@ -218,6 +301,11 @@ Class | Method | HTTP request | Description
  - [PaginatedResultsOfUserProfile](docs/PaginatedResultsOfUserProfile.md)
  - [PaginatedTeamIds](docs/PaginatedTeamIds.md)
  - [PassingRecord](docs/PassingRecord.md)
+ - [Query](docs/Query.md)
+ - [QueryBundleRequest](docs/QueryBundleRequest.md)
+ - [QueryNextPageToken](docs/QueryNextPageToken.md)
+ - [QueryResult](docs/QueryResult.md)
+ - [QueryResultBundle](docs/QueryResultBundle.md)
  - [Question](docs/Question.md)
  - [QuestionResponse](docs/QuestionResponse.md)
  - [ResourceAccess](docs/ResourceAccess.md)
@@ -225,8 +313,20 @@ Class | Method | HTTP request | Description
  - [ResponseMessage](docs/ResponseMessage.md)
  - [RestrictableObjectDescriptor](docs/RestrictableObjectDescriptor.md)
  - [RestrictableObjectType](docs/RestrictableObjectType.md)
+ - [RestrictionInformationResponse](docs/RestrictionInformationResponse.md)
+ - [RestrictionLevel](docs/RestrictionLevel.md)
+ - [RowReference](docs/RowReference.md)
+ - [RowReferenceSet](docs/RowReferenceSet.md)
+ - [RowSet](docs/RowSet.md)
+ - [RowTable](docs/RowTable.md)
+ - [SelectColumn](docs/SelectColumn.md)
  - [Settings](docs/Settings.md)
+ - [SnapshotRequest](docs/SnapshotRequest.md)
+ - [SnapshotResponse](docs/SnapshotResponse.md)
+ - [SortDirection](docs/SortDirection.md)
+ - [SortItem](docs/SortItem.md)
  - [StringAnnotation](docs/StringAnnotation.md)
+ - [StsCredentials](docs/StsCredentials.md)
  - [SubmissionBundle](docs/SubmissionBundle.md)
  - [SubmissionContributor](docs/SubmissionContributor.md)
  - [SubmissionEligibility](docs/SubmissionEligibility.md)
@@ -235,18 +335,30 @@ Class | Method | HTTP request | Description
  - [SubmissionStatusBatch](docs/SubmissionStatusBatch.md)
  - [SubmissionStatusEnum](docs/SubmissionStatusEnum.md)
  - [SubmissionStatusModel](docs/SubmissionStatusModel.md)
+ - [SumFileSizes](docs/SumFileSizes.md)
+ - [TableBundle](docs/TableBundle.md)
+ - [TableFileHandleResults](docs/TableFileHandleResults.md)
+ - [TableUpdateRequest](docs/TableUpdateRequest.md)
+ - [TableUpdateResponse](docs/TableUpdateResponse.md)
+ - [TableUpdateTransactionRequest](docs/TableUpdateTransactionRequest.md)
+ - [TableUpdateTransactionResponse](docs/TableUpdateTransactionResponse.md)
  - [Team](docs/Team.md)
  - [TeamMember](docs/TeamMember.md)
  - [TeamMembershipStatus](docs/TeamMembershipStatus.md)
  - [TeamSubmissionEligibility](docs/TeamSubmissionEligibility.md)
  - [TrashedEntity](docs/TrashedEntity.md)
+ - [Used](docs/Used.md)
  - [UserBundle](docs/UserBundle.md)
+ - [UserEntityPermissions](docs/UserEntityPermissions.md)
  - [UserGroup](docs/UserGroup.md)
  - [UserGroupHeader](docs/UserGroupHeader.md)
  - [UserGroupHeaderResponse](docs/UserGroupHeaderResponse.md)
  - [UserGroupHeaderResponsePage](docs/UserGroupHeaderResponsePage.md)
  - [UserPreference](docs/UserPreference.md)
  - [UserProfile](docs/UserProfile.md)
+ - [ValidationException](docs/ValidationException.md)
+ - [ValidationResults](docs/ValidationResults.md)
+ - [ValidationSummaryStatistics](docs/ValidationSummaryStatistics.md)
  - [VerificationState](docs/VerificationState.md)
  - [VerificationStateEnum](docs/VerificationStateEnum.md)
  - [VerificationSubmission](docs/VerificationSubmission.md)

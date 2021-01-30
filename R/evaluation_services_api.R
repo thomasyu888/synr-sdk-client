@@ -302,6 +302,28 @@
 #' }
 #' }
 #'
+#' \strong{ GetEvaluationsByContentSourcePaginated } \emph{ Gets Evaluations tied to a project. }
+#' Gets Evaluations tied to a project. &lt;b&gt;Note:&lt;/b&gt; The response will contain only those Evaluations on which the caller is granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.READ&lt;/a&gt; permission, unless specified otherwise with the accessType parameter. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } access.type \link{ACCESSTYPE}
+#' \item \emph{ @param } active.only character
+#' \item \emph{ @param } evaluation.ids character
+#' \item \emph{ @param } limit integer
+#' \item \emph{ @param } offset integer
+#' \item \emph{ @returnType } \link{PaginatedResultsOfEvaluation} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfEvaluation 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetEvaluationsPaginated } \emph{ Gets a collection of Evaluations, within a given range. }
 #' Gets a collection of Evaluations, within a given range.  &lt;p&gt;  &lt;b&gt;Note:&lt;/b&gt; The response will contain only those Evaluations on which the caller is  granted the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.READ&lt;/a&gt;  permission, unless specified otherwise with the accessType parameter.  &lt;/p&gt; 
 #'
@@ -866,6 +888,28 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$GetEvaluationRound(var.eval.id, var.round.id)
+#'
+#'
+#' ####################  GetEvaluationsByContentSourcePaginated  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | the ID of the project
+#' var.access.type <- ACCESSTYPE$new() # ACCESSTYPE | The type of access for the user to filter for, optional and defaults to <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> 
+#' var.active.only <- FALSE # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. 
+#' var.evaluation.ids <- 'evaluation.ids_example' # character | an optional, comma-delimited list of evaluation IDs to which the response is limited 
+#' var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10. 
+#' var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
+#'
+#' #Gets Evaluations tied to a project.
+#' api.instance <- EvaluationServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEvaluationsByContentSourcePaginated(var.id, access.type=var.access.type, active.only=var.active.only, evaluation.ids=var.evaluation.ids, limit=var.limit, offset=var.offset)
 #'
 #'
 #' ####################  GetEvaluationsPaginated  ####################
@@ -2001,6 +2045,68 @@ EvaluationServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "EvaluationRound", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEvaluationsByContentSourcePaginated = function(id, access.type=NULL, active.only=FALSE, evaluation.ids=NULL, limit=10, offset=0, ...){
+      apiResponse <- self$GetEvaluationsByContentSourcePaginatedWithHttpInfo(id, access.type, active.only, evaluation.ids, limit, offset, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEvaluationsByContentSourcePaginatedWithHttpInfo = function(id, access.type=NULL, active.only=FALSE, evaluation.ids=NULL, limit=10, offset=0, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      queryParams['accessType'] <- access.type
+
+      queryParams['activeOnly'] <- active.only
+
+      queryParams['evaluationIds'] <- evaluation.ids
+
+      queryParams['limit'] <- limit
+
+      queryParams['offset'] <- offset
+
+      urlPath <- "/entity/{id}/evaluation"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfEvaluation", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }

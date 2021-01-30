@@ -14,6 +14,42 @@
 #'
 #' @section Methods:
 #' \describe{
+#' \strong{ CreateLockAccessRequirement } \emph{ Add a temporary access restriction that prevents access pending review by the Synapse ACT.  }
+#' Add a temporary access restriction that prevents access pending review by the Synapse Access and Compliance Team. This service may be used only by an administrator of the specified entity. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @returnType } \link{AccessRequirement} \cr
+#'
+#'
+#' \item status code : 201 | Success
+#'
+#' \item return type : AccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityAccessRequirements } \emph{ Retrieve paginated list of ALL Access Requirements associated with an entity. }
+#' Retrieve paginated list of ALL Access Requirements associated with an entity. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } limit integer
+#' \item \emph{ @param } offset integer
+#' \item \emph{ @returnType } \link{PaginatedResultsOfAccessRequirement} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfAccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetTeamAccessRequirements } \emph{ Retrieve paginated list of ALL Access Requirements associated with a Team. }
 #' Retrieve paginated list of ALL Access Requirements associated with a Team. 
 #'
@@ -38,6 +74,42 @@
 #'
 #' @examples
 #' \dontrun{
+#' ####################  CreateLockAccessRequirement  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of an Entity.
+#'
+#' #Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$CreateLockAccessRequirement(var.id)
+#'
+#'
+#' ####################  GetEntityAccessRequirements  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of an Entity.
+#' var.limit <- 56 # integer | Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. 
+#' var.offset <- 56 # integer | The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. 
+#'
+#' #Retrieve paginated list of ALL Access Requirements associated with an entity.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityAccessRequirements(var.id, limit=var.limit, offset=var.offset)
+#'
+#'
 #' ####################  GetTeamAccessRequirements  ####################
 #'
 #' library(synclient)
@@ -71,6 +143,114 @@ AccessRequirementServicesApi <- R6::R6Class(
       }
       else {
         self$apiClient <- ApiClient$new()
+      }
+    },
+    CreateLockAccessRequirement = function(id, ...){
+      apiResponse <- self$CreateLockAccessRequirementWithHttpInfo(id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    CreateLockAccessRequirementWithHttpInfo = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      urlPath <- "/entity/{id}/lockAccessRequirement"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityAccessRequirements = function(id, limit=NULL, offset=NULL, ...){
+      apiResponse <- self$GetEntityAccessRequirementsWithHttpInfo(id, limit, offset, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityAccessRequirementsWithHttpInfo = function(id, limit=NULL, offset=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      queryParams['limit'] <- limit
+
+      queryParams['offset'] <- offset
+
+      urlPath <- "/entity/{id}/accessRequirement"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfAccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
       }
     },
     GetTeamAccessRequirements = function(id, limit=10, offset=0, ...){
