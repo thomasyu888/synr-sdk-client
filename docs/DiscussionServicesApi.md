@@ -4,8 +4,55 @@ All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetThreadCounts**](DiscussionServicesApi.md#GetThreadCounts) | **POST** /entity/threadcounts | Get number of threads that belong to projects user can view and references the given entity. 
 [**GetThreadsForEntity**](DiscussionServicesApi.md#GetThreadsForEntity) | **GET** /entity/{id}/threads | This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
 
+
+# **GetThreadCounts**
+> EntityThreadCounts GetThreadCounts(entity.id.list=var.entity.id.list)
+
+Get number of threads that belong to projects user can view and references the given entity. 
+
+This API is used to get list of entity and count pairs, with count is the number of threads that belong to projects user can view and references the given entity.  Target users: anyone who has READ permission to the project. 
+
+### Example
+```R
+library(synclient)
+
+var.entity.id.list <- EntityIdList$new(list("idList_example")) # EntityIdList | The requested list. Limit size 20.
+
+#Get number of threads that belong to projects user can view and references the given entity. 
+api.instance <- DiscussionServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetThreadCounts(entity.id.list=var.entity.id.list)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity.id.list** | [**EntityIdList**](EntityIdList.md)| The requested list. Limit size 20. | [optional] 
+
+### Return type
+
+[**EntityThreadCounts**](EntityThreadCounts.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
 
 # **GetThreadsForEntity**
 > PaginatedResultsOfDiscussionThreadBundle GetThreadsForEntity(id, ascending=var.ascending, limit=10, offset=0, sort=var.sort)

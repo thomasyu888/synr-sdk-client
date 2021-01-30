@@ -76,6 +76,7 @@ Class | Method | HTTP request | Description
 *ChallengeServicesApi* | [**ListSubmissionTeams**](docs/ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
 *ChallengeServicesApi* | [**UpdateChallenge**](docs/ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
 *ChallengeServicesApi* | [**UpdateChallengeTeam**](docs/ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+*DiscussionServicesApi* | [**GetThreadCounts**](docs/DiscussionServicesApi.md#GetThreadCounts) | **POST** /entity/threadcounts | Get number of threads that belong to projects user can view and references the given entity. 
 *DiscussionServicesApi* | [**GetThreadsForEntity**](docs/DiscussionServicesApi.md#GetThreadsForEntity) | **GET** /entity/{id}/threads | This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
 *DockerCommitServicesApi* | [**AddDockerCommit**](docs/DockerCommitServicesApi.md#AddDockerCommit) | **POST** /entity/{id}/dockerCommit | Add a commit (tag and digest) for an external/unmanaged Docker repository.
 *DockerCommitServicesApi* | [**ListDockerTags**](docs/DockerCommitServicesApi.md#ListDockerTags) | **GET** /entity/{id}/dockerTag | List the tagged commits (tag/digest pairs) for the given Docker repository.
@@ -84,7 +85,9 @@ Class | Method | HTTP request | Description
 *DoiServicesApi* | [**GetDoiV2**](docs/DoiServicesApi.md#GetDoiV2) | **GET** /doi | Retrieves the DOI for the object and its associated DOI metadata.
 *DoiServicesApi* | [**Locate**](docs/DoiServicesApi.md#Locate) | **GET** /doi/locate | Retrieves the Synapse web portal URL to the object entered.
 *DoiServicesApi* | [**StartCreateOrUpdateDoi**](docs/DoiServicesApi.md#StartCreateOrUpdateDoi) | **POST** /doi/async/start | Asynchronously creates or updates a DOI in Synapse, with input metadata.
+*EntityBundleV2ServicesApi* | [**CreateEntityBundle2**](docs/EntityBundleV2ServicesApi.md#CreateEntityBundle2) | **POST** /entity/bundle2/create | Create an entity and associated components with a single POST.
 *EntityBundleV2ServicesApi* | [**GetEntityBundle**](docs/EntityBundleV2ServicesApi.md#GetEntityBundle) | **POST** /entity/{id}/bundle2 | Get an entity and related data with a single POST.
+*EntityBundleV2ServicesApi* | [**GetEntityBundle2**](docs/EntityBundleV2ServicesApi.md#GetEntityBundle2) | **POST** /entity/{id}/version/{versionNumber}/bundle2 | Get an entity at a specific version and its related data with a single POST. 
 *EntityBundleV2ServicesApi* | [**UpdateEntityBundle**](docs/EntityBundleV2ServicesApi.md#UpdateEntityBundle) | **PUT** /entity/{id}/bundle2 | Update an entity and associated components with a single PUT.
 *EntityServicesApi* | [**BindJsonSchemaToEntity**](docs/EntityServicesApi.md#BindJsonSchemaToEntity) | **PUT** /entity/{id}/schema/binding | Bind a JSON schema to an Entity.
 *EntityServicesApi* | [**ChangeEntityDataType**](docs/EntityServicesApi.md#ChangeEntityDataType) | **PUT** /entity/{id}/datatype | Change the.
@@ -94,26 +97,41 @@ Class | Method | HTTP request | Description
 *EntityServicesApi* | [**DeleteActivity**](docs/EntityServicesApi.md#DeleteActivity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
 *EntityServicesApi* | [**DeleteEntity**](docs/EntityServicesApi.md#DeleteEntity) | **DELETE** /entity/{id} | Deletes an Entity
 *EntityServicesApi* | [**DeleteEntityAcl**](docs/EntityServicesApi.md#DeleteEntityAcl) | **DELETE** /entity/{id}/acl | Delete the Access Control List (ACL) for a given Entity.
+*EntityServicesApi* | [**DeleteEntityVersion**](docs/EntityServicesApi.md#DeleteEntityVersion) | **DELETE** /entity/{id}/version/{versionNumber} | Delete a specific version of a FileEntity.
+*EntityServicesApi* | [**FilePreviewRedirectUrlForVersion**](docs/EntityServicesApi.md#FilePreviewRedirectUrlForVersion) | **GET** /entity/{id}/version/{versionNumber}/filepreview | Get the URL of the preview file associated with a specific version of a FileEntity. 
 *EntityServicesApi* | [**GetActivity**](docs/EntityServicesApi.md#GetActivity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
+*EntityServicesApi* | [**GetActivityForEntityVersion**](docs/EntityServicesApi.md#GetActivityForEntityVersion) | **GET** /entity/{id}/version/{versionNumber}/generatedBy | Get an existing activity for a specific version of an Entity.
+*EntityServicesApi* | [**GetAllVersionsOfEntity**](docs/EntityServicesApi.md#GetAllVersionsOfEntity) | **GET** /entity/{id}/version | Get all versions of an Entity one page at a time.
 *EntityServicesApi* | [**GetBoundJsonSchema**](docs/EntityServicesApi.md#GetBoundJsonSchema) | **GET** /entity/{id}/schema/binding | Get information about a JSON schema bound to an Entity.
+*EntityServicesApi* | [**GetChildren**](docs/EntityServicesApi.md#GetChildren) | **POST** /entity/children | Get a page of children for a given parent ID.
 *EntityServicesApi* | [**GetEntity**](docs/EntityServicesApi.md#GetEntity) | **GET** /entity/{id} | Get an Entity
 *EntityServicesApi* | [**GetEntityAcl**](docs/EntityServicesApi.md#GetEntityAcl) | **GET** /entity/{id}/acl | Get the Access Control List (ACL) for a given entity.
 *EntityServicesApi* | [**GetEntityAnnotations**](docs/EntityServicesApi.md#GetEntityAnnotations) | **GET** /entity/{id}/annotations2 | Get the annotations for an entity.
+*EntityServicesApi* | [**GetEntityAnnotationsV2ForVersion**](docs/EntityServicesApi.md#GetEntityAnnotationsV2ForVersion) | **GET** /entity/{id}/version/{versionNumber}/annotations2 | Get an Entity's annotations for a specific version of a FileEntity.
 *EntityServicesApi* | [**GetEntityBenefactor**](docs/EntityServicesApi.md#GetEntityBenefactor) | **GET** /entity/{id}/benefactor | Get an Entity's benefactor.
 *EntityServicesApi* | [**GetEntityFileHandles**](docs/EntityServicesApi.md#GetEntityFileHandles) | **GET** /entity/{id}/filehandles | Get the FileHandles of the file currently associated with the current version of the Entity. 
+*EntityServicesApi* | [**GetEntityFileHandlesForVersion**](docs/EntityServicesApi.md#GetEntityFileHandlesForVersion) | **GET** /entity/{id}/version/{versionNumber}/filehandles | Get the FileHandles of the file associated with a specific version of a FileEntity. 
+*EntityServicesApi* | [**GetEntityForVersion**](docs/EntityServicesApi.md#GetEntityForVersion) | **GET** /entity/{id}/version/{versionNumber} | Get a specific version of an Entity.
+*EntityServicesApi* | [**GetEntityHeaderByMd5**](docs/EntityServicesApi.md#GetEntityHeaderByMd5) | **GET** /entity/md5/{md5} | Gets FileEntities matching the given MD5 string which the user has read access to. 
+*EntityServicesApi* | [**GetEntityIdByAlias**](docs/EntityServicesApi.md#GetEntityIdByAlias) | **GET** /entity/alias/{alias} | Lookup an Entity ID using an alias.
 *EntityServicesApi* | [**GetEntityJson**](docs/EntityServicesApi.md#GetEntityJson) | **GET** /entity/{id}/json | Get the raw JSON for the given entity.
 *EntityServicesApi* | [**GetEntityPath**](docs/EntityServicesApi.md#GetEntityPath) | **GET** /entity/{id}/path | Get the full path of an Entity as a List of EntityHeaders.
 *EntityServicesApi* | [**GetEntitySchemaValidationResults**](docs/EntityServicesApi.md#GetEntitySchemaValidationResults) | **GET** /entity/{id}/schema/validation | Get the validation results of an Entity against its bound JSON schema.
 *EntityServicesApi* | [**GetEntitySchemaValidationStatistics**](docs/EntityServicesApi.md#GetEntitySchemaValidationStatistics) | **GET** /entity/{id}/schema/validation/statistics | Get the summary statistics of the JSON schema validation results for a single container Entity such as a Project or Folder. 
+*EntityServicesApi* | [**GetEntityType**](docs/EntityServicesApi.md#GetEntityType) | **GET** /entity/{id}/type | Get the EntityHeader of an Entity given its ID.
+*EntityServicesApi* | [**GetEntityTypeBatch**](docs/EntityServicesApi.md#GetEntityTypeBatch) | **GET** /entity/type | Get a batch of EntityHeader given multile Entity IDs.
+*EntityServicesApi* | [**GetEntityVersionedTypeBatch**](docs/EntityServicesApi.md#GetEntityVersionedTypeBatch) | **POST** /entity/header | Get the EntityHeader for a list of references with a POST.
 *EntityServicesApi* | [**GetFilePreviewUrl**](docs/EntityServicesApi.md#GetFilePreviewUrl) | **GET** /entity/{id}/filepreview | Get the URL of the preview file associated with the current version of a FileEntity. 
 *EntityServicesApi* | [**GetInvalidValidationResults**](docs/EntityServicesApi.md#GetInvalidValidationResults) | **POST** /entity/{id}/schema/validation/invalid | Get a single page of invalid JSON schema validation results for a container Entity (Project or Folder). 
 *EntityServicesApi* | [**GetTemporaryCredentialsForEntity**](docs/EntityServicesApi.md#GetTemporaryCredentialsForEntity) | **GET** /entity/{id}/sts | Gets the temporary S3 credentials from STS for the given entity.
 *EntityServicesApi* | [**GetUserEntityPermissions**](docs/EntityServicesApi.md#GetUserEntityPermissions) | **GET** /entity/{id}/permissions | Get the list of permission that the caller has on a given Entity.
 *EntityServicesApi* | [**HasAccess**](docs/EntityServicesApi.md#HasAccess) | **GET** /entity/{id}/access | Determine if the caller have a given permission on a given Entity.
+*EntityServicesApi* | [**LookupChild**](docs/EntityServicesApi.md#LookupChild) | **POST** /entity/child | Retrieve an entityId for a given parent ID and entity name.
 *EntityServicesApi* | [**UpdateActivityForEntity**](docs/EntityServicesApi.md#UpdateActivityForEntity) | **PUT** /entity/{id}/generatedBy | Sets the generatedBy relationship for the current version of an Entity.
 *EntityServicesApi* | [**UpdateEntity**](docs/EntityServicesApi.md#UpdateEntity) | **PUT** /entity/{id} | Update an entity.
 *EntityServicesApi* | [**UpdateEntityAcl**](docs/EntityServicesApi.md#UpdateEntityAcl) | **PUT** /entity/{id}/acl | Update an Entity's ACL.
 *EntityServicesApi* | [**UpdateEntityAnnotations**](docs/EntityServicesApi.md#UpdateEntityAnnotations) | **PUT** /entity/{id}/annotations2 | Update an Entity's annotations.
+*EntityServicesApi* | [**UpdateEntityFileHandle**](docs/EntityServicesApi.md#UpdateEntityFileHandle) | **PUT** /entity/{id}/version/{versionNumber}/filehandle | Updates the filehandle.
 *EntityServicesApi* | [**UpdateEntityWithJson**](docs/EntityServicesApi.md#UpdateEntityWithJson) | **PUT** /entity/{id}/json | Update the annotations of an entity using the raw JSON of the entity.
 *EvaluationServicesApi* | [**CreateEvaluation**](docs/EvaluationServicesApi.md#CreateEvaluation) | **POST** /evaluation | Creates a new Evaluation.
 *EvaluationServicesApi* | [**CreateEvaluationRound**](docs/EvaluationServicesApi.md#CreateEvaluationRound) | **POST** /evaluation/{evalId}/round | Create Evaluation Round
@@ -251,8 +269,15 @@ Class | Method | HTTP request | Description
  - [EntityBundleCreateV2](docs/EntityBundleCreateV2.md)
  - [EntityBundleRequest](docs/EntityBundleRequest.md)
  - [EntityBundleV2](docs/EntityBundleV2.md)
+ - [EntityChildrenRequest](docs/EntityChildrenRequest.md)
+ - [EntityChildrenResponse](docs/EntityChildrenResponse.md)
  - [EntityHeader](docs/EntityHeader.md)
+ - [EntityId](docs/EntityId.md)
+ - [EntityIdList](docs/EntityIdList.md)
+ - [EntityLookupRequest](docs/EntityLookupRequest.md)
  - [EntityPath](docs/EntityPath.md)
+ - [EntityThreadCount](docs/EntityThreadCount.md)
+ - [EntityThreadCounts](docs/EntityThreadCounts.md)
  - [EntityType](docs/EntityType.md)
  - [Evaluation](docs/Evaluation.md)
  - [EvaluationRound](docs/EvaluationRound.md)
@@ -266,6 +291,7 @@ Class | Method | HTTP request | Description
  - [FacetType](docs/FacetType.md)
  - [FileHandle](docs/FileHandle.md)
  - [FileHandleResults](docs/FileHandleResults.md)
+ - [FileHandleUpdateRequest](docs/FileHandleUpdateRequest.md)
  - [IdList](docs/IdList.md)
  - [JoinTeamSignedToken](docs/JoinTeamSignedToken.md)
  - [JsonSchemaObjectBinding](docs/JsonSchemaObjectBinding.md)
@@ -288,6 +314,7 @@ Class | Method | HTTP request | Description
  - [PaginatedResultsOfAccessRequirement](docs/PaginatedResultsOfAccessRequirement.md)
  - [PaginatedResultsOfDiscussionThreadBundle](docs/PaginatedResultsOfDiscussionThreadBundle.md)
  - [PaginatedResultsOfDockerCommit](docs/PaginatedResultsOfDockerCommit.md)
+ - [PaginatedResultsOfEntityHeader](docs/PaginatedResultsOfEntityHeader.md)
  - [PaginatedResultsOfEvaluation](docs/PaginatedResultsOfEvaluation.md)
  - [PaginatedResultsOfMembershipInvitation](docs/PaginatedResultsOfMembershipInvitation.md)
  - [PaginatedResultsOfMembershipRequest](docs/PaginatedResultsOfMembershipRequest.md)
@@ -299,6 +326,7 @@ Class | Method | HTTP request | Description
  - [PaginatedResultsOfTrashedEntity](docs/PaginatedResultsOfTrashedEntity.md)
  - [PaginatedResultsOfUserGroup](docs/PaginatedResultsOfUserGroup.md)
  - [PaginatedResultsOfUserProfile](docs/PaginatedResultsOfUserProfile.md)
+ - [PaginatedResultsOfVersionInfo](docs/PaginatedResultsOfVersionInfo.md)
  - [PaginatedTeamIds](docs/PaginatedTeamIds.md)
  - [PassingRecord](docs/PassingRecord.md)
  - [Query](docs/Query.md)
@@ -308,6 +336,8 @@ Class | Method | HTTP request | Description
  - [QueryResultBundle](docs/QueryResultBundle.md)
  - [Question](docs/Question.md)
  - [QuestionResponse](docs/QuestionResponse.md)
+ - [Reference](docs/Reference.md)
+ - [ReferenceList](docs/ReferenceList.md)
  - [ResourceAccess](docs/ResourceAccess.md)
  - [ResponseCorrectness](docs/ResponseCorrectness.md)
  - [ResponseMessage](docs/ResponseMessage.md)
@@ -323,6 +353,7 @@ Class | Method | HTTP request | Description
  - [Settings](docs/Settings.md)
  - [SnapshotRequest](docs/SnapshotRequest.md)
  - [SnapshotResponse](docs/SnapshotResponse.md)
+ - [SortBy](docs/SortBy.md)
  - [SortDirection](docs/SortDirection.md)
  - [SortItem](docs/SortItem.md)
  - [StringAnnotation](docs/StringAnnotation.md)
@@ -362,6 +393,7 @@ Class | Method | HTTP request | Description
  - [VerificationState](docs/VerificationState.md)
  - [VerificationStateEnum](docs/VerificationStateEnum.md)
  - [VerificationSubmission](docs/VerificationSubmission.md)
+ - [VersionInfo](docs/VersionInfo.md)
  - [WikiPageKey](docs/WikiPageKey.md)
 
 

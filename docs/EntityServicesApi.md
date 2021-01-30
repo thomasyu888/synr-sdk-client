@@ -12,26 +12,41 @@ Method | HTTP request | Description
 [**DeleteActivity**](EntityServicesApi.md#DeleteActivity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
 [**DeleteEntity**](EntityServicesApi.md#DeleteEntity) | **DELETE** /entity/{id} | Deletes an Entity
 [**DeleteEntityAcl**](EntityServicesApi.md#DeleteEntityAcl) | **DELETE** /entity/{id}/acl | Delete the Access Control List (ACL) for a given Entity.
+[**DeleteEntityVersion**](EntityServicesApi.md#DeleteEntityVersion) | **DELETE** /entity/{id}/version/{versionNumber} | Delete a specific version of a FileEntity.
+[**FilePreviewRedirectUrlForVersion**](EntityServicesApi.md#FilePreviewRedirectUrlForVersion) | **GET** /entity/{id}/version/{versionNumber}/filepreview | Get the URL of the preview file associated with a specific version of a FileEntity. 
 [**GetActivity**](EntityServicesApi.md#GetActivity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
+[**GetActivityForEntityVersion**](EntityServicesApi.md#GetActivityForEntityVersion) | **GET** /entity/{id}/version/{versionNumber}/generatedBy | Get an existing activity for a specific version of an Entity.
+[**GetAllVersionsOfEntity**](EntityServicesApi.md#GetAllVersionsOfEntity) | **GET** /entity/{id}/version | Get all versions of an Entity one page at a time.
 [**GetBoundJsonSchema**](EntityServicesApi.md#GetBoundJsonSchema) | **GET** /entity/{id}/schema/binding | Get information about a JSON schema bound to an Entity.
+[**GetChildren**](EntityServicesApi.md#GetChildren) | **POST** /entity/children | Get a page of children for a given parent ID.
 [**GetEntity**](EntityServicesApi.md#GetEntity) | **GET** /entity/{id} | Get an Entity
 [**GetEntityAcl**](EntityServicesApi.md#GetEntityAcl) | **GET** /entity/{id}/acl | Get the Access Control List (ACL) for a given entity.
 [**GetEntityAnnotations**](EntityServicesApi.md#GetEntityAnnotations) | **GET** /entity/{id}/annotations2 | Get the annotations for an entity.
+[**GetEntityAnnotationsV2ForVersion**](EntityServicesApi.md#GetEntityAnnotationsV2ForVersion) | **GET** /entity/{id}/version/{versionNumber}/annotations2 | Get an Entity&#39;s annotations for a specific version of a FileEntity.
 [**GetEntityBenefactor**](EntityServicesApi.md#GetEntityBenefactor) | **GET** /entity/{id}/benefactor | Get an Entity&#39;s benefactor.
 [**GetEntityFileHandles**](EntityServicesApi.md#GetEntityFileHandles) | **GET** /entity/{id}/filehandles | Get the FileHandles of the file currently associated with the current version of the Entity. 
+[**GetEntityFileHandlesForVersion**](EntityServicesApi.md#GetEntityFileHandlesForVersion) | **GET** /entity/{id}/version/{versionNumber}/filehandles | Get the FileHandles of the file associated with a specific version of a FileEntity. 
+[**GetEntityForVersion**](EntityServicesApi.md#GetEntityForVersion) | **GET** /entity/{id}/version/{versionNumber} | Get a specific version of an Entity.
+[**GetEntityHeaderByMd5**](EntityServicesApi.md#GetEntityHeaderByMd5) | **GET** /entity/md5/{md5} | Gets FileEntities matching the given MD5 string which the user has read access to. 
+[**GetEntityIdByAlias**](EntityServicesApi.md#GetEntityIdByAlias) | **GET** /entity/alias/{alias} | Lookup an Entity ID using an alias.
 [**GetEntityJson**](EntityServicesApi.md#GetEntityJson) | **GET** /entity/{id}/json | Get the raw JSON for the given entity.
 [**GetEntityPath**](EntityServicesApi.md#GetEntityPath) | **GET** /entity/{id}/path | Get the full path of an Entity as a List of EntityHeaders.
 [**GetEntitySchemaValidationResults**](EntityServicesApi.md#GetEntitySchemaValidationResults) | **GET** /entity/{id}/schema/validation | Get the validation results of an Entity against its bound JSON schema.
 [**GetEntitySchemaValidationStatistics**](EntityServicesApi.md#GetEntitySchemaValidationStatistics) | **GET** /entity/{id}/schema/validation/statistics | Get the summary statistics of the JSON schema validation results for a single container Entity such as a Project or Folder. 
+[**GetEntityType**](EntityServicesApi.md#GetEntityType) | **GET** /entity/{id}/type | Get the EntityHeader of an Entity given its ID.
+[**GetEntityTypeBatch**](EntityServicesApi.md#GetEntityTypeBatch) | **GET** /entity/type | Get a batch of EntityHeader given multile Entity IDs.
+[**GetEntityVersionedTypeBatch**](EntityServicesApi.md#GetEntityVersionedTypeBatch) | **POST** /entity/header | Get the EntityHeader for a list of references with a POST.
 [**GetFilePreviewUrl**](EntityServicesApi.md#GetFilePreviewUrl) | **GET** /entity/{id}/filepreview | Get the URL of the preview file associated with the current version of a FileEntity. 
 [**GetInvalidValidationResults**](EntityServicesApi.md#GetInvalidValidationResults) | **POST** /entity/{id}/schema/validation/invalid | Get a single page of invalid JSON schema validation results for a container Entity (Project or Folder). 
 [**GetTemporaryCredentialsForEntity**](EntityServicesApi.md#GetTemporaryCredentialsForEntity) | **GET** /entity/{id}/sts | Gets the temporary S3 credentials from STS for the given entity.
 [**GetUserEntityPermissions**](EntityServicesApi.md#GetUserEntityPermissions) | **GET** /entity/{id}/permissions | Get the list of permission that the caller has on a given Entity.
 [**HasAccess**](EntityServicesApi.md#HasAccess) | **GET** /entity/{id}/access | Determine if the caller have a given permission on a given Entity.
+[**LookupChild**](EntityServicesApi.md#LookupChild) | **POST** /entity/child | Retrieve an entityId for a given parent ID and entity name.
 [**UpdateActivityForEntity**](EntityServicesApi.md#UpdateActivityForEntity) | **PUT** /entity/{id}/generatedBy | Sets the generatedBy relationship for the current version of an Entity.
 [**UpdateEntity**](EntityServicesApi.md#UpdateEntity) | **PUT** /entity/{id} | Update an entity.
 [**UpdateEntityAcl**](EntityServicesApi.md#UpdateEntityAcl) | **PUT** /entity/{id}/acl | Update an Entity&#39;s ACL.
 [**UpdateEntityAnnotations**](EntityServicesApi.md#UpdateEntityAnnotations) | **PUT** /entity/{id}/annotations2 | Update an Entity&#39;s annotations.
+[**UpdateEntityFileHandle**](EntityServicesApi.md#UpdateEntityFileHandle) | **PUT** /entity/{id}/version/{versionNumber}/filehandle | Updates the filehandle.
 [**UpdateEntityWithJson**](EntityServicesApi.md#UpdateEntityWithJson) | **PUT** /entity/{id}/json | Update the annotations of an entity using the raw JSON of the entity.
 
 
@@ -415,6 +430,105 @@ void (empty response body)
 |-------------|-------------|------------------|
 | **204** | This resource has been deleted. |  -  |
 
+# **DeleteEntityVersion**
+> DeleteEntityVersion(id, version.number, body=var.body)
+
+Delete a specific version of a FileEntity.
+
+Delete a specific version of a FileEntity.
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity
+var.version.number <- 56 # integer | The version number of the Entity.
+var.body <- NULL # object | 
+
+#Delete a specific version of a FileEntity.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+api.instance$DeleteEntityVersion(var.id, var.version.number, body=var.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity | 
+ **version.number** | **integer**| The version number of the Entity. | 
+ **body** | **object**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | The resource has been deleted. |  -  |
+
+# **FilePreviewRedirectUrlForVersion**
+> character FilePreviewRedirectUrlForVersion(id, version.number, redirect=var.redirect)
+
+Get the URL of the preview file associated with a specific version of a FileEntity. 
+
+Get the URL of the preview file associated with a specific version of a FileEntity.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.version.number <- 56 # integer | The version number of the Entity.
+var.redirect <- 'redirect_example' # character | When set to false, the URL will be returned as text/plain instead of redirecting. 
+
+#Get the URL of the preview file associated with a specific version of a FileEntity. 
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$FilePreviewRedirectUrlForVersion(var.id, var.version.number, redirect=var.redirect)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **version.number** | **integer**| The version number of the Entity. | 
+ **redirect** | **character**| When set to false, the URL will be returned as text/plain instead of redirecting.  | [optional] 
+
+### Return type
+
+**character**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 # **GetActivity**
 > Activity GetActivity(id, body=var.body)
 
@@ -463,6 +577,106 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 
+# **GetActivityForEntityVersion**
+> Activity GetActivityForEntityVersion(id, version.number, body=var.body)
+
+Get an existing activity for a specific version of an Entity.
+
+Get an existing activity for a specific version of an Entity.
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.version.number <- 56 # integer | The version number of the Entity.
+var.body <- NULL # object | Get an existing activity for a specific version of an Entity.
+
+#Get an existing activity for a specific version of an Entity.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetActivityForEntityVersion(var.id, var.version.number, body=var.body)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **version.number** | **integer**| The version number of the Entity. | 
+ **body** | **object**| Get an existing activity for a specific version of an Entity. | [optional] 
+
+### Return type
+
+[**Activity**](Activity.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetAllVersionsOfEntity**
+> PaginatedResultsOfVersionInfo GetAllVersionsOfEntity(id, limit=10, offset=0)
+
+Get all versions of an Entity one page at a time.
+
+Get all versions of an Entity one page at a time.
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10. 
+var.offset <- 0 # integer | The offset index determines where this page will start from. When null it will default to 0. 
+
+#Get all versions of an Entity one page at a time.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetAllVersionsOfEntity(var.id, limit=var.limit, offset=var.offset)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.  | [optional] [default to 10]
+ **offset** | **integer**| The offset index determines where this page will start from. When null it will default to 0.  | [optional] [default to 0]
+
+### Return type
+
+[**PaginatedResultsOfVersionInfo**](PaginatedResultsOfVersionInfo.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 # **GetBoundJsonSchema**
 > JsonSchemaObjectBinding GetBoundJsonSchema(id)
 
@@ -502,6 +716,52 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetChildren**
+> EntityChildrenResponse GetChildren(entity.children.request=var.entity.children.request)
+
+Get a page of children for a given parent ID.
+
+Get a page of children for a given parent ID. This service can also be used to list projects by setting the parentId to NULL in EntityChildrenRequest. 
+
+### Example
+```R
+library(synclient)
+
+var.entity.children.request <- EntityChildrenRequest$new("includeSumFileSizes_example", "includeTotalChildCount_example", list(EntityType$new()), "nextPageToken_example", "parentId_example", SortBy$new(), SortDirection$new()) # EntityChildrenRequest | 
+
+#Get a page of children for a given parent ID.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetChildren(entity.children.request=var.entity.children.request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity.children.request** | [**EntityChildrenRequest**](EntityChildrenRequest.md)|  | [optional] 
+
+### Return type
+
+[**EntityChildrenResponse**](EntityChildrenResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -647,6 +907,54 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 
+# **GetEntityAnnotationsV2ForVersion**
+> AnnotationsV2 GetEntityAnnotationsV2ForVersion(id, version.number)
+
+Get an Entity's annotations for a specific version of a FileEntity.
+
+Get an Entity's annotations for a specific version of a FileEntity.
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.version.number <- 56 # integer | The version number of the Entity.
+
+#Get an Entity's annotations for a specific version of a FileEntity.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityAnnotationsV2ForVersion(var.id, var.version.number)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **version.number** | **integer**| The version number of the Entity. | 
+
+### Return type
+
+[**AnnotationsV2**](Annotations_v2.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 # **GetEntityBenefactor**
 > EntityHeader GetEntityBenefactor(id, body=var.body)
 
@@ -726,6 +1034,196 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FileHandleResults**](FileHandleResults.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityFileHandlesForVersion**
+> FileHandleResults GetEntityFileHandlesForVersion(id, version.number)
+
+Get the FileHandles of the file associated with a specific version of a FileEntity. 
+
+Get the FileHandles of the file associated with a specific version of a FileEntity.  If a preview exists for the file then the handle of the preview and the file will be returned with this call. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.version.number <- 56 # integer | The version number of the Entity.
+
+#Get the FileHandles of the file associated with a specific version of a FileEntity. 
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityFileHandlesForVersion(var.id, var.version.number)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **version.number** | **integer**| The version number of the Entity. | 
+
+### Return type
+
+[**FileHandleResults**](FileHandleResults.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityForVersion**
+> Entity GetEntityForVersion(id, version.number)
+
+Get a specific version of an Entity.
+
+Get a specific version of an Entity.  Note: Only the current version of the Entity can be used for an Entity update. Therefore, only the current version of the Entity will be returned with the actual etag. All older versions will be returned with an eTag '00000000-0000-0000-0000-000000000000'. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity
+var.version.number <- 56 # integer | The version number of the Entity.
+
+#Get a specific version of an Entity.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityForVersion(var.id, var.version.number)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity | 
+ **version.number** | **integer**| The version number of the Entity. | 
+
+### Return type
+
+[**Entity**](Entity.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityHeaderByMd5**
+> PaginatedResultsOfEntityHeader GetEntityHeaderByMd5(md5, body=var.body)
+
+Gets FileEntities matching the given MD5 string which the user has read access to. 
+
+Gets at most 200 FileEntities matching the given MD5 string which the user has read access to. NOTE: Another option is to create a file view that includes MD5 values. https://docs.synapse.org/articles/views.html 
+
+### Example
+```R
+library(synclient)
+
+var.md5 <- 'md5_example' # character | File MD5
+var.body <- NULL # object | 
+
+#Gets FileEntities matching the given MD5 string which the user has read access to. 
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityHeaderByMd5(var.md5, body=var.body)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **md5** | **character**| File MD5 | 
+ **body** | **object**|  | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfEntityHeader**](PaginatedResultsOfEntityHeader.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityIdByAlias**
+> EntityId GetEntityIdByAlias(alias)
+
+Lookup an Entity ID using an alias.
+
+Lookup an Entity ID using an alias.
+
+### Example
+```R
+library(synclient)
+
+var.alias <- 'alias_example' # character | Alias of an Entity
+
+#Lookup an Entity ID using an alias.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityIdByAlias(var.alias)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **alias** | **character**| Alias of an Entity | 
+
+### Return type
+
+[**EntityId**](EntityId.md)
 
 ### Authorization
 
@@ -918,6 +1416,146 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityType**
+> EntityHeader GetEntityType(id, body=var.body)
+
+Get the EntityHeader of an Entity given its ID.
+
+Get the EntityHeader of an Entity given its ID. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.body <- NULL # object | 
+
+#Get the EntityHeader of an Entity given its ID.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityType(var.id, body=var.body)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **body** | **object**|  | [optional] 
+
+### Return type
+
+[**EntityHeader**](EntityHeader.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityTypeBatch**
+> PaginatedResultsOfEntityHeader GetEntityTypeBatch(batch)
+
+Get a batch of EntityHeader given multile Entity IDs.
+
+Get a batch of EntityHeader given multile Entity IDs. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+
+### Example
+```R
+library(synclient)
+
+var.batch <- 'batch_example' # character | A comma separated list of Entity IDs to get EntityHeaders for. 
+
+#Get a batch of EntityHeader given multile Entity IDs.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityTypeBatch(var.batch)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch** | **character**| A comma separated list of Entity IDs to get EntityHeaders for.  | 
+
+### Return type
+
+[**PaginatedResultsOfEntityHeader**](PaginatedResultsOfEntityHeader.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **GetEntityVersionedTypeBatch**
+> PaginatedResultsOfEntityHeader GetEntityVersionedTypeBatch(reference.list=var.reference.list)
+
+Get the EntityHeader for a list of references with a POST.
+
+Get the EntityHeader for a list of references with a POST. If any item in the batch fails (e.g., with a 404) it will be EXCLUDED in the result set. 
+
+### Example
+```R
+library(synclient)
+
+var.reference.list <- ReferenceList$new(list(Reference$new("targetId_example", 123))) # ReferenceList | 
+
+#Get the EntityHeader for a list of references with a POST.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$GetEntityVersionedTypeBatch(reference.list=var.reference.list)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reference.list** | [**ReferenceList**](ReferenceList.md)|  | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfEntityHeader**](PaginatedResultsOfEntityHeader.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1167,6 +1805,52 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 
+# **LookupChild**
+> EntityId LookupChild(entity.lookup.request=var.entity.lookup.request)
+
+Retrieve an entityId for a given parent ID and entity name.
+
+Retrieve an entityId for a given parent ID and entity name. This service can also be used to lookup projectId by setting the parentId to NULL in EntityLookupRequest. 
+
+### Example
+```R
+library(synclient)
+
+var.entity.lookup.request <- EntityLookupRequest$new("entityName_example", "parentId_example") # EntityLookupRequest | 
+
+#Retrieve an entityId for a given parent ID and entity name.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$LookupChild(entity.lookup.request=var.entity.lookup.request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **entity.lookup.request** | [**EntityLookupRequest**](EntityLookupRequest.md)|  | [optional] 
+
+### Return type
+
+[**EntityId**](EntityId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
 # **UpdateActivityForEntity**
 > Activity UpdateActivityForEntity(id, generated.by, body=var.body)
 
@@ -1350,6 +2034,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AnnotationsV2**](Annotations_v2.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Success |  -  |
+
+# **UpdateEntityFileHandle**
+> character UpdateEntityFileHandle(id, version.number, file.handle.update.request=var.file.handle.update.request)
+
+Updates the filehandle.
+
+Updates the FileHandle associated with the FileEntity with the provided entity id and version. 
+
+### Example
+```R
+library(synclient)
+
+var.id <- 'id_example' # character | The ID of the Entity.
+var.version.number <- 56 # integer | The version number of the Entity.
+var.file.handle.update.request <- FileHandleUpdateRequest$new("newFileHandleId_example", "oldFileHandleId_example") # FileHandleUpdateRequest | 
+
+#Updates the filehandle.
+api.instance <- EntityServicesApi$new()
+# Configure HTTP basic authorization: bearerAuth
+api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
+api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
+result <- api.instance$UpdateEntityFileHandle(var.id, var.version.number, file.handle.update.request=var.file.handle.update.request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the Entity. | 
+ **version.number** | **integer**| The version number of the Entity. | 
+ **file.handle.update.request** | [**FileHandleUpdateRequest**](FileHandleUpdateRequest.md)|  | [optional] 
+
+### Return type
+
+**character**
 
 ### Authorization
 

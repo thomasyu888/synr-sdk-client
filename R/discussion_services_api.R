@@ -14,6 +14,23 @@
 #'
 #' @section Methods:
 #' \describe{
+#' \strong{ GetThreadCounts } \emph{ Get number of threads that belong to projects user can view and references the given entity.  }
+#' This API is used to get list of entity and count pairs, with count is the number of threads that belong to projects user can view and references the given entity.  Target users: anyone who has READ permission to the project. 
+#'
+#' \itemize{
+#' \item \emph{ @param } entity.id.list \link{EntityIdList}
+#' \item \emph{ @returnType } \link{EntityThreadCounts} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : EntityThreadCounts 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetThreadsForEntity } \emph{ This API is used to get N number of threads that belongs to projects user can view and references the given entity.  }
 #' This API is used to get N number of threads that belongs to projects user can view and references the given entity.  Target users: anyone who has READ permission to the entity. 
 #'
@@ -40,6 +57,23 @@
 #'
 #' @examples
 #' \dontrun{
+#' ####################  GetThreadCounts  ####################
+#'
+#' library(synclient)
+#' var.entity.id.list <- EntityIdList$new() # EntityIdList | The requested list. Limit size 20.
+#'
+#' #Get number of threads that belong to projects user can view and references the given entity. 
+#' api.instance <- DiscussionServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetThreadCounts(entity.id.list=var.entity.id.list)
+#'
+#'
 #' ####################  GetThreadsForEntity  ####################
 #'
 #' library(synclient)
@@ -75,6 +109,56 @@ DiscussionServicesApi <- R6::R6Class(
       }
       else {
         self$apiClient <- ApiClient$new()
+      }
+    },
+    GetThreadCounts = function(entity.id.list=NULL, ...){
+      apiResponse <- self$GetThreadCountsWithHttpInfo(entity.id.list, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetThreadCountsWithHttpInfo = function(entity.id.list=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`entity.id.list`)) {
+        body <- `entity.id.list`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/threadcounts"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "EntityThreadCounts", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
       }
     },
     GetThreadsForEntity = function(id, ascending=NULL, limit=10, offset=0, sort=NULL, ...){

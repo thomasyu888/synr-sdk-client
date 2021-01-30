@@ -40,4 +40,5 @@ R/entity_type.R
 R/facet_type.R 
 R/object_type_schema.R 
 R/restriction_level.R 
-R/sort_direction.R 
+R/sort_direction.R
+R/sort_by.R

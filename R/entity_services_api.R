@@ -154,6 +154,42 @@
 #' }
 #' }
 #'
+#' \strong{ DeleteEntityVersion } \emph{ Delete a specific version of a FileEntity. }
+#' Delete a specific version of a FileEntity.
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @param } body object
+#'
+#'
+#' \item status code : 204 | The resource has been deleted.
+#'
+#'
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ FilePreviewRedirectUrlForVersion } \emph{ Get the URL of the preview file associated with a specific version of a FileEntity.  }
+#' Get the URL of the preview file associated with a specific version of a FileEntity.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @param } redirect character
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : character 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetActivity } \emph{ Get an existing activity for the current version of an Entity. }
 #' Get an existing activity for the current version of an Entity.
 #'
@@ -172,6 +208,44 @@
 #' }
 #' }
 #'
+#' \strong{ GetActivityForEntityVersion } \emph{ Get an existing activity for a specific version of an Entity. }
+#' Get an existing activity for a specific version of an Entity.
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @param } body object
+#' \item \emph{ @returnType } \link{Activity} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : Activity 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetAllVersionsOfEntity } \emph{ Get all versions of an Entity one page at a time. }
+#' Get all versions of an Entity one page at a time.
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } limit integer
+#' \item \emph{ @param } offset integer
+#' \item \emph{ @returnType } \link{PaginatedResultsOfVersionInfo} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfVersionInfo 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetBoundJsonSchema } \emph{ Get information about a JSON schema bound to an Entity. }
 #' Get information about a JSON schema bound to an Entity. Note: Any child Entity that does not have a bound schema will inherit the first bound schema found in its hierarchy.  Note: The caller must be granted the READ permission on the Entity. 
 #'
@@ -183,6 +257,23 @@
 #' \item status code : 200 | Success
 #'
 #' \item return type : JsonSchemaObjectBinding 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetChildren } \emph{ Get a page of children for a given parent ID. }
+#' Get a page of children for a given parent ID. This service can also be used to list projects by setting the parentId to NULL in EntityChildrenRequest. 
+#'
+#' \itemize{
+#' \item \emph{ @param } entity.children.request \link{EntityChildrenRequest}
+#' \item \emph{ @returnType } \link{EntityChildrenResponse} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : EntityChildrenResponse 
 #' \item response headers :
 #'
 #' \tabular{ll}{
@@ -240,6 +331,24 @@
 #' }
 #' }
 #'
+#' \strong{ GetEntityAnnotationsV2ForVersion } \emph{ Get an Entity&#39;s annotations for a specific version of a FileEntity. }
+#' Get an Entity&#39;s annotations for a specific version of a FileEntity.
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @returnType } \link{AnnotationsV2} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : AnnotationsV2 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetEntityBenefactor } \emph{ Get an Entity&#39;s benefactor. }
 #' Get an Entity&#39;s benefactor.  &lt;p&gt;  The term &#39;benefactor&#39; is used indicate which Entity an Entity inherits is ACL from. For example, a newly created Project will have its own ACL and therefore, it will be its own benefactor. A Folder will inherit its ACL (by default) from its containing Project so the Project will be the Folder&#39;s benefactor. This method will return the EntityHeader of an Entity&#39;s benefactor. &lt;/p&gt; 
 #'
@@ -269,6 +378,77 @@
 #' \item status code : 200 | Success
 #'
 #' \item return type : FileHandleResults 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityFileHandlesForVersion } \emph{ Get the FileHandles of the file associated with a specific version of a FileEntity.  }
+#' Get the FileHandles of the file associated with a specific version of a FileEntity.  If a preview exists for the file then the handle of the preview and the file will be returned with this call. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @returnType } \link{FileHandleResults} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : FileHandleResults 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityForVersion } \emph{ Get a specific version of an Entity. }
+#' Get a specific version of an Entity.  Note: Only the current version of the Entity can be used for an Entity update. Therefore, only the current version of the Entity will be returned with the actual etag. All older versions will be returned with an eTag &#39;00000000-0000-0000-0000-000000000000&#39;. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @returnType } \link{Entity} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : Entity 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityHeaderByMd5 } \emph{ Gets FileEntities matching the given MD5 string which the user has read access to.  }
+#' Gets at most 200 FileEntities matching the given MD5 string which the user has read access to. NOTE: Another option is to create a file view that includes MD5 values. https://docs.synapse.org/articles/views.html 
+#'
+#' \itemize{
+#' \item \emph{ @param } md5 character
+#' \item \emph{ @param } body object
+#' \item \emph{ @returnType } \link{PaginatedResultsOfEntityHeader} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfEntityHeader 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityIdByAlias } \emph{ Lookup an Entity ID using an alias. }
+#' Lookup an Entity ID using an alias.
+#'
+#' \itemize{
+#' \item \emph{ @param } alias character
+#' \item \emph{ @returnType } \link{EntityId} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : EntityId 
 #' \item response headers :
 #'
 #' \tabular{ll}{
@@ -336,6 +516,58 @@
 #' \item status code : 200 | Success
 #'
 #' \item return type : ValidationSummaryStatistics 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityType } \emph{ Get the EntityHeader of an Entity given its ID. }
+#' Get the EntityHeader of an Entity given its ID. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } body object
+#' \item \emph{ @returnType } \link{EntityHeader} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : EntityHeader 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityTypeBatch } \emph{ Get a batch of EntityHeader given multile Entity IDs. }
+#' Get a batch of EntityHeader given multile Entity IDs. The EntityHeader is a light weight object with basic information about an Entity includes its type. 
+#'
+#' \itemize{
+#' \item \emph{ @param } batch character
+#' \item \emph{ @returnType } \link{PaginatedResultsOfEntityHeader} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfEntityHeader 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetEntityVersionedTypeBatch } \emph{ Get the EntityHeader for a list of references with a POST. }
+#' Get the EntityHeader for a list of references with a POST. If any item in the batch fails (e.g., with a 404) it will be EXCLUDED in the result set. 
+#'
+#' \itemize{
+#' \item \emph{ @param } reference.list \link{ReferenceList}
+#' \item \emph{ @returnType } \link{PaginatedResultsOfEntityHeader} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : PaginatedResultsOfEntityHeader 
 #' \item response headers :
 #'
 #' \tabular{ll}{
@@ -432,6 +664,23 @@
 #' }
 #' }
 #'
+#' \strong{ LookupChild } \emph{ Retrieve an entityId for a given parent ID and entity name. }
+#' Retrieve an entityId for a given parent ID and entity name. This service can also be used to lookup projectId by setting the parentId to NULL in EntityLookupRequest. 
+#'
+#' \itemize{
+#' \item \emph{ @param } entity.lookup.request \link{EntityLookupRequest}
+#' \item \emph{ @returnType } \link{EntityId} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : EntityId 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ UpdateActivityForEntity } \emph{ Sets the generatedBy relationship for the current version of an Entity. }
 #' Sets the generatedBy relationship for the current version of an Entity.
 #'
@@ -501,6 +750,24 @@
 #' \item status code : 200 | Success
 #'
 #' \item return type : AnnotationsV2 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ UpdateEntityFileHandle } \emph{ Updates the filehandle. }
+#' Updates the FileHandle associated with the FileEntity with the provided entity id and version. 
+#'
+#' \itemize{
+#' \item \emph{ @param } id character
+#' \item \emph{ @param } version.number integer
+#' \item \emph{ @param } file.handle.update.request \link{FileHandleUpdateRequest}
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : character 
 #' \item response headers :
 #'
 #' \tabular{ll}{
@@ -673,6 +940,44 @@
 #' result <- api.instance$DeleteEntityAcl(var.id, body=var.body)
 #'
 #'
+#' ####################  DeleteEntityVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#' var.body <- NULL # object | 
+#'
+#' #Delete a specific version of a FileEntity.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$DeleteEntityVersion(var.id, var.version.number, body=var.body)
+#'
+#'
+#' ####################  FilePreviewRedirectUrlForVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#' var.redirect <- 'redirect_example' # character | When set to false, the URL will be returned as text/plain instead of redirecting. 
+#'
+#' #Get the URL of the preview file associated with a specific version of a FileEntity. 
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$FilePreviewRedirectUrlForVersion(var.id, var.version.number, redirect=var.redirect)
+#'
+#'
 #' ####################  GetActivity  ####################
 #'
 #' library(synclient)
@@ -691,6 +996,44 @@
 #' result <- api.instance$GetActivity(var.id, body=var.body)
 #'
 #'
+#' ####################  GetActivityForEntityVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#' var.body <- NULL # object | Get an existing activity for a specific version of an Entity.
+#'
+#' #Get an existing activity for a specific version of an Entity.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetActivityForEntityVersion(var.id, var.version.number, body=var.body)
+#'
+#'
+#' ####################  GetAllVersionsOfEntity  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10. 
+#' var.offset <- 0 # integer | The offset index determines where this page will start from. When null it will default to 0. 
+#'
+#' #Get all versions of an Entity one page at a time.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetAllVersionsOfEntity(var.id, limit=var.limit, offset=var.offset)
+#'
+#'
 #' ####################  GetBoundJsonSchema  ####################
 #'
 #' library(synclient)
@@ -706,6 +1049,23 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$GetBoundJsonSchema(var.id)
+#'
+#'
+#' ####################  GetChildren  ####################
+#'
+#' library(synclient)
+#' var.entity.children.request <- EntityChildrenRequest$new() # EntityChildrenRequest | 
+#'
+#' #Get a page of children for a given parent ID.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetChildren(entity.children.request=var.entity.children.request)
 #'
 #'
 #' ####################  GetEntity  ####################
@@ -759,6 +1119,24 @@
 #' result <- api.instance$GetEntityAnnotations(var.id)
 #'
 #'
+#' ####################  GetEntityAnnotationsV2ForVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#'
+#' #Get an Entity's annotations for a specific version of a FileEntity.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityAnnotationsV2ForVersion(var.id, var.version.number)
+#'
+#'
 #' ####################  GetEntityBenefactor  ####################
 #'
 #' library(synclient)
@@ -792,6 +1170,77 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$GetEntityFileHandles(var.id)
+#'
+#'
+#' ####################  GetEntityFileHandlesForVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#'
+#' #Get the FileHandles of the file associated with a specific version of a FileEntity. 
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityFileHandlesForVersion(var.id, var.version.number)
+#'
+#'
+#' ####################  GetEntityForVersion  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#'
+#' #Get a specific version of an Entity.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityForVersion(var.id, var.version.number)
+#'
+#'
+#' ####################  GetEntityHeaderByMd5  ####################
+#'
+#' library(synclient)
+#' var.md5 <- 'md5_example' # character | File MD5
+#' var.body <- NULL # object | 
+#'
+#' #Gets FileEntities matching the given MD5 string which the user has read access to. 
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityHeaderByMd5(var.md5, body=var.body)
+#'
+#'
+#' ####################  GetEntityIdByAlias  ####################
+#'
+#' library(synclient)
+#' var.alias <- 'alias_example' # character | Alias of an Entity
+#'
+#' #Lookup an Entity ID using an alias.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityIdByAlias(var.alias)
 #'
 #'
 #' ####################  GetEntityJson  ####################
@@ -860,6 +1309,58 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$GetEntitySchemaValidationStatistics(var.id)
+#'
+#'
+#' ####################  GetEntityType  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.body <- NULL # object | 
+#'
+#' #Get the EntityHeader of an Entity given its ID.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityType(var.id, body=var.body)
+#'
+#'
+#' ####################  GetEntityTypeBatch  ####################
+#'
+#' library(synclient)
+#' var.batch <- 'batch_example' # character | A comma separated list of Entity IDs to get EntityHeaders for. 
+#'
+#' #Get a batch of EntityHeader given multile Entity IDs.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityTypeBatch(var.batch)
+#'
+#'
+#' ####################  GetEntityVersionedTypeBatch  ####################
+#'
+#' library(synclient)
+#' var.reference.list <- ReferenceList$new() # ReferenceList | 
+#'
+#' #Get the EntityHeader for a list of references with a POST.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetEntityVersionedTypeBatch(reference.list=var.reference.list)
 #'
 #'
 #' ####################  GetFilePreviewUrl  ####################
@@ -953,6 +1454,23 @@
 #' result <- api.instance$HasAccess(var.id, access.type=var.access.type, body=var.body)
 #'
 #'
+#' ####################  LookupChild  ####################
+#'
+#' library(synclient)
+#' var.entity.lookup.request <- EntityLookupRequest$new() # EntityLookupRequest | 
+#'
+#' #Retrieve an entityId for a given parent ID and entity name.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$LookupChild(entity.lookup.request=var.entity.lookup.request)
+#'
+#'
 #' ####################  UpdateActivityForEntity  ####################
 #'
 #' library(synclient)
@@ -1026,6 +1544,25 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$UpdateEntityAnnotations(var.id, annotations.v2=var.annotations.v2)
+#'
+#'
+#' ####################  UpdateEntityFileHandle  ####################
+#'
+#' library(synclient)
+#' var.id <- 'id_example' # character | The ID of the Entity.
+#' var.version.number <- 56 # integer | The version number of the Entity.
+#' var.file.handle.update.request <- FileHandleUpdateRequest$new() # FileHandleUpdateRequest | 
+#'
+#' #Updates the filehandle.
+#' api.instance <- EntityServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$UpdateEntityFileHandle(var.id, var.version.number, file.handle.update.request=var.file.handle.update.request)
 #'
 #'
 #' ####################  UpdateEntityWithJson  ####################
@@ -1492,6 +2029,128 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
+    DeleteEntityVersion = function(id, version.number, body=NULL, ...){
+      apiResponse <- self$DeleteEntityVersionWithHttpInfo(id, version.number, body, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    DeleteEntityVersionWithHttpInfo = function(id, version.number, body=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "DELETE",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        ApiResponse$new(NULL, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    FilePreviewRedirectUrlForVersion = function(id, version.number, redirect=NULL, ...){
+      apiResponse <- self$FilePreviewRedirectUrlForVersionWithHttpInfo(id, version.number, redirect, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    FilePreviewRedirectUrlForVersionWithHttpInfo = function(id, version.number, redirect=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      queryParams['redirect'] <- redirect
+
+      urlPath <- "/entity/{id}/version/{versionNumber}/filepreview"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "character", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
     GetActivity = function(id, body=NULL, ...){
       apiResponse <- self$GetActivityWithHttpInfo(id, body, ...)
       resp <- apiResponse$response
@@ -1550,6 +2209,128 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
+    GetActivityForEntityVersion = function(id, version.number, body=NULL, ...){
+      apiResponse <- self$GetActivityForEntityVersionWithHttpInfo(id, version.number, body, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetActivityForEntityVersionWithHttpInfo = function(id, version.number, body=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}/generatedBy"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "Activity", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetAllVersionsOfEntity = function(id, limit=10, offset=0, ...){
+      apiResponse <- self$GetAllVersionsOfEntityWithHttpInfo(id, limit, offset, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetAllVersionsOfEntityWithHttpInfo = function(id, limit=10, offset=0, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      queryParams['limit'] <- limit
+
+      queryParams['offset'] <- offset
+
+      urlPath <- "/entity/{id}/version"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfVersionInfo", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
     GetBoundJsonSchema = function(id, ...){
       apiResponse <- self$GetBoundJsonSchemaWithHttpInfo(id, ...)
       resp <- apiResponse$response
@@ -1589,6 +2370,56 @@ EntityServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "JsonSchemaObjectBinding", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetChildren = function(entity.children.request=NULL, ...){
+      apiResponse <- self$GetChildrenWithHttpInfo(entity.children.request, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetChildrenWithHttpInfo = function(entity.children.request=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`entity.children.request`)) {
+        body <- `entity.children.request`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/children"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "EntityChildrenResponse", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
@@ -1758,6 +2589,66 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
+    GetEntityAnnotationsV2ForVersion = function(id, version.number, ...){
+      apiResponse <- self$GetEntityAnnotationsV2ForVersionWithHttpInfo(id, version.number, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityAnnotationsV2ForVersionWithHttpInfo = function(id, version.number, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}/annotations2"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AnnotationsV2", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
     GetEntityBenefactor = function(id, body=NULL, ...){
       apiResponse <- self$GetEntityBenefactorWithHttpInfo(id, body, ...)
       resp <- apiResponse$response
@@ -1855,6 +2746,236 @@ EntityServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "FileHandleResults", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityFileHandlesForVersion = function(id, version.number, ...){
+      apiResponse <- self$GetEntityFileHandlesForVersionWithHttpInfo(id, version.number, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityFileHandlesForVersionWithHttpInfo = function(id, version.number, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}/filehandles"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "FileHandleResults", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityForVersion = function(id, version.number, ...){
+      apiResponse <- self$GetEntityForVersionWithHttpInfo(id, version.number, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityForVersionWithHttpInfo = function(id, version.number, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "Entity", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityHeaderByMd5 = function(md5, body=NULL, ...){
+      apiResponse <- self$GetEntityHeaderByMd5WithHttpInfo(md5, body, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityHeaderByMd5WithHttpInfo = function(md5, body=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`md5`)) {
+        stop("Missing required parameter `md5`.")
+      }
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/md5/{md5}"
+      if (!missing(`md5`)) {
+        urlPath <- gsub(paste0("\\{", "md5", "\\}"), URLencode(as.character(`md5`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfEntityHeader", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityIdByAlias = function(alias, ...){
+      apiResponse <- self$GetEntityIdByAliasWithHttpInfo(alias, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityIdByAliasWithHttpInfo = function(alias, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`alias`)) {
+        stop("Missing required parameter `alias`.")
+      }
+
+      urlPath <- "/entity/alias/{alias}"
+      if (!missing(`alias`)) {
+        urlPath <- gsub(paste0("\\{", "alias", "\\}"), URLencode(as.character(`alias`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "EntityId", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
@@ -2063,6 +3184,164 @@ EntityServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "ValidationSummaryStatistics", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityType = function(id, body=NULL, ...){
+      apiResponse <- self$GetEntityTypeWithHttpInfo(id, body, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityTypeWithHttpInfo = function(id, body=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/{id}/type"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "EntityHeader", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityTypeBatch = function(batch, ...){
+      apiResponse <- self$GetEntityTypeBatchWithHttpInfo(batch, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityTypeBatchWithHttpInfo = function(batch, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`batch`)) {
+        stop("Missing required parameter `batch`.")
+      }
+
+      queryParams['batch'] <- batch
+
+      urlPath <- "/entity/type"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfEntityHeader", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetEntityVersionedTypeBatch = function(reference.list=NULL, ...){
+      apiResponse <- self$GetEntityVersionedTypeBatchWithHttpInfo(reference.list, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetEntityVersionedTypeBatchWithHttpInfo = function(reference.list=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`reference.list`)) {
+        body <- `reference.list`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/header"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "PaginatedResultsOfEntityHeader", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
@@ -2360,6 +3639,56 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
+    LookupChild = function(entity.lookup.request=NULL, ...){
+      apiResponse <- self$LookupChildWithHttpInfo(entity.lookup.request, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    LookupChildWithHttpInfo = function(entity.lookup.request=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`entity.lookup.request`)) {
+        body <- `entity.lookup.request`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/child"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "EntityId", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
     UpdateActivityForEntity = function(id, generated.by, body=NULL, ...){
       apiResponse <- self$UpdateActivityForEntityWithHttpInfo(id, generated.by, body, ...)
       resp <- apiResponse$response
@@ -2589,6 +3918,72 @@ EntityServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "AnnotationsV2", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    UpdateEntityFileHandle = function(id, version.number, file.handle.update.request=NULL, ...){
+      apiResponse <- self$UpdateEntityFileHandleWithHttpInfo(id, version.number, file.handle.update.request, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    UpdateEntityFileHandleWithHttpInfo = function(id, version.number, file.handle.update.request=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`version.number`)) {
+        stop("Missing required parameter `version.number`.")
+      }
+
+      if (!missing(`file.handle.update.request`)) {
+        body <- `file.handle.update.request`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/entity/{id}/version/{versionNumber}/filehandle"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), URLencode(as.character(`id`), reserved = TRUE), urlPath)
+      }
+
+      if (!missing(`version.number`)) {
+        urlPath <- gsub(paste0("\\{", "versionNumber", "\\}"), URLencode(as.character(`version.number`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "character", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }
