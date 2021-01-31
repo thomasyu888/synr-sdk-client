@@ -57,7 +57,14 @@ All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AccessApprovalServicesApi* | [**CreateAccessApproval**](docs/AccessApprovalServicesApi.md#CreateAccessApproval) | **POST** /accessApproval | Create an Access Approval, thereby fulfilling an Access Requirement for a given user. 
+*AccessApprovalServicesApi* | [**DeleteAccessApproval**](docs/AccessApprovalServicesApi.md#DeleteAccessApproval) | **DELETE** /accessApproval/{approvalId} | Delete an Access Approval.
+*AccessApprovalServicesApi* | [**GetAccessApproval**](docs/AccessApprovalServicesApi.md#GetAccessApproval) | **GET** /accessApproval/{approvalId} | Retrieving an AccessApproval given its ID.
+*AccessApprovalServicesApi* | [**GetBatchAccessApprovalInfo**](docs/AccessApprovalServicesApi.md#GetBatchAccessApprovalInfo) | **POST** /accessApproval/information | Retrieve a batch of AccessApprovalInfo for a single user.
 *AccessApprovalServicesApi* | [**GetTeamAccessApprovals**](docs/AccessApprovalServicesApi.md#GetTeamAccessApprovals) | **GET** /team/{id}/accessApproval | Retrieve the Access Approvals for the given Team.
+*AccessApprovalServicesApi* | [**ListAccessorGroup**](docs/AccessApprovalServicesApi.md#ListAccessorGroup) | **POST** /accessApproval/group | Retrieving a page of AccessorGroup.
+*AccessApprovalServicesApi* | [**ListNotifications**](docs/AccessApprovalServicesApi.md#ListNotifications) | **POST** /accessApproval/notifications | Fetches the notifications sent for an access requirement and a list of recipients. 
+*AccessApprovalServicesApi* | [**RevokeAccessApprovals**](docs/AccessApprovalServicesApi.md#RevokeAccessApprovals) | **DELETE** /accessApproval | Revoke all Access Approvals an accessor may have for a given Access Requirement.
 *AccessRequirementServicesApi* | [**CreateLockAccessRequirement**](docs/AccessRequirementServicesApi.md#CreateLockAccessRequirement) | **POST** /entity/{id}/lockAccessRequirement | Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
 *AccessRequirementServicesApi* | [**GetEntityAccessRequirements**](docs/AccessRequirementServicesApi.md#GetEntityAccessRequirements) | **GET** /entity/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with an entity.
 *AccessRequirementServicesApi* | [**GetTeamAccessRequirements**](docs/AccessRequirementServicesApi.md#GetTeamAccessRequirements) | **GET** /team/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with a Team.
@@ -263,16 +270,27 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ACCESSTYPE](docs/ACCESSTYPE.md)
+ - [AccessApproval](docs/AccessApproval.md)
+ - [AccessApprovalInfo](docs/AccessApprovalInfo.md)
+ - [AccessApprovalNotification](docs/AccessApprovalNotification.md)
+ - [AccessApprovalNotificationRequest](docs/AccessApprovalNotificationRequest.md)
+ - [AccessApprovalNotificationResponse](docs/AccessApprovalNotificationResponse.md)
  - [AccessControlList](docs/AccessControlList.md)
  - [AccessRequirement](docs/AccessRequirement.md)
+ - [AccessorGroup](docs/AccessorGroup.md)
+ - [AccessorGroupRequest](docs/AccessorGroupRequest.md)
+ - [AccessorGroupResponse](docs/AccessorGroupResponse.md)
  - [Activity](docs/Activity.md)
  - [AliasList](docs/AliasList.md)
  - [AnnotationsAnnotation](docs/AnnotationsAnnotation.md)
  - [AnnotationsV2](docs/AnnotationsV2.md)
  - [AnnotationsValue](docs/AnnotationsValue.md)
  - [AnnotationsValueType](docs/AnnotationsValueType.md)
+ - [ApprovalState](docs/ApprovalState.md)
  - [AsyncJobId](docs/AsyncJobId.md)
  - [AttachmentMetadata](docs/AttachmentMetadata.md)
+ - [BatchAccessApprovalInfoRequest](docs/BatchAccessApprovalInfoRequest.md)
+ - [BatchAccessApprovalInfoResponse](docs/BatchAccessApprovalInfoResponse.md)
  - [BatchUploadResponse](docs/BatchUploadResponse.md)
  - [BindSchemaToEntityRequest](docs/BindSchemaToEntityRequest.md)
  - [BooleanResult](docs/BooleanResult.md)
@@ -356,6 +374,7 @@ Class | Method | HTTP request | Description
  - [MessageToUser](docs/MessageToUser.md)
  - [MessageURL](docs/MessageURL.md)
  - [NameIdentifierScheme](docs/NameIdentifierScheme.md)
+ - [NotificationType](docs/NotificationType.md)
  - [ObjectType](docs/ObjectType.md)
  - [ObjectTypeSchema](docs/ObjectTypeSchema.md)
  - [PaginatedColumnModels](docs/PaginatedColumnModels.md)
