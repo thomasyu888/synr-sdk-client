@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **character** | The unique immutable ID for this entity. A new ID will be generated for new Entities. Once issued, this ID is guaranteed to never change or be re-issued  | [optional] 
 **modifiedBy** | **character** | The ID of the user that last modified this entity. | [optional] 
 **modifiedOn** | **character** | The date this entity was last modified. | [optional] 
-**name** | **character** | The name of this entity. Must be 256 characters or less. Names may only contain: letters, numbers, spaces, underscores, hyphens, periods, plus signs, apostrophes, and parentheses  | [optional] 
+**name** | **character** | The name of this entity. Names may only contain: letters, numbers, spaces, underscores, hyphens, periods, plus signs, apostrophes, and parentheses  | [optional] 
 **parentId** | **character** | The ID of the Entity that is the parent of this Entity. | [optional] 
 
 
