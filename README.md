@@ -61,6 +61,11 @@ Class | Method | HTTP request | Description
 *AccessRequirementServicesApi* | [**CreateLockAccessRequirement**](docs/AccessRequirementServicesApi.md#CreateLockAccessRequirement) | **POST** /entity/{id}/lockAccessRequirement | Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
 *AccessRequirementServicesApi* | [**GetEntityAccessRequirements**](docs/AccessRequirementServicesApi.md#GetEntityAccessRequirements) | **GET** /entity/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with an entity.
 *AccessRequirementServicesApi* | [**GetTeamAccessRequirements**](docs/AccessRequirementServicesApi.md#GetTeamAccessRequirements) | **GET** /team/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with a Team.
+*ActivityServicesApi* | [**CreateActivity**](docs/ActivityServicesApi.md#CreateActivity) | **POST** /activity | Create a new Activity
+*ActivityServicesApi* | [**DeleteActivity**](docs/ActivityServicesApi.md#DeleteActivity) | **DELETE** /activity/{id} | Delete an Activity
+*ActivityServicesApi* | [**GetActivity**](docs/ActivityServicesApi.md#GetActivity) | **GET** /activity/{id} | Get an existing Activity.
+*ActivityServicesApi* | [**GetEntitiesGeneratedBy**](docs/ActivityServicesApi.md#GetEntitiesGeneratedBy) | **GET** /activity/{id}/generated | Get the Entities that were generatedBy an Activity.
+*ActivityServicesApi* | [**UpdateActivity**](docs/ActivityServicesApi.md#UpdateActivity) | **PUT** /activity/{id} | Update an Activity.
 *CertifiedUserServicesApi* | [**GetPassingRecord**](docs/CertifiedUserServicesApi.md#GetPassingRecord) | **GET** /user/{id}/certifiedUserPassingRecord | Retrieve the Passing Record on the User Certification test for the given user. 
 *CertifiedUserServicesApi* | [**SetUserCertificationStatus**](docs/CertifiedUserServicesApi.md#SetUserCertificationStatus) | **PUT** /user/{id}/certificationStatus | Set certification status
 *ChallengeServicesApi* | [**CreateChallenge**](docs/ChallengeServicesApi.md#CreateChallenge) | **POST** /challenge | Create a Challenge object, associated with a Project.
@@ -115,12 +120,12 @@ Class | Method | HTTP request | Description
 *EntityServicesApi* | [**ClearBoundSchema**](docs/EntityServicesApi.md#ClearBoundSchema) | **DELETE** /entity/{id}/schema/binding | Clear the bound JSON schema from this Entity.
 *EntityServicesApi* | [**CreateEntity**](docs/EntityServicesApi.md#CreateEntity) | **POST** /entity | Create a new Entity.
 *EntityServicesApi* | [**CreateEntityAcl**](docs/EntityServicesApi.md#CreateEntityAcl) | **POST** /entity/{id}/acl | Create a new Access Control List (ACL), overriding inheritance.
-*EntityServicesApi* | [**DeleteActivity**](docs/EntityServicesApi.md#DeleteActivity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
+*EntityServicesApi* | [**DeleteActivityForEntity**](docs/EntityServicesApi.md#DeleteActivityForEntity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
 *EntityServicesApi* | [**DeleteEntity**](docs/EntityServicesApi.md#DeleteEntity) | **DELETE** /entity/{id} | Deletes an Entity
 *EntityServicesApi* | [**DeleteEntityAcl**](docs/EntityServicesApi.md#DeleteEntityAcl) | **DELETE** /entity/{id}/acl | Delete the Access Control List (ACL) for a given Entity.
 *EntityServicesApi* | [**DeleteEntityVersion**](docs/EntityServicesApi.md#DeleteEntityVersion) | **DELETE** /entity/{id}/version/{versionNumber} | Delete a specific version of a FileEntity.
 *EntityServicesApi* | [**FilePreviewRedirectUrlForVersion**](docs/EntityServicesApi.md#FilePreviewRedirectUrlForVersion) | **GET** /entity/{id}/version/{versionNumber}/filepreview | Get the URL of the preview file associated with a specific version of a FileEntity. 
-*EntityServicesApi* | [**GetActivity**](docs/EntityServicesApi.md#GetActivity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
+*EntityServicesApi* | [**GetActivityForEntity**](docs/EntityServicesApi.md#GetActivityForEntity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
 *EntityServicesApi* | [**GetActivityForEntityVersion**](docs/EntityServicesApi.md#GetActivityForEntityVersion) | **GET** /entity/{id}/version/{versionNumber}/generatedBy | Get an existing activity for a specific version of an Entity.
 *EntityServicesApi* | [**GetAllVersionsOfEntity**](docs/EntityServicesApi.md#GetAllVersionsOfEntity) | **GET** /entity/{id}/version | Get all versions of an Entity one page at a time.
 *EntityServicesApi* | [**GetBoundJsonSchema**](docs/EntityServicesApi.md#GetBoundJsonSchema) | **GET** /entity/{id}/schema/binding | Get information about a JSON schema bound to an Entity.
@@ -363,6 +368,7 @@ Class | Method | HTTP request | Description
  - [PaginatedResultsOfEvaluation](docs/PaginatedResultsOfEvaluation.md)
  - [PaginatedResultsOfMembershipInvitation](docs/PaginatedResultsOfMembershipInvitation.md)
  - [PaginatedResultsOfMembershipRequest](docs/PaginatedResultsOfMembershipRequest.md)
+ - [PaginatedResultsOfReference](docs/PaginatedResultsOfReference.md)
  - [PaginatedResultsOfSubmission](docs/PaginatedResultsOfSubmission.md)
  - [PaginatedResultsOfSubmissionBundle](docs/PaginatedResultsOfSubmissionBundle.md)
  - [PaginatedResultsOfSubmissionStatus](docs/PaginatedResultsOfSubmissionStatus.md)

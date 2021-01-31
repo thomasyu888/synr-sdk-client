@@ -9,6 +9,7 @@ R/access_requirement.R
 R/access_requirement_services_api.R
 R/accesstype.R
 R/activity.R
+R/activity_services_api.R
 R/alias_list.R
 R/annotations_annotation.R
 R/annotations_v2.R
@@ -124,6 +125,7 @@ R/paginated_results_of_entity_header.R
 R/paginated_results_of_evaluation.R
 R/paginated_results_of_membership_invitation.R
 R/paginated_results_of_membership_request.R
+R/paginated_results_of_reference.R
 R/paginated_results_of_submission.R
 R/paginated_results_of_submission_bundle.R
 R/paginated_results_of_submission_status.R
@@ -219,6 +221,7 @@ docs/AccessControlList.md
 docs/AccessRequirement.md
 docs/AccessRequirementServicesApi.md
 docs/Activity.md
+docs/ActivityServicesApi.md
 docs/AliasList.md
 docs/AnnotationsAnnotation.md
 docs/AnnotationsV2.md
@@ -333,6 +336,7 @@ docs/PaginatedResultsOfEntityHeader.md
 docs/PaginatedResultsOfEvaluation.md
 docs/PaginatedResultsOfMembershipInvitation.md
 docs/PaginatedResultsOfMembershipRequest.md
+docs/PaginatedResultsOfReference.md
 docs/PaginatedResultsOfSubmission.md
 docs/PaginatedResultsOfSubmissionBundle.md
 docs/PaginatedResultsOfSubmissionStatus.md
@@ -423,7 +427,5 @@ docs/VersionInfo.md
 docs/WikiPageKey.md
 git_push.sh
 tests/testthat.R
-tests/testthat/test_create_discussion_reply.R
-tests/testthat/test_forum.R
-tests/testthat/test_thread_count.R
-tests/testthat/test_update_reply_message.R
+tests/testthat/test_activity_services_api.R
+tests/testthat/test_paginated_results_of_reference.R

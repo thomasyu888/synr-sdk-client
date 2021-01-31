@@ -102,7 +102,7 @@
 #' }
 #' }
 #'
-#' \strong{ DeleteActivity } \emph{ Deletes the activity relationship for the current version of an Entity. }
+#' \strong{ DeleteActivityForEntity } \emph{ Deletes the activity relationship for the current version of an Entity. }
 #' Deletes the activity relationship for the current version of an Entity. 
 #'
 #' \itemize{
@@ -190,7 +190,7 @@
 #' }
 #' }
 #'
-#' \strong{ GetActivity } \emph{ Get an existing activity for the current version of an Entity. }
+#' \strong{ GetActivityForEntity } \emph{ Get an existing activity for the current version of an Entity. }
 #' Get an existing activity for the current version of an Entity.
 #'
 #' \itemize{
@@ -885,7 +885,7 @@
 #' result <- api.instance$CreateEntityAcl(var.id, access.control.list=var.access.control.list)
 #'
 #'
-#' ####################  DeleteActivity  ####################
+#' ####################  DeleteActivityForEntity  ####################
 #'
 #' library(synclient)
 #' var.id <- 'id_example' # character | The ID of an Entity.
@@ -900,7 +900,7 @@
 #' # provide your api key generated using the developer portal
 #' api.instance$apiClient$password <- '<api_key>';
 #'
-#' result <- api.instance$DeleteActivity(var.id, body=var.body)
+#' result <- api.instance$DeleteActivityForEntity(var.id, body=var.body)
 #'
 #'
 #' ####################  DeleteEntity  ####################
@@ -978,7 +978,7 @@
 #' result <- api.instance$FilePreviewRedirectUrlForVersion(var.id, var.version.number, redirect=var.redirect)
 #'
 #'
-#' ####################  GetActivity  ####################
+#' ####################  GetActivityForEntity  ####################
 #'
 #' library(synclient)
 #' var.id <- 'id_example' # character | The ID of an Entity.
@@ -993,7 +993,7 @@
 #' # provide your api key generated using the developer portal
 #' api.instance$apiClient$password <- '<api_key>';
 #'
-#' result <- api.instance$GetActivity(var.id, body=var.body)
+#' result <- api.instance$GetActivityForEntity(var.id, body=var.body)
 #'
 #'
 #' ####################  GetActivityForEntityVersion  ####################
@@ -1475,7 +1475,7 @@
 #'
 #' library(synclient)
 #' var.id <- 'id_example' # character | The ID of an Entity.
-#' var.generated.by <- 'generated.by_example' # character | The id of the activity to connect to the entity. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.' 
+#' var.generated.by <- 'generated.by_example' # character | The id of the activity to connect to the entity. You must be the creator of the Activity used here.' 
 #' var.body <- NULL # object | Sets the generatedBy relationship for the current version of an Entity.
 #'
 #' #Sets the generatedBy relationship for the current version of an Entity.
@@ -1873,8 +1873,8 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
-    DeleteActivity = function(id, body=NULL, ...){
-      apiResponse <- self$DeleteActivityWithHttpInfo(id, body, ...)
+    DeleteActivityForEntity = function(id, body=NULL, ...){
+      apiResponse <- self$DeleteActivityForEntityWithHttpInfo(id, body, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -1887,7 +1887,7 @@ EntityServicesApi <- R6::R6Class(
       }
     },
 
-    DeleteActivityWithHttpInfo = function(id, body=NULL, ...){
+    DeleteActivityForEntityWithHttpInfo = function(id, body=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()
@@ -2154,8 +2154,8 @@ EntityServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
-    GetActivity = function(id, body=NULL, ...){
-      apiResponse <- self$GetActivityWithHttpInfo(id, body, ...)
+    GetActivityForEntity = function(id, body=NULL, ...){
+      apiResponse <- self$GetActivityForEntityWithHttpInfo(id, body, ...)
       resp <- apiResponse$response
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         apiResponse$content
@@ -2168,7 +2168,7 @@ EntityServicesApi <- R6::R6Class(
       }
     },
 
-    GetActivityWithHttpInfo = function(id, body=NULL, ...){
+    GetActivityForEntityWithHttpInfo = function(id, body=NULL, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- c()

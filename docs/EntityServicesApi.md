@@ -9,12 +9,12 @@ Method | HTTP request | Description
 [**ClearBoundSchema**](EntityServicesApi.md#ClearBoundSchema) | **DELETE** /entity/{id}/schema/binding | Clear the bound JSON schema from this Entity.
 [**CreateEntity**](EntityServicesApi.md#CreateEntity) | **POST** /entity | Create a new Entity.
 [**CreateEntityAcl**](EntityServicesApi.md#CreateEntityAcl) | **POST** /entity/{id}/acl | Create a new Access Control List (ACL), overriding inheritance.
-[**DeleteActivity**](EntityServicesApi.md#DeleteActivity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
+[**DeleteActivityForEntity**](EntityServicesApi.md#DeleteActivityForEntity) | **DELETE** /entity/{id}/generatedBy | Deletes the activity relationship for the current version of an Entity.
 [**DeleteEntity**](EntityServicesApi.md#DeleteEntity) | **DELETE** /entity/{id} | Deletes an Entity
 [**DeleteEntityAcl**](EntityServicesApi.md#DeleteEntityAcl) | **DELETE** /entity/{id}/acl | Delete the Access Control List (ACL) for a given Entity.
 [**DeleteEntityVersion**](EntityServicesApi.md#DeleteEntityVersion) | **DELETE** /entity/{id}/version/{versionNumber} | Delete a specific version of a FileEntity.
 [**FilePreviewRedirectUrlForVersion**](EntityServicesApi.md#FilePreviewRedirectUrlForVersion) | **GET** /entity/{id}/version/{versionNumber}/filepreview | Get the URL of the preview file associated with a specific version of a FileEntity. 
-[**GetActivity**](EntityServicesApi.md#GetActivity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
+[**GetActivityForEntity**](EntityServicesApi.md#GetActivityForEntity) | **GET** /entity/{id}/generatedBy | Get an existing activity for the current version of an Entity.
 [**GetActivityForEntityVersion**](EntityServicesApi.md#GetActivityForEntityVersion) | **GET** /entity/{id}/version/{versionNumber}/generatedBy | Get an existing activity for a specific version of an Entity.
 [**GetAllVersionsOfEntity**](EntityServicesApi.md#GetAllVersionsOfEntity) | **GET** /entity/{id}/version | Get all versions of an Entity one page at a time.
 [**GetBoundJsonSchema**](EntityServicesApi.md#GetBoundJsonSchema) | **GET** /entity/{id}/schema/binding | Get information about a JSON schema bound to an Entity.
@@ -287,8 +287,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **201** | Success |  -  |
 
-# **DeleteActivity**
-> DeleteActivity(id, body=var.body)
+# **DeleteActivityForEntity**
+> DeleteActivityForEntity(id, body=var.body)
 
 Deletes the activity relationship for the current version of an Entity.
 
@@ -306,7 +306,7 @@ api.instance <- EntityServicesApi$new()
 # Configure HTTP basic authorization: bearerAuth
 api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
 api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteActivity(var.id, body=var.body)
+api.instance$DeleteActivityForEntity(var.id, body=var.body)
 ```
 
 ### Parameters
@@ -529,8 +529,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Success |  -  |
 
-# **GetActivity**
-> Activity GetActivity(id, body=var.body)
+# **GetActivityForEntity**
+> Activity GetActivityForEntity(id, body=var.body)
 
 Get an existing activity for the current version of an Entity.
 
@@ -548,7 +548,7 @@ api.instance <- EntityServicesApi$new()
 # Configure HTTP basic authorization: bearerAuth
 api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
 api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetActivity(var.id, body=var.body)
+result <- api.instance$GetActivityForEntity(var.id, body=var.body)
 dput(result)
 ```
 
@@ -1863,7 +1863,7 @@ Sets the generatedBy relationship for the current version of an Entity.
 library(synclient)
 
 var.id <- 'id_example' # character | The ID of an Entity.
-var.generated.by <- 'generated.by_example' # character | The id of the activity to connect to the entity. You must be the creator of the <a href=\"${org.sagebionetworks.repo.model.provenance.Activity}\">Activity</a> used here.' 
+var.generated.by <- 'generated.by_example' # character | The id of the activity to connect to the entity. You must be the creator of the Activity used here.' 
 var.body <- NULL # object | Sets the generatedBy relationship for the current version of an Entity.
 
 #Sets the generatedBy relationship for the current version of an Entity.
@@ -1880,7 +1880,7 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of an Entity. | 
- **generated.by** | **character**| The id of the activity to connect to the entity. You must be the creator of the &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.provenance.Activity}\&quot;&gt;Activity&lt;/a&gt; used here.&#39;  | 
+ **generated.by** | **character**| The id of the activity to connect to the entity. You must be the creator of the Activity used here.&#39;  | 
  **body** | **object**| Sets the generatedBy relationship for the current version of an Entity. | [optional] 
 
 ### Return type
