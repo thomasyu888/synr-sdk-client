@@ -76,17 +76,27 @@ Class | Method | HTTP request | Description
 *ChallengeServicesApi* | [**ListSubmissionTeams**](docs/ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
 *ChallengeServicesApi* | [**UpdateChallenge**](docs/ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
 *ChallengeServicesApi* | [**UpdateChallengeTeam**](docs/ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+*DiscussionServicesApi* | [**CreateReply**](docs/DiscussionServicesApi.md#CreateReply) | **POST** /reply | Create a new reply to a thread.
 *DiscussionServicesApi* | [**CreateThread**](docs/DiscussionServicesApi.md#CreateThread) | **POST** /thread | Create a new thread in a forum.
+*DiscussionServicesApi* | [**DeleteReply**](docs/DiscussionServicesApi.md#DeleteReply) | **DELETE** /reply/{replyId} | Delete Reply
 *DiscussionServicesApi* | [**DeleteThread**](docs/DiscussionServicesApi.md#DeleteThread) | **DELETE** /thread/{threadId} | Delete a Thread.
+*DiscussionServicesApi* | [**GetForum**](docs/DiscussionServicesApi.md#GetForum) | **GET** /forum/{forumId} | Get a Forum. 
+*DiscussionServicesApi* | [**GetForumByProjectId**](docs/DiscussionServicesApi.md#GetForumByProjectId) | **GET** /project/{projectId}/forum | Get the Forum of a Project.
+*DiscussionServicesApi* | [**GetForumModerators**](docs/DiscussionServicesApi.md#GetForumModerators) | **GET** /forum/{forumId}/moderators | Returns a page of Forum moderators.
 *DiscussionServicesApi* | [**GetRepliesForThread**](docs/DiscussionServicesApi.md#GetRepliesForThread) | **GET** /thread/{threadId}/replies | Get N number of replies for a given thread ID.
+*DiscussionServicesApi* | [**GetReply**](docs/DiscussionServicesApi.md#GetReply) | **GET** /reply/{replyId} | Get a Reply.
 *DiscussionServicesApi* | [**GetReplyCountForThread**](docs/DiscussionServicesApi.md#GetReplyCountForThread) | **GET** /thread/{threadId}/replycount | Get the total number of replies for a given Thread. 
+*DiscussionServicesApi* | [**GetReplyUrl**](docs/DiscussionServicesApi.md#GetReplyUrl) | **GET** /reply/messageUrl | Get the message URL of a reply.
 *DiscussionServicesApi* | [**GetThread**](docs/DiscussionServicesApi.md#GetThread) | **GET** /thread/{threadId} | Get a thread.
+*DiscussionServicesApi* | [**GetThreadCount**](docs/DiscussionServicesApi.md#GetThreadCount) | **GET** /forum/{forumId}/threadcount | Get the total number of threads for a Forum.
 *DiscussionServicesApi* | [**GetThreadCounts**](docs/DiscussionServicesApi.md#GetThreadCounts) | **POST** /entity/threadcounts | Get number of threads that belong to projects user can view and references the given entity. 
 *DiscussionServicesApi* | [**GetThreadUrl**](docs/DiscussionServicesApi.md#GetThreadUrl) | **GET** /thread/messageUrl | Get the message URL of a thread.
+*DiscussionServicesApi* | [**GetThreads**](docs/DiscussionServicesApi.md#GetThreads) | **GET** /forum/{forumId}/threads | Get N number of threads for a Forum.
 *DiscussionServicesApi* | [**GetThreadsForEntity**](docs/DiscussionServicesApi.md#GetThreadsForEntity) | **GET** /entity/{id}/threads | This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
 *DiscussionServicesApi* | [**PinThread**](docs/DiscussionServicesApi.md#PinThread) | **PUT** /thread/{threadId}/pin | Pin a Thread.
 *DiscussionServicesApi* | [**RestoreDeletedThread**](docs/DiscussionServicesApi.md#RestoreDeletedThread) | **PUT** /thread/{threadId}/restore | Restore a deleted thread.
 *DiscussionServicesApi* | [**UnpinThread**](docs/DiscussionServicesApi.md#UnpinThread) | **PUT** /thread/{threadId}/unpin | Unpin a thread.
+*DiscussionServicesApi* | [**UpdateReplyMessage**](docs/DiscussionServicesApi.md#UpdateReplyMessage) | **PUT** /reply/{replyId}/message | Update the message of a reply.
 *DiscussionServicesApi* | [**UpdateThreadMessage**](docs/DiscussionServicesApi.md#UpdateThreadMessage) | **PUT** /thread/{threadId}/message | Update the message of a thread.
 *DiscussionServicesApi* | [**UpdateThreadTitle**](docs/DiscussionServicesApi.md#UpdateThreadTitle) | **PUT** /thread/{threadId}/title | Update the title of a Thread.
 *DockerCommitServicesApi* | [**AddDockerCommit**](docs/DockerCommitServicesApi.md#AddDockerCommit) | **POST** /entity/{id}/dockerCommit | Add a commit (tag and digest) for an external/unmanaged Docker repository.
@@ -269,6 +279,7 @@ Class | Method | HTTP request | Description
  - [ColumnModel](docs/ColumnModel.md)
  - [ColumnType](docs/ColumnType.md)
  - [Count](docs/Count.md)
+ - [CreateDiscussionReply](docs/CreateDiscussionReply.md)
  - [CreateDiscussionThread](docs/CreateDiscussionThread.md)
  - [CsvTableDescriptor](docs/CsvTableDescriptor.md)
  - [DataType](docs/DataType.md)
@@ -321,6 +332,7 @@ Class | Method | HTTP request | Description
  - [FormData](docs/FormData.md)
  - [FormGroup](docs/FormGroup.md)
  - [FormRejection](docs/FormRejection.md)
+ - [Forum](docs/Forum.md)
  - [IdList](docs/IdList.md)
  - [JoinTeamSignedToken](docs/JoinTeamSignedToken.md)
  - [JsonSchemaObjectBinding](docs/JsonSchemaObjectBinding.md)
@@ -413,7 +425,9 @@ Class | Method | HTTP request | Description
  - [TeamMember](docs/TeamMember.md)
  - [TeamMembershipStatus](docs/TeamMembershipStatus.md)
  - [TeamSubmissionEligibility](docs/TeamSubmissionEligibility.md)
+ - [ThreadCount](docs/ThreadCount.md)
  - [TrashedEntity](docs/TrashedEntity.md)
+ - [UpdateReplyMessage](docs/UpdateReplyMessage.md)
  - [UpdateThreadMessage](docs/UpdateThreadMessage.md)
  - [UpdateThreadTitle](docs/UpdateThreadTitle.md)
  - [Used](docs/Used.md)
