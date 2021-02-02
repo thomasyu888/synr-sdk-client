@@ -14,6 +14,40 @@
 #'
 #' @section Methods:
 #' \describe{
+#' \strong{ ConvertAccessRequirement } \emph{ Convert an ACTAccessRequirement to a ManagedACTAccessRequirement. }
+#' Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.  Only ACT member can perform this action. 
+#'
+#' \itemize{
+#' \item \emph{ @param } access.requirement.conversion.request \link{AccessRequirementConversionRequest}
+#' \item \emph{ @returnType } \link{AccessRequirement} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : AccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ CreateAccessRequirement } \emph{ Add an Access Requirement to an Entity, or Team. }
+#' Add an Access Requirement to an Entity, or Team. This service may only be used by the Synapse Access and Compliance Team. 
+#'
+#' \itemize{
+#' \item \emph{ @param } access.requirement \link{AccessRequirement}
+#' \item \emph{ @returnType } \link{AccessRequirement} \cr
+#'
+#'
+#' \item status code : 201 | Success
+#'
+#' \item return type : AccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ CreateLockAccessRequirement } \emph{ Add a temporary access restriction that prevents access pending review by the Synapse ACT.  }
 #' Add a temporary access restriction that prevents access pending review by the Synapse Access and Compliance Team. This service may be used only by an administrator of the specified entity. 
 #'
@@ -23,6 +57,39 @@
 #'
 #'
 #' \item status code : 201 | Success
+#'
+#' \item return type : AccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ DeleteAccessRequirements } \emph{ Delete an Access Requirement. }
+#' Delete an Access Requirement. This service may only be used by the Synapse Access and Compliance Team. 
+#'
+#' \itemize{
+#' \item \emph{ @param } requirement.id character
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : character 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
+#' \strong{ GetAccessRequirement } \emph{ Get an Access Requirement. }
+#' Get an Access Requirement to an Entity, or Team based on its ID.
+#'
+#' \itemize{
+#' \item \emph{ @param } requirement.id character
+#' \item \emph{ @returnType } \link{AccessRequirement} \cr
+#'
+#'
+#' \item status code : 200 | Success
 #'
 #' \item return type : AccessRequirement 
 #' \item response headers :
@@ -50,6 +117,24 @@
 #' }
 #' }
 #'
+#' \strong{ GetSubjects } \emph{ Retrieve a page of subjects for a given Access Requirement ID. }
+#' Retrieve a page of subjects for a given Access Requirement ID.
+#'
+#' \itemize{
+#' \item \emph{ @param } requirement.id character
+#' \item \emph{ @param } next.page.token character
+#' \item \emph{ @returnType } \link{RestrictableObjectDescriptorResponse} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : RestrictableObjectDescriptorResponse 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' \strong{ GetTeamAccessRequirements } \emph{ Retrieve paginated list of ALL Access Requirements associated with a Team. }
 #' Retrieve paginated list of ALL Access Requirements associated with a Team. 
 #'
@@ -69,11 +154,63 @@
 #' }
 #' }
 #'
+#' \strong{ UpdateAccessRequirement } \emph{ Modify an existing Access Requirement. }
+#' Modify an existing Access Requirement.  This service may only be used by the Synapse Access and Compliance Team. 
+#'
+#' \itemize{
+#' \item \emph{ @param } requirement.id character
+#' \item \emph{ @param } access.requirement \link{AccessRequirement}
+#' \item \emph{ @returnType } \link{AccessRequirement} \cr
+#'
+#'
+#' \item status code : 200 | Success
+#'
+#' \item return type : AccessRequirement 
+#' \item response headers :
+#'
+#' \tabular{ll}{
+#' }
+#' }
+#'
 #' }
 #'
 #'
 #' @examples
 #' \dontrun{
+#' ####################  ConvertAccessRequirement  ####################
+#'
+#' library(synclient)
+#' var.access.requirement.conversion.request <- AccessRequirementConversionRequest$new() # AccessRequirementConversionRequest | 
+#'
+#' #Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$ConvertAccessRequirement(access.requirement.conversion.request=var.access.requirement.conversion.request)
+#'
+#'
+#' ####################  CreateAccessRequirement  ####################
+#'
+#' library(synclient)
+#' var.access.requirement <- AccessRequirement$new() # AccessRequirement | the Access Requirement to create
+#'
+#' #Add an Access Requirement to an Entity, or Team.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$CreateAccessRequirement(access.requirement=var.access.requirement)
+#'
+#'
 #' ####################  CreateLockAccessRequirement  ####################
 #'
 #' library(synclient)
@@ -89,6 +226,40 @@
 #' api.instance$apiClient$password <- '<api_key>';
 #'
 #' result <- api.instance$CreateLockAccessRequirement(var.id)
+#'
+#'
+#' ####################  DeleteAccessRequirements  ####################
+#'
+#' library(synclient)
+#' var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+#'
+#' #Delete an Access Requirement.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$DeleteAccessRequirements(var.requirement.id)
+#'
+#'
+#' ####################  GetAccessRequirement  ####################
+#'
+#' library(synclient)
+#' var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+#'
+#' #Get an Access Requirement.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetAccessRequirement(var.requirement.id)
 #'
 #'
 #' ####################  GetEntityAccessRequirements  ####################
@@ -110,6 +281,24 @@
 #' result <- api.instance$GetEntityAccessRequirements(var.id, limit=var.limit, offset=var.offset)
 #'
 #'
+#' ####################  GetSubjects  ####################
+#'
+#' library(synclient)
+#' var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+#' var.next.page.token <- 'next.page.token_example' # character | Next page
+#'
+#' #Retrieve a page of subjects for a given Access Requirement ID.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$GetSubjects(var.requirement.id, next.page.token=var.next.page.token)
+#'
+#'
 #' ####################  GetTeamAccessRequirements  ####################
 #'
 #' library(synclient)
@@ -129,6 +318,24 @@
 #' result <- api.instance$GetTeamAccessRequirements(var.id, limit=var.limit, offset=var.offset)
 #'
 #'
+#' ####################  UpdateAccessRequirement  ####################
+#'
+#' library(synclient)
+#' var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+#' var.access.requirement <- AccessRequirement$new() # AccessRequirement | The modified Access Requirement.
+#'
+#' #Modify an existing Access Requirement.
+#' api.instance <- AccessRequirementServicesApi$new()
+#'
+#' #Configure HTTP basic authorization: bearerAuth
+#' # provide your username in the user-serial format
+#' api.instance$apiClient$username <- '<user-serial>'; 
+#' # provide your api key generated using the developer portal
+#' api.instance$apiClient$password <- '<api_key>';
+#'
+#' result <- api.instance$UpdateAccessRequirement(var.requirement.id, access.requirement=var.access.requirement)
+#'
+#'
 #' }
 #' @importFrom R6 R6Class
 #' @importFrom base64enc base64encode
@@ -143,6 +350,106 @@ AccessRequirementServicesApi <- R6::R6Class(
       }
       else {
         self$apiClient <- ApiClient$new()
+      }
+    },
+    ConvertAccessRequirement = function(access.requirement.conversion.request=NULL, ...){
+      apiResponse <- self$ConvertAccessRequirementWithHttpInfo(access.requirement.conversion.request, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    ConvertAccessRequirementWithHttpInfo = function(access.requirement.conversion.request=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`access.requirement.conversion.request`)) {
+        body <- `access.requirement.conversion.request`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/accessRequirement/conversion"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    CreateAccessRequirement = function(access.requirement=NULL, ...){
+      apiResponse <- self$CreateAccessRequirementWithHttpInfo(access.requirement, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    CreateAccessRequirementWithHttpInfo = function(access.requirement=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (!missing(`access.requirement`)) {
+        body <- `access.requirement`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/accessRequirement"
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
       }
     },
     CreateLockAccessRequirement = function(id, ...){
@@ -177,6 +484,112 @@ AccessRequirementServicesApi <- R6::R6Class(
 
       resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    DeleteAccessRequirements = function(requirement.id, ...){
+      apiResponse <- self$DeleteAccessRequirementsWithHttpInfo(requirement.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    DeleteAccessRequirementsWithHttpInfo = function(requirement.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`requirement.id`)) {
+        stop("Missing required parameter `requirement.id`.")
+      }
+
+      body <- NULL
+      urlPath <- "/accessRequirement/{requirementId}"
+      if (!missing(`requirement.id`)) {
+        urlPath <- gsub(paste0("\\{", "requirementId", "\\}"), URLencode(as.character(`requirement.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "DELETE",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "character", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    GetAccessRequirement = function(requirement.id, ...){
+      apiResponse <- self$GetAccessRequirementWithHttpInfo(requirement.id, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetAccessRequirementWithHttpInfo = function(requirement.id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`requirement.id`)) {
+        stop("Missing required parameter `requirement.id`.")
+      }
+
+      body <- NULL
+      urlPath <- "/accessRequirement/{requirementId}"
+      if (!missing(`requirement.id`)) {
+        urlPath <- gsub(paste0("\\{", "requirementId", "\\}"), URLencode(as.character(`requirement.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
                                  queryParams = queryParams,
                                  headerParams = headerParams,
                                  body = body,
@@ -255,6 +668,61 @@ AccessRequirementServicesApi <- R6::R6Class(
         ApiResponse$new("API server error", resp)
       }
     },
+    GetSubjects = function(requirement.id, next.page.token=NULL, ...){
+      apiResponse <- self$GetSubjectsWithHttpInfo(requirement.id, next.page.token, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    GetSubjectsWithHttpInfo = function(requirement.id, next.page.token=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`requirement.id`)) {
+        stop("Missing required parameter `requirement.id`.")
+      }
+
+      queryParams['nextPageToken'] <- next.page.token
+
+      body <- NULL
+      urlPath <- "/accessRequirement/{requirementId}/subjects"
+      if (!missing(`requirement.id`)) {
+        urlPath <- gsub(paste0("\\{", "requirementId", "\\}"), URLencode(as.character(`requirement.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "RestrictableObjectDescriptorResponse", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
     GetTeamAccessRequirements = function(id, limit=10, offset=0, ...){
       apiResponse <- self$GetTeamAccessRequirementsWithHttpInfo(id, limit, offset, ...)
       resp <- apiResponse$response
@@ -299,6 +767,64 @@ AccessRequirementServicesApi <- R6::R6Class(
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         deserializedRespObj <- tryCatch(
           self$apiClient$deserialize(resp, "PaginatedResultsOfAccessRequirement", loadNamespace("synclient")),
+          error = function(e){
+             stop("Failed to deserialize response")
+          }
+        )
+        ApiResponse$new(deserializedRespObj, resp)
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        ApiResponse$new(paste("Server returned " , httr::status_code(resp) , " response status code."), resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        ApiResponse$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        ApiResponse$new("API server error", resp)
+      }
+    },
+    UpdateAccessRequirement = function(requirement.id, access.requirement=NULL, ...){
+      apiResponse <- self$UpdateAccessRequirementWithHttpInfo(requirement.id, access.requirement, ...)
+      resp <- apiResponse$response
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        apiResponse$content
+      } else if (httr::status_code(resp) >= 300 && httr::status_code(resp) <= 399) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        apiResponse
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        apiResponse
+      }
+    },
+
+    UpdateAccessRequirementWithHttpInfo = function(requirement.id, access.requirement=NULL, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- c()
+
+      if (missing(`requirement.id`)) {
+        stop("Missing required parameter `requirement.id`.")
+      }
+
+      if (!missing(`access.requirement`)) {
+        body <- `access.requirement`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/accessRequirement/{requirementId}"
+      if (!missing(`requirement.id`)) {
+        urlPath <- gsub(paste0("\\{", "requirementId", "\\}"), URLencode(as.character(`requirement.id`), reserved = TRUE), urlPath)
+      }
+
+
+      resp <- self$apiClient$CallApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        deserializedRespObj <- tryCatch(
+          self$apiClient$deserialize(resp, "AccessRequirement", loadNamespace("synclient")),
           error = function(e){
              stop("Failed to deserialize response")
           }

@@ -65,9 +65,15 @@ Class | Method | HTTP request | Description
 *AccessApprovalServicesApi* | [**ListAccessorGroup**](docs/AccessApprovalServicesApi.md#ListAccessorGroup) | **POST** /accessApproval/group | Retrieving a page of AccessorGroup.
 *AccessApprovalServicesApi* | [**ListNotifications**](docs/AccessApprovalServicesApi.md#ListNotifications) | **POST** /accessApproval/notifications | Fetches the notifications sent for an access requirement and a list of recipients. 
 *AccessApprovalServicesApi* | [**RevokeAccessApprovals**](docs/AccessApprovalServicesApi.md#RevokeAccessApprovals) | **DELETE** /accessApproval | Revoke all Access Approvals an accessor may have for a given Access Requirement.
+*AccessRequirementServicesApi* | [**ConvertAccessRequirement**](docs/AccessRequirementServicesApi.md#ConvertAccessRequirement) | **PUT** /accessRequirement/conversion | Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.
+*AccessRequirementServicesApi* | [**CreateAccessRequirement**](docs/AccessRequirementServicesApi.md#CreateAccessRequirement) | **POST** /accessRequirement | Add an Access Requirement to an Entity, or Team.
 *AccessRequirementServicesApi* | [**CreateLockAccessRequirement**](docs/AccessRequirementServicesApi.md#CreateLockAccessRequirement) | **POST** /entity/{id}/lockAccessRequirement | Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
+*AccessRequirementServicesApi* | [**DeleteAccessRequirements**](docs/AccessRequirementServicesApi.md#DeleteAccessRequirements) | **DELETE** /accessRequirement/{requirementId} | Delete an Access Requirement.
+*AccessRequirementServicesApi* | [**GetAccessRequirement**](docs/AccessRequirementServicesApi.md#GetAccessRequirement) | **GET** /accessRequirement/{requirementId} | Get an Access Requirement.
 *AccessRequirementServicesApi* | [**GetEntityAccessRequirements**](docs/AccessRequirementServicesApi.md#GetEntityAccessRequirements) | **GET** /entity/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with an entity.
+*AccessRequirementServicesApi* | [**GetSubjects**](docs/AccessRequirementServicesApi.md#GetSubjects) | **GET** /accessRequirement/{requirementId}/subjects | Retrieve a page of subjects for a given Access Requirement ID.
 *AccessRequirementServicesApi* | [**GetTeamAccessRequirements**](docs/AccessRequirementServicesApi.md#GetTeamAccessRequirements) | **GET** /team/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with a Team.
+*AccessRequirementServicesApi* | [**UpdateAccessRequirement**](docs/AccessRequirementServicesApi.md#UpdateAccessRequirement) | **PUT** /accessRequirement/{requirementId} | Modify an existing Access Requirement.
 *ActivityServicesApi* | [**CreateActivity**](docs/ActivityServicesApi.md#CreateActivity) | **POST** /activity | Create a new Activity
 *ActivityServicesApi* | [**DeleteActivity**](docs/ActivityServicesApi.md#DeleteActivity) | **DELETE** /activity/{id} | Delete an Activity
 *ActivityServicesApi* | [**GetActivity**](docs/ActivityServicesApi.md#GetActivity) | **GET** /activity/{id} | Get an existing Activity.
@@ -88,6 +94,11 @@ Class | Method | HTTP request | Description
 *ChallengeServicesApi* | [**ListSubmissionTeams**](docs/ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
 *ChallengeServicesApi* | [**UpdateChallenge**](docs/ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
 *ChallengeServicesApi* | [**UpdateChallengeTeam**](docs/ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+*DataAccessServicesApi* | [**GetAccessRequirementStatus**](docs/DataAccessServicesApi.md#GetAccessRequirementStatus) | **GET** /accessRequirement/{requirementId}/status | Retrieve an access requirement status for a given access requirement ID.
+*DataAccessServicesApi* | [**GetRequestForUpdate**](docs/DataAccessServicesApi.md#GetRequestForUpdate) | **GET** /accessRequirement/{requirementId}/dataAccessRequestForUpdate | Retrieve the Request for update.
+*DataAccessServicesApi* | [**GetUserOwnResearchProjectForUpdate**](docs/DataAccessServicesApi.md#GetUserOwnResearchProjectForUpdate) | **GET** /accessRequirement/{requirementId}/researchProjectForUpdate | Retrieve an existing ResearchProject that the user owns.
+*DataAccessServicesApi* | [**ListArSubmissions**](docs/DataAccessServicesApi.md#ListArSubmissions) | **POST** /accessRequirement/{requirementId}/submissions | Retrieve a list of submissions for a given access requirement ID.
+*DataAccessServicesApi* | [**ListInfoForApprovedSubmissions**](docs/DataAccessServicesApi.md#ListInfoForApprovedSubmissions) | **POST** /accessRequirement/{requirementId}/approvedSubmissionInfo | Return approved data access submissions
 *DiscussionServicesApi* | [**CreateReply**](docs/DiscussionServicesApi.md#CreateReply) | **POST** /reply | Create a new reply to a thread.
 *DiscussionServicesApi* | [**CreateThread**](docs/DiscussionServicesApi.md#CreateThread) | **POST** /thread | Create a new thread in a forum.
 *DiscussionServicesApi* | [**DeleteReply**](docs/DiscussionServicesApi.md#DeleteReply) | **DELETE** /reply/{replyId} | Delete Reply
@@ -277,6 +288,10 @@ Class | Method | HTTP request | Description
  - [AccessApprovalNotificationResponse](docs/AccessApprovalNotificationResponse.md)
  - [AccessControlList](docs/AccessControlList.md)
  - [AccessRequirement](docs/AccessRequirement.md)
+ - [AccessRequirementConversionRequest](docs/AccessRequirementConversionRequest.md)
+ - [AccessRequirementStatus](docs/AccessRequirementStatus.md)
+ - [AccessType](docs/AccessType.md)
+ - [AccessorChange](docs/AccessorChange.md)
  - [AccessorGroup](docs/AccessorGroup.md)
  - [AccessorGroupRequest](docs/AccessorGroupRequest.md)
  - [AccessorGroupResponse](docs/AccessorGroupResponse.md)
@@ -409,10 +424,13 @@ Class | Method | HTTP request | Description
  - [Reference](docs/Reference.md)
  - [ReferenceList](docs/ReferenceList.md)
  - [ReplyCount](docs/ReplyCount.md)
+ - [RequestInterface](docs/RequestInterface.md)
+ - [ResearchProject](docs/ResearchProject.md)
  - [ResourceAccess](docs/ResourceAccess.md)
  - [ResponseCorrectness](docs/ResponseCorrectness.md)
  - [ResponseMessage](docs/ResponseMessage.md)
  - [RestrictableObjectDescriptor](docs/RestrictableObjectDescriptor.md)
+ - [RestrictableObjectDescriptorResponse](docs/RestrictableObjectDescriptorResponse.md)
  - [RestrictableObjectType](docs/RestrictableObjectType.md)
  - [RestrictionInformationResponse](docs/RestrictionInformationResponse.md)
  - [RestrictionLevel](docs/RestrictionLevel.md)
@@ -430,11 +448,19 @@ Class | Method | HTTP request | Description
  - [StateEnum](docs/StateEnum.md)
  - [StringAnnotation](docs/StringAnnotation.md)
  - [StsCredentials](docs/StsCredentials.md)
+ - [Submission](docs/Submission.md)
  - [SubmissionBundle](docs/SubmissionBundle.md)
  - [SubmissionContributor](docs/SubmissionContributor.md)
  - [SubmissionEligibility](docs/SubmissionEligibility.md)
+ - [SubmissionInfo](docs/SubmissionInfo.md)
+ - [SubmissionInfoPage](docs/SubmissionInfoPage.md)
+ - [SubmissionInfoPageRequest](docs/SubmissionInfoPageRequest.md)
  - [SubmissionModel](docs/SubmissionModel.md)
+ - [SubmissionOrder](docs/SubmissionOrder.md)
+ - [SubmissionPage](docs/SubmissionPage.md)
+ - [SubmissionPageRequest](docs/SubmissionPageRequest.md)
  - [SubmissionQuota](docs/SubmissionQuota.md)
+ - [SubmissionState](docs/SubmissionState.md)
  - [SubmissionStatusBatch](docs/SubmissionStatusBatch.md)
  - [SubmissionStatusEnum](docs/SubmissionStatusEnum.md)
  - [SubmissionStatusForm](docs/SubmissionStatusForm.md)
