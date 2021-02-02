@@ -30,6 +30,11 @@ R/annotations_value_type.R
 R/api_response.R
 R/approval_state.R
 R/async_job_id.R
+R/asynch_job_state.R
+R/asynchronous_job_services_api.R
+R/asynchronous_job_status.R
+R/asynchronous_request_body.R
+R/asynchronous_response_body.R
 R/attachment_metadata.R
 R/batch_access_approval_info_request.R
 R/batch_access_approval_info_response.R
@@ -285,6 +290,11 @@ docs/AnnotationsValue.md
 docs/AnnotationsValueType.md
 docs/ApprovalState.md
 docs/AsyncJobId.md
+docs/AsynchJobState.md
+docs/AsynchronousJobServicesApi.md
+docs/AsynchronousJobStatus.md
+docs/AsynchronousRequestBody.md
+docs/AsynchronousResponseBody.md
 docs/AttachmentMetadata.md
 docs/BatchAccessApprovalInfoRequest.md
 docs/BatchAccessApprovalInfoResponse.md
@@ -515,4 +525,8 @@ docs/VersionInfo.md
 docs/WikiPageKey.md
 git_push.sh
 tests/testthat.R
-tests/testthat/test_json_schema_services_api.R
+tests/testthat/test_asynch_job_state.R
+tests/testthat/test_asynchronous_job_services_api.R
+tests/testthat/test_asynchronous_job_status.R
+tests/testthat/test_asynchronous_request_body.R
+tests/testthat/test_asynchronous_response_body.R

@@ -79,6 +79,9 @@ Class | Method | HTTP request | Description
 *ActivityServicesApi* | [**GetActivity**](docs/ActivityServicesApi.md#GetActivity) | **GET** /activity/{id} | Get an existing Activity.
 *ActivityServicesApi* | [**GetEntitiesGeneratedBy**](docs/ActivityServicesApi.md#GetEntitiesGeneratedBy) | **GET** /activity/{id}/generated | Get the Entities that were generatedBy an Activity.
 *ActivityServicesApi* | [**UpdateActivity**](docs/ActivityServicesApi.md#UpdateActivity) | **PUT** /activity/{id} | Update an Activity.
+*AsynchronousJobServicesApi* | [**GetJobStatus**](docs/AsynchronousJobServicesApi.md#GetJobStatus) | **GET** /asynchronous/job/{jobId} | Get Asynchronous Job.
+*AsynchronousJobServicesApi* | [**LaunchNewJob**](docs/AsynchronousJobServicesApi.md#LaunchNewJob) | **POST** /asynchronous/job | Launch new Asynchronous jobs.
+*AsynchronousJobServicesApi* | [**StopJob**](docs/AsynchronousJobServicesApi.md#StopJob) | **GET** /asynchronous/job/{jobId}/cancel | Stop a Asynchronous Job.
 *CertifiedUserServicesApi* | [**GetPassingRecord**](docs/CertifiedUserServicesApi.md#GetPassingRecord) | **GET** /user/{id}/certifiedUserPassingRecord | Retrieve the Passing Record on the User Certification test for the given user. 
 *CertifiedUserServicesApi* | [**SetUserCertificationStatus**](docs/CertifiedUserServicesApi.md#SetUserCertificationStatus) | **PUT** /user/{id}/certificationStatus | Set certification status
 *ChallengeServicesApi* | [**CreateChallenge**](docs/ChallengeServicesApi.md#CreateChallenge) | **POST** /challenge | Create a Challenge object, associated with a Project.
@@ -317,6 +320,10 @@ Class | Method | HTTP request | Description
  - [AnnotationsValueType](docs/AnnotationsValueType.md)
  - [ApprovalState](docs/ApprovalState.md)
  - [AsyncJobId](docs/AsyncJobId.md)
+ - [AsynchJobState](docs/AsynchJobState.md)
+ - [AsynchronousJobStatus](docs/AsynchronousJobStatus.md)
+ - [AsynchronousRequestBody](docs/AsynchronousRequestBody.md)
+ - [AsynchronousResponseBody](docs/AsynchronousResponseBody.md)
  - [AttachmentMetadata](docs/AttachmentMetadata.md)
  - [BatchAccessApprovalInfoRequest](docs/BatchAccessApprovalInfoRequest.md)
  - [BatchAccessApprovalInfoResponse](docs/BatchAccessApprovalInfoResponse.md)
