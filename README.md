@@ -221,6 +221,20 @@ Class | Method | HTTP request | Description
 *FormServicesApi* | [**SubmitFormData**](docs/FormServicesApi.md#SubmitFormData) | **POST** /form/data/{id}/submit | Submit the identified FormData from review.
 *FormServicesApi* | [**UpdateFormData**](docs/FormServicesApi.md#UpdateFormData) | **PUT** /form/data/{id} | Update a FormData object.
 *FormServicesApi* | [**UpdateGroupAcl**](docs/FormServicesApi.md#UpdateGroupAcl) | **PUT** /form/group/{id}/acl | Update the ACL for a FormGroup.
+*JsonSchemaServicesApi* | [**CreateOrganziation**](docs/JsonSchemaServicesApi.md#CreateOrganziation) | **POST** /schema/organization | Create a new Organization.
+*JsonSchemaServicesApi* | [**CreateSchemaAsyncGet**](docs/JsonSchemaServicesApi.md#CreateSchemaAsyncGet) | **GET** /schema/type/create/async/get/{asyncToken} | Get the results of an asynchronous job that was started to create a new JSON schema. 
+*JsonSchemaServicesApi* | [**CreateSchemaAsyncStart**](docs/JsonSchemaServicesApi.md#CreateSchemaAsyncStart) | **POST** /schema/type/create/async/start | Start an asynchronous job to create a new JSON schema.
+*JsonSchemaServicesApi* | [**DeleteJsonSchema**](docs/JsonSchemaServicesApi.md#DeleteJsonSchema) | **DELETE** /schema/type/registered/{id} | 
+*JsonSchemaServicesApi* | [**DeleteOrganization**](docs/JsonSchemaServicesApi.md#DeleteOrganization) | **DELETE** /schema/organization/{id} | Delete the identified Organization.
+*JsonSchemaServicesApi* | [**GetJsonSchema**](docs/JsonSchemaServicesApi.md#GetJsonSchema) | **GET** /schema/type/registered/{id} | Get a registered JSON schema using its $id.
+*JsonSchemaServicesApi* | [**GetOrganizationAcl**](docs/JsonSchemaServicesApi.md#GetOrganizationAcl) | **GET** /schema/organization/{id}/acl | Get the ACL associated of an Organization.
+*JsonSchemaServicesApi* | [**GetOrganizationByName**](docs/JsonSchemaServicesApi.md#GetOrganizationByName) | **GET** /schema/organization | Lookup an Organization by name.
+*JsonSchemaServicesApi* | [**GetValidationSchemaResults**](docs/JsonSchemaServicesApi.md#GetValidationSchemaResults) | **GET** /schema/type/validation/async/get/{asyncToken} | Get the results of an asynchronous job that was started to compile a 'validation' schema for a JSON schema. 
+*JsonSchemaServicesApi* | [**ListJsonSchemas**](docs/JsonSchemaServicesApi.md#ListJsonSchemas) | **POST** /schema/list | List all JSON schemas for an Organization.
+*JsonSchemaServicesApi* | [**ListJsonSchemasVersions**](docs/JsonSchemaServicesApi.md#ListJsonSchemasVersions) | **POST** /schema/version/list | List the version information for each version of a given schema.
+*JsonSchemaServicesApi* | [**ListOrganizations**](docs/JsonSchemaServicesApi.md#ListOrganizations) | **POST** /schema/organization/list | List all organizations.
+*JsonSchemaServicesApi* | [**StartGetValidationSchema**](docs/JsonSchemaServicesApi.md#StartGetValidationSchema) | **POST** /schema/type/validation/async/start | Start validating JSON schema 
+*JsonSchemaServicesApi* | [**UpdateOrganizationAcl**](docs/JsonSchemaServicesApi.md#UpdateOrganizationAcl) | **PUT** /schema/organization/{id}/acl | Update the AccessControlList (ACL) for the identified Organization.
 *MembershipInvitationServicesApi* | [**GetOpenInvitationsByTeam**](docs/MembershipInvitationServicesApi.md#GetOpenInvitationsByTeam) | **GET** /team/{id}/openInvitation | Retrieve the open invitations from a Team, optionally filtering by the invitee. 
 *MembershipInvitationServicesApi* | [**GetOpenInvitationsByUser**](docs/MembershipInvitationServicesApi.md#GetOpenInvitationsByUser) | **GET** /user/{id}/openInvitation | Retrieve the open invitations to a user, optionally filtering by the Team of origin. 
 *MembershipRequestServicesApi* | [**GetOpenRequestsByTeam**](docs/MembershipRequestServicesApi.md#GetOpenRequestsByTeam) | **GET** /team/{id}/openRequest | Retrieve the open requests submitted to a Team, optionally filtering by the requester.
@@ -319,6 +333,9 @@ Class | Method | HTTP request | Description
  - [Count](docs/Count.md)
  - [CreateDiscussionReply](docs/CreateDiscussionReply.md)
  - [CreateDiscussionThread](docs/CreateDiscussionThread.md)
+ - [CreateOrganizationRequest](docs/CreateOrganizationRequest.md)
+ - [CreateSchemaRequest](docs/CreateSchemaRequest.md)
+ - [CreateSchemaResponse](docs/CreateSchemaResponse.md)
  - [CsvTableDescriptor](docs/CsvTableDescriptor.md)
  - [DataType](docs/DataType.md)
  - [DataTypeResponse](docs/DataTypeResponse.md)
@@ -371,10 +388,20 @@ Class | Method | HTTP request | Description
  - [FormGroup](docs/FormGroup.md)
  - [FormRejection](docs/FormRejection.md)
  - [Forum](docs/Forum.md)
+ - [GetValidationSchemaRequest](docs/GetValidationSchemaRequest.md)
+ - [GetValidationSchemaResponse](docs/GetValidationSchemaResponse.md)
  - [IdList](docs/IdList.md)
  - [JoinTeamSignedToken](docs/JoinTeamSignedToken.md)
+ - [JsonSchema](docs/JsonSchema.md)
+ - [JsonSchemaInfo](docs/JsonSchemaInfo.md)
  - [JsonSchemaObjectBinding](docs/JsonSchemaObjectBinding.md)
  - [JsonSchemaVersionInfo](docs/JsonSchemaVersionInfo.md)
+ - [ListJsonSchemaInfoRequest](docs/ListJsonSchemaInfoRequest.md)
+ - [ListJsonSchemaInfoResponse](docs/ListJsonSchemaInfoResponse.md)
+ - [ListJsonSchemaVersionInfoRequest](docs/ListJsonSchemaVersionInfoRequest.md)
+ - [ListJsonSchemaVersionInfoResponse](docs/ListJsonSchemaVersionInfoResponse.md)
+ - [ListOrganizationsRequest](docs/ListOrganizationsRequest.md)
+ - [ListOrganizationsResponse](docs/ListOrganizationsResponse.md)
  - [ListRequest](docs/ListRequest.md)
  - [ListResponse](docs/ListResponse.md)
  - [ListValidationResultsRequest](docs/ListValidationResultsRequest.md)
@@ -392,6 +419,7 @@ Class | Method | HTTP request | Description
  - [NotificationType](docs/NotificationType.md)
  - [ObjectType](docs/ObjectType.md)
  - [ObjectTypeSchema](docs/ObjectTypeSchema.md)
+ - [Organization](docs/Organization.md)
  - [PaginatedColumnModels](docs/PaginatedColumnModels.md)
  - [PaginatedIds](docs/PaginatedIds.md)
  - [PaginatedResultsOfAccessRequirement](docs/PaginatedResultsOfAccessRequirement.md)
@@ -466,6 +494,7 @@ Class | Method | HTTP request | Description
  - [SubmissionStatusForm](docs/SubmissionStatusForm.md)
  - [SubmissionStatusModel](docs/SubmissionStatusModel.md)
  - [SumFileSizes](docs/SumFileSizes.md)
+ - [TYPE](docs/TYPE.md)
  - [TableBundle](docs/TableBundle.md)
  - [TableFileHandleResults](docs/TableFileHandleResults.md)
  - [TableUpdateRequest](docs/TableUpdateRequest.md)

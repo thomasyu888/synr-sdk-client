@@ -21,39 +21,39 @@
 #'
 #' @field _const  character [optional]
 #'
-#' @field _else  \link{JsonSchema} [optional]
+#' @field _else JSONObject object [optional]
 #'
 #' @field _enum  list( character ) [optional]
 #'
-#' @field _if  \link{JsonSchema} [optional]
+#' @field _if JSONObject object [optional]
 #'
-#' @field allOf  list( \link{JsonSchema} ) [optional]
+#' @field allOf  list( object ) [optional]
 #'
-#' @field anyOf  list( \link{JsonSchema} ) [optional]
+#' @field anyOf  list( object ) [optional]
 #'
-#' @field definitions  named list( \link{JsonSchema} ) [optional]
+#' @field definitions  named list( object ) [optional]
 #'
 #' @field description  character [optional]
 #'
 #' @field format  character [optional]
 #'
-#' @field items  \link{JsonSchema} [optional]
+#' @field items JSONObject object [optional]
 #'
 #' @field maxLength  integer [optional]
 #'
 #' @field minLength  integer [optional]
 #'
-#' @field oneOf  list( \link{JsonSchema} ) [optional]
+#' @field oneOf  list( object ) [optional]
 #'
 #' @field pattern  character [optional]
 #'
-#' @field properties  named list( \link{JsonSchema} ) [optional]
+#' @field properties  named list( object ) [optional]
 #'
 #' @field required  list( character ) [optional]
 #'
 #' @field source  character [optional]
 #'
-#' @field then  \link{JsonSchema} [optional]
+#' @field then JSONObject object [optional]
 #'
 #' @field title  character [optional]
 #'
@@ -109,7 +109,6 @@ JsonSchema <- R6::R6Class(
         self$`_const` <- `_const`
       }
       if (!is.null(`_else`)) {
-        stopifnot(R6::is.R6(`_else`))
         self$`_else` <- `_else`
       }
       if (!is.null(`_enum`)) {
@@ -118,22 +117,21 @@ JsonSchema <- R6::R6Class(
         self$`_enum` <- `_enum`
       }
       if (!is.null(`_if`)) {
-        stopifnot(R6::is.R6(`_if`))
         self$`_if` <- `_if`
       }
       if (!is.null(`allOf`)) {
         stopifnot(is.vector(`allOf`), length(`allOf`) != 0)
-        sapply(`allOf`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`allOf`, function(x) stopifnot(is.character(x)))
         self$`allOf` <- `allOf`
       }
       if (!is.null(`anyOf`)) {
         stopifnot(is.vector(`anyOf`), length(`anyOf`) != 0)
-        sapply(`anyOf`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`anyOf`, function(x) stopifnot(is.character(x)))
         self$`anyOf` <- `anyOf`
       }
       if (!is.null(`definitions`)) {
         stopifnot(is.vector(`definitions`), length(`definitions`) != 0)
-        sapply(`definitions`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`definitions`, function(x) stopifnot(is.character(x)))
         self$`definitions` <- `definitions`
       }
       if (!is.null(`description`)) {
@@ -145,7 +143,6 @@ JsonSchema <- R6::R6Class(
         self$`format` <- `format`
       }
       if (!is.null(`items`)) {
-        stopifnot(R6::is.R6(`items`))
         self$`items` <- `items`
       }
       if (!is.null(`maxLength`)) {
@@ -158,7 +155,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(`oneOf`)) {
         stopifnot(is.vector(`oneOf`), length(`oneOf`) != 0)
-        sapply(`oneOf`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`oneOf`, function(x) stopifnot(is.character(x)))
         self$`oneOf` <- `oneOf`
       }
       if (!is.null(`pattern`)) {
@@ -167,7 +164,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(`properties`)) {
         stopifnot(is.vector(`properties`), length(`properties`) != 0)
-        sapply(`properties`, function(x) stopifnot(R6::is.R6(x)))
+        sapply(`properties`, function(x) stopifnot(is.character(x)))
         self$`properties` <- `properties`
       }
       if (!is.null(`required`)) {
@@ -180,7 +177,6 @@ JsonSchema <- R6::R6Class(
         self$`source` <- `source`
       }
       if (!is.null(`then`)) {
-        stopifnot(R6::is.R6(`then`))
         self$`then` <- `then`
       }
       if (!is.null(`title`)) {
@@ -212,7 +208,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`_else`)) {
         JsonSchemaObject[['_else']] <-
-          self$`_else`$toJSON()
+          self$`_else`
       }
       if (!is.null(self$`_enum`)) {
         JsonSchemaObject[['_enum']] <-
@@ -220,19 +216,19 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`_if`)) {
         JsonSchemaObject[['_if']] <-
-          self$`_if`$toJSON()
+          self$`_if`
       }
       if (!is.null(self$`allOf`)) {
         JsonSchemaObject[['allOf']] <-
-          lapply(self$`allOf`, function(x) x$toJSON())
+          self$`allOf`
       }
       if (!is.null(self$`anyOf`)) {
         JsonSchemaObject[['anyOf']] <-
-          lapply(self$`anyOf`, function(x) x$toJSON())
+          self$`anyOf`
       }
       if (!is.null(self$`definitions`)) {
         JsonSchemaObject[['definitions']] <-
-          lapply(self$`definitions`, function(x) x$toJSON())
+          self$`definitions`
       }
       if (!is.null(self$`description`)) {
         JsonSchemaObject[['description']] <-
@@ -244,7 +240,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`items`)) {
         JsonSchemaObject[['items']] <-
-          self$`items`$toJSON()
+          self$`items`
       }
       if (!is.null(self$`maxLength`)) {
         JsonSchemaObject[['maxLength']] <-
@@ -256,7 +252,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`oneOf`)) {
         JsonSchemaObject[['oneOf']] <-
-          lapply(self$`oneOf`, function(x) x$toJSON())
+          self$`oneOf`
       }
       if (!is.null(self$`pattern`)) {
         JsonSchemaObject[['pattern']] <-
@@ -264,7 +260,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`properties`)) {
         JsonSchemaObject[['properties']] <-
-          lapply(self$`properties`, function(x) x$toJSON())
+          self$`properties`
       }
       if (!is.null(self$`required`)) {
         JsonSchemaObject[['required']] <-
@@ -276,7 +272,7 @@ JsonSchema <- R6::R6Class(
       }
       if (!is.null(self$`then`)) {
         JsonSchemaObject[['then']] <-
-          self$`then`$toJSON()
+          self$`then`
       }
       if (!is.null(self$`title`)) {
         JsonSchemaObject[['title']] <-
@@ -304,26 +300,22 @@ JsonSchema <- R6::R6Class(
         self$`_const` <- JsonSchemaObject$`_const`
       }
       if (!is.null(JsonSchemaObject$`_else`)) {
-        _elseObject <- JsonSchema$new()
-        _elseObject$fromJSON(jsonlite::toJSON(JsonSchemaObject$_else, auto_unbox = TRUE, digits = NA))
-        self$`_else` <- _elseObject
+        self$`_else` <- JsonSchemaObject$`_else`
       }
       if (!is.null(JsonSchemaObject$`_enum`)) {
         self$`_enum` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`_enum`, "array[character]", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`_if`)) {
-        _ifObject <- JsonSchema$new()
-        _ifObject$fromJSON(jsonlite::toJSON(JsonSchemaObject$_if, auto_unbox = TRUE, digits = NA))
-        self$`_if` <- _ifObject
+        self$`_if` <- JsonSchemaObject$`_if`
       }
       if (!is.null(JsonSchemaObject$`allOf`)) {
-        self$`allOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`allOf`, "array[JsonSchema]", loadNamespace("synclient"))
+        self$`allOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`allOf`, "array[object]", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`anyOf`)) {
-        self$`anyOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`anyOf`, "array[JsonSchema]", loadNamespace("synclient"))
+        self$`anyOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`anyOf`, "array[object]", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`definitions`)) {
-        self$`definitions` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`definitions`, "map(JsonSchema)", loadNamespace("synclient"))
+        self$`definitions` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`definitions`, "map(object)", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`description`)) {
         self$`description` <- JsonSchemaObject$`description`
@@ -332,9 +324,7 @@ JsonSchema <- R6::R6Class(
         self$`format` <- JsonSchemaObject$`format`
       }
       if (!is.null(JsonSchemaObject$`items`)) {
-        itemsObject <- JsonSchema$new()
-        itemsObject$fromJSON(jsonlite::toJSON(JsonSchemaObject$items, auto_unbox = TRUE, digits = NA))
-        self$`items` <- itemsObject
+        self$`items` <- JsonSchemaObject$`items`
       }
       if (!is.null(JsonSchemaObject$`maxLength`)) {
         self$`maxLength` <- JsonSchemaObject$`maxLength`
@@ -343,13 +333,13 @@ JsonSchema <- R6::R6Class(
         self$`minLength` <- JsonSchemaObject$`minLength`
       }
       if (!is.null(JsonSchemaObject$`oneOf`)) {
-        self$`oneOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`oneOf`, "array[JsonSchema]", loadNamespace("synclient"))
+        self$`oneOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`oneOf`, "array[object]", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`pattern`)) {
         self$`pattern` <- JsonSchemaObject$`pattern`
       }
       if (!is.null(JsonSchemaObject$`properties`)) {
-        self$`properties` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`properties`, "map(JsonSchema)", loadNamespace("synclient"))
+        self$`properties` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`properties`, "map(object)", loadNamespace("synclient"))
       }
       if (!is.null(JsonSchemaObject$`required`)) {
         self$`required` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`required`, "array[character]", loadNamespace("synclient"))
@@ -358,9 +348,7 @@ JsonSchema <- R6::R6Class(
         self$`source` <- JsonSchemaObject$`source`
       }
       if (!is.null(JsonSchemaObject$`then`)) {
-        thenObject <- JsonSchema$new()
-        thenObject$fromJSON(jsonlite::toJSON(JsonSchemaObject$then, auto_unbox = TRUE, digits = NA))
-        self$`then` <- thenObject
+        self$`then` <- JsonSchemaObject$`then`
       }
       if (!is.null(JsonSchemaObject$`title`)) {
         self$`title` <- JsonSchemaObject$`title`
@@ -405,9 +393,9 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`_else`)) {
         sprintf(
         '"_else":
-        %s
-        ',
-        jsonlite::toJSON(self$`_else`$toJSON(), auto_unbox=TRUE, digits = NA)
+          "%s"
+                ',
+        self$`_else`
         )},
         if (!is.null(self$`_enum`)) {
         sprintf(
@@ -419,30 +407,30 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`_if`)) {
         sprintf(
         '"_if":
-        %s
-        ',
-        jsonlite::toJSON(self$`_if`$toJSON(), auto_unbox=TRUE, digits = NA)
+          "%s"
+                ',
+        self$`_if`
         )},
         if (!is.null(self$`allOf`)) {
         sprintf(
         '"allOf":
-        [%s]
-',
-        paste(sapply(self$`allOf`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA)), collapse=",")
+           [%s]
+        ',
+        paste(unlist(lapply(self$`allOf`, function(x) paste0('"', x, '"'))), collapse=",")
         )},
         if (!is.null(self$`anyOf`)) {
         sprintf(
         '"anyOf":
-        [%s]
-',
-        paste(sapply(self$`anyOf`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA)), collapse=",")
+           [%s]
+        ',
+        paste(unlist(lapply(self$`anyOf`, function(x) paste0('"', x, '"'))), collapse=",")
         )},
         if (!is.null(self$`definitions`)) {
         sprintf(
         '"definitions":
-        %s
-',
-        jsonlite::toJSON(lapply(self$`definitions`, function(x){ x$toJSON() }), auto_unbox = TRUE, digits=NA)
+          "%s"
+        ',
+        jsonlite::toJSON(lapply(self$`definitions`, function(x){ x }), auto_unbox = TRUE, digits=NA)
         )},
         if (!is.null(self$`description`)) {
         sprintf(
@@ -461,9 +449,9 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`items`)) {
         sprintf(
         '"items":
-        %s
-        ',
-        jsonlite::toJSON(self$`items`$toJSON(), auto_unbox=TRUE, digits = NA)
+          "%s"
+                ',
+        self$`items`
         )},
         if (!is.null(self$`maxLength`)) {
         sprintf(
@@ -482,9 +470,9 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`oneOf`)) {
         sprintf(
         '"oneOf":
-        [%s]
-',
-        paste(sapply(self$`oneOf`, function(x) jsonlite::toJSON(x$toJSON(), auto_unbox=TRUE, digits = NA)), collapse=",")
+           [%s]
+        ',
+        paste(unlist(lapply(self$`oneOf`, function(x) paste0('"', x, '"'))), collapse=",")
         )},
         if (!is.null(self$`pattern`)) {
         sprintf(
@@ -496,9 +484,9 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`properties`)) {
         sprintf(
         '"properties":
-        %s
-',
-        jsonlite::toJSON(lapply(self$`properties`, function(x){ x$toJSON() }), auto_unbox = TRUE, digits=NA)
+          "%s"
+        ',
+        jsonlite::toJSON(lapply(self$`properties`, function(x){ x }), auto_unbox = TRUE, digits=NA)
         )},
         if (!is.null(self$`required`)) {
         sprintf(
@@ -517,9 +505,9 @@ JsonSchema <- R6::R6Class(
         if (!is.null(self$`then`)) {
         sprintf(
         '"then":
-        %s
-        ',
-        jsonlite::toJSON(self$`then`$toJSON(), auto_unbox=TRUE, digits = NA)
+          "%s"
+                ',
+        self$`then`
         )},
         if (!is.null(self$`title`)) {
         sprintf(
@@ -545,23 +533,23 @@ JsonSchema <- R6::R6Class(
       self$`$ref` <- JsonSchemaObject$`$ref`
       self$`$schema` <- JsonSchemaObject$`$schema`
       self$`_const` <- JsonSchemaObject$`_const`
-      self$`_else` <- JsonSchema$new()$fromJSON(jsonlite::toJSON(JsonSchemaObject$_else, auto_unbox = TRUE, digits = NA))
+      self$`_else` <- JsonSchemaObject$`_else`
       self$`_enum` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`_enum`, "array[character]", loadNamespace("synclient"))
-      self$`_if` <- JsonSchema$new()$fromJSON(jsonlite::toJSON(JsonSchemaObject$_if, auto_unbox = TRUE, digits = NA))
-      self$`allOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`allOf`, "array[JsonSchema]", loadNamespace("synclient"))
-      self$`anyOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`anyOf`, "array[JsonSchema]", loadNamespace("synclient"))
-      self$`definitions` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`definitions`, "map(JsonSchema)", loadNamespace("synclient"))
+      self$`_if` <- JsonSchemaObject$`_if`
+      self$`allOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`allOf`, "array[object]", loadNamespace("synclient"))
+      self$`anyOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`anyOf`, "array[object]", loadNamespace("synclient"))
+      self$`definitions` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`definitions`, "map(object)", loadNamespace("synclient"))
       self$`description` <- JsonSchemaObject$`description`
       self$`format` <- JsonSchemaObject$`format`
-      self$`items` <- JsonSchema$new()$fromJSON(jsonlite::toJSON(JsonSchemaObject$items, auto_unbox = TRUE, digits = NA))
+      self$`items` <- JsonSchemaObject$`items`
       self$`maxLength` <- JsonSchemaObject$`maxLength`
       self$`minLength` <- JsonSchemaObject$`minLength`
-      self$`oneOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`oneOf`, "array[JsonSchema]", loadNamespace("synclient"))
+      self$`oneOf` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`oneOf`, "array[object]", loadNamespace("synclient"))
       self$`pattern` <- JsonSchemaObject$`pattern`
-      self$`properties` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`properties`, "map(JsonSchema)", loadNamespace("synclient"))
+      self$`properties` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`properties`, "map(object)", loadNamespace("synclient"))
       self$`required` <- ApiClient$new()$deserializeObj(JsonSchemaObject$`required`, "array[character]", loadNamespace("synclient"))
       self$`source` <- JsonSchemaObject$`source`
-      self$`then` <- JsonSchema$new()$fromJSON(jsonlite::toJSON(JsonSchemaObject$then, auto_unbox = TRUE, digits = NA))
+      self$`then` <- JsonSchemaObject$`then`
       self$`title` <- JsonSchemaObject$`title`
       self$`type` <- TYPE$new()$fromJSON(jsonlite::toJSON(JsonSchemaObject$type, auto_unbox = TRUE, digits = NA))
       self
