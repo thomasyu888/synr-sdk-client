@@ -3,153 +3,255 @@
 
 context("Test TableServicesApi")
 
-api.instance <- TableServicesApi$new()
+api_instance <- TableServicesApi$new()
 
-test_that("CreateSnapshot", {
-  # tests for CreateSnapshot
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Request to create a new snapshot of a table.
-  # Request to create a new snapshot of a table. The provided comment, label, and activity ID will be applied to the current version thereby creating a snapshot and locking the current version. After the snapshot is created a new version will be started with an &#39;in-progress&#39; label.  NOTE: This service is for TableEntity only. Snapshots of EntityView require asynchronous processing and can be created via: POST /entity/{id}/table/transaction/async/start 
-  # @param id character The ID of a Table Entity.
-  # @param snapshot.request SnapshotRequest  (optional)
-  # @return [SnapshotResponse]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("CsvDownloadAsyncGet", {
-  # tests for CsvDownloadAsyncGet
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Asynchronously get the results of a csv download started with.
-  # Asynchronously get the results of a csv download started with POST  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus 
-  # @param id character The ID of a TableEntity.
-  # @param async.token character Async Token
-  # @return [DownloadFromTableResult]
+test_that("GetRepoV1Column", {
+  # tests for GetRepoV1Column
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param prefix character When included, only columns with a name that starts with this             prefix will be returned. (optional)
+  # @param limit numeric Limits the size of the page returned. For example, a page size             of 10 require limit = 10. The maximum Limit for this call is             100. The default Limit is 10; (optional)
+  # @param offset numeric The index of the pagination offset. For a page size of 10, the             first page would be at offset = 0, and the second page would             be at offset = 10. (optional)
+  # @return [OrgSagebionetworksRepoModelTablePaginatedColumnModels]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("CsvDownloadAsyncStart", {
-  # tests for CsvDownloadAsyncStart
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Asynchronously start a csv download.
-  # Asynchronously start a csv download. Use the returned job id and  /entity/{id}/table/download/csv/async/get to get the results of the query 
-  # @param id character The ID of a TableEntity.
-  # @param download.from.table.request DownloadFromTableRequest  (optional)
-  # @return [AsyncJobId]
+test_that("GetRepoV1ColumnColumnId", {
+  # tests for GetRepoV1ColumnColumnId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param column_id character The ID of the ColumnModel to get.
+  # @return [OrgSagebionetworksRepoModelTableColumnModel]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("FilePreviewRedirectUrlForRow", {
-  # tests for FilePreviewRedirectUrlForRow
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the preview URL of the file associated with a specific version of a row and file handle column. 
-  # Get the preview URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
-  # @param column.id character The ID of the Table column
+test_that("GetRepoV1ColumnTableviewDefaults", {
+  # tests for GetRepoV1ColumnTableviewDefaults
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param view_entity_type OrgSagebionetworksRepoModelTableViewEntityType The ,<a href=\"${org.sagebionetworks.repo.model.table.ViewEntityType}\">,entity                        type,</a>, of the view, if omitted use entityview (optional)
+  # @param view_type_mask numeric Bit mask representing the types to include in the view.                        Not required for a submission view. For an entity view                        following are the possible types: (type=,<mask_hex>,):                        File=0x01, Project=0x02, Table=0x04, Folder=0x08,                        View=0x10, Docker=0x20, SubmissionView=0x40, Dataset=0x80,                         DatasetCollection=0x100, MaterializedView=0x200). (optional)
+  # @return [ListWrapperOfColumnModel]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ColumnViewScopeAsyncGetAsyncToken", {
+  # tests for GetRepoV1ColumnViewScopeAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param async_token character 
+  # @return [OrgSagebionetworksRepoModelTableViewColumnModelResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1EntityIdColumn", {
+  # tests for GetRepoV1EntityIdColumn
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity to get the ColumnModels for.
+  # @return [OrgSagebionetworksRepoModelTablePaginatedColumnModels]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile", {
+  # tests for GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile
+  # base path: https://repo-prod.prod.sagebase.org
   # @param id character The ID of the FileEntity to get.
-  # @param row.id numeric The ID of the Table Row
-  # @param version.number numeric The version of the Table Row
-  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
-  # @return [character]
+  # @param column_id character 
+  # @param row_id numeric 
+  # @param version_number numeric 
+  # @param redirect character When set to false, the URL will be returned as text/plain             instead of redirecting. (optional)
+  # @return [AnyType]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("FileRedirectUrlForRow", {
-  # tests for FileRedirectUrlForRow
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the actual URL of the file associated with a specific version of a row and file handle column. 
-  # Get the actual URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
-  # @param column.id character The ID of the Table column
+test_that("GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview", {
+  # tests for GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview
+  # base path: https://repo-prod.prod.sagebase.org
   # @param id character The ID of the FileEntity to get.
-  # @param row.id numeric The ID of the Table Row
-  # @param version.number numeric The version of the Table Row
-  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
-  # @return [character]
+  # @param column_id character 
+  # @param row_id numeric 
+  # @param version_number numeric 
+  # @param redirect character When set to false, the URL will be returned as text/plain             instead of redirecting. (optional)
+  # @return [AnyType]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetColumnForTable", {
-  # tests for GetColumnForTable
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Given the ID of a.
-  # Given the ID of a &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.table.TableEntity}\&quot;&gt;TableEntity&lt;/a&gt;, get its list of &lt;ahref&#x3D;\&quot;${org.sagebionetworks.repo.model.table.ColumnModel}\&quot;&gt;ColumnModels&lt;/a&gt; that are currently assigned to the table.  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;6 calls per minute&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param id character The ID of a Table.
-  # @return [PaginatedColumnModels]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetFileHandles", {
-  # tests for GetFileHandles
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # .
-  # This method is used to get file handle information for rows in a TableEntity. The columns in the passed in RowReferenceSet need to be FILEHANDLEID columns and the rows in the passed in RowReferenceSet need to exists (a 400 will be returned if a row ID is provided that does not actually exist). The order of the returned rows of file handles is the same as the order of the rows requested, and the order of the file handles in each row is the same as the order of the columns requested.  Note: The caller must have the READ permission on the TableEntity to make this call.  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;1 calls per second&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt; 
-  # @param id character The ID of a TableEntity.
-  # @param row.reference.set RowReferenceSet  (optional)
-  # @return [TableFileHandleResults]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetTableTransactionResult", {
-  # tests for GetTableTransactionResult
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Asynchronously get the results of a table update transaction started with.
-  # Asynchronously get the results of a table update transaction started with POST /entity/{id}/table/transaction/async/start&lt;/a&gt;  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-  # @param async.token character The token returned when the job was started.
-  # @param id character The ID of a Table entity.
-  # @return [TableUpdateTransactionResponse]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("QueryAsyncGet", {
-  # tests for QueryAsyncGet
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Asynchronously get the results of a query started with.
-  # Asynchronously get the results of a query started with POST /entity/{id}/table/query/async/start  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-  # @param async.token character Async Token
+test_that("GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken", {
+  # tests for GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
   # @param id character The ID of the TableEntity.
-  # @return [QueryResultBundle]
+  # @param async_token character 
+  # @return [OrgSagebionetworksRepoModelTableDownloadFromTableResult]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("QueryAsyncStart", {
-  # tests for QueryAsyncStart
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Asynchronously start a query.
-  # Asynchronously start a query. Use the returned job id and GET /entity/{id}/table/query/async/get&lt;/a&gt; to get the results of the query  Using a &#39;SQL like&#39; syntax, query the current version of the rows in a single table. The following pseudo-syntax is the basic supported format:   SELECT &lt;br&gt;  [ALL | DISTINCT] select_expr [, select_expr ...] &lt;br&gt;  FROM synapse_table_id &lt;br&gt;  [WHERE where_condition] &lt;br&gt;  [GROUP BY {col_name [, [col_name * ...] } &lt;br&gt;  [ORDER BY {col_name [ [ASC | DESC] [, col_name [ [ASC | DESC] ]}&lt;br&gt;  [LIMIT row_count [ OFFSET offset ] ]&lt;br&gt;   &lt;p&gt;  Note: Sub-queries and joining tables is not supported.  &lt;/p&gt;  &lt;p&gt;  This services depends on an index that is created/update asynchronously from table creation and update events. This means there could be short window of time when the index is inconsistent with the true state of the table. When the index is out-of-synch, then a status code of 202 (ACCEPTED) will be returned and the response body will be a TableStatus object. The TableStatus will indicates the current status of the index including how much work is remaining until the index is consistent with the truth of the table.  The &#39;partsMask&#39; is an integer \&quot;mask\&quot; that can be combined into to request any desired part. As of this writing, the mask is defined as follows QueryBundleRequest  &lt;ul&gt;  &lt;li&gt;Query Results &lt;i&gt;(queryResults)&lt;/i&gt; &#x3D; 0x1&lt;/li&gt;  &lt;li&gt;Query Count &lt;i&gt;(queryCount)&lt;/i&gt; &#x3D; 0x2&lt;/li&gt;  &lt;li&gt;Select Columns &lt;i&gt;(selectColumns)&lt;/i&gt; &#x3D; 0x4&lt;/li&gt;  &lt;li&gt;Max Rows Per Page &lt;i&gt;(maxRowsPerPage)&lt;/i&gt; &#x3D; 0x8&lt;/li&gt;  &lt;li&gt;The Table Columns &lt;i&gt;(columnModels)&lt;/i&gt; &#x3D; 0x10&lt;/li&gt;  &lt;li&gt;Facet statistics for each faceted column &lt;i&gt;(facetStatistics)&lt;/i&gt; &#x3D; 0x20&lt;/li&gt;  &lt;li&gt;The sum of the file sizes &lt;i&gt;(sumFileSizesBytes)&lt;/i&gt; &#x3D; 0x40&lt;/li&gt;  &lt;/ul&gt;  &lt;/p&gt;  &lt;p&gt;  For example, to request all parts, the request mask value should be: &lt;br&gt; 0x1 OR 0x2 OR 0x4 OR 0x8 OR 0x10 OR 0x20 OR 0x40 &#x3D; 0x7F.  &lt;/p&gt;  &lt;p&gt;  Note: The caller must have the READ permission on the TableEntity to make this call.  &lt;/p&gt; 
-  # @param id character The ID of a TableEntity.
-  # @param query.bundle.request QueryBundleRequest  (optional)
-  # @return [AsyncJobId]
+test_that("GetRepoV1EntityIdTableQueryAsyncGetAsyncToken", {
+  # tests for GetRepoV1EntityIdTableQueryAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity.
+  # @param async_token character 
+  # @return [OrgSagebionetworksRepoModelTableQueryResultBundle]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("StartTableTransactionJob", {
-  # tests for StartTableTransactionJob
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Start a table update job that will attempt to make all of the requested changes in a single transaction. 
-  # Start a table update job that will attempt to make all of the requested changes in a single transaction. All updates will either succeed or fail as a unit.  All update requests must be for the same table.  &lt;p&gt;  Note: The caller must have the UPDATE permission on the TableEntity to make this call.  &lt;/p&gt;  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum size of a PartialRow change &lt;/td&gt;  &lt;td&gt;2 MB&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum size of a CSV that can be appended to a table&lt;/td&gt;  &lt;td&gt;1 GB&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt; 
-  # @param id character The ID of a Table Entity.
-  # @param table.update.transaction.request TableUpdateTransactionRequest  (optional)
-  # @return [AsyncJobId]
+test_that("GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken", {
+  # tests for GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the table entity.
+  # @param async_token character The token returned when the job was started.
+  # @return [OrgSagebionetworksRepoModelTableTableUpdateTransactionResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken", {
+  # tests for GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity.
+  # @param async_token character 
+  # @return [OrgSagebionetworksRepoModelTableUploadToTableResult]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken", {
+  # tests for GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param async_token character 
+  # @return [OrgSagebionetworksRepoModelTableUploadToTablePreviewResult]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1Column", {
+  # tests for PostRepoV1Column
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_table_column_model OrgSagebionetworksRepoModelTableColumnModel 
+  # @return [OrgSagebionetworksRepoModelTableColumnModel]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1ColumnBatch", {
+  # tests for PostRepoV1ColumnBatch
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param list_wrapper_of_column_model ListWrapperOfColumnModel 
+  # @return [ListWrapperOfColumnModel]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1ColumnViewScopeAsyncStart", {
+  # tests for PostRepoV1ColumnViewScopeAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_table_view_column_model_request OrgSagebionetworksRepoModelTableViewColumnModelRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableDownloadCsvAsyncStart", {
+  # tests for PostRepoV1EntityIdTableDownloadCsvAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity.
+  # @param org_sagebionetworks_repo_model_table_download_from_table_request OrgSagebionetworksRepoModelTableDownloadFromTableRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableFilehandles", {
+  # tests for PostRepoV1EntityIdTableFilehandles
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity to append rows to.
+  # @param org_sagebionetworks_repo_model_table_row_reference_set OrgSagebionetworksRepoModelTableRowReferenceSet 
+  # @return [OrgSagebionetworksRepoModelTableTableFileHandleResults]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableQueryAsyncStart", {
+  # tests for PostRepoV1EntityIdTableQueryAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity.
+  # @param org_sagebionetworks_repo_model_table_query_bundle_request OrgSagebionetworksRepoModelTableQueryBundleRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableSnapshot", {
+  # tests for PostRepoV1EntityIdTableSnapshot
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param org_sagebionetworks_repo_model_table_snapshot_request OrgSagebionetworksRepoModelTableSnapshotRequest 
+  # @return [OrgSagebionetworksRepoModelTableSnapshotResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableTransactionAsyncStart", {
+  # tests for PostRepoV1EntityIdTableTransactionAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity to update.
+  # @param org_sagebionetworks_repo_model_table_table_update_transaction_request OrgSagebionetworksRepoModelTableTableUpdateTransactionRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdTableUploadCsvAsyncStart", {
+  # tests for PostRepoV1EntityIdTableUploadCsvAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The ID of the TableEntity.
+  # @param org_sagebionetworks_repo_model_table_upload_to_table_request OrgSagebionetworksRepoModelTableUploadToTableRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1TableUploadCsvPreviewAsyncStart", {
+  # tests for PostRepoV1TableUploadCsvPreviewAsyncStart
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_table_upload_to_table_preview_request OrgSagebionetworksRepoModelTableUploadToTablePreviewRequest 
+  # @return [OrgSagebionetworksRepoModelAsynchAsyncJobId]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1ValidateDefiningSql", {
+  # tests for PostRepoV1ValidateDefiningSql
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_table_validate_defining_sql_request OrgSagebionetworksRepoModelTableValidateDefiningSqlRequest 
+  # @return [OrgSagebionetworksRepoModelTableValidateDefiningSqlResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

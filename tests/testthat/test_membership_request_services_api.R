@@ -3,35 +3,71 @@
 
 context("Test MembershipRequestServicesApi")
 
-api.instance <- MembershipRequestServicesApi$new()
+api_instance <- MembershipRequestServicesApi$new()
 
-test_that("GetOpenRequestsByTeam", {
-  # tests for GetOpenRequestsByTeam
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the open requests submitted to a Team, optionally filtering by the requester.
-  # Retrieve the open requests submitted to a Team, optionally filtering by the requester. An request is only open if it has not expired and if the requester has not been added the Team.  &lt;p&gt;  &lt;b&gt;Service Limits&lt;/b&gt;  &lt;table border&#x3D;\&quot;1\&quot;&gt;  &lt;tr&gt;  &lt;th&gt;resource&lt;/th&gt;  &lt;th&gt;limit&lt;/th&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;The maximum frequency this method can be called&lt;/td&gt;  &lt;td&gt;40 calls per minute&lt;/td&gt;  &lt;/tr&gt;  &lt;/table&gt;  &lt;/p&gt;&#39; 
-  # @param id character the ID of the Team.
+test_that("DeleteRepoV1MembershipRequestId", {
+  # tests for DeleteRepoV1MembershipRequestId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MembershipRequestId", {
+  # tests for GetRepoV1MembershipRequestId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the Team ID
+  # @return [OrgSagebionetworksRepoModelMembershipRequest]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MembershipRequestOpenRequestCount", {
+  # tests for GetRepoV1MembershipRequestOpenRequestCount
+  # base path: https://repo-prod.prod.sagebase.org
+  # @return [OrgSagebionetworksRepoModelCount]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1TeamIdOpenRequest", {
+  # tests for GetRepoV1TeamIdOpenRequest
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Team ID
+  # @param requestor_id character the ID of the user requesting admission to the Team (optional)
   # @param limit integer the maximum number of requests to return (default 10) (optional)
   # @param offset integer the starting index of the returned results (default 0) (optional)
-  # @param requestor.id character the ID of the user requesting admission to the Team (optional)
   # @return [PaginatedResultsOfMembershipRequest]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetOpenRequestsByUser", {
-  # tests for GetOpenRequestsByUser
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the open requests submitted by a user, optionally filtering by the Team. 
-  # Retrieve the open requests submitted by a user, optionally filtering by the Team. An request is only open if it has not expired and if the requester has not been added the Team. Note:  The &#39;id&#39; in the URI must be the same ID as that of the authenticated user issuing the request. 
-  # @param id character The ID of the Synapse user.
-  # @param limit integer the maximum number of requests to return (optional)
-  # @param offset integer the starting index of the returned results. (optional)
-  # @param team.id character ID of a Synapse Team. (optional)
+test_that("GetRepoV1UserIdOpenRequest", {
+  # tests for GetRepoV1UserIdOpenRequest
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character User ID
+  # @param team_id character  (optional)
+  # @param limit integer the maximum number of requests to return (default 10) (optional)
+  # @param offset integer the starting index of the returned results (default 0) (optional)
   # @return [PaginatedResultsOfMembershipRequest]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("PostRepoV1MembershipRequest", {
+  # tests for PostRepoV1MembershipRequest
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param accept_request_endpoint character The portal end-point for one-click acceptance of the membership  request.  A signed, serialized token is appended to create the complete:  ,<a href=\"${org.sagebionetworks.repo.model.JoinTeamSignedToken}\">,JoinTeamSignedToken,</a>,  In normal operation, this parameter should be omitted.
+  # @param notification_unsubscribe_endpoint character The portal prefix for one-click email unsubscription.  A signed, serialized token is appended to create the complete:  ,<a href=\"${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\">,NotificationSettingsSignedToken,</a>,.  In normal operation, this parameter should be omitted.
+  # @param org_sagebionetworks_repo_model_membership_request OrgSagebionetworksRepoModelMembershipRequest 
+  # @return [OrgSagebionetworksRepoModelMembershipRequest]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

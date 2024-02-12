@@ -1,83 +1,35 @@
 # DockerCommitServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddDockerCommit**](DockerCommitServicesApi.md#AddDockerCommit) | **POST** /entity/{id}/dockerCommit | Add a commit (tag and digest) for an external/unmanaged Docker repository.
-[**ListDockerTags**](DockerCommitServicesApi.md#ListDockerTags) | **GET** /entity/{id}/dockerTag | List the tagged commits (tag/digest pairs) for the given Docker repository.
+[**GetRepoV1EntityIdDockerTag**](DockerCommitServicesApi.md#GetRepoV1EntityIdDockerTag) | **GET** /repo/v1/entity/{id}/dockerTag | 
+[**PostRepoV1EntityIdDockerCommit**](DockerCommitServicesApi.md#PostRepoV1EntityIdDockerCommit) | **POST** /repo/v1/entity/{id}/dockerCommit | 
 
 
-# **AddDockerCommit**
-> AddDockerCommit(id, docker.commit=var.docker.commit)
+# **GetRepoV1EntityIdDockerTag**
+> PaginatedResultsOfDockerCommit GetRepoV1EntityIdDockerTag(id, sort = var.sort, ascending = var.ascending, limit = var.limit, offset = var.offset)
 
-Add a commit (tag and digest) for an external/unmanaged Docker repository.
 
-Add a commit (tag and digest) for an external/unmanaged Docker repository. (Commits for managed repositories are added via direct integration with the Synapse Docker registry.) 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | the ID of the Docker repository entity
-var.docker.commit <- DockerCommit$new("createdOn_example", "digest_example", "tag_example") # DockerCommit | the new tag/digest pair for the repository
+# prepare function argument(s)
+var_id <- "id_example" # character | 
+var_sort <- "sort_example" # character |  (Optional)
+var_ascending <- "ascending_example" # character | , optional (default is false) (Optional)
+var_limit <- 3.4 # numeric | pagination parameter, optional (default is 20) (Optional)
+var_offset <- 3.4 # numeric | pagination parameter, optional (default is 0) (Optional)
 
-#Add a commit (tag and digest) for an external/unmanaged Docker repository.
-api.instance <- DockerCommitServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$AddDockerCommit(var.id, docker.commit=var.docker.commit)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| the ID of the Docker repository entity | 
- **docker.commit** | [**DockerCommit**](DockerCommit.md)| the new tag/digest pair for the repository | [optional] 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | Success |  -  |
-
-# **ListDockerTags**
-> PaginatedResultsOfDockerCommit ListDockerTags(id, ascending=FALSE, limit=20, offset=0, sort=var.sort)
-
-List the tagged commits (tag/digest pairs) for the given Docker repository.
-
-List the tagged commits (tag/digest pairs) for the given Docker repository.  Only the most recent digest for each tag is returned since, following Docker's convention, a tag may be reassigned to a newer commit. The list may be sorted by date or tag.  The default is to sort by date, descending (newest first).' 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | the ID of the Docker repository entity
-var.ascending <- FALSE # character | Ascending
-var.limit <- 20 # integer | pagination parameter, optional (default is 20)
-var.offset <- 0 # integer | pagination parameter, optional (default is 0)
-var.sort <- 'sort_example' # character | Sort results
-
-#List the tagged commits (tag/digest pairs) for the given Docker repository.
-api.instance <- DockerCommitServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListDockerTags(var.id, ascending=var.ascending, limit=var.limit, offset=var.offset, sort=var.sort)
+api_instance <- DockerCommitServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdDockerTag(var_id, sort = var_sort, ascending = var_ascending, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdDockerTag(var_id, sort = var_sort, ascending = var_ascending, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -85,11 +37,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| the ID of the Docker repository entity | 
- **ascending** | **character**| Ascending | [optional] [default to FALSE]
- **limit** | **integer**| pagination parameter, optional (default is 20) | [optional] [default to 20]
- **offset** | **integer**| pagination parameter, optional (default is 0) | [optional] [default to 0]
- **sort** | **character**| Sort results | [optional] 
+ **id** | **character**|  | 
+ **sort** | **character**|  | [optional] 
+ **ascending** | **character**| , optional (default is false) | [optional] 
+ **limit** | **numeric**| pagination parameter, optional (default is 20) | [optional] 
+ **offset** | **numeric**| pagination parameter, optional (default is 0) | [optional] 
 
 ### Return type
 
@@ -107,5 +59,49 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdDockerCommit**
+> PostRepoV1EntityIdDockerCommit(id, org_sagebionetworks_repo_model_docker_docker_commit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | 
+var_org_sagebionetworks_repo_model_docker_docker_commit <- org.sagebionetworks.repo.model.docker.DockerCommit$new("tag_example", "digest_example", "createdOn_example") # OrgSagebionetworksRepoModelDockerDockerCommit | 
+
+api_instance <- DockerCommitServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$PostRepoV1EntityIdDockerCommit(var_id, var_org_sagebionetworks_repo_model_docker_docker_commit)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**|  | 
+ **org_sagebionetworks_repo_model_docker_docker_commit** | [**OrgSagebionetworksRepoModelDockerDockerCommit**](OrgSagebionetworksRepoModelDockerDockerCommit.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Void |  -  |
 

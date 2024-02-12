@@ -3,29 +3,78 @@
 
 context("Test CertifiedUserServicesApi")
 
-api.instance <- CertifiedUserServicesApi$new()
+api_instance <- CertifiedUserServicesApi$new()
 
-test_that("GetPassingRecord", {
-  # tests for GetPassingRecord
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the Passing Record on the User Certification test for the given user. 
-  # Retrieve the Passing Record on the User Certification test for the given user. 
-  # @param id character The ID of the Synapse user.
-  # @return [PassingRecord]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("SetUserCertificationStatus", {
-  # tests for SetUserCertificationStatus
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Set certification status
-  # Setting certification status.
-  # @param id character The ID of the Synapse user.
+test_that("DeleteRepoV1AdminCertifiedUserTestResponseId", {
+  # tests for DeleteRepoV1AdminCertifiedUserTestResponseId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id numeric 
   # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("GetRepoV1AdminCertifiedUserTestResponse", {
+  # tests for GetRepoV1AdminCertifiedUserTestResponse
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param principal_id numeric If specified, only retrieve the quiz for this user, if it exists. (optional)
+  # @param limit integer Limits the size of the page returned. For example, a page size of 10 requires limit = 10. (optional)
+  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. (optional)
+  # @return [PaginatedResultsOfQuizResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1AdminUserIdCertifiedUserPassingRecords", {
+  # tests for GetRepoV1AdminUserIdCertifiedUserPassingRecords
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id numeric 
+  # @param limit integer  (optional)
+  # @param offset integer  (optional)
+  # @return [PaginatedResultsOfPassingRecord]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1CertifiedUserTest", {
+  # tests for GetRepoV1CertifiedUserTest
+  # base path: https://repo-prod.prod.sagebase.org
+  # @return [OrgSagebionetworksRepoModelQuizQuiz]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserIdCertifiedUserPassingRecord", {
+  # tests for GetRepoV1UserIdCertifiedUserPassingRecord
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id numeric 
+  # @return [OrgSagebionetworksRepoModelQuizPassingRecord]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1CertifiedUserTestResponse", {
+  # tests for PostRepoV1CertifiedUserTestResponse
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_quiz_quiz_response OrgSagebionetworksRepoModelQuizQuizResponse 
+  # @return [OrgSagebionetworksRepoModelQuizPassingRecord]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1AdminUserIdCertificationStatus", {
+  # tests for PutRepoV1AdminUserIdCertificationStatus
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id numeric 
+  # @param is_certified character true to set as certified or false to 'de-certify'
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

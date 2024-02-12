@@ -1,217 +1,68 @@
 # EvaluationServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateEvaluation**](EvaluationServicesApi.md#CreateEvaluation) | **POST** /evaluation | Creates a new Evaluation.
-[**CreateEvaluationRound**](EvaluationServicesApi.md#CreateEvaluationRound) | **POST** /evaluation/{evalId}/round | Create Evaluation Round
-[**CreateSubmission**](EvaluationServicesApi.md#CreateSubmission) | **POST** /evaluation/submission | Creates a Submission and sends a submission notification email to the submitter&#39;s team members. 
-[**DeleteAcl**](EvaluationServicesApi.md#DeleteAcl) | **DELETE** /evaluation/{evalId}/acl | This method is deprecated and should be removed from future versions of the API.
-[**DeleteEvaluation**](EvaluationServicesApi.md#DeleteEvaluation) | **DELETE** /evaluation/{evalId} | Deletes an Evaluation.
-[**DeleteEvaluationRound**](EvaluationServicesApi.md#DeleteEvaluationRound) | **DELETE** /evaluation/{evalId}/round/{roundId} | Delete Evaluation Round
-[**DeleteSubmission**](EvaluationServicesApi.md#DeleteSubmission) | **DELETE** /evaluation/submission/{subId} | Deletes a Submission and its accompanying SubmissionStatus.
-[**FindEvaluation**](EvaluationServicesApi.md#FindEvaluation) | **GET** /evaluation/name/{name} | Finds an Evaluation by name.
-[**GetAcl**](EvaluationServicesApi.md#GetAcl) | **GET** /evaluation/{evalId}/acl | Gets the access control list (ACL) governing the given evaluation.
-[**GetAllEvaluationRounds**](EvaluationServicesApi.md#GetAllEvaluationRounds) | **POST** /evaluation/{evalId}/round/list | Get all rounds of an Evaluation
-[**GetAllSubmissionBundles**](EvaluationServicesApi.md#GetAllSubmissionBundles) | **GET** /evaluation/{evalId}/submission/bundle/all | Gets a collection of bundled Submissions and SubmissionStatuses to a given Evaluation.
-[**GetAllSubmissionStatuses**](EvaluationServicesApi.md#GetAllSubmissionStatuses) | **GET** /evaluation/{evalId}/submission/status/all | Gets a collection of SubmissionStatuses to a specified Evaluation.
-[**GetAllSubmissions**](EvaluationServicesApi.md#GetAllSubmissions) | **GET** /evaluation/{evalId}/submission/all | Gets a collection of Submissions to a specified Evaluation.
-[**GetAvailableEvaluationsPaginated**](EvaluationServicesApi.md#GetAvailableEvaluationsPaginated) | **GET** /evaluation/available | Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. 
-[**GetEvaluation**](EvaluationServicesApi.md#GetEvaluation) | **GET** /evaluation/{evalId} | Gets an Evaluation.
-[**GetEvaluationRound**](EvaluationServicesApi.md#GetEvaluationRound) | **GET** /evaluation/{evalId}/round/{roundId} | Get Evaluation Round
-[**GetEvaluationsByContentSourcePaginated**](EvaluationServicesApi.md#GetEvaluationsByContentSourcePaginated) | **GET** /entity/{id}/evaluation | Gets Evaluations tied to a project.
-[**GetEvaluationsPaginated**](EvaluationServicesApi.md#GetEvaluationsPaginated) | **GET** /evaluation | Gets a collection of Evaluations, within a given range.
-[**GetMySubmissionBundles**](EvaluationServicesApi.md#GetMySubmissionBundles) | **GET** /evaluation/{evalId}/submission/bundle | Gets the requesting users bundled Submissions and SubmissionStatuses to a specified Evaluation.&#39; 
-[**GetMySubmissions**](EvaluationServicesApi.md#GetMySubmissions) | **GET** /evaluation/{evalId}/submission | Gets the requesting user&#39;s Submissions to a specified Evaluation.
-[**GetSubmission**](EvaluationServicesApi.md#GetSubmission) | **GET** /evaluation/submission/{subId} | Gets a Submission.
-[**GetSubmissionCount**](EvaluationServicesApi.md#GetSubmissionCount) | **GET** /evaluation/{evalId}/submission/count | Gets the number of Submissions to a specified Evaluation.
-[**GetSubmissionStatus**](EvaluationServicesApi.md#GetSubmissionStatus) | **GET** /evaluation/submission/{subId}/status | Gets the SubmissionStatus object associated with a specified Submission.
-[**GetTeamSubmissionEligibility**](EvaluationServicesApi.md#GetTeamSubmissionEligibility) | **GET** /evaluation/{evalId}/team/{id}/SubmissionEligibility | Find out whether a Team and its members are eligible to submit to a given Evaluation queue (at the current time).&#39; 
-[**HasAccess2**](EvaluationServicesApi.md#HasAccess2) | **GET** /evaluation/{evalId}/access | Determines whether a specified Synapse user has a certain access type on evaluation.
-[**RedirectUrlForFileHandle**](EvaluationServicesApi.md#RedirectUrlForFileHandle) | **GET** /evaluation/submission/{subId}/file/{fileHandleId} | Gets a pre-signed URL to access a requested File contained within a specified Submission. 
-[**RequestToCancelSubmission**](EvaluationServicesApi.md#RequestToCancelSubmission) | **PUT** /evaluation/submission/{subId}/cancellation | User requests to cancel their submission.
-[**UpdateAcl**](EvaluationServicesApi.md#UpdateAcl) | **PUT** /evaluation/acl | Updates the supplied access control list (ACL) for an evaluation.
-[**UpdateEvaluation**](EvaluationServicesApi.md#UpdateEvaluation) | **PUT** /evaluation/{evalId} | Updates an Evaluation.
-[**UpdateEvaluationRound**](EvaluationServicesApi.md#UpdateEvaluationRound) | **PUT** /evaluation/{evalId}/round/{roundId} | Update Evaluation Round
-[**UpdateSubmissionStatus**](EvaluationServicesApi.md#UpdateSubmissionStatus) | **PUT** /evaluation/submission/{subId}/status | Updates a SubmissionStatus object.
-[**UpdateSubmissionStatusBatch**](EvaluationServicesApi.md#UpdateSubmissionStatusBatch) | **PUT** /evaluation/{evalId}/statusBatch | Update multiple SubmissionStatuses.
+[**DeleteRepoV1EvaluationEvalId**](EvaluationServicesApi.md#DeleteRepoV1EvaluationEvalId) | **DELETE** /repo/v1/evaluation/{evalId} | 
+[**DeleteRepoV1EvaluationEvalIdRoundRoundId**](EvaluationServicesApi.md#DeleteRepoV1EvaluationEvalIdRoundRoundId) | **DELETE** /repo/v1/evaluation/{evalId}/round/{roundId} | 
+[**DeleteRepoV1EvaluationSubmissionSubId**](EvaluationServicesApi.md#DeleteRepoV1EvaluationSubmissionSubId) | **DELETE** /repo/v1/evaluation/submission/{subId} | 
+[**GetRepoV1EntityIdEvaluation**](EvaluationServicesApi.md#GetRepoV1EntityIdEvaluation) | **GET** /repo/v1/entity/{id}/evaluation | 
+[**GetRepoV1Evaluation**](EvaluationServicesApi.md#GetRepoV1Evaluation) | **GET** /repo/v1/evaluation | 
+[**GetRepoV1EvaluationAvailable**](EvaluationServicesApi.md#GetRepoV1EvaluationAvailable) | **GET** /repo/v1/evaluation/available | 
+[**GetRepoV1EvaluationEvalId**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalId) | **GET** /repo/v1/evaluation/{evalId} | 
+[**GetRepoV1EvaluationEvalIdAccess**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdAccess) | **GET** /repo/v1/evaluation/{evalId}/access | 
+[**GetRepoV1EvaluationEvalIdAcl**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdAcl) | **GET** /repo/v1/evaluation/{evalId}/acl | 
+[**GetRepoV1EvaluationEvalIdPermissions**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdPermissions) | **GET** /repo/v1/evaluation/{evalId}/permissions | 
+[**GetRepoV1EvaluationEvalIdRoundRoundId**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdRoundRoundId) | **GET** /repo/v1/evaluation/{evalId}/round/{roundId} | 
+[**GetRepoV1EvaluationEvalIdSubmission**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmission) | **GET** /repo/v1/evaluation/{evalId}/submission | 
+[**GetRepoV1EvaluationEvalIdSubmissionAll**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmissionAll) | **GET** /repo/v1/evaluation/{evalId}/submission/all | 
+[**GetRepoV1EvaluationEvalIdSubmissionBundle**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmissionBundle) | **GET** /repo/v1/evaluation/{evalId}/submission/bundle | 
+[**GetRepoV1EvaluationEvalIdSubmissionBundleAll**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmissionBundleAll) | **GET** /repo/v1/evaluation/{evalId}/submission/bundle/all | 
+[**GetRepoV1EvaluationEvalIdSubmissionCount**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmissionCount) | **GET** /repo/v1/evaluation/{evalId}/submission/count | 
+[**GetRepoV1EvaluationEvalIdSubmissionStatusAll**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdSubmissionStatusAll) | **GET** /repo/v1/evaluation/{evalId}/submission/status/all | 
+[**GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility**](EvaluationServicesApi.md#GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility) | **GET** /repo/v1/evaluation/{evalId}/team/{id}/submissionEligibility | 
+[**GetRepoV1EvaluationNameName**](EvaluationServicesApi.md#GetRepoV1EvaluationNameName) | **GET** /repo/v1/evaluation/name/{name} | 
+[**GetRepoV1EvaluationSubmissionSubId**](EvaluationServicesApi.md#GetRepoV1EvaluationSubmissionSubId) | **GET** /repo/v1/evaluation/submission/{subId} | 
+[**GetRepoV1EvaluationSubmissionSubIdFileFileHandleId**](EvaluationServicesApi.md#GetRepoV1EvaluationSubmissionSubIdFileFileHandleId) | **GET** /repo/v1/evaluation/submission/{subId}/file/{fileHandleId} | 
+[**GetRepoV1EvaluationSubmissionSubIdStatus**](EvaluationServicesApi.md#GetRepoV1EvaluationSubmissionSubIdStatus) | **GET** /repo/v1/evaluation/submission/{subId}/status | 
+[**PostRepoV1AdminEvaluationSubmissionSubIdContributor**](EvaluationServicesApi.md#PostRepoV1AdminEvaluationSubmissionSubIdContributor) | **POST** /repo/v1/admin/evaluation/submission/{subId}/contributor | 
+[**PostRepoV1Evaluation**](EvaluationServicesApi.md#PostRepoV1Evaluation) | **POST** /repo/v1/evaluation | 
+[**PostRepoV1EvaluationEvalIdMigratequota**](EvaluationServicesApi.md#PostRepoV1EvaluationEvalIdMigratequota) | **POST** /repo/v1/evaluation/{evalId}/migratequota | 
+[**PostRepoV1EvaluationEvalIdRound**](EvaluationServicesApi.md#PostRepoV1EvaluationEvalIdRound) | **POST** /repo/v1/evaluation/{evalId}/round | 
+[**PostRepoV1EvaluationEvalIdRoundList**](EvaluationServicesApi.md#PostRepoV1EvaluationEvalIdRoundList) | **POST** /repo/v1/evaluation/{evalId}/round/list | 
+[**PostRepoV1EvaluationSubmission**](EvaluationServicesApi.md#PostRepoV1EvaluationSubmission) | **POST** /repo/v1/evaluation/submission | 
+[**PutRepoV1EvaluationAcl**](EvaluationServicesApi.md#PutRepoV1EvaluationAcl) | **PUT** /repo/v1/evaluation/acl | 
+[**PutRepoV1EvaluationEvalId**](EvaluationServicesApi.md#PutRepoV1EvaluationEvalId) | **PUT** /repo/v1/evaluation/{evalId} | 
+[**PutRepoV1EvaluationEvalIdRoundRoundId**](EvaluationServicesApi.md#PutRepoV1EvaluationEvalIdRoundRoundId) | **PUT** /repo/v1/evaluation/{evalId}/round/{roundId} | 
+[**PutRepoV1EvaluationEvalIdStatusBatch**](EvaluationServicesApi.md#PutRepoV1EvaluationEvalIdStatusBatch) | **PUT** /repo/v1/evaluation/{evalId}/statusBatch | 
+[**PutRepoV1EvaluationSubmissionSubIdCancellation**](EvaluationServicesApi.md#PutRepoV1EvaluationSubmissionSubIdCancellation) | **PUT** /repo/v1/evaluation/submission/{subId}/cancellation | 
+[**PutRepoV1EvaluationSubmissionSubIdStatus**](EvaluationServicesApi.md#PutRepoV1EvaluationSubmissionSubIdStatus) | **PUT** /repo/v1/evaluation/submission/{subId}/status | 
 
 
-# **CreateEvaluation**
-> Evaluation CreateEvaluation(evaluation=var.evaluation)
+# **DeleteRepoV1EvaluationEvalId**
+> DeleteRepoV1EvaluationEvalId(eval_id)
 
-Creates a new Evaluation.
 
-'Creates a new Evaluation. The passed request body should contain the following fields:  <ul>  <li>name - Give your new Evaluation a name.</li>  <li>contentSource - The ID of the parent Entity, such as a Folder or Project.</li>  <li>status - The initial state of the Evaluation, an  <a href=\"${org.sagebionetworks.evaluation.model.EvaluationStatus}\">EvaluationStatus</a></li>  </ul>  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.CREATE</a> on the contentSource Entity.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.evaluation <- Evaluation$new("contentSource_example", "createdOn_example", "description_example", "etag_example", "id_example", "name_example", "ownerId_example", SubmissionQuota$new("firstRoundStart_example", 123, 123, 123), EvaluationStatus$new(), "submissionInstructionsMessage_example", "submissionReceiptMessage_example") # Evaluation | 
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the requested Evaluation
 
-#Creates a new Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateEvaluation(evaluation=var.evaluation)
-dput(result)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1EvaluationEvalId(var_eval_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **evaluation** | [**Evaluation**](Evaluation.md)|  | [optional] 
-
-### Return type
-
-[**Evaluation**](Evaluation.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **CreateEvaluationRound**
-> EvaluationRound CreateEvaluationRound(eval.id, evaluation.round=var.evaluation.round)
-
-Create Evaluation Round
-
-Create Evaluation Round
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.evaluation.round <- EvaluationRound$new("etag_example", "evaluationId_example", "id_example", list(EvaluationRoundLimit$new(EvaluationRoundLimitType$new(), 123)), "roundEnd_example", "roundStart_example") # EvaluationRound | 
-
-#Create Evaluation Round
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateEvaluationRound(var.eval.id, evaluation.round=var.evaluation.round)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **evaluation.round** | [**EvaluationRound**](EvaluationRound.md)|  | [optional] 
-
-### Return type
-
-[**EvaluationRound**](EvaluationRound.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **CreateSubmission**
-> SubmissionModel CreateSubmission(challenge.endpoint=var.challenge.endpoint, etag=var.etag, notification.unsubscribe.endpoint=var.notification.unsubscribe.endpoint, submission.eligibility.hash=var.submission.eligibility.hash, submission.model=var.submission.model)
-
-Creates a Submission and sends a submission notification email to the submitter's team members. 
-
-Creates a Submission and sends a submission notification email to the submitter's team members.  The passed request body should contain the following fields:  <ul>  <li>evaluationId - The ID of the Evaluation to which this Submission belongs.</li>  <li>entityId - The ID of the Entity being submitted.</li>  <li>versionNumber - The specific version of the Entity being submitted.</li>  </ul>  <p>  A Submission must be either a Team or an Individual submission.  A Team submission must include a Team ID in the teamId field and the request must include a submissionEligibilityHash request parameter.  A Team submission may also include a list of submission contributors. (The submitter is taken to be a contributor and need not be included in the list.) An individual submission must have a null teamId, a null or empty contributor list, and no submissionEligibilityHash parameter.  </p>  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.SUBMIT</a>.  </p>  <p>  This call also creates an associated <a href=\"${org.sagebionetworks.evaluation.model.SubmissionStatus}\">SubmissionStatus</a>, initialized with a SubmissionStatusEnum value of RECEIVED.  </p> 
-
-### Example
-```R
-library(synclient)
-
-var.challenge.endpoint <- 'challenge.endpoint_example' # character | The portal endpoint prefix to the an entity/challenge page. The entity ID of the challenge project is appended to create the complete URL. In normal operation, this parameter should be omitted.' 
-var.etag <- 'etag_example' # character | The current eTag of the Entity being submitted
-var.notification.unsubscribe.endpoint <- 'notification.unsubscribe.endpoint_example' # character | The portal endpoint prefix for one-click email unsubscription. A signed, serialized token is appended to create the complete URL: <a href=\"${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\">NotificationSettingsSignedToken</a>. In normal operation, this parameter should be omitted.' 
-var.submission.eligibility.hash <- 'submission.eligibility.hash_example' # character | The hash provided by the <a href=\"${org.sagebionetworks.evaluation.model.TeamSubmissionEligibility}\">TeamSubmissionEligibility</a> object. 
-var.submission.model <- Submission_model$new(list(SubmissionContributor$new("createdOn_example", "principalId_example")), "createdOn_example", "dockerDigest_example", "dockerRepositoryName_example", "entityBundleJSON_example", "entityId_example", "evaluationId_example", "evaluationRoundId_example", "id_example", "name_example", "submitterAlias_example", "teamId_example", "userId_example", 123) # SubmissionModel | 
-
-#Creates a Submission and sends a submission notification email to the submitter's team members. 
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateSubmission(challenge.endpoint=var.challenge.endpoint, etag=var.etag, notification.unsubscribe.endpoint=var.notification.unsubscribe.endpoint, submission.eligibility.hash=var.submission.eligibility.hash, submission.model=var.submission.model)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **challenge.endpoint** | **character**| The portal endpoint prefix to the an entity/challenge page. The entity ID of the challenge project is appended to create the complete URL. In normal operation, this parameter should be omitted.&#39;  | [optional] 
- **etag** | **character**| The current eTag of the Entity being submitted | [optional] 
- **notification.unsubscribe.endpoint** | **character**| The portal endpoint prefix for one-click email unsubscription. A signed, serialized token is appended to create the complete URL: &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\&quot;&gt;NotificationSettingsSignedToken&lt;/a&gt;. In normal operation, this parameter should be omitted.&#39;  | [optional] 
- **submission.eligibility.hash** | **character**| The hash provided by the &lt;a href&#x3D;\&quot;${org.sagebionetworks.evaluation.model.TeamSubmissionEligibility}\&quot;&gt;TeamSubmissionEligibility&lt;/a&gt; object.  | [optional] 
- **submission.model** | [**SubmissionModel**](SubmissionModel.md)|  | [optional] 
-
-### Return type
-
-[**SubmissionModel**](Submission_model.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **DeleteAcl**
-> DeleteAcl(eval.id)
-
-This method is deprecated and should be removed from future versions of the API.
-
-This method is deprecated and should be removed from future versions of the API.  Deletes the ACL (access control list) of the specified evaluation. The user should have the proper <a href=\"${org.sagebionetworks.evaluation.model.UserEvaluationPermissions}\">permissions</a> to delete the ACL. 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-
-#This method is deprecated and should be removed from future versions of the API.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteAcl(var.eval.id)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
+ **eval_id** | **character**| - the ID of the requested Evaluation | 
 
 ### Return type
 
@@ -229,34 +80,33 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The resource was deleted |  -  |
+| **204** | Void |  -  |
 
-# **DeleteEvaluation**
-> DeleteEvaluation(eval.id)
+# **DeleteRepoV1EvaluationEvalIdRoundRoundId**
+> DeleteRepoV1EvaluationEvalIdRoundRoundId(eval_id, round_id)
 
-Deletes an Evaluation.
 
-Deletes an Evaluation.  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.DELETE</a> on the specified Evaluation.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_round_id <- "round_id_example" # character | 
 
-#Deletes an Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteEvaluation(var.eval.id)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1EvaluationEvalIdRoundRoundId(var_eval_id, var_round_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
+ **eval_id** | **character**|  | 
+ **round_id** | **character**|  | 
 
 ### Return type
 
@@ -274,36 +124,31 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The resource was deleted. |  -  |
+| **204** | Void |  -  |
 
-# **DeleteEvaluationRound**
-> DeleteEvaluationRound(eval.id, round.id)
+# **DeleteRepoV1EvaluationSubmissionSubId**
+> DeleteRepoV1EvaluationSubmissionSubId(sub_id)
 
-Delete Evaluation Round
 
-Delete Evaluation Round
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.round.id <- 'round.id_example' # character | The ID of the evaluation round
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | - the ID of the Submission to be deleted.
 
-#Delete Evaluation Round
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteEvaluationRound(var.eval.id, var.round.id)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1EvaluationSubmissionSubId(var_sub_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **round.id** | **character**| The ID of the evaluation round | 
+ **sub_id** | **character**| - the ID of the Submission to be deleted. | 
 
 ### Return type
 
@@ -321,519 +166,31 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The resouce has been deleted |  -  |
+| **204** | Void |  -  |
 
-# **DeleteSubmission**
-> DeleteSubmission(sub.id)
+# **GetRepoV1EntityIdEvaluation**
+> PaginatedResultsOfEvaluation GetRepoV1EntityIdEvaluation(id, access_type = var.access_type, active_only = var.active_only, evaluation_ids = var.evaluation_ids, offset = var.offset, limit = var.limit)
 
-Deletes a Submission and its accompanying SubmissionStatus.
 
-Deletes a Submission and its accompanying SubmissionStatus.  <b>This service is intended to only be used by ChallengesInfrastructure service account.</b>  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.DELETE_SUBMISSION</a> on the specified Evaluation.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
-
-#Deletes a Submission and its accompanying SubmissionStatus.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteSubmission(var.sub.id)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sub.id** | **character**| The ID of the Submission | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **204** | The resource has been deleted. |  -  |
-
-# **FindEvaluation**
-> Evaluation FindEvaluation(name)
-
-Finds an Evaluation by name.
-
-Finds an Evaluation by name. <p> <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> on the specified Evaluation. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.name <- 'name_example' # character | The name of the desired Evaluation.
-
-#Finds an Evaluation by name.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$FindEvaluation(var.name)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **character**| The name of the desired Evaluation. | 
-
-### Return type
-
-[**Evaluation**](Evaluation.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAcl**
-> AccessControlList GetAcl(eval.id)
-
-Gets the access control list (ACL) governing the given evaluation.
-
-Gets the access control list (ACL) governing the given evaluation. The user should have the proper <a href=\"${org.sagebionetworks.evaluation.model.UserEvaluationPermissions}\">permissions</a> to read the ACL. 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-
-#Gets the access control list (ACL) governing the given evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAcl(var.eval.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
-
-### Return type
-
-[**AccessControlList**](AccessControlList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAllEvaluationRounds**
-> EvaluationRoundListResponse GetAllEvaluationRounds(eval.id, evaluation.round.list.request=var.evaluation.round.list.request)
-
-Get all rounds of an Evaluation
-
-Get all rounds of an Evaluation
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.evaluation.round.list.request <- EvaluationRoundListRequest$new("nextPageToken_example") # EvaluationRoundListRequest | 
-
-#Get all rounds of an Evaluation
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAllEvaluationRounds(var.eval.id, evaluation.round.list.request=var.evaluation.round.list.request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **evaluation.round.list.request** | [**EvaluationRoundListRequest**](EvaluationRoundListRequest.md)|  | [optional] 
-
-### Return type
-
-[**EvaluationRoundListResponse**](EvaluationRoundListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAllSubmissionBundles**
-> PaginatedResultsOfSubmissionBundle GetAllSubmissionBundles(eval.id, limit=10, offset=0, status=var.status)
-
-Gets a collection of bundled Submissions and SubmissionStatuses to a given Evaluation.
-
-Gets a collection of bundled Submissions and SubmissionStatuses to a given Evaluation.  <p> <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> on the specified Evaluation. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10.' 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
-var.status <- 'status_example' # character | Submission Status
-
-#Gets a collection of bundled Submissions and SubmissionStatuses to a given Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAllSubmissionBundles(var.eval.id, limit=var.limit, offset=var.offset, status=var.status)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.&#39;  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
- **status** | **character**| Submission Status | [optional] 
-
-### Return type
-
-[**PaginatedResultsOfSubmissionBundle**](PaginatedResultsOfSubmissionBundle.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAllSubmissionStatuses**
-> PaginatedResultsOfSubmissionStatus GetAllSubmissionStatuses(eval.id, limit=10, offset=0, status=var.status)
-
-Gets a collection of SubmissionStatuses to a specified Evaluation.
-
-'Gets a collection of SubmissionStatuses to a specified Evaluation.  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> on the specified Evaluation. Furthermore, the caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> to see all data marked as \"private\" in the SubmissionStatuses.  </p> 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10.' 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
-var.status <- 'status_example' # character | Submission status
-
-#Gets a collection of SubmissionStatuses to a specified Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAllSubmissionStatuses(var.eval.id, limit=var.limit, offset=var.offset, status=var.status)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.&#39;  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
- **status** | **character**| Submission status | [optional] 
-
-### Return type
-
-[**PaginatedResultsOfSubmissionStatus**](PaginatedResultsOfSubmissionStatus.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAllSubmissions**
-> PaginatedResultsOfSubmission GetAllSubmissions(eval.id, limit=10, offset=0, status=var.status)
-
-Gets a collection of Submissions to a specified Evaluation.
-
-'Gets a collection of Submissions to a specified Evaluation. <p> <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> on the specified Evaluation. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10, max value 100. 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
-var.status <- 'status_example' # character | Status of submission.
-
-#Gets a collection of Submissions to a specified Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAllSubmissions(var.eval.id, limit=var.limit, offset=var.offset, status=var.status)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10, max value 100.  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
- **status** | **character**| Status of submission. | [optional] 
-
-### Return type
-
-[**PaginatedResultsOfSubmission**](PaginatedResultsOfSubmission.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetAvailableEvaluationsPaginated**
-> PaginatedResultsOfEvaluation GetAvailableEvaluationsPaginated(active.only=FALSE, evaluation.ids=var.evaluation.ids, limit=10, offset=0)
-
-Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. 
-
-Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. <p> <b>Note:</b> The response will contain only those Evaluations on which the caller must is granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.SUBMIT</a> permission. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.active.only <- FALSE # character | Retrieve active only evaluation queues
-var.evaluation.ids <- 'evaluation.ids_example' # character | an optional, comma-delimited list of evaluation IDs to which the response is limited 
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10.' 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
-
-#Gets a collection of Evaluations in which the user has SUBMIT permission, within a given range. 
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAvailableEvaluationsPaginated(active.only=var.active.only, evaluation.ids=var.evaluation.ids, limit=var.limit, offset=var.offset)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **active.only** | **character**| Retrieve active only evaluation queues | [optional] [default to FALSE]
- **evaluation.ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited  | [optional] 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.&#39;  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
-
-### Return type
-
-[**PaginatedResultsOfEvaluation**](PaginatedResultsOfEvaluation.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetEvaluation**
-> Evaluation GetEvaluation(eval.id)
-
-Gets an Evaluation.
-
-Gets an Evaluation.   <p>  <b>Note:</b> The caller must be granted the <a  href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\"  >ACCESS_TYPE.READ</a> on the specified Evaluation.  </p> 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-
-#Gets an Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetEvaluation(var.eval.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
-
-### Return type
-
-[**Evaluation**](Evaluation.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetEvaluationRound**
-> EvaluationRound GetEvaluationRound(eval.id, round.id)
-
-Get Evaluation Round
-
-Get Evaluation Round
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.round.id <- 'round.id_example' # character | The ID of the evaluation round
-
-#Get Evaluation Round
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetEvaluationRound(var.eval.id, var.round.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **round.id** | **character**| The ID of the evaluation round | 
-
-### Return type
-
-[**EvaluationRound**](EvaluationRound.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetEvaluationsByContentSourcePaginated**
-> PaginatedResultsOfEvaluation GetEvaluationsByContentSourcePaginated(id, access.type=var.access.type, active.only=FALSE, evaluation.ids=var.evaluation.ids, limit=10, offset=0)
-
-Gets Evaluations tied to a project.
-
-Gets Evaluations tied to a project. <b>Note:</b> The response will contain only those Evaluations on which the caller is granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> permission, unless specified otherwise with the accessType parameter. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | the ID of the project
-var.access.type <- ACCESS_TYPE$new() # ACCESSTYPE | The type of access for the user to filter for, optional and defaults to <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> 
-var.active.only <- FALSE # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. 
-var.evaluation.ids <- 'evaluation.ids_example' # character | an optional, comma-delimited list of evaluation IDs to which the response is limited 
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10. 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
-
-#Gets Evaluations tied to a project.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetEvaluationsByContentSourcePaginated(var.id, access.type=var.access.type, active.only=var.active.only, evaluation.ids=var.evaluation.ids, limit=var.limit, offset=var.offset)
+# prepare function argument(s)
+var_id <- "id_example" # character | the ID of the project
+var_access_type <- org.sagebionetworks.repo.model.ACCESS_TYPE$new() # OrgSagebionetworksRepoModelACCESSTYPE | The type of access for the user to filter for, optional and defaults to ,<a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">,ACCESS_TYPE.READ,</a> (Optional)
+var_active_only <- "active_only_example" # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. (Optional)
+var_evaluation_ids <- "evaluation_ids_example" # character | an optional, comma-delimited list of evaluation IDs to which the response is limited (Optional)
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdEvaluation(var_id, access_type = var_access_type, active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdEvaluation(var_id, access_type = var_access_type, active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limit)
 dput(result)
 ```
 
@@ -842,11 +199,11 @@ dput(result)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **character**| the ID of the project | 
- **access.type** | [**ACCESSTYPE**](.md)| The type of access for the user to filter for, optional and defaults to &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.READ&lt;/a&gt;  | [optional] 
- **active.only** | **character**| If &#39;true&#39; then return only those evaluations with rounds defined and for which the current time is in one of the rounds.  | [optional] [default to FALSE]
- **evaluation.ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited  | [optional] 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
+ **access_type** | [**OrgSagebionetworksRepoModelACCESSTYPE**](.md)| The type of access for the user to filter for, optional and defaults to ,&lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;,ACCESS_TYPE.READ,&lt;/a&gt; | [optional] 
+ **active_only** | **character**| If &#39;true&#39; then return only those evaluations with rounds defined and for which the current time is in one of the rounds. | [optional] 
+ **evaluation_ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited | [optional] 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10. | [optional] 
 
 ### Return type
 
@@ -864,31 +221,30 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetEvaluationsPaginated**
-> PaginatedResultsOfEvaluation GetEvaluationsPaginated(access.type='READ', active.only=FALSE, evaluation.ids=var.evaluation.ids, limit=10, offset=0)
+# **GetRepoV1Evaluation**
+> PaginatedResultsOfEvaluation GetRepoV1Evaluation(access_type = var.access_type, active_only = var.active_only, evaluation_ids = var.evaluation_ids, offset = var.offset, limit = var.limit)
 
-Gets a collection of Evaluations, within a given range.
 
-Gets a collection of Evaluations, within a given range.  <p>  <b>Note:</b> The response will contain only those Evaluations on which the caller is  granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a>  permission, unless specified otherwise with the accessType parameter.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.access.type <- 'READ' # character | The type of access for the user to filter for, optional and defaults to <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> 
-var.active.only <- FALSE # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. 
-var.evaluation.ids <- 'evaluation.ids_example' # character | an optional, comma-delimited list of evaluation IDs to which the response is limited 
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. 
+# prepare function argument(s)
+var_access_type <- org.sagebionetworks.repo.model.ACCESS_TYPE$new() # OrgSagebionetworksRepoModelACCESSTYPE | The type of access for the user to filter for, optional and defaults to ,<a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">,ACCESS_TYPE.READ,</a> (Optional)
+var_active_only <- "active_only_example" # character | If 'true' then return only those evaluations with rounds defined and for which the current time is in one of the rounds. (Optional)
+var_evaluation_ids <- "evaluation_ids_example" # character | an optional, comma-delimited list of evaluation IDs to which the response is limited (Optional)
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10. (Optional)
 
-#Gets a collection of Evaluations, within a given range.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetEvaluationsPaginated(access.type=var.access.type, active.only=var.active.only, evaluation.ids=var.evaluation.ids, limit=var.limit, offset=var.offset)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1Evaluation(access_type = var_access_type, active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1Evaluation(access_type = var_access_type, active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limit)
 dput(result)
 ```
 
@@ -896,11 +252,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access.type** | Enum [CHANGE_PERMISSIONS, CHANGE_SETTINGS, CREATE, DELETE, DELETE_SUBMISSION, DOWNLOAD, MODERATE, PARTICIPATE, READ, READ_PRIVATE_SUBMISSION, SEND_MESSAGE, SUBMIT, TEAM_MEMBERSHIP_UPDATE, UPDATE, UPDATE_SUBMISSION, UPLOAD] | The type of access for the user to filter for, optional and defaults to &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;ACCESS_TYPE.READ&lt;/a&gt;  | [optional] [default to &#39;READ&#39;]
- **active.only** | **character**| If &#39;true&#39; then return only those evaluations with rounds defined and for which the current time is in one of the rounds.  | [optional] [default to FALSE]
- **evaluation.ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited  | [optional] 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| The index of the pagination offset. For a page size of 10, the first page would be at offset &#x3D; 0, and the second page would be at offset &#x3D; 10.  | [optional] [default to 0]
+ **access_type** | [**OrgSagebionetworksRepoModelACCESSTYPE**](.md)| The type of access for the user to filter for, optional and defaults to ,&lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.ACCESS_TYPE}\&quot;&gt;,ACCESS_TYPE.READ,&lt;/a&gt; | [optional] 
+ **active_only** | **character**| If &#39;true&#39; then return only those evaluations with rounds defined and for which the current time is in one of the rounds. | [optional] 
+ **evaluation_ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited | [optional] 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10. | [optional] 
 
 ### Return type
 
@@ -918,29 +274,29 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetMySubmissionBundles**
-> PaginatedResultsOfSubmissionBundle GetMySubmissionBundles(eval.id, limit=10, offset=0)
+# **GetRepoV1EvaluationAvailable**
+> PaginatedResultsOfEvaluation GetRepoV1EvaluationAvailable(active_only = var.active_only, evaluation_ids = var.evaluation_ids, offset = var.offset, limit = var.limit)
 
-Gets the requesting users bundled Submissions and SubmissionStatuses to a specified Evaluation.' 
 
-Gets the requesting user's bundled Submissions and SubmissionStatuses to a specified Evaluation. 
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10.' 
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0. 
+# prepare function argument(s)
+var_active_only <- "active_only_example" # character |  (Optional)
+var_evaluation_ids <- "evaluation_ids_example" # character | an optional, comma-delimited list of evaluation IDs to which the response is limited (Optional)
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first evaluation. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10. (Optional)
 
-#Gets the requesting users bundled Submissions and SubmissionStatuses to a specified Evaluation.' 
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetMySubmissionBundles(var.eval.id, limit=var.limit, offset=var.offset)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationAvailable(active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationAvailable(active_only = var_active_only, evaluation_ids = var_evaluation_ids, offset = var_offset, limit = var_limit)
 dput(result)
 ```
 
@@ -948,13 +304,14 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10.&#39;  | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.  | [optional] [default to 0]
+ **active_only** | **character**|  | [optional] 
+ **evaluation_ids** | **character**| an optional, comma-delimited list of evaluation IDs to which the response is limited | [optional] 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first evaluation. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10. | [optional] 
 
 ### Return type
 
-[**PaginatedResultsOfSubmissionBundle**](PaginatedResultsOfSubmissionBundle.md)
+[**PaginatedResultsOfEvaluation**](PaginatedResultsOfEvaluation.md)
 
 ### Authorization
 
@@ -968,29 +325,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetMySubmissions**
-> PaginatedResultsOfSubmission GetMySubmissions(eval.id, limit=10, offset=0)
+# **GetRepoV1EvaluationEvalId**
+> OrgSagebionetworksEvaluationModelEvaluation GetRepoV1EvaluationEvalId(eval_id)
 
-Gets the requesting user's Submissions to a specified Evaluation.
 
-Gets the requesting user's Submissions to a specified Evaluation. 
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.limit <- 10 # integer | Limits the number of entities that will be fetched for this page. When null it will default to 10.
-var.offset <- 0 # integer | The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.' 
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the desired Evaluation
 
-#Gets the requesting user's Submissions to a specified Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetMySubmissions(var.eval.id, limit=var.limit, offset=var.offset)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalId(var_eval_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalId(var_eval_id)
 dput(result)
 ```
 
@@ -998,13 +352,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **limit** | **integer**| Limits the number of entities that will be fetched for this page. When null it will default to 10. | [optional] [default to 10]
- **offset** | **integer**| The offset index determines where this page will start from. An index of 0 is the first entity. When null it will default to 0.&#39;  | [optional] [default to 0]
+ **eval_id** | **character**| - the ID of the desired Evaluation | 
 
 ### Return type
 
-[**PaginatedResultsOfSubmission**](PaginatedResultsOfSubmission.md)
+[**OrgSagebionetworksEvaluationModelEvaluation**](org.sagebionetworks.evaluation.model.Evaluation.md)
 
 ### Authorization
 
@@ -1018,27 +370,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetSubmission**
-> SubmissionModel GetSubmission(sub.id)
+# **GetRepoV1EvaluationEvalIdAccess**
+> character GetRepoV1EvaluationEvalIdAccess(eval_id, access_type)
 
-Gets a Submission.
 
-Gets a Submission.  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> on the specified Evaluation.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_access_type <- "access_type_example" # character | 
 
-#Gets a Submission.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetSubmission(var.sub.id)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdAccess(var_eval_id, var_access_typedata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdAccess(var_eval_id, var_access_type)
 dput(result)
 ```
 
@@ -1046,245 +398,8 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sub.id** | **character**| The ID of the Submission | 
-
-### Return type
-
-[**SubmissionModel**](Submission_model.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetSubmissionCount**
-> integer GetSubmissionCount(eval.id)
-
-Gets the number of Submissions to a specified Evaluation.
-
-Gets the number of Submissions to a specified Evaluation. <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> on the specified Evaluation. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-
-#Gets the number of Submissions to a specified Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetSubmissionCount(var.eval.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
-
-### Return type
-
-**integer**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetSubmissionStatus**
-> SubmissionStatusModel GetSubmissionStatus(sub.id)
-
-Gets the SubmissionStatus object associated with a specified Submission.
-
-Gets the SubmissionStatus object associated with a specified Submission. <p> <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ</a> on the specified Evaluation. Furthermore, the caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> to see all data marked as \"private\" in the SubmissionStatus.   <b>Service Limits</b>  <table border=\"1\">  <tr>  <th>resource</th>  <th>limit</th>  </tr>  <tr>  <td>The maximum frequency this method can be called</td>  <td>1 calls per second</td>  </tr>  </table>  </p> 
-
-### Example
-```R
-library(synclient)
-
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
-
-#Gets the SubmissionStatus object associated with a specified Submission.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetSubmissionStatus(var.sub.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sub.id** | **character**| The ID of the Submission | 
-
-### Return type
-
-[**SubmissionStatusModel**](SubmissionStatus_model.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetTeamSubmissionEligibility**
-> TeamSubmissionEligibility GetTeamSubmissionEligibility(eval.id, id)
-
-Find out whether a Team and its members are eligible to submit to a given Evaluation queue (at the current time).' 
-
-Find out whether a Team and its members are eligible to submit to a given Evaluation queue (at the current time).  The request must include an Evaluation ID and a Team ID.   The 'eligibilityStateHash' field of the returned object is a required parameter of the subsequent Team Submission request made for the given Evaluation and Team. (See: <a href=\"${POST.evaluation.submission}\">POST/evaluation/submission</a>)' 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.id <- 'id_example' # character | The ID of a Team.
-
-#Find out whether a Team and its members are eligible to submit to a given Evaluation queue (at the current time).' 
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetTeamSubmissionEligibility(var.eval.id, var.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **id** | **character**| The ID of a Team. | 
-
-### Return type
-
-[**TeamSubmissionEligibility**](TeamSubmissionEligibility.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **HasAccess2**
-> BooleanResult HasAccess2(eval.id, access.type)
-
-Determines whether a specified Synapse user has a certain access type on evaluation.
-
-Determines whether the logged in user has a certain <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE</a> on the specified Evaluation. 
-
-### Example
-```R
-library(synclient)
-
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.access.type <- 'access.type_example' # character | Synapse access type
-
-#Determines whether a specified Synapse user has a certain access type on evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$HasAccess2(var.eval.id, var.access.type)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **access.type** | **character**| Synapse access type | 
-
-### Return type
-
-[**BooleanResult**](BooleanResult.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **RedirectUrlForFileHandle**
-> character RedirectUrlForFileHandle(file.handle.id, sub.id, redirect=var.redirect)
-
-Gets a pre-signed URL to access a requested File contained within a specified Submission. 
-
-Gets a pre-signed URL to access a requested File contained within a specified Submission. <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.READ_PRIVATE_SUBMISSION</a> on the specified Evaluation. </p> 
-
-### Example
-```R
-library(synclient)
-
-var.file.handle.id <- 'file.handle.id_example' # character | the ID of the requested FileHandle contained in the Submission.
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
-var.redirect <- 'redirect_example' # character | To redirect
-
-#Gets a pre-signed URL to access a requested File contained within a specified Submission. 
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$RedirectUrlForFileHandle(var.file.handle.id, var.sub.id, redirect=var.redirect)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **file.handle.id** | **character**| the ID of the requested FileHandle contained in the Submission. | 
- **sub.id** | **character**| The ID of the Submission | 
- **redirect** | **character**| To redirect | [optional] 
+ **eval_id** | **character**|  | 
+ **access_type** | **character**|  | 
 
 ### Return type
 
@@ -1302,34 +417,788 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | the access types that the given user has to the given resource |  -  |
 
-# **RequestToCancelSubmission**
-> RequestToCancelSubmission(sub.id)
+# **GetRepoV1EvaluationEvalIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList GetRepoV1EvaluationEvalIdAcl(eval_id)
 
-User requests to cancel their submission.
 
-User requests to cancel their submission. Only the user who submitted a submission can make this request. 
 
 ### Example
 ```R
 library(synclient)
 
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | The ID of the evaluation whose ACL is being retrieved.
 
-#User requests to cancel their submission.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$RequestToCancelSubmission(var.sub.id)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdAcl(var_eval_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdAcl(var_eval_id)
+dput(result)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sub.id** | **character**| The ID of the Submission | 
+ **eval_id** | **character**| The ID of the evaluation whose ACL is being retrieved. | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The ACL requested. |  -  |
+
+# **GetRepoV1EvaluationEvalIdPermissions**
+> OrgSagebionetworksEvaluationModelUserEvaluationPermissions GetRepoV1EvaluationEvalIdPermissions(eval_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | The ID of the evaluation over which the user permission are being retrieved.
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdPermissions(var_eval_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdPermissions(var_eval_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| The ID of the evaluation over which the user permission are being retrieved. | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelUserEvaluationPermissions**](org.sagebionetworks.evaluation.model.UserEvaluationPermissions.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested user permissions. |  -  |
+
+# **GetRepoV1EvaluationEvalIdRoundRoundId**
+> OrgSagebionetworksEvaluationModelEvaluationRound GetRepoV1EvaluationEvalIdRoundRoundId(eval_id, round_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_round_id <- "round_id_example" # character | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdRoundRoundId(var_eval_id, var_round_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdRoundRoundId(var_eval_id, var_round_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**|  | 
+ **round_id** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelEvaluationRound**](org.sagebionetworks.evaluation.model.EvaluationRound.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmission**
+> PaginatedResultsOfSubmission GetRepoV1EvaluationEvalIdSubmission(eval_id, offset = var.offset, limit = var.limit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmission(var_eval_id, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmission(var_eval_id, offset = var_offset, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10. | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfSubmission**](PaginatedResultsOfSubmission.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmissionAll**
+> PaginatedResultsOfSubmission GetRepoV1EvaluationEvalIdSubmissionAll(eval_id, status, offset = var.offset, limit = var.limit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+var_status <- "status_example" # character | 
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionAll(var_eval_id, var_status, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionAll(var_eval_id, var_status, offset = var_offset, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+ **status** | **character**|  | 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfSubmission**](PaginatedResultsOfSubmission.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmissionBundle**
+> PaginatedResultsOfSubmissionBundle GetRepoV1EvaluationEvalIdSubmissionBundle(eval_id, offset = var.offset, limit = var.limit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionBundle(var_eval_id, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionBundle(var_eval_id, offset = var_offset, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10. | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfSubmissionBundle**](PaginatedResultsOfSubmissionBundle.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmissionBundleAll**
+> PaginatedResultsOfSubmissionBundle GetRepoV1EvaluationEvalIdSubmissionBundleAll(eval_id, status, offset = var.offset, limit = var.limit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+var_status <- "status_example" # character | 
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionBundleAll(var_eval_id, var_status, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionBundleAll(var_eval_id, var_status, offset = var_offset, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+ **status** | **character**|  | 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfSubmissionBundle**](PaginatedResultsOfSubmissionBundle.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmissionCount**
+> numeric GetRepoV1EvaluationEvalIdSubmissionCount(eval_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionCount(var_eval_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionCount(var_eval_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+
+### Return type
+
+**numeric**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdSubmissionStatusAll**
+> PaginatedResultsOfSubmissionStatus GetRepoV1EvaluationEvalIdSubmissionStatusAll(eval_id, status, offset = var.offset, limit = var.limit)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the specified Evaluation.
+var_status <- "status_example" # character | 
+var_offset <- 3.4 # numeric | The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. (Optional)
+var_limit <- 3.4 # numeric | Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionStatusAll(var_eval_id, var_status, offset = var_offset, limit = var_limitdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdSubmissionStatusAll(var_eval_id, var_status, offset = var_offset, limit = var_limit)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| - the ID of the specified Evaluation. | 
+ **status** | **character**|  | 
+ **offset** | **numeric**| The offset index determines where this page will start from.             An index of 0 is the first entity. When null it will default             to 0. | [optional] 
+ **limit** | **numeric**| Limits the number of entities that will be fetched for this             page. When null it will default to 10, max value 100. | [optional] 
+
+### Return type
+
+[**PaginatedResultsOfSubmissionStatus**](PaginatedResultsOfSubmissionStatus.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility**
+> OrgSagebionetworksEvaluationModelTeamSubmissionEligibility GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility(eval_id, id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_id <- "id_example" # character | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility(var_eval_id, var_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationEvalIdTeamIdSubmissionEligibility(var_eval_id, var_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**|  | 
+ **id** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelTeamSubmissionEligibility**](org.sagebionetworks.evaluation.model.TeamSubmissionEligibility.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationNameName**
+> OrgSagebionetworksEvaluationModelEvaluation GetRepoV1EvaluationNameName(name)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_name <- "name_example" # character | - the name of the desired Evaluation.
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationNameName(var_namedata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationNameName(var_name)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **character**| - the name of the desired Evaluation. | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelEvaluation**](org.sagebionetworks.evaluation.model.Evaluation.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationSubmissionSubId**
+> OrgSagebionetworksEvaluationModelSubmission GetRepoV1EvaluationSubmissionSubId(sub_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationSubmissionSubId(var_sub_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationSubmissionSubId(var_sub_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelSubmission**](org.sagebionetworks.evaluation.model.Submission.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EvaluationSubmissionSubIdFileFileHandleId**
+> AnyType GetRepoV1EvaluationSubmissionSubIdFileFileHandleId(sub_id, file_handle_id, redirect = var.redirect)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | 
+var_file_handle_id <- "file_handle_id_example" # character | - the ID of the requested FileHandle contained in the Submission.
+var_redirect <- "redirect_example" # character |  (Optional)
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationSubmissionSubIdFileFileHandleId(var_sub_id, var_file_handle_id, redirect = var_redirectdata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationSubmissionSubIdFileFileHandleId(var_sub_id, var_file_handle_id, redirect = var_redirect)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**|  | 
+ **file_handle_id** | **character**| - the ID of the requested FileHandle contained in the Submission. | 
+ **redirect** | **character**|  | [optional] 
+
+### Return type
+
+[**AnyType**](AnyType.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Status 200 will be returned if the &#39;redirect&#39; boolean param is false |  -  |
+| **307** | Status 307 will be returned if the &#39;redirect&#39; boolean param is true or null |  -  |
+
+# **GetRepoV1EvaluationSubmissionSubIdStatus**
+> OrgSagebionetworksEvaluationModelSubmissionStatus GetRepoV1EvaluationSubmissionSubIdStatus(sub_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | - the ID of the requested SubmissionStatus.
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EvaluationSubmissionSubIdStatus(var_sub_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EvaluationSubmissionSubIdStatus(var_sub_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**| - the ID of the requested SubmissionStatus. | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelSubmissionStatus**](org.sagebionetworks.evaluation.model.SubmissionStatus.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1AdminEvaluationSubmissionSubIdContributor**
+> OrgSagebionetworksEvaluationModelSubmissionContributor PostRepoV1AdminEvaluationSubmissionSubIdContributor(sub_id, org_sagebionetworks_evaluation_model_submission_contributor)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | 
+var_org_sagebionetworks_evaluation_model_submission_contributor <- org.sagebionetworks.evaluation.model.SubmissionContributor$new("principalId_example", "createdOn_example") # OrgSagebionetworksEvaluationModelSubmissionContributor | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1AdminEvaluationSubmissionSubIdContributor(var_sub_id, var_org_sagebionetworks_evaluation_model_submission_contributordata_file = "result.txt")
+result <- api_instance$PostRepoV1AdminEvaluationSubmissionSubIdContributor(var_sub_id, var_org_sagebionetworks_evaluation_model_submission_contributor)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**|  | 
+ **org_sagebionetworks_evaluation_model_submission_contributor** | [**OrgSagebionetworksEvaluationModelSubmissionContributor**](OrgSagebionetworksEvaluationModelSubmissionContributor.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelSubmissionContributor**](org.sagebionetworks.evaluation.model.SubmissionContributor.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1Evaluation**
+> OrgSagebionetworksEvaluationModelEvaluation PostRepoV1Evaluation(org_sagebionetworks_evaluation_model_evaluation)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_evaluation_model_evaluation <- org.sagebionetworks.evaluation.model.Evaluation$new("id_example", "etag_example", "name_example", "description_example", "ownerId_example", "createdOn_example", "contentSource_example", "submissionInstructionsMessage_example", "submissionReceiptMessage_example", org.sagebionetworks.evaluation.model.SubmissionQuota$new("firstRoundStart_example", 123, 123, 123)) # OrgSagebionetworksEvaluationModelEvaluation | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1Evaluation(var_org_sagebionetworks_evaluation_model_evaluationdata_file = "result.txt")
+result <- api_instance$PostRepoV1Evaluation(var_org_sagebionetworks_evaluation_model_evaluation)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_evaluation_model_evaluation** | [**OrgSagebionetworksEvaluationModelEvaluation**](OrgSagebionetworksEvaluationModelEvaluation.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelEvaluation**](org.sagebionetworks.evaluation.model.Evaluation.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1EvaluationEvalIdMigratequota**
+> PostRepoV1EvaluationEvalIdMigratequota(eval_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$PostRepoV1EvaluationEvalIdMigratequota(var_eval_id)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**|  | 
 
 ### Return type
 
@@ -1347,27 +1216,27 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The request has been made. |  -  |
+| **200** | Void |  -  |
 
-# **UpdateAcl**
-> AccessControlList UpdateAcl(access.control.list=var.access.control.list)
+# **PostRepoV1EvaluationEvalIdRound**
+> OrgSagebionetworksEvaluationModelEvaluationRound PostRepoV1EvaluationEvalIdRound(eval_id, org_sagebionetworks_evaluation_model_evaluation_round)
 
-Updates the supplied access control list (ACL) for an evaluation.
 
-Updates the supplied access control list (ACL) for an evaluation. The <a href=\"${org.sagebionetworks.repo.model.AccessControlList}\">ACL</a> to be updated should have the ID of the evaluation. The user should have the proper <a href=\"${org.sagebionetworks.evaluation.model.UserEvaluationPermissions}\">permissions</a> in order to update the ACL. 
 
 ### Example
 ```R
 library(synclient)
 
-var.access.control.list <- AccessControlList$new("createdBy_example", "creationDate_example", "etag_example", "id_example", "modifiedBy_example", "modifiedOn_example", list(ResourceAccess$new(list(ACCESS_TYPE$new()), 123))) # AccessControlList | The ACL being updated.
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_org_sagebionetworks_evaluation_model_evaluation_round <- org.sagebionetworks.evaluation.model.EvaluationRound$new("id_example", "etag_example", "evaluationId_example", "roundStart_example", "roundEnd_example", c(org.sagebionetworks.evaluation.model.EvaluationRoundLimit$new("limitType_example", 123))) # OrgSagebionetworksEvaluationModelEvaluationRound | 
 
-#Updates the supplied access control list (ACL) for an evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateAcl(access.control.list=var.access.control.list)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EvaluationEvalIdRound(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluation_rounddata_file = "result.txt")
+result <- api_instance$PostRepoV1EvaluationEvalIdRound(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluation_round)
 dput(result)
 ```
 
@@ -1375,11 +1244,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access.control.list** | [**AccessControlList**](AccessControlList.md)| The ACL being updated. | [optional] 
+ **eval_id** | **character**|  | 
+ **org_sagebionetworks_evaluation_model_evaluation_round** | [**OrgSagebionetworksEvaluationModelEvaluationRound**](OrgSagebionetworksEvaluationModelEvaluationRound.md)|  | 
 
 ### Return type
 
-[**AccessControlList**](AccessControlList.md)
+[**OrgSagebionetworksEvaluationModelEvaluationRound**](org.sagebionetworks.evaluation.model.EvaluationRound.md)
 
 ### Authorization
 
@@ -1393,28 +1263,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
 
-# **UpdateEvaluation**
-> Evaluation UpdateEvaluation(eval.id, evaluation=var.evaluation)
+# **PostRepoV1EvaluationEvalIdRoundList**
+> OrgSagebionetworksEvaluationModelEvaluationRoundListResponse PostRepoV1EvaluationEvalIdRoundList(eval_id, org_sagebionetworks_evaluation_model_evaluation_round_list_request)
 
-Updates an Evaluation.
 
-'Updates an Evaluation.   <p>  Synapse employs an Optimistic Concurrency Control (OCC) scheme to handle  concurrent updates. Each time an Evaluation is updated a new etag will be  issued to the Evaluation. When an update is requested, Synapse will compare the  etag of the passed Evaluation with the current etag of the Evaluation. If the  etags do not match, then the update will be rejected with a  PRECONDITION_FAILED (412) response. When this occurs, the caller should  fetch the latest copy of the Evaluation and re-apply any changes, then re-attempt  the Evaluation update.  </p>   <p>  <b>Note:</b> The caller must be granted the <a  href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\"  >ACCESS_TYPE.UPDATE</a> on the specified Evaluation.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.evaluation <- Evaluation$new("contentSource_example", "createdOn_example", "description_example", "etag_example", "id_example", "name_example", "ownerId_example", SubmissionQuota$new("firstRoundStart_example", 123, 123, 123), EvaluationStatus$new(), "submissionInstructionsMessage_example", "submissionReceiptMessage_example") # Evaluation | 
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_org_sagebionetworks_evaluation_model_evaluation_round_list_request <- org.sagebionetworks.evaluation.model.EvaluationRoundListRequest$new("nextPageToken_example") # OrgSagebionetworksEvaluationModelEvaluationRoundListRequest | 
 
-#Updates an Evaluation.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateEvaluation(var.eval.id, evaluation=var.evaluation)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EvaluationEvalIdRoundList(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluation_round_list_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EvaluationEvalIdRoundList(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluation_round_list_request)
 dput(result)
 ```
 
@@ -1422,12 +1291,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **evaluation** | [**Evaluation**](Evaluation.md)|  | [optional] 
+ **eval_id** | **character**|  | 
+ **org_sagebionetworks_evaluation_model_evaluation_round_list_request** | [**OrgSagebionetworksEvaluationModelEvaluationRoundListRequest**](OrgSagebionetworksEvaluationModelEvaluationRoundListRequest.md)|  | 
 
 ### Return type
 
-[**Evaluation**](Evaluation.md)
+[**OrgSagebionetworksEvaluationModelEvaluationRoundListResponse**](org.sagebionetworks.evaluation.model.EvaluationRoundListResponse.md)
 
 ### Authorization
 
@@ -1441,29 +1310,30 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **UpdateEvaluationRound**
-> EvaluationRound UpdateEvaluationRound(eval.id, round.id, evaluation.round=var.evaluation.round)
+# **PostRepoV1EvaluationSubmission**
+> OrgSagebionetworksEvaluationModelSubmission PostRepoV1EvaluationSubmission(challenge_endpoint, notification_unsubscribe_endpoint, org_sagebionetworks_evaluation_model_submission, etag = var.etag, submission_eligibility_hash = var.submission_eligibility_hash)
 
-Update Evaluation Round
 
-Update Evaluation Round
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.round.id <- 'round.id_example' # character | The ID of the evaluation round
-var.evaluation.round <- EvaluationRound$new("etag_example", "evaluationId_example", "id_example", list(EvaluationRoundLimit$new(EvaluationRoundLimitType$new(), 123)), "roundEnd_example", "roundStart_example") # EvaluationRound | 
+# prepare function argument(s)
+var_challenge_endpoint <- "challenge_endpoint_example" # character | The portal endpoint prefix to the an entity/challenge page. The entity ID of the  challenge project is appended to create the complete URL. In normal operation, this parameter should be omitted.
+var_notification_unsubscribe_endpoint <- "notification_unsubscribe_endpoint_example" # character | The portal endpoint prefix for one-click email unsubscription.  A signed, serialized token is appended to create the complete URL:  ,<a href=\"${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\">,NotificationSettingsSignedToken,</a>,.  In normal operation, this parameter should be omitted.
+var_org_sagebionetworks_evaluation_model_submission <- org.sagebionetworks.evaluation.model.Submission$new("id_example", "userId_example", "submitterAlias_example", "evaluationId_example", "evaluationRoundId_example", "entityId_example", "entityBundleJSON_example", 123, "dockerRepositoryName_example", "dockerDigest_example", "name_example", "createdOn_example", "teamId_example", c(org.sagebionetworks.evaluation.model.SubmissionContributor$new("principalId_example", "createdOn_example"))) # OrgSagebionetworksEvaluationModelSubmission | 
+var_etag <- "etag_example" # character |  (Optional)
+var_submission_eligibility_hash <- "submission_eligibility_hash_example" # character | The hash provided by the  ,<a href=\"${org.sagebionetworks.evaluation.model.TeamSubmissionEligibility}\">,TeamSubmissionEligibility,</a>,  object. (Optional)
 
-#Update Evaluation Round
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateEvaluationRound(var.eval.id, var.round.id, evaluation.round=var.evaluation.round)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EvaluationSubmission(var_challenge_endpoint, var_notification_unsubscribe_endpoint, var_org_sagebionetworks_evaluation_model_submission, etag = var_etag, submission_eligibility_hash = var_submission_eligibility_hashdata_file = "result.txt")
+result <- api_instance$PostRepoV1EvaluationSubmission(var_challenge_endpoint, var_notification_unsubscribe_endpoint, var_org_sagebionetworks_evaluation_model_submission, etag = var_etag, submission_eligibility_hash = var_submission_eligibility_hash)
 dput(result)
 ```
 
@@ -1471,13 +1341,15 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **round.id** | **character**| The ID of the evaluation round | 
- **evaluation.round** | [**EvaluationRound**](EvaluationRound.md)|  | [optional] 
+ **challenge_endpoint** | **character**| The portal endpoint prefix to the an entity/challenge page. The entity ID of the  challenge project is appended to create the complete URL. In normal operation, this parameter should be omitted. | 
+ **notification_unsubscribe_endpoint** | **character**| The portal endpoint prefix for one-click email unsubscription.  A signed, serialized token is appended to create the complete URL:  ,&lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\&quot;&gt;,NotificationSettingsSignedToken,&lt;/a&gt;,.  In normal operation, this parameter should be omitted. | 
+ **org_sagebionetworks_evaluation_model_submission** | [**OrgSagebionetworksEvaluationModelSubmission**](OrgSagebionetworksEvaluationModelSubmission.md)|  | 
+ **etag** | **character**|  | [optional] 
+ **submission_eligibility_hash** | **character**| The hash provided by the  ,&lt;a href&#x3D;\&quot;${org.sagebionetworks.evaluation.model.TeamSubmissionEligibility}\&quot;&gt;,TeamSubmissionEligibility,&lt;/a&gt;,  object. | [optional] 
 
 ### Return type
 
-[**EvaluationRound**](EvaluationRound.md)
+[**OrgSagebionetworksEvaluationModelSubmission**](org.sagebionetworks.evaluation.model.Submission.md)
 
 ### Authorization
 
@@ -1491,28 +1363,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
 
-# **UpdateSubmissionStatus**
-> SubmissionStatusModel UpdateSubmissionStatus(sub.id, submission.status.model=var.submission.status.model)
+# **PutRepoV1EvaluationAcl**
+> OrgSagebionetworksRepoModelAccessControlList PutRepoV1EvaluationAcl(org_sagebionetworks_repo_model_access_control_list)
 
-Updates a SubmissionStatus object.
 
-Updates a SubmissionStatus object.   <p>  Synapse employs an Optimistic Concurrency Control (OCC) scheme to handle concurrent updates. Each time an SubmissionStatus is updated a new etag will be issued to the SubmissionStatus. When an update is requested, Synapse will compare the etag of the passed SubmissionStatus with the current etag of the SubmissionStatus. If the etags do not match, then the update will be rejected with a PRECONDITION_FAILED (412) response. When this occurs, the caller should fetch the latest copy of the SubmissionStatus and re-apply any changes, then re-attempt the SubmissionStatus update.  </p>  <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.UPDATE_SUBMISSION</a> on the specified Evaluation.  </p>  </p>  <p>  <b>Service Limits</b>  <table border=\"1\">  <tr>  <th>resource</th>  <th>limit</th>  </tr>  <tr>  <td>The maximum frequency this method can be called</td>  <td>1 calls per second</td>  </tr>  </table>  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.sub.id <- 'sub.id_example' # character | The ID of the Submission
-var.submission.status.model <- SubmissionStatus_model$new(Annotations_annotation$new(list(DoubleAnnotation$new("isPrivate_example", "key_example", 123)), list(LongAnnotation$new("isPrivate_example", "key_example", 123)), "objectId_example", "scopeId_example", list(StringAnnotation$new("isPrivate_example", "key_example", "value_example")), 123), "canCancel_example", "cancelRequested_example", "entityId_example", "etag_example", "id_example", "modifiedOn_example", SubmissionStatusEnum$new(), 123, Annotations_v2$new(TODO, "etag_example", "id_example"), 123) # SubmissionStatusModel | 
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_access_control_list <- org.sagebionetworks.repo.model.AccessControlList$new("id_example", "createdBy_example", "creationDate_example", "modifiedBy_example", "modifiedOn_example", "etag_example", c(org.sagebionetworks.repo.model.ResourceAccess$new(123, c("accessType_example")))) # OrgSagebionetworksRepoModelAccessControlList | 
 
-#Updates a SubmissionStatus object.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateSubmissionStatus(var.sub.id, submission.status.model=var.submission.status.model)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1EvaluationAcl(var_org_sagebionetworks_repo_model_access_control_listdata_file = "result.txt")
+result <- api_instance$PutRepoV1EvaluationAcl(var_org_sagebionetworks_repo_model_access_control_list)
 dput(result)
 ```
 
@@ -1520,12 +1390,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sub.id** | **character**| The ID of the Submission | 
- **submission.status.model** | [**SubmissionStatusModel**](SubmissionStatusModel.md)|  | [optional] 
+ **org_sagebionetworks_repo_model_access_control_list** | [**OrgSagebionetworksRepoModelAccessControlList**](OrgSagebionetworksRepoModelAccessControlList.md)|  | 
 
 ### Return type
 
-[**SubmissionStatusModel**](SubmissionStatus_model.md)
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
 
 ### Authorization
 
@@ -1539,28 +1408,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | The updated ACL. |  -  |
 
-# **UpdateSubmissionStatusBatch**
-> BatchUploadResponse UpdateSubmissionStatusBatch(eval.id, submission.status.batch=var.submission.status.batch)
+# **PutRepoV1EvaluationEvalId**
+> OrgSagebionetworksEvaluationModelEvaluation PutRepoV1EvaluationEvalId(eval_id, org_sagebionetworks_evaluation_model_evaluation)
 
-Update multiple SubmissionStatuses.
 
-Update multiple SubmissionStatuses. The maximum batch size is 500.  To allow upload of more than this maximum, the system supports uploading of a <i>series</i> of batches. Synapse employs optimistic concurrency on the series in the form of a batch token. Each request (except the first) must include the ''batch token'' returned in the response to the previous batch. If another client begins batch upload simultaneously, a PRECONDITION_FAILED (412) response will be generated and upload must restart from the first batch.  After the final batch is uploaded, the data for the Evaluation queue will be mirrored to the tables which support querying.  Therefore uploaded data will not appear in Evaluation queries until after the final batch is successfully uploaded.  It is the client''s responsibility to note in each batch request (1) whether it is the first batch in the series and (2) whether it is the last batch.  (For a single batch both are set to ''true''.)  Failure to use the flags correctly risks corrupted data (due to simultaneous, conflicting uploads by multiple clients) or data not appearing in query results.   <p>  <b>Note:</b> The caller must be granted the <a href=\"${org.sagebionetworks.repo.model.ACCESS_TYPE}\">ACCESS_TYPE.UPDATE_SUBMISSION</a> on the specified Evaluation.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.eval.id <- 'eval.id_example' # character | The ID of the specified Evaluation.
-var.submission.status.batch <- SubmissionStatusBatch$new("batchToken_example", "isFirstBatch_example", "isLastBatch_example", list(SubmissionStatus_model$new(Annotations_annotation$new(list(DoubleAnnotation$new("isPrivate_example", "key_example", 123)), list(LongAnnotation$new("isPrivate_example", "key_example", 123)), "objectId_example", "scopeId_example", list(StringAnnotation$new("isPrivate_example", "key_example", "value_example")), 123), "canCancel_example", "cancelRequested_example", "entityId_example", "etag_example", "id_example", "modifiedOn_example", SubmissionStatusEnum$new(), 123, Annotations_v2$new(TODO, "etag_example", "id_example"), 123))) # SubmissionStatusBatch | 
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | - the ID of the Evaluation being updated
+var_org_sagebionetworks_evaluation_model_evaluation <- org.sagebionetworks.evaluation.model.Evaluation$new("id_example", "etag_example", "name_example", "description_example", "ownerId_example", "createdOn_example", "contentSource_example", "submissionInstructionsMessage_example", "submissionReceiptMessage_example", org.sagebionetworks.evaluation.model.SubmissionQuota$new("firstRoundStart_example", 123, 123, 123)) # OrgSagebionetworksEvaluationModelEvaluation | 
 
-#Update multiple SubmissionStatuses.
-api.instance <- EvaluationServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateSubmissionStatusBatch(var.eval.id, submission.status.batch=var.submission.status.batch)
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1EvaluationEvalId(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluationdata_file = "result.txt")
+result <- api_instance$PutRepoV1EvaluationEvalId(var_eval_id, var_org_sagebionetworks_evaluation_model_evaluation)
 dput(result)
 ```
 
@@ -1568,12 +1436,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **eval.id** | **character**| The ID of the specified Evaluation. | 
- **submission.status.batch** | [**SubmissionStatusBatch**](SubmissionStatusBatch.md)|  | [optional] 
+ **eval_id** | **character**| - the ID of the Evaluation being updated | 
+ **org_sagebionetworks_evaluation_model_evaluation** | [**OrgSagebionetworksEvaluationModelEvaluation**](OrgSagebionetworksEvaluationModelEvaluation.md)|  | 
 
 ### Return type
 
-[**BatchUploadResponse**](BatchUploadResponse.md)
+[**OrgSagebionetworksEvaluationModelEvaluation**](org.sagebionetworks.evaluation.model.Evaluation.md)
 
 ### Authorization
 
@@ -1587,5 +1455,190 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1EvaluationEvalIdRoundRoundId**
+> OrgSagebionetworksEvaluationModelEvaluationRound PutRepoV1EvaluationEvalIdRoundRoundId(eval_id, round_id, org_sagebionetworks_evaluation_model_evaluation_round)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | 
+var_round_id <- "round_id_example" # character | 
+var_org_sagebionetworks_evaluation_model_evaluation_round <- org.sagebionetworks.evaluation.model.EvaluationRound$new("id_example", "etag_example", "evaluationId_example", "roundStart_example", "roundEnd_example", c(org.sagebionetworks.evaluation.model.EvaluationRoundLimit$new("limitType_example", 123))) # OrgSagebionetworksEvaluationModelEvaluationRound | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1EvaluationEvalIdRoundRoundId(var_eval_id, var_round_id, var_org_sagebionetworks_evaluation_model_evaluation_rounddata_file = "result.txt")
+result <- api_instance$PutRepoV1EvaluationEvalIdRoundRoundId(var_eval_id, var_round_id, var_org_sagebionetworks_evaluation_model_evaluation_round)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**|  | 
+ **round_id** | **character**|  | 
+ **org_sagebionetworks_evaluation_model_evaluation_round** | [**OrgSagebionetworksEvaluationModelEvaluationRound**](OrgSagebionetworksEvaluationModelEvaluationRound.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelEvaluationRound**](org.sagebionetworks.evaluation.model.EvaluationRound.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1EvaluationEvalIdStatusBatch**
+> OrgSagebionetworksEvaluationModelBatchUploadResponse PutRepoV1EvaluationEvalIdStatusBatch(eval_id, org_sagebionetworks_evaluation_model_submission_status_batch)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_eval_id <- "eval_id_example" # character | the ID of the Evaluation to which the SubmissionSatus objects belong.
+var_org_sagebionetworks_evaluation_model_submission_status_batch <- org.sagebionetworks.evaluation.model.SubmissionStatusBatch$new(c(org.sagebionetworks.evaluation.model.SubmissionStatus$new("id_example", "etag_example", "modifiedOn_example", "status_example", 123, "report_example", org.sagebionetworks.repo.model.annotation.Annotations$new("objectId_example", "scopeId_example", 123, c(org.sagebionetworks.repo.model.annotation.StringAnnotation$new("key_example", "isPrivate_example", "value_example")), c(org.sagebionetworks.repo.model.annotation.LongAnnotation$new("key_example", "isPrivate_example", 123)), c(org.sagebionetworks.repo.model.annotation.DoubleAnnotation$new("key_example", "isPrivate_example", 123))), org.sagebionetworks.repo.model.annotation.v2.Annotations$new("id_example", "etag_example", c(key = org.sagebionetworks.repo.model.annotation.v2.AnnotationsValue$new("type_example", c("value_example")))), "entityId_example", 123, 123, "canCancel_example", "cancelRequested_example")), "batchToken_example", "isFirstBatch_example", "isLastBatch_example") # OrgSagebionetworksEvaluationModelSubmissionStatusBatch | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1EvaluationEvalIdStatusBatch(var_eval_id, var_org_sagebionetworks_evaluation_model_submission_status_batchdata_file = "result.txt")
+result <- api_instance$PutRepoV1EvaluationEvalIdStatusBatch(var_eval_id, var_org_sagebionetworks_evaluation_model_submission_status_batch)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **eval_id** | **character**| the ID of the Evaluation to which the SubmissionSatus objects belong. | 
+ **org_sagebionetworks_evaluation_model_submission_status_batch** | [**OrgSagebionetworksEvaluationModelSubmissionStatusBatch**](OrgSagebionetworksEvaluationModelSubmissionStatusBatch.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelBatchUploadResponse**](org.sagebionetworks.evaluation.model.BatchUploadResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1EvaluationSubmissionSubIdCancellation**
+> PutRepoV1EvaluationSubmissionSubIdCancellation(sub_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$PutRepoV1EvaluationSubmissionSubIdCancellation(var_sub_id)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | Void |  -  |
+
+# **PutRepoV1EvaluationSubmissionSubIdStatus**
+> OrgSagebionetworksEvaluationModelSubmissionStatus PutRepoV1EvaluationSubmissionSubIdStatus(sub_id, org_sagebionetworks_evaluation_model_submission_status)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_sub_id <- "sub_id_example" # character | - the ID of the SubmissionStatus being updated.
+var_org_sagebionetworks_evaluation_model_submission_status <- org.sagebionetworks.evaluation.model.SubmissionStatus$new("id_example", "etag_example", "modifiedOn_example", "status_example", 123, "report_example", org.sagebionetworks.repo.model.annotation.Annotations$new("objectId_example", "scopeId_example", 123, c(org.sagebionetworks.repo.model.annotation.StringAnnotation$new("key_example", "isPrivate_example", "value_example")), c(org.sagebionetworks.repo.model.annotation.LongAnnotation$new("key_example", "isPrivate_example", 123)), c(org.sagebionetworks.repo.model.annotation.DoubleAnnotation$new("key_example", "isPrivate_example", 123))), org.sagebionetworks.repo.model.annotation.v2.Annotations$new("id_example", "etag_example", c(key = org.sagebionetworks.repo.model.annotation.v2.AnnotationsValue$new("type_example", c("value_example")))), "entityId_example", 123, 123, "canCancel_example", "cancelRequested_example") # OrgSagebionetworksEvaluationModelSubmissionStatus | 
+
+api_instance <- EvaluationServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1EvaluationSubmissionSubIdStatus(var_sub_id, var_org_sagebionetworks_evaluation_model_submission_statusdata_file = "result.txt")
+result <- api_instance$PutRepoV1EvaluationSubmissionSubIdStatus(var_sub_id, var_org_sagebionetworks_evaluation_model_submission_status)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sub_id** | **character**| - the ID of the SubmissionStatus being updated. | 
+ **org_sagebionetworks_evaluation_model_submission_status** | [**OrgSagebionetworksEvaluationModelSubmissionStatus**](OrgSagebionetworksEvaluationModelSubmissionStatus.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksEvaluationModelSubmissionStatus**](org.sagebionetworks.evaluation.model.SubmissionStatus.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
 

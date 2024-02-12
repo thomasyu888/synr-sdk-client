@@ -1,51 +1,52 @@
 # AccessRequirementServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConvertAccessRequirement**](AccessRequirementServicesApi.md#ConvertAccessRequirement) | **PUT** /accessRequirement/conversion | Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.
-[**CreateAccessRequirement**](AccessRequirementServicesApi.md#CreateAccessRequirement) | **POST** /accessRequirement | Add an Access Requirement to an Entity, or Team.
-[**CreateLockAccessRequirement**](AccessRequirementServicesApi.md#CreateLockAccessRequirement) | **POST** /entity/{id}/lockAccessRequirement | Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
-[**DeleteAccessRequirements**](AccessRequirementServicesApi.md#DeleteAccessRequirements) | **DELETE** /accessRequirement/{requirementId} | Delete an Access Requirement.
-[**GetAccessRequirement**](AccessRequirementServicesApi.md#GetAccessRequirement) | **GET** /accessRequirement/{requirementId} | Get an Access Requirement.
-[**GetEntityAccessRequirements**](AccessRequirementServicesApi.md#GetEntityAccessRequirements) | **GET** /entity/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with an entity.
-[**GetSubjects**](AccessRequirementServicesApi.md#GetSubjects) | **GET** /accessRequirement/{requirementId}/subjects | Retrieve a page of subjects for a given Access Requirement ID.
-[**GetTeamAccessRequirements**](AccessRequirementServicesApi.md#GetTeamAccessRequirements) | **GET** /team/{id}/accessRequirement | Retrieve paginated list of ALL Access Requirements associated with a Team.
-[**UpdateAccessRequirement**](AccessRequirementServicesApi.md#UpdateAccessRequirement) | **PUT** /accessRequirement/{requirementId} | Modify an existing Access Requirement.
+[**DeleteRepoV1AccessRequirementRequirementId**](AccessRequirementServicesApi.md#DeleteRepoV1AccessRequirementRequirementId) | **DELETE** /repo/v1/accessRequirement/{requirementId} | 
+[**DeleteRepoV1AccessRequirementRequirementIdAcl**](AccessRequirementServicesApi.md#DeleteRepoV1AccessRequirementRequirementIdAcl) | **DELETE** /repo/v1/accessRequirement/{requirementId}/acl | 
+[**GetRepoV1AccessRequirementRequirementId**](AccessRequirementServicesApi.md#GetRepoV1AccessRequirementRequirementId) | **GET** /repo/v1/accessRequirement/{requirementId} | 
+[**GetRepoV1AccessRequirementRequirementIdAcl**](AccessRequirementServicesApi.md#GetRepoV1AccessRequirementRequirementIdAcl) | **GET** /repo/v1/accessRequirement/{requirementId}/acl | 
+[**GetRepoV1AccessRequirementRequirementIdSubjects**](AccessRequirementServicesApi.md#GetRepoV1AccessRequirementRequirementIdSubjects) | **GET** /repo/v1/accessRequirement/{requirementId}/subjects | 
+[**GetRepoV1EntityIdAccessRequirement**](AccessRequirementServicesApi.md#GetRepoV1EntityIdAccessRequirement) | **GET** /repo/v1/entity/{id}/accessRequirement | 
+[**GetRepoV1TeamIdAccessRequirement**](AccessRequirementServicesApi.md#GetRepoV1TeamIdAccessRequirement) | **GET** /repo/v1/team/{id}/accessRequirement | 
+[**PostRepoV1AccessRequirement**](AccessRequirementServicesApi.md#PostRepoV1AccessRequirement) | **POST** /repo/v1/accessRequirement | 
+[**PostRepoV1AccessRequirementRequirementIdAcl**](AccessRequirementServicesApi.md#PostRepoV1AccessRequirementRequirementIdAcl) | **POST** /repo/v1/accessRequirement/{requirementId}/acl | 
+[**PostRepoV1AccessRequirementSearch**](AccessRequirementServicesApi.md#PostRepoV1AccessRequirementSearch) | **POST** /repo/v1/accessRequirement/search | 
+[**PostRepoV1EntityIdLockAccessRequirement**](AccessRequirementServicesApi.md#PostRepoV1EntityIdLockAccessRequirement) | **POST** /repo/v1/entity/{id}/lockAccessRequirement | 
+[**PutRepoV1AccessRequirementConversion**](AccessRequirementServicesApi.md#PutRepoV1AccessRequirementConversion) | **PUT** /repo/v1/accessRequirement/conversion | 
+[**PutRepoV1AccessRequirementRequirementId**](AccessRequirementServicesApi.md#PutRepoV1AccessRequirementRequirementId) | **PUT** /repo/v1/accessRequirement/{requirementId} | 
+[**PutRepoV1AccessRequirementRequirementIdAcl**](AccessRequirementServicesApi.md#PutRepoV1AccessRequirementRequirementIdAcl) | **PUT** /repo/v1/accessRequirement/{requirementId}/acl | 
 
 
-# **ConvertAccessRequirement**
-> AccessRequirement ConvertAccessRequirement(access.requirement.conversion.request=var.access.requirement.conversion.request)
+# **DeleteRepoV1AccessRequirementRequirementId**
+> DeleteRepoV1AccessRequirementRequirementId(requirement_id)
 
-Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.
 
-Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.  Only ACT member can perform this action. 
 
 ### Example
 ```R
 library(synclient)
 
-var.access.requirement.conversion.request <- AccessRequirementConversionRequest$new("accessRequirementId_example", 123, "etag_example") # AccessRequirementConversionRequest | 
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | the ID of the requirement to delete
 
-#Convert an ACTAccessRequirement to a ManagedACTAccessRequirement.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ConvertAccessRequirement(access.requirement.conversion.request=var.access.requirement.conversion.request)
-dput(result)
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1AccessRequirementRequirementId(var_requirement_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access.requirement.conversion.request** | [**AccessRequirementConversionRequest**](AccessRequirementConversionRequest.md)|  | [optional] 
+ **requirement_id** | **character**| the ID of the requirement to delete | 
 
 ### Return type
 
-[**AccessRequirement**](AccessRequirement.md)
+void (empty response body)
 
 ### Authorization
 
@@ -53,45 +54,41 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Void |  -  |
 
-# **CreateAccessRequirement**
-> AccessRequirement CreateAccessRequirement(access.requirement=var.access.requirement)
+# **DeleteRepoV1AccessRequirementRequirementIdAcl**
+> DeleteRepoV1AccessRequirementRequirementIdAcl(requirement_id)
 
-Add an Access Requirement to an Entity, or Team.
 
-Add an Access Requirement to an Entity, or Team. This service may only be used by the Synapse Access and Compliance Team. 
 
 ### Example
 ```R
 library(synclient)
 
-var.access.requirement <- AccessRequirement$new(ACCESS_TYPE$new(), "concreteType_example", "createdBy_example", "createdOn_example", "description_example", "etag_example", 123, "modifiedBy_example", "modifiedOn_example", list(RestrictableObjectDescriptor$new("id_example", RestrictableObjectType$new())), 123) # AccessRequirement | the Access Requirement to create
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
 
-#Add an Access Requirement to an Entity, or Team.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateAccessRequirement(access.requirement=var.access.requirement)
-dput(result)
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1AccessRequirementRequirementIdAcl(var_requirement_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **access.requirement** | [**AccessRequirement**](AccessRequirement.md)| the Access Requirement to create | [optional] 
+ **requirement_id** | **character**|  | 
 
 ### Return type
 
-[**AccessRequirement**](AccessRequirement.md)
+void (empty response body)
 
 ### Authorization
 
@@ -99,33 +96,30 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Void |  -  |
 
-# **CreateLockAccessRequirement**
-> AccessRequirement CreateLockAccessRequirement(id)
+# **GetRepoV1AccessRequirementRequirementId**
+> OrgSagebionetworksRepoModelAccessRequirement GetRepoV1AccessRequirementRequirementId(requirement_id)
 
-Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
 
-Add a temporary access restriction that prevents access pending review by the Synapse Access and Compliance Team. This service may be used only by an administrator of the specified entity. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of an Entity.
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
 
-#Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateLockAccessRequirement(var.id)
+api_instance <- AccessRequirementServicesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1AccessRequirementRequirementId(var_requirement_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1AccessRequirementRequirementId(var_requirement_id)
 dput(result)
 ```
 
@@ -133,11 +127,56 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of an Entity. | 
+ **requirement_id** | **character**|  | 
 
 ### Return type
 
-[**AccessRequirement**](AccessRequirement.md)
+[**OrgSagebionetworksRepoModelAccessRequirement**](org.sagebionetworks.repo.model.AccessRequirement.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1AccessRequirementRequirementIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList GetRepoV1AccessRequirementRequirementIdAcl(requirement_id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1AccessRequirementRequirementIdAcl(var_requirement_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1AccessRequirementRequirementIdAcl(var_requirement_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requirement_id** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
 
 ### Authorization
 
@@ -151,27 +190,25 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **DeleteAccessRequirements**
-> character DeleteAccessRequirements(requirement.id)
+# **GetRepoV1AccessRequirementRequirementIdSubjects**
+> OrgSagebionetworksRepoModelRestrictableObjectDescriptorResponse GetRepoV1AccessRequirementRequirementIdSubjects(requirement_id, next_page_token = var.next_page_token)
 
-Delete an Access Requirement.
 
-Delete an Access Requirement. This service may only be used by the Synapse Access and Compliance Team. 
 
 ### Example
 ```R
 library(synclient)
 
-var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
+var_next_page_token <- "next_page_token_example" # character |  (Optional)
 
-#Delete an Access Requirement.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$DeleteAccessRequirements(var.requirement.id)
+api_instance <- AccessRequirementServicesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1AccessRequirementRequirementIdSubjects(var_requirement_id, next_page_token = var_next_page_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1AccessRequirementRequirementIdSubjects(var_requirement_id, next_page_token = var_next_page_token)
 dput(result)
 ```
 
@@ -179,15 +216,16 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requirement.id** | **character**| the ID of the requirement. | 
+ **requirement_id** | **character**|  | 
+ **next_page_token** | **character**|  | [optional] 
 
 ### Return type
 
-**character**
+[**OrgSagebionetworksRepoModelRestrictableObjectDescriptorResponse**](org.sagebionetworks.repo.model.RestrictableObjectDescriptorResponse.md)
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -197,27 +235,28 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetAccessRequirement**
-> AccessRequirement GetAccessRequirement(requirement.id)
+# **GetRepoV1EntityIdAccessRequirement**
+> PaginatedResultsOfAccessRequirement GetRepoV1EntityIdAccessRequirement(id, limit = var.limit, offset = var.offset)
 
-Get an Access Requirement.
 
-Get an Access Requirement to an Entity, or Team based on its ID.
 
 ### Example
 ```R
 library(synclient)
 
-var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
+# prepare function argument(s)
+var_id <- "id_example" # character | 
+var_limit <- 3.4 # numeric | - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. (Optional)
+var_offset <- 3.4 # numeric | - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. (Optional)
 
-#Get an Access Requirement.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetAccessRequirement(var.requirement.id)
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdAccessRequirement(var_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdAccessRequirement(var_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -225,57 +264,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requirement.id** | **character**| the ID of the requirement. | 
-
-### Return type
-
-[**AccessRequirement**](AccessRequirement.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetEntityAccessRequirements**
-> PaginatedResultsOfAccessRequirement GetEntityAccessRequirements(id, limit=var.limit, offset=var.offset)
-
-Retrieve paginated list of ALL Access Requirements associated with an entity.
-
-Retrieve paginated list of ALL Access Requirements associated with an entity. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of an Entity.
-var.limit <- 56 # integer | Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. 
-var.offset <- 56 # integer | The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. 
-
-#Retrieve paginated list of ALL Access Requirements associated with an entity.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetEntityAccessRequirements(var.id, limit=var.limit, offset=var.offset)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of an Entity. | 
- **limit** | **integer**| Limits the size of the page returned. For example, a page size of 10 require limit &#x3D; 10. The maximum limit for this call is 50.  | [optional] 
- **offset** | **integer**| The index of the pagination offset. For a page size of 10, the first page would be at offset &#x3D; 0, and the second page would be at offset &#x3D; 10.  | [optional] 
+ **id** | **character**|  | 
+ **limit** | **numeric**| - Limits the size of the page returned. For example, a page size of 10 require limit &#x3D; 10. The maximum limit for this call is 50. | [optional] 
+ **offset** | **numeric**| - The index of the pagination offset. For a page size of 10, the first page would be at offset &#x3D; 0, and the second page would be at offset &#x3D; 10. | [optional] 
 
 ### Return type
 
@@ -293,28 +284,28 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetSubjects**
-> RestrictableObjectDescriptorResponse GetSubjects(requirement.id, next.page.token=var.next.page.token)
+# **GetRepoV1TeamIdAccessRequirement**
+> PaginatedResultsOfAccessRequirement GetRepoV1TeamIdAccessRequirement(id, limit = var.limit, offset = var.offset)
 
-Retrieve a page of subjects for a given Access Requirement ID.
 
-Retrieve a page of subjects for a given Access Requirement ID.
 
 ### Example
 ```R
 library(synclient)
 
-var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
-var.next.page.token <- 'next.page.token_example' # character | Next page
+# prepare function argument(s)
+var_id <- "id_example" # character | the ID of the Team whose Access Requirements are retrieved.
+var_limit <- 3.4 # numeric | - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. (Optional)
+var_offset <- 3.4 # numeric | - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. (Optional)
 
-#Retrieve a page of subjects for a given Access Requirement ID.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetSubjects(var.requirement.id, next.page.token=var.next.page.token)
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1TeamIdAccessRequirement(var_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1TeamIdAccessRequirement(var_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -322,58 +313,9 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requirement.id** | **character**| the ID of the requirement. | 
- **next.page.token** | **character**| Next page | [optional] 
-
-### Return type
-
-[**RestrictableObjectDescriptorResponse**](RestrictableObjectDescriptorResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetTeamAccessRequirements**
-> PaginatedResultsOfAccessRequirement GetTeamAccessRequirements(id, limit=10, offset=0)
-
-Retrieve paginated list of ALL Access Requirements associated with a Team.
-
-Retrieve paginated list of ALL Access Requirements associated with a Team. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | the ID of the Team.
-var.limit <- 10 # integer | Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. 
-var.offset <- 0 # integer | The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. 
-
-#Retrieve paginated list of ALL Access Requirements associated with a Team.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetTeamAccessRequirements(var.id, limit=var.limit, offset=var.offset)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| the ID of the Team. | 
- **limit** | **integer**| Limits the size of the page returned. For example, a page size of 10 require limit &#x3D; 10. The maximum limit for this call is 50.  | [optional] [default to 10]
- **offset** | **integer**| The index of the pagination offset. For a page size of 10, the first page would be at offset &#x3D; 0, and the second page would be at offset &#x3D; 10.  | [optional] [default to 0]
+ **id** | **character**| the ID of the Team whose Access Requirements are retrieved. | 
+ **limit** | **numeric**| - Limits the size of the page returned. For example, a page size of 10 require limit &#x3D; 10. The maximum limit for this call is 50. | [optional] 
+ **offset** | **numeric**| - The index of the pagination offset. For a page size of 10, the first page would be at offset &#x3D; 0, and the second page would be at offset &#x3D; 10. | [optional] 
 
 ### Return type
 
@@ -391,28 +333,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **UpdateAccessRequirement**
-> AccessRequirement UpdateAccessRequirement(requirement.id, access.requirement=var.access.requirement)
+# **PostRepoV1AccessRequirement**
+> OrgSagebionetworksRepoModelAccessRequirement PostRepoV1AccessRequirement(org_sagebionetworks_repo_model_access_requirement)
 
-Modify an existing Access Requirement.
 
-Modify an existing Access Requirement.  This service may only be used by the Synapse Access and Compliance Team. 
 
 ### Example
 ```R
 library(synclient)
 
-var.requirement.id <- 'requirement.id_example' # character | the ID of the requirement.
-var.access.requirement <- AccessRequirement$new(ACCESS_TYPE$new(), "concreteType_example", "createdBy_example", "createdOn_example", "description_example", "etag_example", 123, "modifiedBy_example", "modifiedOn_example", list(RestrictableObjectDescriptor$new("id_example", RestrictableObjectType$new())), 123) # AccessRequirement | The modified Access Requirement.
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_access_requirement <- org.sagebionetworks.repo.model.AccessRequirement$new(123, 123, "description_example", "name_example", "etag_example", "createdOn_example", "modifiedOn_example", "createdBy_example", "modifiedBy_example", "subjectsDefinedByAnnotations_example", c(org.sagebionetworks.repo.model.RestrictableObjectDescriptor$new("id_example", "type_example")), "accessType_example", "concreteType_example", "url_example", "termsOfUse_example", "isCertifiedUserRequired_example", "isValidatedProfileRequired_example", "isDUCRequired_example", "ducTemplateFileHandleId_example", "isIRBApprovalRequired_example", "areOtherAttachmentsRequired_example", 123, "isIDUPublic_example", "isIDURequired_example", "isTwoFaRequired_example", "actContactInfo_example", "openJiraIssue_example", "jiraKey_example") # OrgSagebionetworksRepoModelAccessRequirement | 
 
-#Modify an existing Access Requirement.
-api.instance <- AccessRequirementServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateAccessRequirement(var.requirement.id, access.requirement=var.access.requirement)
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1AccessRequirement(var_org_sagebionetworks_repo_model_access_requirementdata_file = "result.txt")
+result <- api_instance$PostRepoV1AccessRequirement(var_org_sagebionetworks_repo_model_access_requirement)
 dput(result)
 ```
 
@@ -420,12 +360,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requirement.id** | **character**| the ID of the requirement. | 
- **access.requirement** | [**AccessRequirement**](AccessRequirement.md)| The modified Access Requirement. | [optional] 
+ **org_sagebionetworks_repo_model_access_requirement** | [**OrgSagebionetworksRepoModelAccessRequirement**](OrgSagebionetworksRepoModelAccessRequirement.md)|  | 
 
 ### Return type
 
-[**AccessRequirement**](AccessRequirement.md)
+[**OrgSagebionetworksRepoModelAccessRequirement**](org.sagebionetworks.repo.model.AccessRequirement.md)
 
 ### Authorization
 
@@ -439,5 +378,279 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1AccessRequirementRequirementIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList PostRepoV1AccessRequirementRequirementIdAcl(requirement_id, org_sagebionetworks_repo_model_access_control_list)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
+var_org_sagebionetworks_repo_model_access_control_list <- org.sagebionetworks.repo.model.AccessControlList$new("id_example", "createdBy_example", "creationDate_example", "modifiedBy_example", "modifiedOn_example", "etag_example", c(org.sagebionetworks.repo.model.ResourceAccess$new(123, c("accessType_example")))) # OrgSagebionetworksRepoModelAccessControlList | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1AccessRequirementRequirementIdAcl(var_requirement_id, var_org_sagebionetworks_repo_model_access_control_listdata_file = "result.txt")
+result <- api_instance$PostRepoV1AccessRequirementRequirementIdAcl(var_requirement_id, var_org_sagebionetworks_repo_model_access_control_list)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requirement_id** | **character**|  | 
+ **org_sagebionetworks_repo_model_access_control_list** | [**OrgSagebionetworksRepoModelAccessControlList**](OrgSagebionetworksRepoModelAccessControlList.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1AccessRequirementSearch**
+> OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchResponse PostRepoV1AccessRequirementSearch(org_sagebionetworks_repo_model_dataaccess_access_requirement_search_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_dataaccess_access_requirement_search_request <- org.sagebionetworks.repo.model.dataaccess.AccessRequirementSearchRequest$new("nameContains_example", c(123), "relatedProjectId_example", "reviewerId_example", "accessType_example", "type_example", c(org.sagebionetworks.repo.model.dataaccess.AccessRequirementSearchSort$new("field_example", "direction_example")), "nextPageToken_example") # OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchRequest | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1AccessRequirementSearch(var_org_sagebionetworks_repo_model_dataaccess_access_requirement_search_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1AccessRequirementSearch(var_org_sagebionetworks_repo_model_dataaccess_access_requirement_search_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_dataaccess_access_requirement_search_request** | [**OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchRequest**](OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchResponse**](org.sagebionetworks.repo.model.dataaccess.AccessRequirementSearchResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdLockAccessRequirement**
+> OrgSagebionetworksRepoModelAccessRequirement PostRepoV1EntityIdLockAccessRequirement(id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | the ID of the entity to which an Access Requirement will be applied
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdLockAccessRequirement(var_iddata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdLockAccessRequirement(var_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| the ID of the entity to which an Access Requirement will be applied | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessRequirement**](org.sagebionetworks.repo.model.AccessRequirement.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PutRepoV1AccessRequirementConversion**
+> OrgSagebionetworksRepoModelAccessRequirement PutRepoV1AccessRequirementConversion(org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_request <- org.sagebionetworks.repo.model.dataaccess.AccessRequirementConversionRequest$new("accessRequirementId_example", "etag_example", 123) # OrgSagebionetworksRepoModelDataaccessAccessRequirementConversionRequest | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1AccessRequirementConversion(var_org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_requestdata_file = "result.txt")
+result <- api_instance$PutRepoV1AccessRequirementConversion(var_org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_request** | [**OrgSagebionetworksRepoModelDataaccessAccessRequirementConversionRequest**](OrgSagebionetworksRepoModelDataaccessAccessRequirementConversionRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessRequirement**](org.sagebionetworks.repo.model.AccessRequirement.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1AccessRequirementRequirementId**
+> OrgSagebionetworksRepoModelAccessRequirement PutRepoV1AccessRequirementRequirementId(requirement_id, org_sagebionetworks_repo_model_access_requirement)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | the ID of the Access Requirement to be modified.
+var_org_sagebionetworks_repo_model_access_requirement <- org.sagebionetworks.repo.model.AccessRequirement$new(123, 123, "description_example", "name_example", "etag_example", "createdOn_example", "modifiedOn_example", "createdBy_example", "modifiedBy_example", "subjectsDefinedByAnnotations_example", c(org.sagebionetworks.repo.model.RestrictableObjectDescriptor$new("id_example", "type_example")), "accessType_example", "concreteType_example", "url_example", "termsOfUse_example", "isCertifiedUserRequired_example", "isValidatedProfileRequired_example", "isDUCRequired_example", "ducTemplateFileHandleId_example", "isIRBApprovalRequired_example", "areOtherAttachmentsRequired_example", 123, "isIDUPublic_example", "isIDURequired_example", "isTwoFaRequired_example", "actContactInfo_example", "openJiraIssue_example", "jiraKey_example") # OrgSagebionetworksRepoModelAccessRequirement | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1AccessRequirementRequirementId(var_requirement_id, var_org_sagebionetworks_repo_model_access_requirementdata_file = "result.txt")
+result <- api_instance$PutRepoV1AccessRequirementRequirementId(var_requirement_id, var_org_sagebionetworks_repo_model_access_requirement)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requirement_id** | **character**| the ID of the Access Requirement to be modified. | 
+ **org_sagebionetworks_repo_model_access_requirement** | [**OrgSagebionetworksRepoModelAccessRequirement**](OrgSagebionetworksRepoModelAccessRequirement.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessRequirement**](org.sagebionetworks.repo.model.AccessRequirement.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1AccessRequirementRequirementIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList PutRepoV1AccessRequirementRequirementIdAcl(requirement_id, org_sagebionetworks_repo_model_access_control_list)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_requirement_id <- "requirement_id_example" # character | 
+var_org_sagebionetworks_repo_model_access_control_list <- org.sagebionetworks.repo.model.AccessControlList$new("id_example", "createdBy_example", "creationDate_example", "modifiedBy_example", "modifiedOn_example", "etag_example", c(org.sagebionetworks.repo.model.ResourceAccess$new(123, c("accessType_example")))) # OrgSagebionetworksRepoModelAccessControlList | 
+
+api_instance <- AccessRequirementServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1AccessRequirementRequirementIdAcl(var_requirement_id, var_org_sagebionetworks_repo_model_access_control_listdata_file = "result.txt")
+result <- api_instance$PutRepoV1AccessRequirementRequirementIdAcl(var_requirement_id, var_org_sagebionetworks_repo_model_access_control_list)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requirement_id** | **character**|  | 
+ **org_sagebionetworks_repo_model_access_control_list** | [**OrgSagebionetworksRepoModelAccessControlList**](OrgSagebionetworksRepoModelAccessControlList.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
 

@@ -3,13 +3,11 @@
 
 context("Test ListWrapperOfUserProfile")
 
-model.instance <- ListWrapperOfUserProfile$new()
+model_instance <- ListWrapperOfUserProfile$new()
 
 test_that("list", {
-  # tests for the property `list` (array[UserProfile])
-  # List of UserProfiles.
+  # tests for the property `list` (array[OrgSagebionetworksRepoModelUserProfile])
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`list`, "EXPECTED_RESULT")
 })
-

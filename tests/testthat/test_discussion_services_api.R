@@ -3,173 +3,266 @@
 
 context("Test DiscussionServicesApi")
 
-api.instance <- DiscussionServicesApi$new()
+api_instance <- DiscussionServicesApi$new()
 
-test_that("CreateThread", {
-  # tests for CreateThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Create a new thread in a forum.
-  # This API is used to create a new thread in a forum.  Target users: anyone who has READ permission to the project. 
-  # @param create.discussion.thread CreateDiscussionThread  (optional)
-  # @return [DiscussionThreadBundle]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("DeleteThread", {
-  # tests for DeleteThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Delete a Thread.
-  # This API is used to mark a thread as deleted.  Target users: only forum&#39;s moderator can mark a thread as deleted. 
-  # @param thread.id character The ID of a thread.
+test_that("DeleteRepoV1ReplyReplyId", {
+  # tests for DeleteRepoV1ReplyReplyId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param reply_id character - the ID of the reply being marked as deleted
   # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetRepliesForThread", {
-  # tests for GetRepliesForThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get N number of replies for a given thread ID.
-  # This API is used to get N number of replies for a given thread ID.  Target users: anyone who has READ permission to the project. 
-  # @param thread.id character The ID of a thread.
-  # @param filter character Filter deleted not deleted replies.
-  # @param ascending character The direction of sort: true for ascending, and false for descending (optional)
-  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10.  (optional)
-  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.'  (optional)
-  # @param sort character The field to sort the resulting replies on.  (optional)
-  # @return [PaginatedResultsOfDiscussionReplyBundle]
+test_that("DeleteRepoV1ThreadThreadId", {
+  # tests for DeleteRepoV1ThreadThreadId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - the ID of the thread being marked as deleted
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetReplyCountForThread", {
-  # tests for GetReplyCountForThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the total number of replies for a given Thread. 
-  # This API is used to get the total number of replies for a given thread ID.  Target users: anyone who has READ permission to the project.&#39; 
-  # @param thread.id character The ID of a thread.
-  # @param filter character Filter deleted not deleted replies.
-  # @return [ReplyCount]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetThread", {
-  # tests for GetThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get a thread.
-  # This API is used to get a thread and its statistic given its ID.  Target users: anyone who has READ permission to the project. 
-  # @param thread.id character The ID of a thread.
-  # @return [DiscussionThreadBundle]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetThreadCounts", {
-  # tests for GetThreadCounts
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get number of threads that belong to projects user can view and references the given entity. 
-  # This API is used to get list of entity and count pairs, with count is the number of threads that belong to projects user can view and references the given entity.  Target users: anyone who has READ permission to the project. 
-  # @param entity.id.list EntityIdList The requested list. Limit size 20. (optional)
-  # @return [EntityThreadCounts]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetThreadUrl", {
-  # tests for GetThreadUrl
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the message URL of a thread.
-  # This API is used to get the message URL of a thread. The message URL is the URL to download the file which contains the thread message.  Target users: anyone who has READ permission to the project.  The resulting URL will be signed with Content-Type &#x3D;\&quot;text/plain; charset&#x3D;utf-8\&quot;; therefore, this header must be included with the GET on the URL. 
-  # @param message.key character Message Key
-  # @return [MessageURL]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetThreadsForEntity", {
-  # tests for GetThreadsForEntity
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # This API is used to get N number of threads that belongs to projects user can view and references the given entity. 
-  # This API is used to get N number of threads that belongs to projects user can view and references the given entity.  Target users: anyone who has READ permission to the entity. 
-  # @param id character The ID of an Entity.
-  # @param ascending character The direction of sort: true for ascending, and false for descending (optional)
-  # @param limit numeric Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 20.'  (optional)
-  # @param offset numeric The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.'  (optional)
-  # @param sort character The field to sort the resulting threads on. Available options DiscussionThreadOrder  (optional)
+test_that("GetRepoV1EntityIdThreads", {
+  # tests for GetRepoV1EntityIdThreads
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 20.
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.
+  # @param id character - The request entityId
+  # @param sort OrgSagebionetworksRepoModelDiscussionDiscussionThreadOrder - The field to sort the resulting threads on. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionThreadOrder}\">,DiscussionThreadOrder,</a>,. (optional)
+  # @param ascending character - The direction of sort: true for ascending, and false for descending (optional)
   # @return [PaginatedResultsOfDiscussionThreadBundle]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("PinThread", {
-  # tests for PinThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Pin a Thread.
-  # This API is used to mark a thread as pinned.  Target users: only forum&#39;s moderator can mark a thread as pinned. 
-  # @param thread.id character The ID of a thread.
+test_that("GetRepoV1ForumForumId", {
+  # tests for GetRepoV1ForumForumId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param forum_id character - The ID of the forum.
+  # @return [OrgSagebionetworksRepoModelDiscussionForum]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ForumForumIdModerators", {
+  # tests for GetRepoV1ForumForumIdModerators
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 100.
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.
+  # @param forum_id character - The forum ID to which the returning mederators belong
+  # @return [OrgSagebionetworksRepoModelPaginatedIds]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ForumForumIdThreadcount", {
+  # tests for GetRepoV1ForumForumIdThreadcount
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param filter OrgSagebionetworksRepoModelDiscussionDiscussionFilter - Filter deleted/ not deleted threads. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionFilter}\">,DiscussionFilter,</a>,.
+  # @param forum_id character - The forum ID to which the returning threads belong
+  # @return [OrgSagebionetworksRepoModelDiscussionThreadCount]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ForumForumIdThreads", {
+  # tests for GetRepoV1ForumForumIdThreads
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 20.
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.
+  # @param filter OrgSagebionetworksRepoModelDiscussionDiscussionFilter - Filter deleted/ not deleted threads. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionFilter}\">,DiscussionFilter,</a>,.
+  # @param forum_id character - The forum ID to which the returning threads belong
+  # @param sort OrgSagebionetworksRepoModelDiscussionDiscussionThreadOrder - The field to sort the resulting threads on. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionThreadOrder}\">,DiscussionThreadOrder,</a>,. (optional)
+  # @param ascending character - The direction of sort: true for ascending, and false for descending (optional)
+  # @return [PaginatedResultsOfDiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ProjectProjectIdForum", {
+  # tests for GetRepoV1ProjectProjectIdForum
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param project_id character - The ID of the project to which the forum belongs.
+  # @return [OrgSagebionetworksRepoModelDiscussionForum]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ReplyMessageUrl", {
+  # tests for GetRepoV1ReplyMessageUrl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_key character - DiscussionReplyBundle.messageKey
+  # @return [OrgSagebionetworksRepoModelDiscussionMessageURL]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ReplyReplyId", {
+  # tests for GetRepoV1ReplyReplyId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param reply_id character - The ID of the reply being requested
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionReplyBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ThreadMessageUrl", {
+  # tests for GetRepoV1ThreadMessageUrl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_key character 
+  # @return [OrgSagebionetworksRepoModelDiscussionMessageURL]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ThreadThreadId", {
+  # tests for GetRepoV1ThreadThreadId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - The ID of the thread being requested
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ThreadThreadIdReplies", {
+  # tests for GetRepoV1ThreadThreadIdReplies
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum Limit for this call is 100.
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.
+  # @param filter OrgSagebionetworksRepoModelDiscussionDiscussionFilter - Filter deleted/ not deleted replies. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionFilter}\">,DiscussionFilter,</a>,.
+  # @param thread_id character - The thread ID to which the returning replies belong
+  # @param sort OrgSagebionetworksRepoModelDiscussionDiscussionReplyOrder - The field to sort the resulting replies on. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionReplyOrder}\">,DiscussionReplyOrder,</a>,. (optional)
+  # @param ascending character - The direction of sort: true for ascending, and false for descending (optional)
+  # @return [PaginatedResultsOfDiscussionReplyBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1ThreadThreadIdReplycount", {
+  # tests for GetRepoV1ThreadThreadIdReplycount
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param filter OrgSagebionetworksRepoModelDiscussionDiscussionFilter - Filter deleted/ not deleted replies. Available options: ,<a href=\"${org.sagebionetworks.repo.model.discussion.DiscussionFilter}\">,DiscussionFilter,</a>,.
+  # @param thread_id character - The thread ID to which the returning replies belong
+  # @return [OrgSagebionetworksRepoModelDiscussionReplyCount]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityThreadcounts", {
+  # tests for PostRepoV1EntityThreadcounts
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_entity_id_list OrgSagebionetworksRepoModelEntityIdList 
+  # @return [OrgSagebionetworksRepoModelDiscussionEntityThreadCounts]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1ForumForumIdSearch", {
+  # tests for PostRepoV1ForumForumIdSearch
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param forum_id character The ID of the forum where the search is performed
+  # @param org_sagebionetworks_repo_model_discussion_discussion_search_request OrgSagebionetworksRepoModelDiscussionDiscussionSearchRequest 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionSearchResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1Reply", {
+  # tests for PostRepoV1Reply
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_discussion_create_discussion_reply OrgSagebionetworksRepoModelDiscussionCreateDiscussionReply 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionReplyBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1Thread", {
+  # tests for PostRepoV1Thread
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_discussion_create_discussion_thread OrgSagebionetworksRepoModelDiscussionCreateDiscussionThread 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1ReplyReplyIdMessage", {
+  # tests for PutRepoV1ReplyReplyIdMessage
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param reply_id character - The ID of the reply being updated
+  # @param org_sagebionetworks_repo_model_discussion_update_reply_message OrgSagebionetworksRepoModelDiscussionUpdateReplyMessage 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionReplyBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1ThreadThreadIdMessage", {
+  # tests for PutRepoV1ThreadThreadIdMessage
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - The ID of the thread being updated
+  # @param org_sagebionetworks_repo_model_discussion_update_thread_message OrgSagebionetworksRepoModelDiscussionUpdateThreadMessage 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionThreadBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1ThreadThreadIdPin", {
+  # tests for PutRepoV1ThreadThreadIdPin
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - the ID of the thread being marked as pinned
   # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("RestoreDeletedThread", {
-  # tests for RestoreDeletedThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Restore a deleted thread.
-  # This API is used to restore a deleted thread.  Target users: only forum&#39;s moderator can restore a deleted thread. 
-  # @param thread.id character The ID of a thread.
-  # @return [character]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("UnpinThread", {
-  # tests for UnpinThread
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Unpin a thread.
-  # This API is used to unpin a thread.  Target users: only forum&#39;s moderator can unpin a thread. 
-  # @param thread.id character The ID of a thread.
+test_that("PutRepoV1ThreadThreadIdRestore", {
+  # tests for PutRepoV1ThreadThreadIdRestore
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - the ID of the thread that was marked as deleted
   # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("UpdateThreadMessage", {
-  # tests for UpdateThreadMessage
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Update the message of a thread.
-  # This API is used to update the message of a thread.  Target users: only the author of the thread can update its message.&#39; 
-  # @param thread.id character The ID of a thread.
-  # @param update.thread.message UpdateThreadMessage  (optional)
-  # @return [DiscussionThreadBundle]
+test_that("PutRepoV1ThreadThreadIdTitle", {
+  # tests for PutRepoV1ThreadThreadIdTitle
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - The ID of the thread being updated
+  # @param org_sagebionetworks_repo_model_discussion_update_thread_title OrgSagebionetworksRepoModelDiscussionUpdateThreadTitle 
+  # @return [OrgSagebionetworksRepoModelDiscussionDiscussionThreadBundle]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("UpdateThreadTitle", {
-  # tests for UpdateThreadTitle
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Update the title of a Thread.
-  # This API is used to update the title of a thread.  Target users: only the author of the thread can update its title.&#39; 
-  # @param thread.id character The ID of a thread.
-  # @param update.thread.title UpdateThreadTitle  (optional)
-  # @return [DiscussionThreadBundle]
+test_that("PutRepoV1ThreadThreadIdUnpin", {
+  # tests for PutRepoV1ThreadThreadIdUnpin
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param thread_id character - the ID of the thread being unpinned
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-

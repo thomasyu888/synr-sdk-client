@@ -3,45 +3,152 @@
 
 context("Test AccessRequirementServicesApi")
 
-api.instance <- AccessRequirementServicesApi$new()
+api_instance <- AccessRequirementServicesApi$new()
 
-test_that("CreateLockAccessRequirement", {
-  # tests for CreateLockAccessRequirement
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Add a temporary access restriction that prevents access pending review by the Synapse ACT. 
-  # Add a temporary access restriction that prevents access pending review by the Synapse Access and Compliance Team. This service may be used only by an administrator of the specified entity. 
-  # @param id character The ID of an Entity.
-  # @return [AccessRequirement]
+test_that("DeleteRepoV1AccessRequirementRequirementId", {
+  # tests for DeleteRepoV1AccessRequirementRequirementId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character the ID of the requirement to delete
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetEntityAccessRequirements", {
-  # tests for GetEntityAccessRequirements
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve paginated list of ALL Access Requirements associated with an entity.
-  # Retrieve paginated list of ALL Access Requirements associated with an entity. 
-  # @param id character The ID of an Entity.
-  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.  (optional)
-  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.  (optional)
+test_that("DeleteRepoV1AccessRequirementRequirementIdAcl", {
+  # tests for DeleteRepoV1AccessRequirementRequirementIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1AccessRequirementRequirementId", {
+  # tests for GetRepoV1AccessRequirementRequirementId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [OrgSagebionetworksRepoModelAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1AccessRequirementRequirementIdAcl", {
+  # tests for GetRepoV1AccessRequirementRequirementIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [OrgSagebionetworksRepoModelAccessControlList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1AccessRequirementRequirementIdSubjects", {
+  # tests for GetRepoV1AccessRequirementRequirementIdSubjects
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @param next_page_token character  (optional)
+  # @return [OrgSagebionetworksRepoModelRestrictableObjectDescriptorResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1EntityIdAccessRequirement", {
+  # tests for GetRepoV1EntityIdAccessRequirement
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. (optional)
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. (optional)
   # @return [PaginatedResultsOfAccessRequirement]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetTeamAccessRequirements", {
-  # tests for GetTeamAccessRequirements
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve paginated list of ALL Access Requirements associated with a Team.
-  # Retrieve paginated list of ALL Access Requirements associated with a Team. 
-  # @param id character the ID of the Team.
-  # @param limit integer Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50.  (optional)
-  # @param offset integer The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10.  (optional)
+test_that("GetRepoV1TeamIdAccessRequirement", {
+  # tests for GetRepoV1TeamIdAccessRequirement
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the Team whose Access Requirements are retrieved.
+  # @param limit numeric - Limits the size of the page returned. For example, a page size of 10 require limit = 10. The maximum limit for this call is 50. (optional)
+  # @param offset numeric - The index of the pagination offset. For a page size of 10, the first page would be at offset = 0, and the second page would be at offset = 10. (optional)
   # @return [PaginatedResultsOfAccessRequirement]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("PostRepoV1AccessRequirement", {
+  # tests for PostRepoV1AccessRequirement
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_access_requirement OrgSagebionetworksRepoModelAccessRequirement 
+  # @return [OrgSagebionetworksRepoModelAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1AccessRequirementRequirementIdAcl", {
+  # tests for PostRepoV1AccessRequirementRequirementIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @param org_sagebionetworks_repo_model_access_control_list OrgSagebionetworksRepoModelAccessControlList 
+  # @return [OrgSagebionetworksRepoModelAccessControlList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1AccessRequirementSearch", {
+  # tests for PostRepoV1AccessRequirementSearch
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_dataaccess_access_requirement_search_request OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessAccessRequirementSearchResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdLockAccessRequirement", {
+  # tests for PostRepoV1EntityIdLockAccessRequirement
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the entity to which an Access Requirement will be applied
+  # @return [OrgSagebionetworksRepoModelAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1AccessRequirementConversion", {
+  # tests for PutRepoV1AccessRequirementConversion
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_dataaccess_access_requirement_conversion_request OrgSagebionetworksRepoModelDataaccessAccessRequirementConversionRequest 
+  # @return [OrgSagebionetworksRepoModelAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1AccessRequirementRequirementId", {
+  # tests for PutRepoV1AccessRequirementRequirementId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character the ID of the Access Requirement to be modified.
+  # @param org_sagebionetworks_repo_model_access_requirement OrgSagebionetworksRepoModelAccessRequirement 
+  # @return [OrgSagebionetworksRepoModelAccessRequirement]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1AccessRequirementRequirementIdAcl", {
+  # tests for PutRepoV1AccessRequirementRequirementIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @param org_sagebionetworks_repo_model_access_control_list OrgSagebionetworksRepoModelAccessControlList 
+  # @return [OrgSagebionetworksRepoModelAccessControlList]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

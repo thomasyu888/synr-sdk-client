@@ -1,144 +1,47 @@
 # ChallengeServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateChallenge**](ChallengeServicesApi.md#CreateChallenge) | **POST** /challenge | Create a Challenge object, associated with a Project.
-[**CreateChallengeTeam**](ChallengeServicesApi.md#CreateChallengeTeam) | **POST** /challenge/{challengeId}/challengeTeam | Register a Team with a Challenge.
-[**DeleteChallenge**](ChallengeServicesApi.md#DeleteChallenge) | **DELETE** /challenge/{challengeId} | Delete a Challenge.
-[**DeleteChallengeTeam**](ChallengeServicesApi.md#DeleteChallengeTeam) | **DELETE** /challengeTeam/{challengeTeamId} | De-register a Team from a Challenge.
-[**GetChallenge**](ChallengeServicesApi.md#GetChallenge) | **GET** /challenge/{challengeId} | Retrieve a Challenge given its ID.
-[**GetChallengeByProjectId**](ChallengeServicesApi.md#GetChallengeByProjectId) | **GET** /entity/{id}/challenge | Retrieve a Challenge given the ID of its associated Project.
-[**ListChallengeTeams**](ChallengeServicesApi.md#ListChallengeTeams) | **GET** /challenge/{challengeId}/challengeTeam | List the Teams registered for a Challenge.
-[**ListChallengesForParticipant**](ChallengeServicesApi.md#ListChallengesForParticipant) | **GET** /challenge | List the Challenges for which the given participant is registered.
-[**ListParticipantsInChallenge**](ChallengeServicesApi.md#ListParticipantsInChallenge) | **GET** /challenge/{challengeId}/participant | List the participants registered for a Challenge.
-[**ListRegistratableTeams**](ChallengeServicesApi.md#ListRegistratableTeams) | **GET** /challenge/{challengeId}/registratableTeam | List the Teams that caller can register for the Challenge.
-[**ListSubmissionTeams**](ChallengeServicesApi.md#ListSubmissionTeams) | **GET** /challenge/{challengeId}/submissionTeams | List the Teams under which the given submitter may submit to the Challenge.
-[**UpdateChallenge**](ChallengeServicesApi.md#UpdateChallenge) | **PUT** /challenge/{challengeId} | Update a Challenge.
-[**UpdateChallengeTeam**](ChallengeServicesApi.md#UpdateChallengeTeam) | **PUT** /challenge/{challengeId}/challengeTeam/{challengeTeamId} | Update a Challenge Team.
+[**DeleteRepoV1ChallengeChallengeId**](ChallengeServicesApi.md#DeleteRepoV1ChallengeChallengeId) | **DELETE** /repo/v1/challenge/{challengeId} | 
+[**DeleteRepoV1ChallengeTeamChallengeTeamId**](ChallengeServicesApi.md#DeleteRepoV1ChallengeTeamChallengeTeamId) | **DELETE** /repo/v1/challengeTeam/{challengeTeamId} | 
+[**GetRepoV1Challenge**](ChallengeServicesApi.md#GetRepoV1Challenge) | **GET** /repo/v1/challenge | 
+[**GetRepoV1ChallengeChallengeId**](ChallengeServicesApi.md#GetRepoV1ChallengeChallengeId) | **GET** /repo/v1/challenge/{challengeId} | 
+[**GetRepoV1ChallengeChallengeIdChallengeTeam**](ChallengeServicesApi.md#GetRepoV1ChallengeChallengeIdChallengeTeam) | **GET** /repo/v1/challenge/{challengeId}/challengeTeam | 
+[**GetRepoV1ChallengeChallengeIdParticipant**](ChallengeServicesApi.md#GetRepoV1ChallengeChallengeIdParticipant) | **GET** /repo/v1/challenge/{challengeId}/participant | 
+[**GetRepoV1ChallengeChallengeIdRegistratableTeam**](ChallengeServicesApi.md#GetRepoV1ChallengeChallengeIdRegistratableTeam) | **GET** /repo/v1/challenge/{challengeId}/registratableTeam | 
+[**GetRepoV1ChallengeChallengeIdSubmissionTeams**](ChallengeServicesApi.md#GetRepoV1ChallengeChallengeIdSubmissionTeams) | **GET** /repo/v1/challenge/{challengeId}/submissionTeams | 
+[**GetRepoV1EntityIdChallenge**](ChallengeServicesApi.md#GetRepoV1EntityIdChallenge) | **GET** /repo/v1/entity/{id}/challenge | 
+[**PostRepoV1Challenge**](ChallengeServicesApi.md#PostRepoV1Challenge) | **POST** /repo/v1/challenge | 
+[**PostRepoV1ChallengeChallengeIdChallengeTeam**](ChallengeServicesApi.md#PostRepoV1ChallengeChallengeIdChallengeTeam) | **POST** /repo/v1/challenge/{challengeId}/challengeTeam | 
+[**PutRepoV1ChallengeChallengeId**](ChallengeServicesApi.md#PutRepoV1ChallengeChallengeId) | **PUT** /repo/v1/challenge/{challengeId} | 
+[**PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId**](ChallengeServicesApi.md#PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId) | **PUT** /repo/v1/challenge/{challengeId}/challengeTeam/{challengeTeamId} | 
 
 
-# **CreateChallenge**
-> Challenge CreateChallenge(challenge=var.challenge)
+# **DeleteRepoV1ChallengeChallengeId**
+> DeleteRepoV1ChallengeChallengeId(challenge_id)
 
-Create a Challenge object, associated with a Project.
 
-Create a Challenge object, associated with a Project.  A participant Team must be specified.  To create a Challenge one must have CREATE permission on the associated Project. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge <- Challenge$new("etag_example", "projectId_example", "participantTeamId_example", "id_example") # Challenge | 
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
 
-#Create a Challenge object, associated with a Project.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateChallenge(challenge=var.challenge)
-dput(result)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1ChallengeChallengeId(var_challenge_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge** | [**Challenge**](Challenge.md)|  | [optional] 
-
-### Return type
-
-[**Challenge**](Challenge.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **CreateChallengeTeam**
-> ChallengeTeam CreateChallengeTeam(challenge.id, challenge.team=var.challenge.team)
-
-Register a Team with a Challenge.
-
-Register a Team with a Challenge. You must be a member of the Challenge's participant Team (i.e. you must be already registered for the Challenge) and be an administrator on the Team being registered. 
-
-### Example
-```R
-library(synclient)
-
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.challenge.team <- ChallengeTeam$new("id_example", "teamId_example", "challengeId_example", "message_example", "etag_example") # ChallengeTeam | 
-
-#Register a Team with a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateChallengeTeam(var.challenge.id, challenge.team=var.challenge.team)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **challenge.team** | [**ChallengeTeam**](ChallengeTeam.md)|  | [optional] 
-
-### Return type
-
-[**ChallengeTeam**](ChallengeTeam.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **DeleteChallenge**
-> DeleteChallenge(challenge.id)
-
-Delete a Challenge.
-
-Delete a Challenge.  The caller must have DELETE permission on the project associated with the Challenge. 
-
-### Example
-```R
-library(synclient)
-
-var.challenge.id <- 56 # integer | The ID of the challenge.
-
-#Delete a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteChallenge(var.challenge.id)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
+ **challenge_id** | **numeric**|  | 
 
 ### Return type
 
@@ -156,34 +59,31 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The resource was deleted successfully. |  -  |
+| **200** | Void |  -  |
 
-# **DeleteChallengeTeam**
-> DeleteChallengeTeam(challenge.team.id)
+# **DeleteRepoV1ChallengeTeamChallengeTeamId**
+> DeleteRepoV1ChallengeTeamChallengeTeamId(challenge_team_id)
 
-De-register a Team from a Challenge.
 
-De-register a Team from a Challenge. You must be a member of the Challenge's participant Team (i.e. you must be already registered for the Challenge) and be an administrator on the Team being de-registered. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.team.id <- 56 # integer | The ID of the challenge team.
+# prepare function argument(s)
+var_challenge_team_id <- 3.4 # numeric | 
 
-#De-register a Team from a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-api.instance$DeleteChallengeTeam(var.challenge.team.id)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1ChallengeTeamChallengeTeamId(var_challenge_team_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.team.id** | **integer**| The ID of the challenge team. | 
+ **challenge_team_id** | **numeric**|  | 
 
 ### Return type
 
@@ -201,27 +101,28 @@ void (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | The resource was deleted successfully. |  -  |
+| **200** | Void |  -  |
 
-# **GetChallenge**
-> Challenge GetChallenge(challenge.id)
+# **GetRepoV1Challenge**
+> OrgSagebionetworksRepoModelChallengePagedResults GetRepoV1Challenge(participant_id, limit = var.limit, offset = var.offset)
 
-Retrieve a Challenge given its ID.
 
-Retrieve a Challenge given its ID.  To retrieve a Challenge one must have READ permission on the associated Project. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
+# prepare function argument(s)
+var_participant_id <- 3.4 # numeric | 
+var_limit <- 3.4 # numeric |  (Optional)
+var_offset <- 3.4 # numeric |  (Optional)
 
-#Retrieve a Challenge given its ID.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetChallenge(var.challenge.id)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1Challenge(var_participant_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1Challenge(var_participant_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -229,11 +130,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
+ **participant_id** | **numeric**|  | 
+ **limit** | **numeric**|  | [optional] 
+ **offset** | **numeric**|  | [optional] 
 
 ### Return type
 
-[**Challenge**](Challenge.md)
+[**OrgSagebionetworksRepoModelChallengePagedResults**](org.sagebionetworks.repo.model.ChallengePagedResults.md)
 
 ### Authorization
 
@@ -247,27 +150,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetChallengeByProjectId**
-> Challenge GetChallengeByProjectId(id)
+# **GetRepoV1ChallengeChallengeId**
+> OrgSagebionetworksRepoModelChallenge GetRepoV1ChallengeChallengeId(challenge_id)
 
-Retrieve a Challenge given the ID of its associated Project.
 
-Retrieve a Challenge given the ID of its associated Project.  To retrieve a Challenge one must have READ permission on the Project. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | Synapse Project id
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
 
-#Retrieve a Challenge given the ID of its associated Project.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetChallengeByProjectId(var.id)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ChallengeChallengeId(var_challenge_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1ChallengeChallengeId(var_challenge_id)
 dput(result)
 ```
 
@@ -275,11 +177,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| Synapse Project id | 
+ **challenge_id** | **numeric**|  | 
 
 ### Return type
 
-[**Challenge**](Challenge.md)
+[**OrgSagebionetworksRepoModelChallenge**](org.sagebionetworks.repo.model.Challenge.md)
 
 ### Authorization
 
@@ -293,29 +195,28 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListChallengeTeams**
-> ChallengeTeamPagedResults ListChallengeTeams(challenge.id, limit=10, offset=0)
+# **GetRepoV1ChallengeChallengeIdChallengeTeam**
+> OrgSagebionetworksRepoModelChallengeTeamPagedResults GetRepoV1ChallengeChallengeIdChallengeTeam(challenge_id, limit = var.limit, offset = var.offset)
 
-List the Teams registered for a Challenge.
 
-List the Teams registered for a Challenge.  You must have READ permission in the associated Project to make this request. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | Index of the first result that must be returned
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_limit <- 3.4 # numeric |  (Optional)
+var_offset <- 3.4 # numeric |  (Optional)
 
-#List the Teams registered for a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListChallengeTeams(var.challenge.id, limit=var.limit, offset=var.offset)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ChallengeChallengeIdChallengeTeam(var_challenge_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1ChallengeChallengeIdChallengeTeam(var_challenge_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -323,13 +224,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| Index of the first result that must be returned | [optional] [default to 0]
+ **challenge_id** | **numeric**|  | 
+ **limit** | **numeric**|  | [optional] 
+ **offset** | **numeric**|  | [optional] 
 
 ### Return type
 
-[**ChallengeTeamPagedResults**](ChallengeTeamPagedResults.md)
+[**OrgSagebionetworksRepoModelChallengeTeamPagedResults**](org.sagebionetworks.repo.model.ChallengeTeamPagedResults.md)
 
 ### Authorization
 
@@ -343,29 +244,29 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListChallengesForParticipant**
-> ChallengePagedResults ListChallengesForParticipant(participant.id, limit=10, offset=0)
+# **GetRepoV1ChallengeChallengeIdParticipant**
+> OrgSagebionetworksRepoModelPaginatedIds GetRepoV1ChallengeChallengeIdParticipant(challenge_id, affiliated = var.affiliated, limit = var.limit, offset = var.offset)
 
-List the Challenges for which the given participant is registered.
 
-List the Challenges for which the given participant is registered. To be in the returned list the caller must have READ permission on the project associated with the Challenge. 
 
 ### Example
 ```R
 library(synclient)
 
-var.participant.id <- 56 # integer | Synapse user id
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | Index of the first result that must be returned
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_affiliated <- "affiliated_example" # character | If affiliated=true, return just participants affiliated with some   registered Team.  If false, return those not affiliated with any registered Team.    If omitted return all participants. (Optional)
+var_limit <- 3.4 # numeric |  (Optional)
+var_offset <- 3.4 # numeric |  (Optional)
 
-#List the Challenges for which the given participant is registered.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListChallengesForParticipant(var.participant.id, limit=var.limit, offset=var.offset)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ChallengeChallengeIdParticipant(var_challenge_id, affiliated = var_affiliated, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1ChallengeChallengeIdParticipant(var_challenge_id, affiliated = var_affiliated, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -373,13 +274,14 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **participant.id** | **integer**| Synapse user id | 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| Index of the first result that must be returned | [optional] [default to 0]
+ **challenge_id** | **numeric**|  | 
+ **affiliated** | **character**| If affiliated&#x3D;true, return just participants affiliated with some   registered Team.  If false, return those not affiliated with any registered Team.    If omitted return all participants. | [optional] 
+ **limit** | **numeric**|  | [optional] 
+ **offset** | **numeric**|  | [optional] 
 
 ### Return type
 
-[**ChallengePagedResults**](ChallengePagedResults.md)
+[**OrgSagebionetworksRepoModelPaginatedIds**](org.sagebionetworks.repo.model.PaginatedIds.md)
 
 ### Authorization
 
@@ -393,30 +295,28 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListParticipantsInChallenge**
-> PaginatedIds ListParticipantsInChallenge(challenge.id, affiliated=var.affiliated, limit=10, offset=0)
+# **GetRepoV1ChallengeChallengeIdRegistratableTeam**
+> OrgSagebionetworksRepoModelPaginatedIds GetRepoV1ChallengeChallengeIdRegistratableTeam(challenge_id, limit = var.limit, offset = var.offset)
 
-List the participants registered for a Challenge.
 
-List the participants registered for a Challenge. The caller must have READ permission on the project associated with the Challenge.
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.affiliated <- 'affiliated_example' # character | If affiliated=true, return just participants affiliated with some registered Team.  If false, return those not affiliated with any registered Team. If omitted return all participants. 
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | Index of the first result that must be returned
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_limit <- 3.4 # numeric |  (Optional)
+var_offset <- 3.4 # numeric |  (Optional)
 
-#List the participants registered for a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListParticipantsInChallenge(var.challenge.id, affiliated=var.affiliated, limit=var.limit, offset=var.offset)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ChallengeChallengeIdRegistratableTeam(var_challenge_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1ChallengeChallengeIdRegistratableTeam(var_challenge_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -424,14 +324,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **affiliated** | **character**| If affiliated&#x3D;true, return just participants affiliated with some registered Team.  If false, return those not affiliated with any registered Team. If omitted return all participants.  | [optional] 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| Index of the first result that must be returned | [optional] [default to 0]
+ **challenge_id** | **numeric**|  | 
+ **limit** | **numeric**|  | [optional] 
+ **offset** | **numeric**|  | [optional] 
 
 ### Return type
 
-[**PaginatedIds**](PaginatedIds.md)
+[**OrgSagebionetworksRepoModelPaginatedIds**](org.sagebionetworks.repo.model.PaginatedIds.md)
 
 ### Authorization
 
@@ -445,29 +344,28 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListRegistratableTeams**
-> PaginatedIds ListRegistratableTeams(challenge.id, limit=10, offset=0)
+# **GetRepoV1ChallengeChallengeIdSubmissionTeams**
+> OrgSagebionetworksRepoModelPaginatedIds GetRepoV1ChallengeChallengeIdSubmissionTeams(challenge_id, limit = var.limit, offset = var.offset)
 
-List the Teams that caller can register for the Challenge.
 
-List the Teams that caller can register for the Challenge, i.e. Teams on which the caller is an administrator and which are not already registered. The caller must have READ permission on the project associated with the Challenge to make this request. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | Index of the first result that must be returned
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_limit <- 3.4 # numeric |  (Optional)
+var_offset <- 3.4 # numeric |  (Optional)
 
-#List the Teams that caller can register for the Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListRegistratableTeams(var.challenge.id, limit=var.limit, offset=var.offset)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ChallengeChallengeIdSubmissionTeams(var_challenge_id, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1ChallengeChallengeIdSubmissionTeams(var_challenge_id, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -475,13 +373,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| Index of the first result that must be returned | [optional] [default to 0]
+ **challenge_id** | **numeric**|  | 
+ **limit** | **numeric**|  | [optional] 
+ **offset** | **numeric**|  | [optional] 
 
 ### Return type
 
-[**PaginatedIds**](PaginatedIds.md)
+[**OrgSagebionetworksRepoModelPaginatedIds**](org.sagebionetworks.repo.model.PaginatedIds.md)
 
 ### Authorization
 
@@ -495,29 +393,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListSubmissionTeams**
-> PaginatedIds ListSubmissionTeams(challenge.id, limit=10, offset=0)
+# **GetRepoV1EntityIdChallenge**
+> OrgSagebionetworksRepoModelChallenge GetRepoV1EntityIdChallenge(id)
 
-List the Teams under which the given submitter may submit to the Challenge.
 
-List the Teams under which the given submitter may submit to the Challenge, i.e. the Teams on which the user is a member and which are registered for the Challenge. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.limit <- 10 # integer | Maximum number of results returned
-var.offset <- 0 # integer | Index of the first result that must be returned
+# prepare function argument(s)
+var_id <- "id_example" # character | 
 
-#List the Teams under which the given submitter may submit to the Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListSubmissionTeams(var.challenge.id, limit=var.limit, offset=var.offset)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdChallenge(var_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdChallenge(var_id)
 dput(result)
 ```
 
@@ -525,13 +420,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **limit** | **integer**| Maximum number of results returned | [optional] [default to 10]
- **offset** | **integer**| Index of the first result that must be returned | [optional] [default to 0]
+ **id** | **character**|  | 
 
 ### Return type
 
-[**PaginatedIds**](PaginatedIds.md)
+[**OrgSagebionetworksRepoModelChallenge**](org.sagebionetworks.repo.model.Challenge.md)
 
 ### Authorization
 
@@ -545,28 +438,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **UpdateChallenge**
-> Challenge UpdateChallenge(challenge.id, challenge=var.challenge)
+# **PostRepoV1Challenge**
+> OrgSagebionetworksRepoModelChallenge PostRepoV1Challenge(org_sagebionetworks_repo_model_challenge)
 
-Update a Challenge.
 
-Update a Challenge.  The caller must have UPDATE permission on the project associated with the Challenge.  It is not permitted to change the project associated with a Challenge. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.challenge <- Challenge$new("etag_example", "projectId_example", "participantTeamId_example", "id_example") # Challenge | 
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_challenge <- org.sagebionetworks.repo.model.Challenge$new("id_example", "etag_example", "projectId_example", "participantTeamId_example") # OrgSagebionetworksRepoModelChallenge | 
 
-#Update a Challenge.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateChallenge(var.challenge.id, challenge=var.challenge)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1Challenge(var_org_sagebionetworks_repo_model_challengedata_file = "result.txt")
+result <- api_instance$PostRepoV1Challenge(var_org_sagebionetworks_repo_model_challenge)
 dput(result)
 ```
 
@@ -574,12 +465,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **challenge** | [**Challenge**](Challenge.md)|  | [optional] 
+ **org_sagebionetworks_repo_model_challenge** | [**OrgSagebionetworksRepoModelChallenge**](OrgSagebionetworksRepoModelChallenge.md)|  | 
 
 ### Return type
 
-[**Challenge**](Challenge.md)
+[**OrgSagebionetworksRepoModelChallenge**](org.sagebionetworks.repo.model.Challenge.md)
 
 ### Authorization
 
@@ -593,29 +483,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
 
-# **UpdateChallengeTeam**
-> ChallengeTeam UpdateChallengeTeam(challenge.id, challenge.team.id, challenge.team=var.challenge.team)
+# **PostRepoV1ChallengeChallengeIdChallengeTeam**
+> OrgSagebionetworksRepoModelChallengeTeam PostRepoV1ChallengeChallengeIdChallengeTeam(challenge_id, org_sagebionetworks_repo_model_challenge_team)
 
-Update a Challenge Team.
 
-Update a Challenge Team. You must be a member of the Challenge's participant Team (i.e. you must be already registered for the Challenge) and be an administrator on the associated Team. 
 
 ### Example
 ```R
 library(synclient)
 
-var.challenge.id <- 56 # integer | The ID of the challenge.
-var.challenge.team.id <- 56 # integer | The ID of the challenge team.
-var.challenge.team <- ChallengeTeam$new("id_example", "teamId_example", "challengeId_example", "message_example", "etag_example") # ChallengeTeam | 
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_org_sagebionetworks_repo_model_challenge_team <- org.sagebionetworks.repo.model.ChallengeTeam$new("id_example", "etag_example", "challengeId_example", "teamId_example", "message_example") # OrgSagebionetworksRepoModelChallengeTeam | 
 
-#Update a Challenge Team.
-api.instance <- ChallengeServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateChallengeTeam(var.challenge.id, var.challenge.team.id, challenge.team=var.challenge.team)
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1ChallengeChallengeIdChallengeTeam(var_challenge_id, var_org_sagebionetworks_repo_model_challenge_teamdata_file = "result.txt")
+result <- api_instance$PostRepoV1ChallengeChallengeIdChallengeTeam(var_challenge_id, var_org_sagebionetworks_repo_model_challenge_team)
 dput(result)
 ```
 
@@ -623,13 +511,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **challenge.id** | **integer**| The ID of the challenge. | 
- **challenge.team.id** | **integer**| The ID of the challenge team. | 
- **challenge.team** | [**ChallengeTeam**](ChallengeTeam.md)|  | [optional] 
+ **challenge_id** | **numeric**|  | 
+ **org_sagebionetworks_repo_model_challenge_team** | [**OrgSagebionetworksRepoModelChallengeTeam**](OrgSagebionetworksRepoModelChallengeTeam.md)|  | 
 
 ### Return type
 
-[**ChallengeTeam**](ChallengeTeam.md)
+[**OrgSagebionetworksRepoModelChallengeTeam**](org.sagebionetworks.repo.model.ChallengeTeam.md)
 
 ### Authorization
 
@@ -643,5 +530,101 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
+
+# **PutRepoV1ChallengeChallengeId**
+> OrgSagebionetworksRepoModelChallenge PutRepoV1ChallengeChallengeId(challenge_id, org_sagebionetworks_repo_model_challenge)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_org_sagebionetworks_repo_model_challenge <- org.sagebionetworks.repo.model.Challenge$new("id_example", "etag_example", "projectId_example", "participantTeamId_example") # OrgSagebionetworksRepoModelChallenge | 
+
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1ChallengeChallengeId(var_challenge_id, var_org_sagebionetworks_repo_model_challengedata_file = "result.txt")
+result <- api_instance$PutRepoV1ChallengeChallengeId(var_challenge_id, var_org_sagebionetworks_repo_model_challenge)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **challenge_id** | **numeric**|  | 
+ **org_sagebionetworks_repo_model_challenge** | [**OrgSagebionetworksRepoModelChallenge**](OrgSagebionetworksRepoModelChallenge.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelChallenge**](org.sagebionetworks.repo.model.Challenge.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId**
+> OrgSagebionetworksRepoModelChallengeTeam PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId(challenge_id, challenge_team_id, org_sagebionetworks_repo_model_challenge_team)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_challenge_id <- 3.4 # numeric | 
+var_challenge_team_id <- 3.4 # numeric | 
+var_org_sagebionetworks_repo_model_challenge_team <- org.sagebionetworks.repo.model.ChallengeTeam$new("id_example", "etag_example", "challengeId_example", "teamId_example", "message_example") # OrgSagebionetworksRepoModelChallengeTeam | 
+
+api_instance <- ChallengeServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId(var_challenge_id, var_challenge_team_id, var_org_sagebionetworks_repo_model_challenge_teamdata_file = "result.txt")
+result <- api_instance$PutRepoV1ChallengeChallengeIdChallengeTeamChallengeTeamId(var_challenge_id, var_challenge_team_id, var_org_sagebionetworks_repo_model_challenge_team)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **challenge_id** | **numeric**|  | 
+ **challenge_team_id** | **numeric**|  | 
+ **org_sagebionetworks_repo_model_challenge_team** | [**OrgSagebionetworksRepoModelChallengeTeam**](OrgSagebionetworksRepoModelChallengeTeam.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelChallengeTeam**](org.sagebionetworks.repo.model.ChallengeTeam.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
 

@@ -3,153 +3,128 @@
 
 context("Test FormServicesApi")
 
-api.instance <- FormServicesApi$new()
+api_instance <- FormServicesApi$new()
 
-test_that("CreateFormData", {
-  # tests for CreateFormData
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Create a new FormData object.
-  # Create a new FormData object. The caller will own the resulting object and will have access to read, update, and delete the FormData object.  Note: The caller must have the SUBMIT permission on the FormGrup to  reate/update/submit FormData. 
-  # @param group.id character The identifier of the group that manages this data. 
-  # @param form.change.request FormChangeRequest  (optional)
-  # @return [FormData]
+test_that("DeleteRepoV1FormDataId", {
+  # tests for DeleteRepoV1FormDataId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Id of the FormData object to delete
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("CreateGroup", {
-  # tests for CreateGroup
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Create a FormGroup with the provided name.
-  # Create a FormGroup with the provided name. This method is idempotent. If a group with the provided name already exists and the caller has READ permission the existing FormGroup will be returned.  The created FormGroup will have an Access Control List (ACL) with the creator listed as an administrator. 
-  # @param name character A globally unique name for the group. Required. Between 3 and 256 characters. 
-  # @return [FormGroup]
+test_that("GetRepoV1FormGroupId", {
+  # tests for GetRepoV1FormGroupId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @return [OrgSagebionetworksRepoModelFormFormGroup]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("DeleteFormData", {
-  # tests for DeleteFormData
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Delete a FormData object.
-  # Delete an existing FormData object. The caller must be the creator of the FormData object.  Note: Cannot delete a FormData object once it has been submitted and caller must have the SUBMIT permission on the identified group to update the group&#39;s ACL. 
-  # @param id character The ID of the FormData.
-  # @return [character]
+test_that("GetRepoV1FormGroupIdAcl", {
+  # tests for GetRepoV1FormGroupIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The identifier of the FormGroup.
+  # @return [OrgSagebionetworksRepoModelAccessControlList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetFormGroup", {
-  # tests for GetFormGroup
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get a FormGroup with the provided ID.
-  # Get a FormGroup with the provided ID.  Note: The caller must have the READ permission on the identified group. 
-  # @param id character The ID to the FormGroup.
-  # @return [FormGroup]
+test_that("PostRepoV1FormData", {
+  # tests for PostRepoV1FormData
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param group_id character The identifier of the group that manages this data.                          Required.
+  # @param org_sagebionetworks_repo_model_form_form_change_request OrgSagebionetworksRepoModelFormFormChangeRequest 
+  # @return [OrgSagebionetworksRepoModelFormFormData]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetGroupAcl", {
-  # tests for GetGroupAcl
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the ACL for a FormGroup
-  # Get the Access Control List (ACL) for a FormGroup.  Note: The caller must have READ permission on the identified group. 
-  # @param id character The ID of the FormGroup.
-  # @return [AccessControlList]
+test_that("PostRepoV1FormDataIdSubmit", {
+  # tests for PostRepoV1FormDataIdSubmit
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @return [OrgSagebionetworksRepoModelFormFormData]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ListFormStatus", {
-  # tests for ListFormStatus
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # List FormData objects and their associated status. 
-  # List FormData objects and their associated status that match the filters of the provided request that are owned by the caller. Note: Only objects owned by the caller will be returned. 
-  # @param list.request ListRequest  (optional)
-  # @return [ListResponse]
+test_that("PostRepoV1FormDataList", {
+  # tests for PostRepoV1FormDataList
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_form_list_request OrgSagebionetworksRepoModelFormListRequest 
+  # @return [OrgSagebionetworksRepoModelFormListResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ListFormStatusReviewer", {
-  # tests for ListFormStatusReviewer
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # List FormData objects and their associated status. 
-  # List FormData objects and their associated status that match the filters of the provided request for the entire group. This is used by service accounts to review submissions. Filtering by WAITING_FOR_SUBMISSION is not allowed for this call.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param list.request ListRequest  (optional)
-  # @return [ListResponse]
+test_that("PostRepoV1FormDataListReviewer", {
+  # tests for PostRepoV1FormDataListReviewer
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_form_list_request OrgSagebionetworksRepoModelFormListRequest 
+  # @return [OrgSagebionetworksRepoModelFormListResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ReviewerAcceptForm", {
-  # tests for ReviewerAcceptForm
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Called by the form reviewing service to accept a submitted data.
-  # Called by the form reviewing service to accept a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param id character The ID of the FormData.
-  # @return [FormData]
+test_that("PostRepoV1FormGroup", {
+  # tests for PostRepoV1FormGroup
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param name character A globally unique name for the group. Required. Between 3 and                256 characters.
+  # @return [OrgSagebionetworksRepoModelFormFormGroup]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ReviewerRejectForm", {
-  # tests for ReviewerRejectForm
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Called by the form reviewing service to reject a submitted data.
-  # Called by the form reviewing service to reject a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group&#39;s ACL. 
-  # @param id character The ID of the FormData.
-  # @param form.rejection FormRejection  (optional)
-  # @return [FormData]
+test_that("PutRepoV1FormDataId", {
+  # tests for PutRepoV1FormDataId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The identifier of the FormData to update.
+  # @param org_sagebionetworks_repo_model_form_form_change_request OrgSagebionetworksRepoModelFormFormChangeRequest 
+  # @return [OrgSagebionetworksRepoModelFormFormData]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("SubmitFormData", {
-  # tests for SubmitFormData
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Submit the identified FormData from review.
-  # Submit the identified FormData from review.  Note: The caller must have the SUBMIT permission on the identified group to update the group&#39;s ACL. 
-  # @param id character The ID of the FormData.
-  # @return [FormData]
+test_that("PutRepoV1FormDataIdAccept", {
+  # tests for PutRepoV1FormDataIdAccept
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Identifier of the FormData to accept.
+  # @return [OrgSagebionetworksRepoModelFormFormData]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("UpdateFormData", {
-  # tests for UpdateFormData
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Update a FormData object.
-  # Update an existing FormData object. The caller must be the creator of the FormData object. Once a FormData object has been submitted, it cannot be updated until it has been processed. If the submission is accepted it becomes immutable. Rejected submission are editable. Updating a rejected submission will change its status back to waiting_for_submission.  Note: The caller must have the SUBMIT permission on the FormGrup to create/update/submit FormData. 
-  # @param id character The ID of the FormData.
-  # @param form.change.request FormChangeRequest  (optional)
-  # @return [FormData]
+test_that("PutRepoV1FormDataIdReject", {
+  # tests for PutRepoV1FormDataIdReject
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Identifier of the FormData to accept.
+  # @param org_sagebionetworks_repo_model_form_form_rejection OrgSagebionetworksRepoModelFormFormRejection 
+  # @return [OrgSagebionetworksRepoModelFormFormData]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("UpdateGroupAcl", {
-  # tests for UpdateGroupAcl
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Update the ACL for a FormGroup.
-  # Update the Access Control List (ACL) for a FormGroup.  The following define the permissions in this context:  * READ - Grants read access to the group. READ does not grant access to FormData of the group. * CHANGE_PERMISSIONS - Grants access to update the group&#39;s ACL. * SUBMIT - Grants access to both create and submit FormData to the group. * READ_PRIVATE_SUBMISSION - Grants administrator&#39;s access to the submitted FormData, including both FormData reads and status updates. This permission should be reserved for the service account that evaluates submissions.  Users automatically have read/update access to FormData that they create.  Note: The caller must have the CHANGE_PERMISSIONS permission on the identified group to update the group&#39;s ACL. 
-  # @param id character The ID of the FormGroup.
-  # @param access.control.list AccessControlList  (optional)
-  # @return [AccessControlList]
+test_that("PutRepoV1FormGroupIdAcl", {
+  # tests for PutRepoV1FormGroupIdAcl
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character The identifier of the FormGroup.
+  # @param org_sagebionetworks_repo_model_access_control_list OrgSagebionetworksRepoModelAccessControlList 
+  # @return [OrgSagebionetworksRepoModelAccessControlList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-

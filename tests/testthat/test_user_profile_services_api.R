@@ -3,175 +3,204 @@
 
 context("Test UserProfileServicesApi")
 
-api.instance <- UserProfileServicesApi$new()
+api_instance <- UserProfileServicesApi$new()
 
-test_that("GetMyOwnUserBundle", {
-  # tests for GetMyOwnUserBundle
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the user bundle of the caller (my own bundle).
-  # Get the user bundle of the caller (my own bundle). &lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Private fields will be returned.&lt;/p&gt; 
-  # @param mask character integer flag defining which components to include in the bundle <p> This integer is used as a bit-string of flags to specify which parts to include in the UserBundle. The mask is defined as follows: <ul> <li> UserProfile  = 0x1 </li> <li> ORCID  = 0x2 </li> <li> VerificationSubmission = 0x4 </li> <li> Is Certified = 0x8 </li> <li> Is Verified  = 0x10 </li> <li> Is ACT Member = 0x20 </li> </ul> </p> 
-  # @return [UserBundle]
+test_that("DeleteRepoV1FavoriteId", {
+  # tests for DeleteRepoV1FavoriteId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Entity ID of the ,<a href=\"${org.sagebionetworks.repo.model.Entity}\">,Entity,</a>, that should be removed as a favorite
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetMyOwnUserProfile", {
-  # tests for GetMyOwnUserProfile
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the profile of the caller (my profile).
-  # Get the profile of the caller (my profile). &lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Private user profile fields will be returned.&lt;/p&gt;&#39; 
-  # @return [UserProfile]
+test_that("GetRepoV1Favorite", {
+  # tests for GetRepoV1Favorite
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param offset integer The offset index determines where this page will start from. An index of 0 is the first item. ,<p>,<i>,Default is 0,</i>,</p> (optional)
+  # @param limit integer Limits the number of items that will be fetched for this page. ,<p>,<i>,Default is 10,</i>,</p> (optional)
+  # @param sort OrgSagebionetworksRepoModelFavoriteSortBy Determines which field to use to sort the retrieved favorites. See ,<a href=\"${org.sagebionetworks.repo.model.favorite.SortBy}\">,SortBy,</a>,. ,<p>,<i>,Default is \"FAVORITED_ON\",</i>,</p>,. (optional)
+  # @param sort_direction OrgSagebionetworksRepoModelFavoriteSortDirection The direction for sorting the retrieved favorites. See ,<a href=\"${org.sagebionetworks.repo.model.favorite.SortDirection}\">,SortDirection,</a>,. ,<p>,<i>,Default is \"DESC\",</i>,</p>,. (optional)
+  # @return [PaginatedResultsOfEntityHeader]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetUserBundleByOwnerId", {
-  # tests for GetUserBundleByOwnerId
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the user bundle of a specified user.
-  # Get the user bundle of a specified user. &lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Private fields (e.g. \&quot;rStudioUrl\&quot;) are omitted unless the requester is the profile owner or an administrator.&lt;/p&gt; 
-  # @param id character The ID of the Synapse user.
-  # @param mask character integer flag defining which components to include in the bundle <p> This integer is used as a bit-string of flags to specify which parts to include in the UserBundle. The mask is defined as follows: <ul> <li> UserProfile  = 0x1 </li> <li> ORCID  = 0x2 </li> <li> VerificationSubmission = 0x4 </li> <li> Is Certified = 0x8 </li> <li> Is Verified  = 0x10 </li> <li> Is ACT Member = 0x20 </li> </ul> </p> 
-  # @return [UserBundle]
+test_that("GetRepoV1Projects", {
+  # tests for GetRepoV1Projects
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param team_id numeric If the projectFilter is 'TEAM' then this is the ID of the team through which the returned projects are shared with the user. (optional)
+  # @param filter OrgSagebionetworksRepoModelProjectListType see above (optional)
+  # @param sort OrgSagebionetworksRepoModelProjectListSortColumn  (optional)
+  # @param sort_direction OrgSagebionetworksRepoModelEntityQuerySortDirection The optional ,<a href=\"${org.sagebionetworks.repo.model.entity.query.SortDirection}\">,sort direction,</a>,.      ,<i>,Default sort descending,</i> (optional)
+  # @param next_page_token character a token returned with the previous page of results (optional)
+  # @return [OrgSagebionetworksRepoModelProjectHeaderList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetUserGroupHeadersByAliases", {
-  # tests for GetUserGroupHeadersByAliases
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get Users and Groups that match the given list of aliases.
-  # Get Users and Groups that match the given list of aliases.
-  # @param alias.list AliasList The list of principal aliases to lookup. Each alias must be either a user name or team name. The maximum number of aliases per request is 100.  (optional)
-  # @return [UserGroupHeaderResponse]
+test_that("GetRepoV1ProjectsUserPrincipalId", {
+  # tests for GetRepoV1ProjectsUserPrincipalId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param principal_id numeric The ID of the user to list projects for
+  # @param team_id numeric If the projectFilter is 'TEAM' then this is the ID of the team through which the returned projects are shared with 'principalId'. (optional)
+  # @param filter OrgSagebionetworksRepoModelProjectListType see above (optional)
+  # @param sort OrgSagebionetworksRepoModelProjectListSortColumn  (optional)
+  # @param sort_direction OrgSagebionetworksRepoModelEntityQuerySortDirection The optional ,<a href=\"${org.sagebionetworks.repo.model.entity.query.SortDirection}\">,sort direction,</a>,.      ,<i>,Default sort descending,</i> (optional)
+  # @param next_page_token character a token returned with the previous page of results (optional)
+  # @return [OrgSagebionetworksRepoModelProjectHeaderList]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetUserGroupHeadersByIds", {
-  # tests for GetUserGroupHeadersByIds
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Batch get UserGroupHeaders.
-  # Batch get UserGroupHeaders. This fetches information about a collection of users or groups, specified by Synapse IDs. 
-  # @param ids character IDs are specified as request parameters at the end of the URL, separated by commas. For example: ids=1001,819 
-  # @param body object Batch get UserGroupHeaders. This fetches information about a collection of users or groups, specified by Synapse IDs.  (optional)
-  # @return [UserGroupHeaderResponsePage]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetUserGroupHeadersByPrefix", {
-  # tests for GetUserGroupHeadersByPrefix
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get Users and Groups that match the given prefix.
-  # Get Users and Groups that match the given prefix.
-  # @param limit integer Limits the number of items that will be fetched for this page.  (optional)
-  # @param offset integer The offset index determines where this page will start from. An index of 0 is the first item.  (optional)
-  # @param prefix character The name to search for. (optional)
-  # @param type.filter character Restrict the results to a type of principal. Available options: <a href=\"${org.sagebionetworks.repo.model.principal.TypeFilter}\">TypeFilter</a>.'  (optional)
-  # @return [UserGroupHeaderResponsePage]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetUserGroups", {
-  # tests for GetUserGroups
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the user-groups in the system.
-  # Get the user-groups in the system
-  # @param ascending character Return results in ascending order. (optional)
-  # @param limit integer the maximum number of results to return. (optional)
-  # @param offset integer the starting index of the returned results. (optional)
-  # @param sort character Sort results. (optional)
-  # @param body object Get the user-groups in the system (optional)
-  # @return [PaginatedResultsOfUserGroup]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetUserProfile", {
-  # tests for GetUserProfile
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the profile of a specified user.
-  # Get the profile of a specified user. &lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; Private fields (e.g. \&quot;rStudioUrl\&quot;) are omitted unless the requester is the profile owner or an administrator.&lt;/p&gt;&#39; 
-  # @param profile.id character The ID of the Synapse user.
-  # @return [UserProfile]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("GetUserProfilesPaginated", {
-  # tests for GetUserProfilesPaginated
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get all publicly available.
-  # Get all publicly available &lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.UserProfile}\&quot;&gt;UserProfile&lt;/a&gt; data in the system 
-  # @param ascending character Used to indicate whether the sort direction is ascending or not. (optional)
-  # @param limit integer Limits the number of items that will be fetched for this page  (optional)
-  # @param offset integer The offset index determines where this page will start from. An index of 0 is the first item. (optional)
-  # @param sort character Used to indicate upon which field(s) to sort. (optional)
-  # @param body object Get all publicly available <a href=\"${org.sagebionetworks.repo.model.UserProfile}\">UserProfile</a> data in the system  (optional)
+test_that("GetRepoV1User", {
+  # tests for GetRepoV1User
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param offset integer The offset index determines where this page will start from. An index of 0 is the first item. ,<p>,<i>,Default is 0,</i>,</p> (optional)
+  # @param limit integer Limits the number of items that will be fetched for this page. ,<p>,<i>,Default is 100,</i>,</p> (optional)
+  # @param sort character Used to indicate upon which field(s) to sort. ,<p>,<i>,Default is NONE,</i>,</p> (optional)
+  # @param ascending character Used to indicate whether the sort direction is ascending or not.  ,<p>,<i>,Default is true,</i>,</p> (optional)
   # @return [PaginatedResultsOfUserProfile]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ImagePreviewRedirectUrlForUser", {
-  # tests for ImagePreviewRedirectUrlForUser
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the actual URL of the image file associated with a user&#39;s profile.
-  # Get the actual URL of the image file associated with a user&#39;&#39;s profile. &lt;p&gt; Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. &lt;/p&gt; 
-  # @param profile.id character The ID of the Synapse user.
-  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
-  # @return [character]
+test_that("GetRepoV1UserBundle", {
+  # tests for GetRepoV1UserBundle
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param mask integer integer flag defining which components to include in the bundle    ,<p>, This integer is used as a bit-string of flags to specify which parts to include    in the UserBundle. The mask is defined as follows:  ,<ul>,  ,<li>, UserProfile  = 0x1 ,</li>,  ,<li>, ORCID  = 0x2 ,</li>,  ,<li>, VerificationSubmission  = 0x4 ,</li>,  ,<li>, IsCertified = 0x8 ,</li>,  ,<li>, Is Verified  = 0x10 ,</li>,  ,<li>, Is ACT Member = 0x20 ,</li>,  ,<li>, Is AR Reviewer = 0x40 ,</li>,  ,</ul>,  ,</p>
+  # @return [OrgSagebionetworksRepoModelUserBundle]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ImageRedirectUrlForUser", {
-  # tests for ImageRedirectUrlForUser
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get the actual URL of the image file associated with a user&#39;s profile.
-  # Get the actual URL of the image file associated with a user&#39;s profile. &lt;p&gt; Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. &lt;/p&gt; 
-  # @param profile.id character The ID of the Synapse user.
-  # @param redirect character When set to false, the URL will be returned as text/plain instead of redirecting.  (optional)
-  # @return [character]
+test_that("GetRepoV1UserGroupHeaders", {
+  # tests for GetRepoV1UserGroupHeaders
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param prefix character  (optional)
+  # @param type_filter OrgSagebionetworksRepoModelPrincipalTypeFilter Restrict the results to a type of principal.              Available options: ,<a href=\"${org.sagebionetworks.repo.model.principal.TypeFilter}\">,TypeFilter,</a>,. (optional)
+  # @param offset integer The offset index determines where this page will start from.             An index of 0 is the first item.             ,<p>,             ,<i>,Default is 0,</i>,             ,</p> (optional)
+  # @param limit integer Limits the number of items that will be fetched for this page.             ,<p>,             ,<i>,Default is 10,</i>,             ,</p> (optional)
+  # @return [OrgSagebionetworksRepoModelUserGroupHeaderResponsePage]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ListUserProfiles", {
-  # tests for ListUserProfiles
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Batch get UserGroupHeaders.
-  # Batch get UserGroupHeaders. This fetches information about a collection of users or groups, specified by Synapse IDs.&#39; 
-  # @param id.list IdList IDs are specified as request parameters at the end of the URL, separated by commas. For example: ids=1001,819  (optional)
+test_that("GetRepoV1UserGroupHeadersBatch", {
+  # tests for GetRepoV1UserGroupHeadersBatch
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param ids character IDs are specified as request parameters at the end of the URL, separated by commas.  ,<p>,For example: ,<pre class=\"prettyprint\">,ids=1001,819,</pre>,</p>
+  # @return [OrgSagebionetworksRepoModelUserGroupHeaderResponsePage]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserIdBundle", {
+  # tests for GetRepoV1UserIdBundle
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param mask integer integer flag defining which components to include in the bundle    ,<p>, This integer is used as a bit-string of flags to specify which parts to include    in the UserBundle. The mask is defined as follows:  ,<ul>,  ,<li>, UserProfile  = 0x1 ,</li>,  ,<li>, ORCID  = 0x2 ,</li>,  ,<li>, VerificationSubmission  = 0x4 ,</li>,  ,<li>, IsCertified = 0x8 ,</li>,  ,<li>, Is Verified  = 0x10 ,</li>,  ,<li>, Is ACT Member = 0x20 ,</li>,  ,<li>, Is AR Reviewer = 0x40 ,</li>,  ,</ul>,  ,</p>
+  # @param id character 
+  # @return [OrgSagebionetworksRepoModelUserBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserProfile", {
+  # tests for GetRepoV1UserProfile
+  # base path: https://repo-prod.prod.sagebase.org
+  # @return [OrgSagebionetworksRepoModelUserProfile]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserProfileProfileId", {
+  # tests for GetRepoV1UserProfileProfileId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param profile_id character The target profile owner ID (the \"id\" field returned in the \"/user\" request).
+  # @return [OrgSagebionetworksRepoModelUserProfile]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserProfileProfileIdImage", {
+  # tests for GetRepoV1UserProfileProfileIdImage
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param profile_id character 
+  # @param redirect character When set to false, the URL will be returned as text/plain             instead of redirecting. (optional)
+  # @return [AnyType]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1UserProfileProfileIdImagePreview", {
+  # tests for GetRepoV1UserProfileProfileIdImagePreview
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param profile_id character 
+  # @param redirect character When set to false, the URL will be returned as text/plain             instead of redirecting. (optional)
+  # @return [AnyType]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1FavoriteId", {
+  # tests for PostRepoV1FavoriteId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character Entity ID of the favorite ,<a href=\"${org.sagebionetworks.repo.model.Entity}\">,Entity,</a>
+  # @return [OrgSagebionetworksRepoModelEntityHeader]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1UserGroupHeadersAliases", {
+  # tests for PostRepoV1UserGroupHeadersAliases
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_principal_alias_list OrgSagebionetworksRepoModelPrincipalAliasList 
+  # @return [OrgSagebionetworksRepoModelPrincipalUserGroupHeaderResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1UserProfile", {
+  # tests for PostRepoV1UserProfile
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_id_list OrgSagebionetworksRepoModelIdList 
   # @return [ListWrapperOfUserProfile]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("UpdateUserProfile", {
-  # tests for UpdateUserProfile
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Update your own profile.
-  # Update your own profile  &lt;p&gt;&lt;b&gt;Note: &lt;/b&gt; The user associated with the UserProfile \&quot;ownerId\&quot; must match the identity of the caller, otherwise an Unauthorized response will occur.&lt;/p&gt; 
-  # @param user.profile UserProfile  (optional)
-  # @return [UserProfile]
+test_that("PutRepoV1NotificationSettings", {
+  # tests for PutRepoV1NotificationSettings
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_message_notification_settings_signed_token OrgSagebionetworksRepoModelMessageNotificationSettingsSignedToken 
+  # @return [OrgSagebionetworksRepoModelResponseMessage]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("PutRepoV1UserProfile", {
+  # tests for PutRepoV1UserProfile
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_user_profile OrgSagebionetworksRepoModelUserProfile 
+  # @return [OrgSagebionetworksRepoModelUserProfile]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

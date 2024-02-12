@@ -3,41 +3,24 @@
 
 context("Test AsynchronousJobServicesApi")
 
-api.instance <- AsynchronousJobServicesApi$new()
+api_instance <- AsynchronousJobServicesApi$new()
 
-test_that("GetJobStatus", {
-  # tests for GetJobStatus
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Get Asynchronous Job.
-  # Once a job is launched its progress can be monitored by getting its status with this method. 
-  # @param job.id character The ID of a Asynchronous Job.
-  # @return [AsynchronousJobStatus]
+test_that("GetRepoV1AsynchronousJobJobId", {
+  # tests for GetRepoV1AsynchronousJobJobId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param job_id character The jobId issued to a job that has been launched with ,<a href=\"${POST.asynchronous.job}\">,POST         /asynchronous/job,</a>
+  # @return [OrgSagebionetworksRepoModelAsynchAsynchronousJobStatus]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("LaunchNewJob", {
-  # tests for LaunchNewJob
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Launch new Asynchronous jobs.
-  # This method is used to launch new jobs. The type of job that will be launched is determined by the passed  AsynchronousJobBody.  The following are the currently supported job types:  * UploadToTableRequest * DownloadFromTableRequest  Note: Each job types has different access requirements. 
-  # @param asynchronous.request.body AsynchronousRequestBody  (optional)
-  # @return [AsynchronousJobStatus]
+test_that("PostRepoV1AsynchronousJob", {
+  # tests for PostRepoV1AsynchronousJob
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_asynch_asynchronous_request_body OrgSagebionetworksRepoModelAsynchAsynchronousRequestBody 
+  # @return [OrgSagebionetworksRepoModelAsynchAsynchronousJobStatus]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
-
-test_that("StopJob", {
-  # tests for StopJob
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Stop a Asynchronous Job.
-  # Once a job is launched it can be cancelled if the job is set up to be cancelable. 
-  # @param job.id character The ID of a Asynchronous Job.
-  # @return [Void]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-

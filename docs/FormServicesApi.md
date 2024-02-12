@@ -1,56 +1,50 @@
 # FormServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFormData**](FormServicesApi.md#CreateFormData) | **POST** /form/data | Create a new FormData object.
-[**CreateGroup**](FormServicesApi.md#CreateGroup) | **POST** /form/group | Create a FormGroup with the provided name.
-[**DeleteFormData**](FormServicesApi.md#DeleteFormData) | **DELETE** /form/data/{id} | Delete a FormData object.
-[**GetFormGroup**](FormServicesApi.md#GetFormGroup) | **GET** /form/group/{id} | Get a FormGroup with the provided ID.
-[**GetGroupAcl**](FormServicesApi.md#GetGroupAcl) | **GET** /form/group/{id}/acl | Get the ACL for a FormGroup
-[**ListFormStatus**](FormServicesApi.md#ListFormStatus) | **POST** /form/data/list | List FormData objects and their associated status. 
-[**ListFormStatusReviewer**](FormServicesApi.md#ListFormStatusReviewer) | **POST** /form/data/list/reviewer | List FormData objects and their associated status. 
-[**ReviewerAcceptForm**](FormServicesApi.md#ReviewerAcceptForm) | **PUT** /form/data/{id}/accept | Called by the form reviewing service to accept a submitted data.
-[**ReviewerRejectForm**](FormServicesApi.md#ReviewerRejectForm) | **PUT** /form/data/{id}/reject | Called by the form reviewing service to reject a submitted data.
-[**SubmitFormData**](FormServicesApi.md#SubmitFormData) | **POST** /form/data/{id}/submit | Submit the identified FormData from review.
-[**UpdateFormData**](FormServicesApi.md#UpdateFormData) | **PUT** /form/data/{id} | Update a FormData object.
-[**UpdateGroupAcl**](FormServicesApi.md#UpdateGroupAcl) | **PUT** /form/group/{id}/acl | Update the ACL for a FormGroup.
+[**DeleteRepoV1FormDataId**](FormServicesApi.md#DeleteRepoV1FormDataId) | **DELETE** /repo/v1/form/data/{id} | 
+[**GetRepoV1FormGroupId**](FormServicesApi.md#GetRepoV1FormGroupId) | **GET** /repo/v1/form/group/{id} | 
+[**GetRepoV1FormGroupIdAcl**](FormServicesApi.md#GetRepoV1FormGroupIdAcl) | **GET** /repo/v1/form/group/{id}/acl | 
+[**PostRepoV1FormData**](FormServicesApi.md#PostRepoV1FormData) | **POST** /repo/v1/form/data | 
+[**PostRepoV1FormDataIdSubmit**](FormServicesApi.md#PostRepoV1FormDataIdSubmit) | **POST** /repo/v1/form/data/{id}/submit | 
+[**PostRepoV1FormDataList**](FormServicesApi.md#PostRepoV1FormDataList) | **POST** /repo/v1/form/data/list | 
+[**PostRepoV1FormDataListReviewer**](FormServicesApi.md#PostRepoV1FormDataListReviewer) | **POST** /repo/v1/form/data/list/reviewer | 
+[**PostRepoV1FormGroup**](FormServicesApi.md#PostRepoV1FormGroup) | **POST** /repo/v1/form/group | 
+[**PutRepoV1FormDataId**](FormServicesApi.md#PutRepoV1FormDataId) | **PUT** /repo/v1/form/data/{id} | 
+[**PutRepoV1FormDataIdAccept**](FormServicesApi.md#PutRepoV1FormDataIdAccept) | **PUT** /repo/v1/form/data/{id}/accept | 
+[**PutRepoV1FormDataIdReject**](FormServicesApi.md#PutRepoV1FormDataIdReject) | **PUT** /repo/v1/form/data/{id}/reject | 
+[**PutRepoV1FormGroupIdAcl**](FormServicesApi.md#PutRepoV1FormGroupIdAcl) | **PUT** /repo/v1/form/group/{id}/acl | 
 
 
-# **CreateFormData**
-> FormData CreateFormData(group.id, form.change.request=var.form.change.request)
+# **DeleteRepoV1FormDataId**
+> DeleteRepoV1FormDataId(id)
 
-Create a new FormData object.
 
-Create a new FormData object. The caller will own the resulting object and will have access to read, update, and delete the FormData object.  Note: The caller must have the SUBMIT permission on the FormGrup to  reate/update/submit FormData. 
 
 ### Example
 ```R
 library(synclient)
 
-var.group.id <- 'group.id_example' # character | The identifier of the group that manages this data. 
-var.form.change.request <- FormChangeRequest$new("fileHandleId_example", "name_example") # FormChangeRequest | 
+# prepare function argument(s)
+var_id <- "id_example" # character | Id of the FormData object to delete
 
-#Create a new FormData object.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateFormData(var.group.id, form.change.request=var.form.change.request)
-dput(result)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+api_instance$DeleteRepoV1FormDataId(var_id)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group.id** | **character**| The identifier of the group that manages this data.  | 
- **form.change.request** | [**FormChangeRequest**](FormChangeRequest.md)|  | [optional] 
+ **id** | **character**| Id of the FormData object to delete | 
 
 ### Return type
 
-[**FormData**](FormData.md)
+void (empty response body)
 
 ### Authorization
 
@@ -58,33 +52,32 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Void |  -  |
 
-# **CreateGroup**
-> FormGroup CreateGroup(name)
+# **GetRepoV1FormGroupId**
+> OrgSagebionetworksRepoModelFormFormGroup GetRepoV1FormGroupId(id)
 
-Create a FormGroup with the provided name.
 
-Create a FormGroup with the provided name. This method is idempotent. If a group with the provided name already exists and the caller has READ permission the existing FormGroup will be returned.  The created FormGroup will have an Access Control List (ACL) with the creator listed as an administrator. 
 
 ### Example
 ```R
 library(synclient)
 
-var.name <- 'name_example' # character | A globally unique name for the group. Required. Between 3 and 256 characters. 
+# prepare function argument(s)
+var_id <- "id_example" # character | 
 
-#Create a FormGroup with the provided name.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateGroup(var.name)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1FormGroupId(var_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1FormGroupId(var_id)
 dput(result)
 ```
 
@@ -92,11 +85,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **character**| A globally unique name for the group. Required. Between 3 and 256 characters.  | 
+ **id** | **character**|  | 
 
 ### Return type
 
-[**FormGroup**](FormGroup.md)
+[**OrgSagebionetworksRepoModelFormFormGroup**](org.sagebionetworks.repo.model.form.FormGroup.md)
 
 ### Authorization
 
@@ -110,27 +103,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **DeleteFormData**
-> character DeleteFormData(id)
+# **GetRepoV1FormGroupIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList GetRepoV1FormGroupIdAcl(id)
 
-Delete a FormData object.
 
-Delete an existing FormData object. The caller must be the creator of the FormData object.  Note: Cannot delete a FormData object once it has been submitted and caller must have the SUBMIT permission on the identified group to update the group's ACL. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of the FormData.
+# prepare function argument(s)
+var_id <- "id_example" # character | The identifier of the FormGroup.
 
-#Delete a FormData object.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$DeleteFormData(var.id)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1FormGroupIdAcl(var_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1FormGroupIdAcl(var_id)
 dput(result)
 ```
 
@@ -138,11 +130,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormData. | 
+ **id** | **character**| The identifier of the FormGroup. | 
 
 ### Return type
 
-**character**
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
 
 ### Authorization
 
@@ -156,27 +148,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetFormGroup**
-> FormGroup GetFormGroup(id)
+# **PostRepoV1FormData**
+> OrgSagebionetworksRepoModelFormFormData PostRepoV1FormData(group_id, org_sagebionetworks_repo_model_form_form_change_request)
 
-Get a FormGroup with the provided ID.
 
-Get a FormGroup with the provided ID.  Note: The caller must have the READ permission on the identified group. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID to the FormGroup.
+# prepare function argument(s)
+var_group_id <- "group_id_example" # character | The identifier of the group that manages this data.                          Required.
+var_org_sagebionetworks_repo_model_form_form_change_request <- org.sagebionetworks.repo.model.form.FormChangeRequest$new("name_example", "fileHandleId_example") # OrgSagebionetworksRepoModelFormFormChangeRequest | 
 
-#Get a FormGroup with the provided ID.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetFormGroup(var.id)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1FormData(var_group_id, var_org_sagebionetworks_repo_model_form_form_change_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1FormData(var_group_id, var_org_sagebionetworks_repo_model_form_form_change_request)
 dput(result)
 ```
 
@@ -184,11 +176,57 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID to the FormGroup. | 
+ **group_id** | **character**| The identifier of the group that manages this data.                          Required. | 
+ **org_sagebionetworks_repo_model_form_form_change_request** | [**OrgSagebionetworksRepoModelFormFormChangeRequest**](OrgSagebionetworksRepoModelFormFormChangeRequest.md)|  | 
 
 ### Return type
 
-[**FormGroup**](FormGroup.md)
+[**OrgSagebionetworksRepoModelFormFormData**](org.sagebionetworks.repo.model.form.FormData.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1FormDataIdSubmit**
+> OrgSagebionetworksRepoModelFormFormData PostRepoV1FormDataIdSubmit(id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | 
+
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1FormDataIdSubmit(var_iddata_file = "result.txt")
+result <- api_instance$PostRepoV1FormDataIdSubmit(var_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelFormFormData**](org.sagebionetworks.repo.model.form.FormData.md)
 
 ### Authorization
 
@@ -202,27 +240,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **GetGroupAcl**
-> AccessControlList GetGroupAcl(id)
+# **PostRepoV1FormDataList**
+> OrgSagebionetworksRepoModelFormListResponse PostRepoV1FormDataList(org_sagebionetworks_repo_model_form_list_request)
 
-Get the ACL for a FormGroup
 
-Get the Access Control List (ACL) for a FormGroup.  Note: The caller must have READ permission on the identified group. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of the FormGroup.
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_form_list_request <- org.sagebionetworks.repo.model.form.ListRequest$new(c("filterByState_example"), "groupId_example", "nextPageToken_example") # OrgSagebionetworksRepoModelFormListRequest | 
 
-#Get the ACL for a FormGroup
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetGroupAcl(var.id)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1FormDataList(var_org_sagebionetworks_repo_model_form_list_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1FormDataList(var_org_sagebionetworks_repo_model_form_list_request)
 dput(result)
 ```
 
@@ -230,11 +267,101 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormGroup. | 
+ **org_sagebionetworks_repo_model_form_list_request** | [**OrgSagebionetworksRepoModelFormListRequest**](OrgSagebionetworksRepoModelFormListRequest.md)|  | 
 
 ### Return type
 
-[**AccessControlList**](AccessControlList.md)
+[**OrgSagebionetworksRepoModelFormListResponse**](org.sagebionetworks.repo.model.form.ListResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1FormDataListReviewer**
+> OrgSagebionetworksRepoModelFormListResponse PostRepoV1FormDataListReviewer(org_sagebionetworks_repo_model_form_list_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_form_list_request <- org.sagebionetworks.repo.model.form.ListRequest$new(c("filterByState_example"), "groupId_example", "nextPageToken_example") # OrgSagebionetworksRepoModelFormListRequest | 
+
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1FormDataListReviewer(var_org_sagebionetworks_repo_model_form_list_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1FormDataListReviewer(var_org_sagebionetworks_repo_model_form_list_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_form_list_request** | [**OrgSagebionetworksRepoModelFormListRequest**](OrgSagebionetworksRepoModelFormListRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelFormListResponse**](org.sagebionetworks.repo.model.form.ListResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1FormGroup**
+> OrgSagebionetworksRepoModelFormFormGroup PostRepoV1FormGroup(name)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_name <- "name_example" # character | A globally unique name for the group. Required. Between 3 and                256 characters.
+
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1FormGroup(var_namedata_file = "result.txt")
+result <- api_instance$PostRepoV1FormGroup(var_name)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **character**| A globally unique name for the group. Required. Between 3 and                256 characters. | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelFormFormGroup**](org.sagebionetworks.repo.model.form.FormGroup.md)
 
 ### Authorization
 
@@ -248,27 +375,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **201** | Auto-generated description |  -  |
 
-# **ListFormStatus**
-> ListResponse ListFormStatus(list.request=var.list.request)
+# **PutRepoV1FormDataId**
+> OrgSagebionetworksRepoModelFormFormData PutRepoV1FormDataId(id, org_sagebionetworks_repo_model_form_form_change_request)
 
-List FormData objects and their associated status. 
 
-List FormData objects and their associated status that match the filters of the provided request that are owned by the caller. Note: Only objects owned by the caller will be returned. 
 
 ### Example
 ```R
 library(synclient)
 
-var.list.request <- ListRequest$new(list(StateEnum$new()), "groupId_example", "nextPageToken_example") # ListRequest | 
+# prepare function argument(s)
+var_id <- "id_example" # character | The identifier of the FormData to update.
+var_org_sagebionetworks_repo_model_form_form_change_request <- org.sagebionetworks.repo.model.form.FormChangeRequest$new("name_example", "fileHandleId_example") # OrgSagebionetworksRepoModelFormFormChangeRequest | 
 
-#List FormData objects and their associated status. 
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListFormStatus(list.request=var.list.request)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1FormDataId(var_id, var_org_sagebionetworks_repo_model_form_form_change_requestdata_file = "result.txt")
+result <- api_instance$PutRepoV1FormDataId(var_id, var_org_sagebionetworks_repo_model_form_form_change_request)
 dput(result)
 ```
 
@@ -276,11 +403,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **list.request** | [**ListRequest**](ListRequest.md)|  | [optional] 
+ **id** | **character**| The identifier of the FormData to update. | 
+ **org_sagebionetworks_repo_model_form_form_change_request** | [**OrgSagebionetworksRepoModelFormFormChangeRequest**](OrgSagebionetworksRepoModelFormFormChangeRequest.md)|  | 
 
 ### Return type
 
-[**ListResponse**](ListResponse.md)
+[**OrgSagebionetworksRepoModelFormFormData**](org.sagebionetworks.repo.model.form.FormData.md)
 
 ### Authorization
 
@@ -294,27 +422,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ListFormStatusReviewer**
-> ListResponse ListFormStatusReviewer(list.request=var.list.request)
+# **PutRepoV1FormDataIdAccept**
+> OrgSagebionetworksRepoModelFormFormData PutRepoV1FormDataIdAccept(id)
 
-List FormData objects and their associated status. 
 
-List FormData objects and their associated status that match the filters of the provided request for the entire group. This is used by service accounts to review submissions. Filtering by WAITING_FOR_SUBMISSION is not allowed for this call.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group's ACL. 
 
 ### Example
 ```R
 library(synclient)
 
-var.list.request <- ListRequest$new(list(StateEnum$new()), "groupId_example", "nextPageToken_example") # ListRequest | 
+# prepare function argument(s)
+var_id <- "id_example" # character | Identifier of the FormData to accept.
 
-#List FormData objects and their associated status. 
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ListFormStatusReviewer(list.request=var.list.request)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1FormDataIdAccept(var_iddata_file = "result.txt")
+result <- api_instance$PutRepoV1FormDataIdAccept(var_id)
 dput(result)
 ```
 
@@ -322,57 +449,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **list.request** | [**ListRequest**](ListRequest.md)|  | [optional] 
+ **id** | **character**| Identifier of the FormData to accept. | 
 
 ### Return type
 
-[**ListResponse**](ListResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **ReviewerAcceptForm**
-> FormData ReviewerAcceptForm(id)
-
-Called by the form reviewing service to accept a submitted data.
-
-Called by the form reviewing service to accept a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group's ACL. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of the FormData.
-
-#Called by the form reviewing service to accept a submitted data.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ReviewerAcceptForm(var.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormData. | 
-
-### Return type
-
-[**FormData**](FormData.md)
+[**OrgSagebionetworksRepoModelFormFormData**](org.sagebionetworks.repo.model.form.FormData.md)
 
 ### Authorization
 
@@ -386,28 +467,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **ReviewerRejectForm**
-> FormData ReviewerRejectForm(id, form.rejection=var.form.rejection)
+# **PutRepoV1FormDataIdReject**
+> OrgSagebionetworksRepoModelFormFormData PutRepoV1FormDataIdReject(id, org_sagebionetworks_repo_model_form_form_rejection)
 
-Called by the form reviewing service to reject a submitted data.
 
-Called by the form reviewing service to reject a submitted data.  Note: The caller must have the READ_PRIVATE_SUBMISSION permission on the identified group to update the group's ACL. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of the FormData.
-var.form.rejection <- FormRejection$new("reason_example") # FormRejection | 
+# prepare function argument(s)
+var_id <- "id_example" # character | Identifier of the FormData to accept.
+var_org_sagebionetworks_repo_model_form_form_rejection <- org.sagebionetworks.repo.model.form.FormRejection$new("reason_example") # OrgSagebionetworksRepoModelFormFormRejection | 
 
-#Called by the form reviewing service to reject a submitted data.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$ReviewerRejectForm(var.id, form.rejection=var.form.rejection)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1FormDataIdReject(var_id, var_org_sagebionetworks_repo_model_form_form_rejectiondata_file = "result.txt")
+result <- api_instance$PutRepoV1FormDataIdReject(var_id, var_org_sagebionetworks_repo_model_form_form_rejection)
 dput(result)
 ```
 
@@ -415,12 +495,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormData. | 
- **form.rejection** | [**FormRejection**](FormRejection.md)|  | [optional] 
+ **id** | **character**| Identifier of the FormData to accept. | 
+ **org_sagebionetworks_repo_model_form_form_rejection** | [**OrgSagebionetworksRepoModelFormFormRejection**](OrgSagebionetworksRepoModelFormFormRejection.md)|  | 
 
 ### Return type
 
-[**FormData**](FormData.md)
+[**OrgSagebionetworksRepoModelFormFormData**](org.sagebionetworks.repo.model.form.FormData.md)
 
 ### Authorization
 
@@ -434,27 +514,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **SubmitFormData**
-> FormData SubmitFormData(id)
+# **PutRepoV1FormGroupIdAcl**
+> OrgSagebionetworksRepoModelAccessControlList PutRepoV1FormGroupIdAcl(id, org_sagebionetworks_repo_model_access_control_list)
 
-Submit the identified FormData from review.
 
-Submit the identified FormData from review.  Note: The caller must have the SUBMIT permission on the identified group to update the group's ACL. 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of the FormData.
+# prepare function argument(s)
+var_id <- "id_example" # character | The identifier of the FormGroup.
+var_org_sagebionetworks_repo_model_access_control_list <- org.sagebionetworks.repo.model.AccessControlList$new("id_example", "createdBy_example", "creationDate_example", "modifiedBy_example", "modifiedOn_example", "etag_example", c(org.sagebionetworks.repo.model.ResourceAccess$new(123, c("accessType_example")))) # OrgSagebionetworksRepoModelAccessControlList | 
 
-#Submit the identified FormData from review.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$SubmitFormData(var.id)
+api_instance <- FormServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PutRepoV1FormGroupIdAcl(var_id, var_org_sagebionetworks_repo_model_access_control_listdata_file = "result.txt")
+result <- api_instance$PutRepoV1FormGroupIdAcl(var_id, var_org_sagebionetworks_repo_model_access_control_list)
 dput(result)
 ```
 
@@ -462,59 +542,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormData. | 
+ **id** | **character**| The identifier of the FormGroup. | 
+ **org_sagebionetworks_repo_model_access_control_list** | [**OrgSagebionetworksRepoModelAccessControlList**](OrgSagebionetworksRepoModelAccessControlList.md)|  | 
 
 ### Return type
 
-[**FormData**](FormData.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **UpdateFormData**
-> FormData UpdateFormData(id, form.change.request=var.form.change.request)
-
-Update a FormData object.
-
-Update an existing FormData object. The caller must be the creator of the FormData object. Once a FormData object has been submitted, it cannot be updated until it has been processed. If the submission is accepted it becomes immutable. Rejected submission are editable. Updating a rejected submission will change its status back to waiting_for_submission.  Note: The caller must have the SUBMIT permission on the FormGrup to create/update/submit FormData. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of the FormData.
-var.form.change.request <- FormChangeRequest$new("fileHandleId_example", "name_example") # FormChangeRequest | 
-
-#Update a FormData object.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateFormData(var.id, form.change.request=var.form.change.request)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormData. | 
- **form.change.request** | [**FormChangeRequest**](FormChangeRequest.md)|  | [optional] 
-
-### Return type
-
-[**FormData**](FormData.md)
+[**OrgSagebionetworksRepoModelAccessControlList**](org.sagebionetworks.repo.model.AccessControlList.md)
 
 ### Authorization
 
@@ -528,53 +561,5 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **UpdateGroupAcl**
-> AccessControlList UpdateGroupAcl(id, access.control.list=var.access.control.list)
-
-Update the ACL for a FormGroup.
-
-Update the Access Control List (ACL) for a FormGroup.  The following define the permissions in this context:  * READ - Grants read access to the group. READ does not grant access to FormData of the group. * CHANGE_PERMISSIONS - Grants access to update the group's ACL. * SUBMIT - Grants access to both create and submit FormData to the group. * READ_PRIVATE_SUBMISSION - Grants administrator's access to the submitted FormData, including both FormData reads and status updates. This permission should be reserved for the service account that evaluates submissions.  Users automatically have read/update access to FormData that they create.  Note: The caller must have the CHANGE_PERMISSIONS permission on the identified group to update the group's ACL. 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of the FormGroup.
-var.access.control.list <- AccessControlList$new("createdBy_example", "creationDate_example", "etag_example", "id_example", "modifiedBy_example", "modifiedOn_example", list(ResourceAccess$new(list(ACCESS_TYPE$new()), 123))) # AccessControlList | 
-
-#Update the ACL for a FormGroup.
-api.instance <- FormServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$UpdateGroupAcl(var.id, access.control.list=var.access.control.list)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of the FormGroup. | 
- **access.control.list** | [**AccessControlList**](AccessControlList.md)|  | [optional] 
-
-### Return type
-
-[**AccessControlList**](AccessControlList.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 

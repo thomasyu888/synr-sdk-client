@@ -3,21 +3,18 @@
 
 context("Test PaginatedResultsOfEvaluation")
 
-model.instance <- PaginatedResultsOfEvaluation$new()
-
-test_that("results", {
-  # tests for the property `results` (array[Evaluation])
-  # List of evaluations
-
-  # uncomment below to test the property 
-  #expect_equal(model.instance$`results`, "EXPECTED_RESULT")
-})
+model_instance <- PaginatedResultsOfEvaluation$new()
 
 test_that("totalNumberOfResults", {
   # tests for the property `totalNumberOfResults` (integer)
-  # Number of results per page
 
-  # uncomment below to test the property 
+  # uncomment below to test the property
   #expect_equal(model.instance$`totalNumberOfResults`, "EXPECTED_RESULT")
 })
 
+test_that("results", {
+  # tests for the property `results` (array[OrgSagebionetworksEvaluationModelEvaluation])
+
+  # uncomment below to test the property
+  #expect_equal(model.instance$`results`, "EXPECTED_RESULT")
+})

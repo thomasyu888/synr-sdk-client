@@ -1,42 +1,54 @@
 # TableServicesApi
 
-All URIs are relative to *https://repo-prod.prod.sagebase.org/repo/v1*
+All URIs are relative to *https://repo-prod.prod.sagebase.org*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateSnapshot**](TableServicesApi.md#CreateSnapshot) | **POST** /entity/{id}/table/snapshot | Request to create a new snapshot of a table.
-[**CsvDownloadAsyncGet**](TableServicesApi.md#CsvDownloadAsyncGet) | **GET** /entity/{id}/table/download/csv/async/get/{asyncToken} | Asynchronously get the results of a csv download started with.
-[**CsvDownloadAsyncStart**](TableServicesApi.md#CsvDownloadAsyncStart) | **POST** /entity/{id}/table/download/csv/async/start | Asynchronously start a csv download.
-[**FilePreviewRedirectUrlForRow**](TableServicesApi.md#FilePreviewRedirectUrlForRow) | **GET** /entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/filepreview | Get the preview URL of the file associated with a specific version of a row and file handle column. 
-[**FileRedirectUrlForRow**](TableServicesApi.md#FileRedirectUrlForRow) | **GET** /entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/file | Get the actual URL of the file associated with a specific version of a row and file handle column. 
-[**GetColumnForTable**](TableServicesApi.md#GetColumnForTable) | **GET** /entity/{id}/column | Given the ID of a.
-[**GetFileHandles**](TableServicesApi.md#GetFileHandles) | **POST** /entity/{id}/table/filehandles | .
-[**GetTableTransactionResult**](TableServicesApi.md#GetTableTransactionResult) | **GET** /entity/{id}/table/transaction/async/get/{asyncToken} | Asynchronously get the results of a table update transaction started with.
-[**QueryAsyncGet**](TableServicesApi.md#QueryAsyncGet) | **GET** /entity/{id}/table/query/async/get/{asyncToken} | Asynchronously get the results of a query started with.
-[**QueryAsyncStart**](TableServicesApi.md#QueryAsyncStart) | **POST** /entity/{id}/table/query/async/start | Asynchronously start a query.
-[**StartTableTransactionJob**](TableServicesApi.md#StartTableTransactionJob) | **POST** /entity/{id}/table/transaction/async/start | Start a table update job that will attempt to make all of the requested changes in a single transaction. 
+[**GetRepoV1Column**](TableServicesApi.md#GetRepoV1Column) | **GET** /repo/v1/column | 
+[**GetRepoV1ColumnColumnId**](TableServicesApi.md#GetRepoV1ColumnColumnId) | **GET** /repo/v1/column/{columnId} | 
+[**GetRepoV1ColumnTableviewDefaults**](TableServicesApi.md#GetRepoV1ColumnTableviewDefaults) | **GET** /repo/v1/column/tableview/defaults | 
+[**GetRepoV1ColumnViewScopeAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1ColumnViewScopeAsyncGetAsyncToken) | **GET** /repo/v1/column/view/scope/async/get/{asyncToken} | 
+[**GetRepoV1EntityIdColumn**](TableServicesApi.md#GetRepoV1EntityIdColumn) | **GET** /repo/v1/entity/{id}/column | 
+[**GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile**](TableServicesApi.md#GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile) | **GET** /repo/v1/entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/file | 
+[**GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview**](TableServicesApi.md#GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview) | **GET** /repo/v1/entity/{id}/table/column/{columnId}/row/{rowId}/version/{versionNumber}/filepreview | 
+[**GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken) | **GET** /repo/v1/entity/{id}/table/download/csv/async/get/{asyncToken} | 
+[**GetRepoV1EntityIdTableQueryAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1EntityIdTableQueryAsyncGetAsyncToken) | **GET** /repo/v1/entity/{id}/table/query/async/get/{asyncToken} | 
+[**GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken) | **GET** /repo/v1/entity/{id}/table/transaction/async/get/{asyncToken} | 
+[**GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken) | **GET** /repo/v1/entity/{id}/table/upload/csv/async/get/{asyncToken} | 
+[**GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken**](TableServicesApi.md#GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken) | **GET** /repo/v1/table/upload/csv/preview/async/get/{asyncToken} | 
+[**PostRepoV1Column**](TableServicesApi.md#PostRepoV1Column) | **POST** /repo/v1/column | 
+[**PostRepoV1ColumnBatch**](TableServicesApi.md#PostRepoV1ColumnBatch) | **POST** /repo/v1/column/batch | 
+[**PostRepoV1ColumnViewScopeAsyncStart**](TableServicesApi.md#PostRepoV1ColumnViewScopeAsyncStart) | **POST** /repo/v1/column/view/scope/async/start | 
+[**PostRepoV1EntityIdTableDownloadCsvAsyncStart**](TableServicesApi.md#PostRepoV1EntityIdTableDownloadCsvAsyncStart) | **POST** /repo/v1/entity/{id}/table/download/csv/async/start | 
+[**PostRepoV1EntityIdTableFilehandles**](TableServicesApi.md#PostRepoV1EntityIdTableFilehandles) | **POST** /repo/v1/entity/{id}/table/filehandles | 
+[**PostRepoV1EntityIdTableQueryAsyncStart**](TableServicesApi.md#PostRepoV1EntityIdTableQueryAsyncStart) | **POST** /repo/v1/entity/{id}/table/query/async/start | 
+[**PostRepoV1EntityIdTableSnapshot**](TableServicesApi.md#PostRepoV1EntityIdTableSnapshot) | **POST** /repo/v1/entity/{id}/table/snapshot | 
+[**PostRepoV1EntityIdTableTransactionAsyncStart**](TableServicesApi.md#PostRepoV1EntityIdTableTransactionAsyncStart) | **POST** /repo/v1/entity/{id}/table/transaction/async/start | 
+[**PostRepoV1EntityIdTableUploadCsvAsyncStart**](TableServicesApi.md#PostRepoV1EntityIdTableUploadCsvAsyncStart) | **POST** /repo/v1/entity/{id}/table/upload/csv/async/start | 
+[**PostRepoV1TableUploadCsvPreviewAsyncStart**](TableServicesApi.md#PostRepoV1TableUploadCsvPreviewAsyncStart) | **POST** /repo/v1/table/upload/csv/preview/async/start | 
+[**PostRepoV1ValidateDefiningSql**](TableServicesApi.md#PostRepoV1ValidateDefiningSql) | **POST** /repo/v1/validateDefiningSql | 
 
 
-# **CreateSnapshot**
-> SnapshotResponse CreateSnapshot(id, snapshot.request=var.snapshot.request)
+# **GetRepoV1Column**
+> OrgSagebionetworksRepoModelTablePaginatedColumnModels GetRepoV1Column(prefix = var.prefix, limit = var.limit, offset = var.offset)
 
-Request to create a new snapshot of a table.
 
-Request to create a new snapshot of a table. The provided comment, label, and activity ID will be applied to the current version thereby creating a snapshot and locking the current version. After the snapshot is created a new version will be started with an 'in-progress' label.  NOTE: This service is for TableEntity only. Snapshots of EntityView require asynchronous processing and can be created via: POST /entity/{id}/table/transaction/async/start 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of a Table Entity.
-var.snapshot.request <- SnapshotRequest$new("snapshotActivityId_example", "snapshotComment_example", "snapshotLabel_example") # SnapshotRequest | 
+# prepare function argument(s)
+var_prefix <- "prefix_example" # character | When included, only columns with a name that starts with this             prefix will be returned. (Optional)
+var_limit <- 3.4 # numeric | Limits the size of the page returned. For example, a page size             of 10 require limit = 10. The maximum Limit for this call is             100. The default Limit is 10; (Optional)
+var_offset <- 3.4 # numeric | The index of the pagination offset. For a page size of 10, the             first page would be at offset = 0, and the second page would             be at offset = 10. (Optional)
 
-#Request to create a new snapshot of a table.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CreateSnapshot(var.id, snapshot.request=var.snapshot.request)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1Column(prefix = var_prefix, limit = var_limit, offset = var_offsetdata_file = "result.txt")
+result <- api_instance$GetRepoV1Column(prefix = var_prefix, limit = var_limit, offset = var_offset)
 dput(result)
 ```
 
@@ -44,60 +56,13 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a Table Entity. | 
- **snapshot.request** | [**SnapshotRequest**](SnapshotRequest.md)|  | [optional] 
+ **prefix** | **character**| When included, only columns with a name that starts with this             prefix will be returned. | [optional] 
+ **limit** | **numeric**| Limits the size of the page returned. For example, a page size             of 10 require limit &#x3D; 10. The maximum Limit for this call is             100. The default Limit is 10; | [optional] 
+ **offset** | **numeric**| The index of the pagination offset. For a page size of 10, the             first page would be at offset &#x3D; 0, and the second page would             be at offset &#x3D; 10. | [optional] 
 
 ### Return type
 
-[**SnapshotResponse**](SnapshotResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **CsvDownloadAsyncGet**
-> DownloadFromTableResult CsvDownloadAsyncGet(id, async.token)
-
-Asynchronously get the results of a csv download started with.
-
-Asynchronously get the results of a csv download started with POST  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of a TableEntity.
-var.async.token <- 'async.token_example' # character | Async Token
-
-#Asynchronously get the results of a csv download started with.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CsvDownloadAsyncGet(var.id, var.async.token)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a TableEntity. | 
- **async.token** | **character**| Async Token | 
-
-### Return type
-
-[**DownloadFromTableResult**](DownloadFromTableResult.md)
+[**OrgSagebionetworksRepoModelTablePaginatedColumnModels**](org.sagebionetworks.repo.model.table.PaginatedColumnModels.md)
 
 ### Authorization
 
@@ -111,28 +76,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **CsvDownloadAsyncStart**
-> AsyncJobId CsvDownloadAsyncStart(id, download.from.table.request=var.download.from.table.request)
+# **GetRepoV1ColumnColumnId**
+> OrgSagebionetworksRepoModelTableColumnModel GetRepoV1ColumnColumnId(column_id)
 
-Asynchronously start a csv download.
 
-Asynchronously start a csv download. Use the returned job id and  /entity/{id}/table/download/csv/async/get to get the results of the query 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of a TableEntity.
-var.download.from.table.request <- DownloadFromTableRequest$new(list(123), "includeEntityEtag_example", 123, 123, list(FacetColumnRequest$new("columnName_example", "concreteType_example")), list(SortItem$new("column_example", SortDirection$new())), "sql_example", "concreteType_example", CsvTableDescriptor$new("escapeCharacter_example", "isFirstLineHeader_example", "lineEnd_example", "quoteCharacter_example", "separator_example"), "entityId_example", "includeRowIdAndRowVersion_example", "writeHeader_example") # DownloadFromTableRequest | 
+# prepare function argument(s)
+var_column_id <- "column_id_example" # character | The ID of the ColumnModel to get.
 
-#Asynchronously start a csv download.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$CsvDownloadAsyncStart(var.id, download.from.table.request=var.download.from.table.request)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ColumnColumnId(var_column_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1ColumnColumnId(var_column_id)
 dput(result)
 ```
 
@@ -140,12 +103,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a TableEntity. | 
- **download.from.table.request** | [**DownloadFromTableRequest**](DownloadFromTableRequest.md)|  | [optional] 
+ **column_id** | **character**| The ID of the ColumnModel to get. | 
 
 ### Return type
 
-[**AsyncJobId**](AsyncJobId.md)
+[**OrgSagebionetworksRepoModelTableColumnModel**](org.sagebionetworks.repo.model.table.ColumnModel.md)
 
 ### Authorization
 
@@ -153,37 +115,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **200** | Auto-generated description |  -  |
 
-# **FilePreviewRedirectUrlForRow**
-> character FilePreviewRedirectUrlForRow(column.id, id, row.id, version.number, redirect=var.redirect)
+# **GetRepoV1ColumnTableviewDefaults**
+> ListWrapperOfColumnModel GetRepoV1ColumnTableviewDefaults(view_entity_type = var.view_entity_type, view_type_mask = var.view_type_mask)
 
-Get the preview URL of the file associated with a specific version of a row and file handle column. 
 
-Get the preview URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
 
 ### Example
 ```R
 library(synclient)
 
-var.column.id <- 'column.id_example' # character | The ID of the Table column
-var.id <- 'id_example' # character | The ID of the FileEntity to get.
-var.row.id <- 3.4 # numeric | The ID of the Table Row
-var.version.number <- 3.4 # numeric | The version of the Table Row
-var.redirect <- 'redirect_example' # character | When set to false, the URL will be returned as text/plain instead of redirecting. 
+# prepare function argument(s)
+var_view_entity_type <- org.sagebionetworks.repo.model.table.ViewEntityType$new() # OrgSagebionetworksRepoModelTableViewEntityType | The ,<a href=\"${org.sagebionetworks.repo.model.table.ViewEntityType}\">,entity                        type,</a>, of the view, if omitted use entityview (Optional)
+var_view_type_mask <- 3.4 # numeric | Bit mask representing the types to include in the view.                        Not required for a submission view. For an entity view                        following are the possible types: (type=,<mask_hex>,):                        File=0x01, Project=0x02, Table=0x04, Folder=0x08,                        View=0x10, Docker=0x20, SubmissionView=0x40, Dataset=0x80,                         DatasetCollection=0x100, MaterializedView=0x200). (Optional)
 
-#Get the preview URL of the file associated with a specific version of a row and file handle column. 
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$FilePreviewRedirectUrlForRow(var.column.id, var.id, var.row.id, var.version.number, redirect=var.redirect)
+api_instance <- TableServicesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ColumnTableviewDefaults(view_entity_type = var_view_entity_type, view_type_mask = var_view_type_maskdata_file = "result.txt")
+result <- api_instance$GetRepoV1ColumnTableviewDefaults(view_entity_type = var_view_entity_type, view_type_mask = var_view_type_mask)
 dput(result)
 ```
 
@@ -191,15 +147,155 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **column.id** | **character**| The ID of the Table column | 
+ **view_entity_type** | [**OrgSagebionetworksRepoModelTableViewEntityType**](.md)| The ,&lt;a href&#x3D;\&quot;${org.sagebionetworks.repo.model.table.ViewEntityType}\&quot;&gt;,entity                        type,&lt;/a&gt;, of the view, if omitted use entityview | [optional] 
+ **view_type_mask** | **numeric**| Bit mask representing the types to include in the view.                        Not required for a submission view. For an entity view                        following are the possible types: (type&#x3D;,&lt;mask_hex&gt;,):                        File&#x3D;0x01, Project&#x3D;0x02, Table&#x3D;0x04, Folder&#x3D;0x08,                        View&#x3D;0x10, Docker&#x3D;0x20, SubmissionView&#x3D;0x40, Dataset&#x3D;0x80,                         DatasetCollection&#x3D;0x100, MaterializedView&#x3D;0x200). | [optional] 
+
+### Return type
+
+[**ListWrapperOfColumnModel**](ListWrapperOfColumnModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | - |  -  |
+
+# **GetRepoV1ColumnViewScopeAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableViewColumnModelResponse GetRepoV1ColumnViewScopeAsyncGetAsyncToken(async_token)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_async_token <- "async_token_example" # character | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1ColumnViewScopeAsyncGetAsyncToken(var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1ColumnViewScopeAsyncGetAsyncToken(var_async_token)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **async_token** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableViewColumnModelResponse**](org.sagebionetworks.repo.model.table.ViewColumnModelResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **GetRepoV1EntityIdColumn**
+> OrgSagebionetworksRepoModelTablePaginatedColumnModels GetRepoV1EntityIdColumn(id)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity to get the ColumnModels for.
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdColumn(var_iddata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdColumn(var_id)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity to get the ColumnModels for. | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTablePaginatedColumnModels**](org.sagebionetworks.repo.model.table.PaginatedColumnModels.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile**
+> AnyType GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile(id, column_id, row_id, version_number, redirect = var.redirect)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the FileEntity to get.
+var_column_id <- "column_id_example" # character | 
+var_row_id <- 3.4 # numeric | 
+var_version_number <- 3.4 # numeric | 
+var_redirect <- "redirect_example" # character | When set to false, the URL will be returned as text/plain             instead of redirecting. (Optional)
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile(var_id, var_column_id, var_row_id, var_version_number, redirect = var_redirectdata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFile(var_id, var_column_id, var_row_id, var_version_number, redirect = var_redirect)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **id** | **character**| The ID of the FileEntity to get. | 
- **row.id** | **numeric**| The ID of the Table Row | 
- **version.number** | **numeric**| The version of the Table Row | 
- **redirect** | **character**| When set to false, the URL will be returned as text/plain instead of redirecting.  | [optional] 
+ **column_id** | **character**|  | 
+ **row_id** | **numeric**|  | 
+ **version_number** | **numeric**|  | 
+ **redirect** | **character**| When set to false, the URL will be returned as text/plain             instead of redirecting. | [optional] 
 
 ### Return type
 
-**character**
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -208,36 +304,36 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Status 200 will be returned if the &#39;redirect&#39; boolean param is false |  -  |
+| **307** | Status 307 will be returned if the &#39;redirect&#39; boolean param is true or null |  -  |
 
-# **FileRedirectUrlForRow**
-> character FileRedirectUrlForRow(column.id, id, row.id, version.number, redirect=var.redirect)
+# **GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview**
+> AnyType GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview(id, column_id, row_id, version_number, redirect = var.redirect)
 
-Get the actual URL of the file associated with a specific version of a row and file handle column. 
 
-Get the actual URL of the file associated with a specific version of a row and file handle column.  Note: This call will result in a HTTP temporary redirect (307), to the actual file URL if the caller meets all of the download requirements. 
 
 ### Example
 ```R
 library(synclient)
 
-var.column.id <- 'column.id_example' # character | The ID of the Table column
-var.id <- 'id_example' # character | The ID of the FileEntity to get.
-var.row.id <- 3.4 # numeric | The ID of the Table Row
-var.version.number <- 3.4 # numeric | The version of the Table Row
-var.redirect <- 'redirect_example' # character | When set to false, the URL will be returned as text/plain instead of redirecting. 
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the FileEntity to get.
+var_column_id <- "column_id_example" # character | 
+var_row_id <- 3.4 # numeric | 
+var_version_number <- 3.4 # numeric | 
+var_redirect <- "redirect_example" # character | When set to false, the URL will be returned as text/plain             instead of redirecting. (Optional)
 
-#Get the actual URL of the file associated with a specific version of a row and file handle column. 
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$FileRedirectUrlForRow(var.column.id, var.id, var.row.id, var.version.number, redirect=var.redirect)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview(var_id, var_column_id, var_row_id, var_version_number, redirect = var_redirectdata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableColumnColumnIdRowRowIdVersionVersionNumberFilepreview(var_id, var_column_id, var_row_id, var_version_number, redirect = var_redirect)
 dput(result)
 ```
 
@@ -245,15 +341,15 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **column.id** | **character**| The ID of the Table column | 
  **id** | **character**| The ID of the FileEntity to get. | 
- **row.id** | **numeric**| The ID of the Table Row | 
- **version.number** | **numeric**| The version of the Table Row | 
- **redirect** | **character**| When set to false, the URL will be returned as text/plain instead of redirecting.  | [optional] 
+ **column_id** | **character**|  | 
+ **row_id** | **numeric**|  | 
+ **version_number** | **numeric**|  | 
+ **redirect** | **character**| When set to false, the URL will be returned as text/plain             instead of redirecting. | [optional] 
 
 ### Return type
 
-**character**
+[**AnyType**](AnyType.md)
 
 ### Authorization
 
@@ -262,32 +358,33 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | Success |  -  |
+| **200** | Status 200 will be returned if the &#39;redirect&#39; boolean param is false |  -  |
+| **307** | Status 307 will be returned if the &#39;redirect&#39; boolean param is true or null |  -  |
 
-# **GetColumnForTable**
-> PaginatedColumnModels GetColumnForTable(id)
+# **GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableDownloadFromTableResult GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken(id, async_token)
 
-Given the ID of a.
 
-Given the ID of a <a href=\"${org.sagebionetworks.repo.model.table.TableEntity}\">TableEntity</a>, get its list of <ahref=\"${org.sagebionetworks.repo.model.table.ColumnModel}\">ColumnModels</a> that are currently assigned to the table.  <p>  <b>Service Limits</b>  <table border=\"1\">  <tr>  <th>resource</th>  <th>limit</th>  </tr>  <tr>  <td>The maximum frequency this method can be called</td>  <td>6 calls per minute</td>  </tr>  </table>  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of a Table.
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_async_token <- "async_token_example" # character | 
 
-#Given the ID of a.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetColumnForTable(var.id)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken(var_id, var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableDownloadCsvAsyncGetAsyncToken(var_id, var_async_token)
 dput(result)
 ```
 
@@ -295,155 +392,12 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a Table. | 
-
-### Return type
-
-[**PaginatedColumnModels**](PaginatedColumnModels.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetFileHandles**
-> TableFileHandleResults GetFileHandles(id, row.reference.set=var.row.reference.set)
-
-.
-
-This method is used to get file handle information for rows in a TableEntity. The columns in the passed in RowReferenceSet need to be FILEHANDLEID columns and the rows in the passed in RowReferenceSet need to exists (a 400 will be returned if a row ID is provided that does not actually exist). The order of the returned rows of file handles is the same as the order of the rows requested, and the order of the file handles in each row is the same as the order of the columns requested.  Note: The caller must have the READ permission on the TableEntity to make this call.  <b>Service Limits</b>  <table border=\"1\">  <tr>  <th>resource</th>  <th>limit</th>  </tr>  <tr>  <td>The maximum frequency this method can be called</td>  <td>1 calls per second</td>  </tr>  </table> 
-
-### Example
-```R
-library(synclient)
-
-var.id <- 'id_example' # character | The ID of a TableEntity.
-var.row.reference.set <- RowReferenceSet$new("etag_example", list(SelectColumn$new(ColumnType$new(), "id_example", "name_example")), list(RowReference$new(123, 123)), "tableId_example") # RowReferenceSet | 
-
-#.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetFileHandles(var.id, row.reference.set=var.row.reference.set)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a TableEntity. | 
- **row.reference.set** | [**RowReferenceSet**](RowReferenceSet.md)|  | [optional] 
-
-### Return type
-
-[**TableFileHandleResults**](TableFileHandleResults.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Success |  -  |
-
-# **GetTableTransactionResult**
-> TableUpdateTransactionResponse GetTableTransactionResult(async.token, id)
-
-Asynchronously get the results of a table update transaction started with.
-
-Asynchronously get the results of a table update transaction started with POST /entity/{id}/table/transaction/async/start</a>  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-
-### Example
-```R
-library(synclient)
-
-var.async.token <- 'async.token_example' # character | The token returned when the job was started.
-var.id <- 'id_example' # character | The ID of a Table entity.
-
-#Asynchronously get the results of a table update transaction started with.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$GetTableTransactionResult(var.async.token, var.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **async.token** | **character**| The token returned when the job was started. | 
- **id** | **character**| The ID of a Table entity. | 
-
-### Return type
-
-[**TableUpdateTransactionResponse**](TableUpdateTransactionResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **201** | Success |  -  |
-
-# **QueryAsyncGet**
-> QueryResultBundle QueryAsyncGet(async.token, id)
-
-Asynchronously get the results of a query started with.
-
-Asynchronously get the results of a query started with POST /entity/{id}/table/query/async/start  Note: When the result is not ready yet, this method will return a status code of 202 (ACCEPTED) and the response body will be a AsynchronousJobStatus object. 
-
-### Example
-```R
-library(synclient)
-
-var.async.token <- 'async.token_example' # character | Async Token
-var.id <- 'id_example' # character | The ID of the TableEntity.
-
-#Asynchronously get the results of a query started with.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$QueryAsyncGet(var.async.token, var.id)
-dput(result)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **async.token** | **character**| Async Token | 
  **id** | **character**| The ID of the TableEntity. | 
+ **async_token** | **character**|  | 
 
 ### Return type
 
-[**QueryResultBundle**](QueryResultBundle.md)
+[**OrgSagebionetworksRepoModelTableDownloadFromTableResult**](org.sagebionetworks.repo.model.table.DownloadFromTableResult.md)
 
 ### Authorization
 
@@ -457,28 +411,27 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **201** | Auto-generated description |  -  |
 
-# **QueryAsyncStart**
-> AsyncJobId QueryAsyncStart(id, query.bundle.request=var.query.bundle.request)
+# **GetRepoV1EntityIdTableQueryAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableQueryResultBundle GetRepoV1EntityIdTableQueryAsyncGetAsyncToken(id, async_token)
 
-Asynchronously start a query.
 
-Asynchronously start a query. Use the returned job id and GET /entity/{id}/table/query/async/get</a> to get the results of the query  Using a 'SQL like' syntax, query the current version of the rows in a single table. The following pseudo-syntax is the basic supported format:   SELECT <br>  [ALL | DISTINCT] select_expr [, select_expr ...] <br>  FROM synapse_table_id <br>  [WHERE where_condition] <br>  [GROUP BY {col_name [, [col_name * ...] } <br>  [ORDER BY {col_name [ [ASC | DESC] [, col_name [ [ASC | DESC] ]}<br>  [LIMIT row_count [ OFFSET offset ] ]<br>   <p>  Note: Sub-queries and joining tables is not supported.  </p>  <p>  This services depends on an index that is created/update asynchronously from table creation and update events. This means there could be short window of time when the index is inconsistent with the true state of the table. When the index is out-of-synch, then a status code of 202 (ACCEPTED) will be returned and the response body will be a TableStatus object. The TableStatus will indicates the current status of the index including how much work is remaining until the index is consistent with the truth of the table.  The 'partsMask' is an integer \"mask\" that can be combined into to request any desired part. As of this writing, the mask is defined as follows QueryBundleRequest  <ul>  <li>Query Results <i>(queryResults)</i> = 0x1</li>  <li>Query Count <i>(queryCount)</i> = 0x2</li>  <li>Select Columns <i>(selectColumns)</i> = 0x4</li>  <li>Max Rows Per Page <i>(maxRowsPerPage)</i> = 0x8</li>  <li>The Table Columns <i>(columnModels)</i> = 0x10</li>  <li>Facet statistics for each faceted column <i>(facetStatistics)</i> = 0x20</li>  <li>The sum of the file sizes <i>(sumFileSizesBytes)</i> = 0x40</li>  </ul>  </p>  <p>  For example, to request all parts, the request mask value should be: <br> 0x1 OR 0x2 OR 0x4 OR 0x8 OR 0x10 OR 0x20 OR 0x40 = 0x7F.  </p>  <p>  Note: The caller must have the READ permission on the TableEntity to make this call.  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of a TableEntity.
-var.query.bundle.request <- QueryBundleRequest$new("concreteType_example", "entityId_example", 123, Query$new(list(123), "includeEntityEtag_example", 123, 123, list(FacetColumnRequest$new("columnName_example", "concreteType_example")), list(SortItem$new("column_example", SortDirection$new())), "sql_example")) # QueryBundleRequest | 
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_async_token <- "async_token_example" # character | 
 
-#Asynchronously start a query.
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$QueryAsyncStart(var.id, query.bundle.request=var.query.bundle.request)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableQueryAsyncGetAsyncToken(var_id, var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableQueryAsyncGetAsyncToken(var_id, var_async_token)
 dput(result)
 ```
 
@@ -486,12 +439,196 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a TableEntity. | 
- **query.bundle.request** | [**QueryBundleRequest**](QueryBundleRequest.md)|  | [optional] 
+ **id** | **character**| The ID of the TableEntity. | 
+ **async_token** | **character**|  | 
 
 ### Return type
 
-[**AsyncJobId**](AsyncJobId.md)
+[**OrgSagebionetworksRepoModelTableQueryResultBundle**](org.sagebionetworks.repo.model.table.QueryResultBundle.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableTableUpdateTransactionResponse GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken(id, async_token)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the table entity.
+var_async_token <- "async_token_example" # character | The token returned when the job was started.
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken(var_id, var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableTransactionAsyncGetAsyncToken(var_id, var_async_token)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the table entity. | 
+ **async_token** | **character**| The token returned when the job was started. | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableTableUpdateTransactionResponse**](org.sagebionetworks.repo.model.table.TableUpdateTransactionResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableUploadToTableResult GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken(id, async_token)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_async_token <- "async_token_example" # character | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken(var_id, var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1EntityIdTableUploadCsvAsyncGetAsyncToken(var_id, var_async_token)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity. | 
+ **async_token** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableUploadToTableResult**](org.sagebionetworks.repo.model.table.UploadToTableResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken**
+> OrgSagebionetworksRepoModelTableUploadToTablePreviewResult GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken(async_token)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_async_token <- "async_token_example" # character | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken(var_async_tokendata_file = "result.txt")
+result <- api_instance$GetRepoV1TableUploadCsvPreviewAsyncGetAsyncToken(var_async_token)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **async_token** | **character**|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableUploadToTablePreviewResult**](org.sagebionetworks.repo.model.table.UploadToTablePreviewResult.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1Column**
+> OrgSagebionetworksRepoModelTableColumnModel PostRepoV1Column(org_sagebionetworks_repo_model_table_column_model)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_table_column_model <- org.sagebionetworks.repo.model.table.ColumnModel$new("name_example", "columnType_example", "facetType_example", "id_example", "defaultValue_example", 123, 123, c("enumValues_example"), c(org.sagebionetworks.repo.model.table.JsonSubColumnModel$new("name_example", "columnType_example", "facetType_example", "jsonPath_example"))) # OrgSagebionetworksRepoModelTableColumnModel | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1Column(var_org_sagebionetworks_repo_model_table_column_modeldata_file = "result.txt")
+result <- api_instance$PostRepoV1Column(var_org_sagebionetworks_repo_model_table_column_model)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_table_column_model** | [**OrgSagebionetworksRepoModelTableColumnModel**](OrgSagebionetworksRepoModelTableColumnModel.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableColumnModel**](org.sagebionetworks.repo.model.table.ColumnModel.md)
 
 ### Authorization
 
@@ -505,28 +642,26 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **201** | - |  -  |
 
-# **StartTableTransactionJob**
-> AsyncJobId StartTableTransactionJob(id, table.update.transaction.request=var.table.update.transaction.request)
+# **PostRepoV1ColumnBatch**
+> ListWrapperOfColumnModel PostRepoV1ColumnBatch(list_wrapper_of_column_model)
 
-Start a table update job that will attempt to make all of the requested changes in a single transaction. 
 
-Start a table update job that will attempt to make all of the requested changes in a single transaction. All updates will either succeed or fail as a unit.  All update requests must be for the same table.  <p>  Note: The caller must have the UPDATE permission on the TableEntity to make this call.  </p>  <p>  <b>Service Limits</b>  <table border=\"1\">  <tr>  <th>resource</th>  <th>limit</th>  </tr>  <tr>  <td>The maximum size of a PartialRow change </td>  <td>2 MB</td>  </tr>  <tr>  <td>The maximum size of a CSV that can be appended to a table</td>  <td>1 GB</td>  </tr>  </table>  </p> 
 
 ### Example
 ```R
 library(synclient)
 
-var.id <- 'id_example' # character | The ID of a Table Entity.
-var.table.update.transaction.request <- TableUpdateTransactionRequest$new(list(TableUpdateRequest$new("concreteType_example", "entityId_example")), "concreteType_example", "createSnapshot_example", "entityId_example", SnapshotRequest$new("snapshotActivityId_example", "snapshotComment_example", "snapshotLabel_example")) # TableUpdateTransactionRequest | 
+# prepare function argument(s)
+var_list_wrapper_of_column_model <- ListWrapperOfColumnModel$new(c(org.sagebionetworks.repo.model.table.ColumnModel$new("name_example", "columnType_example", "facetType_example", "id_example", "defaultValue_example", 123, 123, c("enumValues_example"), c(org.sagebionetworks.repo.model.table.JsonSubColumnModel$new("name_example", "columnType_example", "facetType_example", "jsonPath_example"))))) # ListWrapperOfColumnModel | 
 
-#Start a table update job that will attempt to make all of the requested changes in a single transaction. 
-api.instance <- TableServicesApi$new()
-# Configure HTTP basic authorization: bearerAuth
-api.instance$apiClient$username <- 'TODO_YOUR_USERNAME';
-api.instance$apiClient$password <- 'TODO_YOUR_PASSWORD';
-result <- api.instance$StartTableTransactionJob(var.id, table.update.transaction.request=var.table.update.transaction.request)
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1ColumnBatch(var_list_wrapper_of_column_modeldata_file = "result.txt")
+result <- api_instance$PostRepoV1ColumnBatch(var_list_wrapper_of_column_model)
 dput(result)
 ```
 
@@ -534,12 +669,11 @@ dput(result)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **character**| The ID of a Table Entity. | 
- **table.update.transaction.request** | [**TableUpdateTransactionRequest**](TableUpdateTransactionRequest.md)|  | [optional] 
+ **list_wrapper_of_column_model** | [**ListWrapperOfColumnModel**](ListWrapperOfColumnModel.md)|  | 
 
 ### Return type
 
-[**AsyncJobId**](AsyncJobId.md)
+[**ListWrapperOfColumnModel**](ListWrapperOfColumnModel.md)
 
 ### Authorization
 
@@ -553,5 +687,420 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | Success |  -  |
+| **201** | - |  -  |
+
+# **PostRepoV1ColumnViewScopeAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1ColumnViewScopeAsyncStart(org_sagebionetworks_repo_model_table_view_column_model_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_table_view_column_model_request <- org.sagebionetworks.repo.model.table.ViewColumnModelRequest$new("concreteType_example", org.sagebionetworks.repo.model.table.ViewScope$new(123, c("scope_example"), "viewEntityType_example", "viewType_example"), "includeDerivedAnnotations_example", "nextPageToken_example") # OrgSagebionetworksRepoModelTableViewColumnModelRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1ColumnViewScopeAsyncStart(var_org_sagebionetworks_repo_model_table_view_column_model_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1ColumnViewScopeAsyncStart(var_org_sagebionetworks_repo_model_table_view_column_model_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_table_view_column_model_request** | [**OrgSagebionetworksRepoModelTableViewColumnModelRequest**](OrgSagebionetworksRepoModelTableViewColumnModelRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | An object containing the id of the asynchronous job whose results can be fetched using the   ,&lt;a href&#x3D;\&quot;${GET.column.view.scope.async.get.asyncToken}\&quot;&gt;,GET /column/view/scope/async/get,&lt;/a&gt;, service |  -  |
+
+# **PostRepoV1EntityIdTableDownloadCsvAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1EntityIdTableDownloadCsvAsyncStart(id, org_sagebionetworks_repo_model_table_download_from_table_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_org_sagebionetworks_repo_model_table_download_from_table_request <- org.sagebionetworks.repo.model.table.DownloadFromTableRequest$new("concreteType_example", "entityId_example", "writeHeader_example", "includeRowIdAndRowVersion_example", org.sagebionetworks.repo.model.table.CsvTableDescriptor$new("separator_example", "quoteCharacter_example", "escapeCharacter_example", "lineEnd_example", "isFirstLineHeader_example"), "fileName_example", "sql_example", c(org.sagebionetworks.repo.model.table.QueryFilter$new("concreteType_example", "isDefiningCondition_example", "columnName_example", "function_example", c("values_example"), "operator_example", "searchExpression_example")), c(org.sagebionetworks.repo.model.table.FacetColumnRequest$new("concreteType_example", "columnName_example", "jsonPath_example", c("facetValues_example"), "min_example", "max_example")), "includeEntityEtag_example", 123, 123, 123, c(org.sagebionetworks.repo.model.table.SortItem$new("column_example", "direction_example"))) # OrgSagebionetworksRepoModelTableDownloadFromTableRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableDownloadCsvAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_download_from_table_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableDownloadCsvAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_download_from_table_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity. | 
+ **org_sagebionetworks_repo_model_table_download_from_table_request** | [**OrgSagebionetworksRepoModelTableDownloadFromTableRequest**](OrgSagebionetworksRepoModelTableDownloadFromTableRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdTableFilehandles**
+> OrgSagebionetworksRepoModelTableTableFileHandleResults PostRepoV1EntityIdTableFilehandles(id, org_sagebionetworks_repo_model_table_row_reference_set)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity to append rows to.
+var_org_sagebionetworks_repo_model_table_row_reference_set <- org.sagebionetworks.repo.model.table.RowReferenceSet$new("tableId_example", "etag_example", c(org.sagebionetworks.repo.model.table.SelectColumn$new("name_example", "columnType_example", "id_example")), c(org.sagebionetworks.repo.model.table.RowReference$new(123, 123))) # OrgSagebionetworksRepoModelTableRowReferenceSet | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableFilehandles(var_id, var_org_sagebionetworks_repo_model_table_row_reference_setdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableFilehandles(var_id, var_org_sagebionetworks_repo_model_table_row_reference_set)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity to append rows to. | 
+ **org_sagebionetworks_repo_model_table_row_reference_set** | [**OrgSagebionetworksRepoModelTableRowReferenceSet**](OrgSagebionetworksRepoModelTableRowReferenceSet.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableTableFileHandleResults**](org.sagebionetworks.repo.model.table.TableFileHandleResults.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdTableQueryAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1EntityIdTableQueryAsyncStart(id, org_sagebionetworks_repo_model_table_query_bundle_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_org_sagebionetworks_repo_model_table_query_bundle_request <- org.sagebionetworks.repo.model.table.QueryBundleRequest$new("concreteType_example", "entityId_example", org.sagebionetworks.repo.model.table.Query$new("sql_example", c(org.sagebionetworks.repo.model.table.QueryFilter$new("concreteType_example", "isDefiningCondition_example", "columnName_example", "function_example", c("values_example"), "operator_example", "searchExpression_example")), c(org.sagebionetworks.repo.model.table.FacetColumnRequest$new("concreteType_example", "columnName_example", "jsonPath_example", c("facetValues_example"), "min_example", "max_example")), "includeEntityEtag_example", 123, 123, 123, c(org.sagebionetworks.repo.model.table.SortItem$new("column_example", "direction_example"))), 123) # OrgSagebionetworksRepoModelTableQueryBundleRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableQueryAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_query_bundle_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableQueryAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_query_bundle_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity. | 
+ **org_sagebionetworks_repo_model_table_query_bundle_request** | [**OrgSagebionetworksRepoModelTableQueryBundleRequest**](OrgSagebionetworksRepoModelTableQueryBundleRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdTableSnapshot**
+> OrgSagebionetworksRepoModelTableSnapshotResponse PostRepoV1EntityIdTableSnapshot(id, org_sagebionetworks_repo_model_table_snapshot_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | 
+var_org_sagebionetworks_repo_model_table_snapshot_request <- org.sagebionetworks.repo.model.table.SnapshotRequest$new("snapshotComment_example", "snapshotLabel_example", "snapshotActivityId_example") # OrgSagebionetworksRepoModelTableSnapshotRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableSnapshot(var_id, var_org_sagebionetworks_repo_model_table_snapshot_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableSnapshot(var_id, var_org_sagebionetworks_repo_model_table_snapshot_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**|  | 
+ **org_sagebionetworks_repo_model_table_snapshot_request** | [**OrgSagebionetworksRepoModelTableSnapshotRequest**](OrgSagebionetworksRepoModelTableSnapshotRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableSnapshotResponse**](org.sagebionetworks.repo.model.table.SnapshotResponse.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdTableTransactionAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1EntityIdTableTransactionAsyncStart(id, org_sagebionetworks_repo_model_table_table_update_transaction_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity to update.
+var_org_sagebionetworks_repo_model_table_table_update_transaction_request <- org.sagebionetworks.repo.model.table.TableUpdateTransactionRequest$new("concreteType_example", "entityId_example", c(org.sagebionetworks.repo.model.table.TableUpdateRequest$new("concreteType_example", "entityId_example", "searchEnabled_example", org.sagebionetworks.repo.model.table.AppendableRowSet$new("concreteType_example", "tableId_example", c(org.sagebionetworks.repo.model.table.Row$new(123, 123, "etag_example", c("values_example"))), "etag_example", c(org.sagebionetworks.repo.model.table.SelectColumn$new("name_example", "columnType_example", "id_example"))), "tableId_example", "uploadFileHandleId_example", "updateEtag_example", 123, org.sagebionetworks.repo.model.table.CsvTableDescriptor$new("separator_example", "quoteCharacter_example", "escapeCharacter_example", "lineEnd_example", "isFirstLineHeader_example"), c("columnIds_example"), c(org.sagebionetworks.repo.model.table.ColumnChange$new("oldColumnId_example", "newColumnId_example")), c("orderedColumnIds_example"))), "createSnapshot_example", org.sagebionetworks.repo.model.table.SnapshotRequest$new("snapshotComment_example", "snapshotLabel_example", "snapshotActivityId_example")) # OrgSagebionetworksRepoModelTableTableUpdateTransactionRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableTransactionAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_table_update_transaction_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableTransactionAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_table_update_transaction_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity to update. | 
+ **org_sagebionetworks_repo_model_table_table_update_transaction_request** | [**OrgSagebionetworksRepoModelTableTableUpdateTransactionRequest**](OrgSagebionetworksRepoModelTableTableUpdateTransactionRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1EntityIdTableUploadCsvAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1EntityIdTableUploadCsvAsyncStart(id, org_sagebionetworks_repo_model_table_upload_to_table_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_id <- "id_example" # character | The ID of the TableEntity.
+var_org_sagebionetworks_repo_model_table_upload_to_table_request <- org.sagebionetworks.repo.model.table.UploadToTableRequest$new("concreteType_example", "entityId_example", "tableId_example", "uploadFileHandleId_example", "updateEtag_example", 123, org.sagebionetworks.repo.model.table.CsvTableDescriptor$new("separator_example", "quoteCharacter_example", "escapeCharacter_example", "lineEnd_example", "isFirstLineHeader_example"), c("columnIds_example")) # OrgSagebionetworksRepoModelTableUploadToTableRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1EntityIdTableUploadCsvAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_upload_to_table_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1EntityIdTableUploadCsvAsyncStart(var_id, var_org_sagebionetworks_repo_model_table_upload_to_table_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **character**| The ID of the TableEntity. | 
+ **org_sagebionetworks_repo_model_table_upload_to_table_request** | [**OrgSagebionetworksRepoModelTableUploadToTableRequest**](OrgSagebionetworksRepoModelTableUploadToTableRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1TableUploadCsvPreviewAsyncStart**
+> OrgSagebionetworksRepoModelAsynchAsyncJobId PostRepoV1TableUploadCsvPreviewAsyncStart(org_sagebionetworks_repo_model_table_upload_to_table_preview_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_table_upload_to_table_preview_request <- org.sagebionetworks.repo.model.table.UploadToTablePreviewRequest$new("concreteType_example", "uploadFileHandleId_example", 123, org.sagebionetworks.repo.model.table.CsvTableDescriptor$new("separator_example", "quoteCharacter_example", "escapeCharacter_example", "lineEnd_example", "isFirstLineHeader_example"), "doFullFileScan_example") # OrgSagebionetworksRepoModelTableUploadToTablePreviewRequest | 
+
+api_instance <- TableServicesApi$new()
+# Configure HTTP bearer authorization: bearerAuth
+api_instance$api_client$bearer_token <- Sys.getenv("BEARER_TOKEN")
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1TableUploadCsvPreviewAsyncStart(var_org_sagebionetworks_repo_model_table_upload_to_table_preview_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1TableUploadCsvPreviewAsyncStart(var_org_sagebionetworks_repo_model_table_upload_to_table_preview_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_table_upload_to_table_preview_request** | [**OrgSagebionetworksRepoModelTableUploadToTablePreviewRequest**](OrgSagebionetworksRepoModelTableUploadToTablePreviewRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelAsynchAsyncJobId**](org.sagebionetworks.repo.model.asynch.AsyncJobId.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | Auto-generated description |  -  |
+
+# **PostRepoV1ValidateDefiningSql**
+> OrgSagebionetworksRepoModelTableValidateDefiningSqlResponse PostRepoV1ValidateDefiningSql(org_sagebionetworks_repo_model_table_validate_defining_sql_request)
+
+
+
+### Example
+```R
+library(synclient)
+
+# prepare function argument(s)
+var_org_sagebionetworks_repo_model_table_validate_defining_sql_request <- org.sagebionetworks.repo.model.table.ValidateDefiningSqlRequest$new("definingSql_example", "entityType_example") # OrgSagebionetworksRepoModelTableValidateDefiningSqlRequest | 
+
+api_instance <- TableServicesApi$new()
+# to save the result into a file, simply add the optional `data_file` parameter, e.g.
+# result <- api_instance$PostRepoV1ValidateDefiningSql(var_org_sagebionetworks_repo_model_table_validate_defining_sql_requestdata_file = "result.txt")
+result <- api_instance$PostRepoV1ValidateDefiningSql(var_org_sagebionetworks_repo_model_table_validate_defining_sql_request)
+dput(result)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **org_sagebionetworks_repo_model_table_validate_defining_sql_request** | [**OrgSagebionetworksRepoModelTableValidateDefiningSqlRequest**](OrgSagebionetworksRepoModelTableValidateDefiningSqlRequest.md)|  | 
+
+### Return type
+
+[**OrgSagebionetworksRepoModelTableValidateDefiningSqlResponse**](org.sagebionetworks.repo.model.table.ValidateDefiningSqlResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Auto-generated description |  -  |
 

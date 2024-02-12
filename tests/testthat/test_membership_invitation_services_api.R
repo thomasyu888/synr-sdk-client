@@ -3,35 +3,103 @@
 
 context("Test MembershipInvitationServicesApi")
 
-api.instance <- MembershipInvitationServicesApi$new()
+api_instance <- MembershipInvitationServicesApi$new()
 
-test_that("GetOpenInvitationsByTeam", {
-  # tests for GetOpenInvitationsByTeam
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the open invitations from a Team, optionally filtering by the invitee. 
-  # Retrieve the open invitations from a Team, optionally filtering by the invitee. An invitation is only open if it has not expired and if the user has not joined the Team. Note: certain fields may be omitted when returned if the field value is null 
-  # @param id character the ID of the Team.
-  # @param invitee.id character the ID of the Synapse user to which invitations have been extended (optional)
-  # @param limit integer the maximum number of invitations to return (optional)
-  # @param offset integer the starting index of the returned results (optional)
+test_that("DeleteRepoV1MembershipInvitationId", {
+  # tests for DeleteRepoV1MembershipInvitationId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the invitation to be deleted
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MembershipInvitationId", {
+  # tests for GetRepoV1MembershipInvitationId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the invitation
+  # @return [OrgSagebionetworksRepoModelMembershipInvitation]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MembershipInvitationIdInviteeVerificationSignedToken", {
+  # tests for GetRepoV1MembershipInvitationIdInviteeVerificationSignedToken
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @return [OrgSagebionetworksRepoModelInviteeVerificationSignedToken]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MembershipInvitationOpenInvitationCount", {
+  # tests for GetRepoV1MembershipInvitationOpenInvitationCount
+  # base path: https://repo-prod.prod.sagebase.org
+  # @return [OrgSagebionetworksRepoModelCount]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1TeamIdOpenInvitation", {
+  # tests for GetRepoV1TeamIdOpenInvitation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the Team extending the invitations
+  # @param invitee_id character the ID of the Synapse user to which invitations have been extended (optional) (optional)
+  # @param limit integer the maximum number of invitations to return (default 10) (optional)
+  # @param offset integer the starting index of the returned results (default 0) (optional)
   # @return [PaginatedResultsOfMembershipInvitation]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetOpenInvitationsByUser", {
-  # tests for GetOpenInvitationsByUser
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the open invitations to a user, optionally filtering by the Team of origin. 
-  # Retrieve the open invitations to a user, optionally filtering by the Team of origin. An invitation is only open if it has not expired and if the user has not joined the Team. Note: certain fields may be omitted when returned if the field value is null 
-  # @param id character The ID of the Synapse user.
-  # @param limit integer the maximum number of invitations to return. (optional)
-  # @param offset integer the starting index of the returned results. (optional)
-  # @param team.id character the ID of the Team extending the invitations (optional)
+test_that("GetRepoV1UserIdOpenInvitation", {
+  # tests for GetRepoV1UserIdOpenInvitation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character the ID of the Synapse user to which invitations have been extended.
+  # @param team_id character the ID of the Team extending the invitations (optional) (optional)
+  # @param limit integer the maximum number of invitations to return (default 10) (optional)
+  # @param offset integer the starting index of the returned results (default 0) (optional)
   # @return [PaginatedResultsOfMembershipInvitation]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("PostRepoV1MembershipInvitation", {
+  # tests for PostRepoV1MembershipInvitation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param notification_unsubscribe_endpoint character The portal endpoint prefix for one-click email unsubscription.  A signed, serialized token is appended to create the complete URL:  ,<a href=\"${org.sagebionetworks.repo.model.message.NotificationSettingsSignedToken}\">,NotificationSettingsSignedToken,</a>,.  In normal operation, this parameter should be omitted.
+  # @param org_sagebionetworks_repo_model_membership_invitation OrgSagebionetworksRepoModelMembershipInvitation 
+  # @param accept_invitation_endpoint character The portal endpoint prefix for one-click acceptance of the membership invitation.  A signed, serialized token is appended to create the complete URL:  ,<a href=\"${org.sagebionetworks.repo.model.JoinTeamSignedToken}\">,JoinTeamSignedToken,</a>,  if an inviteeId is specified, or  ,<a href=\"${org.sagebionetworks.repo.model.MembershipInvtnSignedToken}\">,MembershipInvtnSignedToken,</a>,  if an inviteeEmail is specified.  In normal operation, this parameter should be omitted. (optional)
+  # @return [OrgSagebionetworksRepoModelMembershipInvitation]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1MembershipInvitationId", {
+  # tests for PostRepoV1MembershipInvitationId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param org_sagebionetworks_repo_model_membership_invtn_signed_token OrgSagebionetworksRepoModelMembershipInvtnSignedToken 
+  # @return [OrgSagebionetworksRepoModelMembershipInvitation]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1MembershipInvitationIdInviteeId", {
+  # tests for PutRepoV1MembershipInvitationIdInviteeId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param org_sagebionetworks_repo_model_invitee_verification_signed_token OrgSagebionetworksRepoModelInviteeVerificationSignedToken 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

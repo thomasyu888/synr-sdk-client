@@ -3,67 +3,158 @@
 
 context("Test DataAccessServicesApi")
 
-api.instance <- DataAccessServicesApi$new()
+api_instance <- DataAccessServicesApi$new()
 
-test_that("GetAccessRequirementStatus", {
-  # tests for GetAccessRequirementStatus
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve an access requirement status for a given access requirement ID.
-  # Retrieve an access requirement status for a given access requirement ID.
-  # @param requirement.id character the ID of the requirement.
-  # @return [AccessRequirementStatus]
+test_that("DeleteRepoV1DataAccessSubmissionSubmissionId", {
+  # tests for DeleteRepoV1DataAccessSubmissionSubmissionId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param submission_id character 
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetRequestForUpdate", {
-  # tests for GetRequestForUpdate
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve the Request for update.
-  # Retrieve the Request for update.  If one does not exist, an Request with some re-filled information is returned. If a submission associated with the request is approved, and the requirement requires renewal, a refilled Renewal is returned. Only the owner of the request can perform this action. 
-  # @param requirement.id character the ID of the requirement.
-  # @return [RequestInterface]
+test_that("GetRepoV1AccessRequirementRequirementIdDataAccessRequestForUpdate", {
+  # tests for GetRepoV1AccessRequirementRequirementIdDataAccessRequestForUpdate
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [OrgSagebionetworksRepoModelDataaccessRequestInterface]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("GetUserOwnResearchProjectForUpdate", {
-  # tests for GetUserOwnResearchProjectForUpdate
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve an existing ResearchProject that the user owns.
-  # Retrieve an existing ResearchProject that the user owns.  If none exists, a ResearchProject with some re-filled information is returned to the user. Only the owner of the researchProject can perform this action. 
-  # @param requirement.id character the ID of the requirement.
-  # @return [ResearchProject]
+test_that("GetRepoV1AccessRequirementRequirementIdResearchProjectForUpdate", {
+  # tests for GetRepoV1AccessRequirementRequirementIdResearchProjectForUpdate
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [OrgSagebionetworksRepoModelDataaccessResearchProject]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ListArSubmissions", {
-  # tests for ListArSubmissions
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Retrieve a list of submissions for a given access requirement ID.
-  # Retrieve a list of submissions for a given access requirement ID.  Only ACT member can perform this action. 
-  # @param requirement.id character the ID of the requirement.
-  # @param submission.page.request SubmissionPageRequest  (optional)
-  # @return [SubmissionPage]
+test_that("GetRepoV1AccessRequirementRequirementIdStatus", {
+  # tests for GetRepoV1AccessRequirementRequirementIdStatus
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @return [OrgSagebionetworksRepoModelDataaccessAccessRequirementStatus]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
-test_that("ListInfoForApprovedSubmissions", {
-  # tests for ListInfoForApprovedSubmissions
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Return approved data access submissions
-  # Return the research project info for approved data access submissions, ordered by submission modified-on date, ascending 
-  # @param requirement.id character the ID of the requirement.
-  # @param submission.info.page.request SubmissionInfoPageRequest  (optional)
-  # @return [SubmissionInfoPage]
+test_that("GetRepoV1DataAccessSubmissionOpenSubmissions", {
+  # tests for GetRepoV1DataAccessSubmissionOpenSubmissions
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param next_page_token character  (optional)
+  # @return [OrgSagebionetworksRepoModelDataaccessOpenSubmissionPage]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("GetRepoV1DataAccessSubmissionSubmissionId", {
+  # tests for GetRepoV1DataAccessSubmissionSubmissionId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param submission_id character 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmission]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1AccessRequirementRequirementIdApprovedSubmissionInfo", {
+  # tests for PostRepoV1AccessRequirementRequirementIdApprovedSubmissionInfo
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @param org_sagebionetworks_repo_model_dataaccess_submission_info_page_request OrgSagebionetworksRepoModelDataaccessSubmissionInfoPageRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmissionInfoPage]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1AccessRequirementRequirementIdSubmissions", {
+  # tests for PostRepoV1AccessRequirementRequirementIdSubmissions
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param requirement_id character 
+  # @param org_sagebionetworks_repo_model_dataaccess_submission_page_request OrgSagebionetworksRepoModelDataaccessSubmissionPageRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmissionPage]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1DataAccessRequest", {
+  # tests for PostRepoV1DataAccessRequest
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_dataaccess_request_interface OrgSagebionetworksRepoModelDataaccessRequestInterface 
+  # @return [OrgSagebionetworksRepoModelDataaccessRequestInterface]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1DataAccessRequestRequestIdSubmission", {
+  # tests for PostRepoV1DataAccessRequestRequestIdSubmission
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param request_id character - The ID of the request object.
+  # @param org_sagebionetworks_repo_model_dataaccess_create_submission_request OrgSagebionetworksRepoModelDataaccessCreateSubmissionRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmissionStatus]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1DataAccessSubmissionSearch", {
+  # tests for PostRepoV1DataAccessSubmissionSearch
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_dataaccess_submission_search_request OrgSagebionetworksRepoModelDataaccessSubmissionSearchRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmissionSearchResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1ResearchProject", {
+  # tests for PostRepoV1ResearchProject
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_dataaccess_research_project OrgSagebionetworksRepoModelDataaccessResearchProject 
+  # @return [OrgSagebionetworksRepoModelDataaccessResearchProject]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1RestrictionInformation", {
+  # tests for PostRepoV1RestrictionInformation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_restriction_information_request OrgSagebionetworksRepoModelRestrictionInformationRequest 
+  # @return [OrgSagebionetworksRepoModelRestrictionInformationResponse]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1DataAccessSubmissionSubmissionId", {
+  # tests for PutRepoV1DataAccessSubmissionSubmissionId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param submission_id character 
+  # @param org_sagebionetworks_repo_model_dataaccess_submission_state_change_request OrgSagebionetworksRepoModelDataaccessSubmissionStateChangeRequest 
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmission]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1DataAccessSubmissionSubmissionIdCancellation", {
+  # tests for PutRepoV1DataAccessSubmissionSubmissionIdCancellation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param submission_id character - The ID of the submission to cancel.
+  # @return [OrgSagebionetworksRepoModelDataaccessSubmissionStatus]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

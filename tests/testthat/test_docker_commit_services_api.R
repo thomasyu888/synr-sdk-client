@@ -3,34 +3,29 @@
 
 context("Test DockerCommitServicesApi")
 
-api.instance <- DockerCommitServicesApi$new()
+api_instance <- DockerCommitServicesApi$new()
 
-test_that("AddDockerCommit", {
-  # tests for AddDockerCommit
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Add a commit (tag and digest) for an external/unmanaged Docker repository.
-  # Add a commit (tag and digest) for an external/unmanaged Docker repository. (Commits for managed repositories are added via direct integration with the Synapse Docker registry.) 
-  # @param id character the ID of the Docker repository entity
-  # @param docker.commit DockerCommit the new tag/digest pair for the repository (optional)
-  # @return [Void]
-
-  # uncomment below to test the operation
-  #expect_equal(result, "EXPECTED_RESULT")
-})
-
-test_that("ListDockerTags", {
-  # tests for ListDockerTags
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # List the tagged commits (tag/digest pairs) for the given Docker repository.
-  # List the tagged commits (tag/digest pairs) for the given Docker repository.  Only the most recent digest for each tag is returned since, following Docker&#39;s convention, a tag may be reassigned to a newer commit. The list may be sorted by date or tag.  The default is to sort by date, descending (newest first).&#39; 
-  # @param id character the ID of the Docker repository entity
-  # @param ascending character Ascending (optional)
-  # @param limit integer pagination parameter, optional (default is 20) (optional)
-  # @param offset integer pagination parameter, optional (default is 0) (optional)
-  # @param sort character Sort results (optional)
+test_that("GetRepoV1EntityIdDockerTag", {
+  # tests for GetRepoV1EntityIdDockerTag
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param sort character  (optional)
+  # @param ascending character , optional (default is false) (optional)
+  # @param limit numeric pagination parameter, optional (default is 20) (optional)
+  # @param offset numeric pagination parameter, optional (default is 0) (optional)
   # @return [PaginatedResultsOfDockerCommit]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("PostRepoV1EntityIdDockerCommit", {
+  # tests for PostRepoV1EntityIdDockerCommit
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param org_sagebionetworks_repo_model_docker_docker_commit OrgSagebionetworksRepoModelDockerDockerCommit 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})

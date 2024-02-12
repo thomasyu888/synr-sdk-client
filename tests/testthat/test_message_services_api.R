@@ -3,18 +3,139 @@
 
 context("Test MessageServicesApi")
 
-api.instance <- MessageServicesApi$new()
+api_instance <- MessageServicesApi$new()
 
-test_that("SendMessageToEntityOwner", {
-  # tests for SendMessageToEntityOwner
-  # base path: https://repo-prod.prod.sagebase.org/repo/v1
-  # Adds the owner of the given entity as an additional recipient of the message.
-  # Adds the owner of the given entity as an additional recipient of the message. 
-  # @param id character The ID of an Entity.
-  # @param message.to.user MessageToUser  (optional)
-  # @return [MessageToUser]
+test_that("DeleteRepoV1AdminMessageMessageId", {
+  # tests for DeleteRepoV1AdminMessageMessageId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_id character 
+  # @return [Void]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
 })
 
+test_that("GetRepoV1MessageInbox", {
+  # tests for GetRepoV1MessageInbox
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param inbox_filter character 
+  # @param order_by character 
+  # @param descending character 
+  # @param limit numeric 
+  # @param offset numeric 
+  # @return [PaginatedResultsOfMessageBundle]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MessageMessageId", {
+  # tests for GetRepoV1MessageMessageId
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_id character 
+  # @return [OrgSagebionetworksRepoModelMessageMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MessageMessageIdConversation", {
+  # tests for GetRepoV1MessageMessageIdConversation
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_id character 
+  # @param order_by character 
+  # @param descending character 
+  # @param limit numeric 
+  # @param offset numeric 
+  # @return [PaginatedResultsOfMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MessageMessageIdFile", {
+  # tests for GetRepoV1MessageMessageIdFile
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_id character 
+  # @param redirect character When set to false, the URL will be returned as text/plain             instead of redirecting. (optional)
+  # @return [AnyType]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("GetRepoV1MessageOutbox", {
+  # tests for GetRepoV1MessageOutbox
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param order_by character 
+  # @param descending character 
+  # @param limit numeric 
+  # @param offset numeric 
+  # @return [PaginatedResultsOfMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1CloudMailInAuthorization", {
+  # tests for PostRepoV1CloudMailInAuthorization
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_message_cloudmailin_authorization_check_header OrgSagebionetworksRepoModelMessageCloudmailinAuthorizationCheckHeader 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1CloudMailInMessage", {
+  # tests for PostRepoV1CloudMailInMessage
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_message_cloudmailin_message OrgSagebionetworksRepoModelMessageCloudmailinMessage 
+  # @param notification_unsubscribe_endpoint character  (optional)
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1EntityIdMessage", {
+  # tests for PostRepoV1EntityIdMessage
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param id character 
+  # @param org_sagebionetworks_repo_model_message_message_to_user OrgSagebionetworksRepoModelMessageMessageToUser 
+  # @return [OrgSagebionetworksRepoModelMessageMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1Message", {
+  # tests for PostRepoV1Message
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_message_message_to_user OrgSagebionetworksRepoModelMessageMessageToUser 
+  # @return [OrgSagebionetworksRepoModelMessageMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PostRepoV1MessageMessageIdForward", {
+  # tests for PostRepoV1MessageMessageIdForward
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param message_id character 
+  # @param org_sagebionetworks_repo_model_message_message_recipient_set OrgSagebionetworksRepoModelMessageMessageRecipientSet 
+  # @return [OrgSagebionetworksRepoModelMessageMessageToUser]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("PutRepoV1MessageStatus", {
+  # tests for PutRepoV1MessageStatus
+  # base path: https://repo-prod.prod.sagebase.org
+  # @param org_sagebionetworks_repo_model_message_message_status OrgSagebionetworksRepoModelMessageMessageStatus 
+  # @return [Void]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
